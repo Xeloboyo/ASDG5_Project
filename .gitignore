@@ -182,10 +182,25 @@ $RECYCLE.BIN/
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
-# environment file
+# dependencies
+/.pnp
+.pnp.js
 
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# environment file
 client/.env
 
 # mongoDB URI
-
 database/routes/api/Keys.js
