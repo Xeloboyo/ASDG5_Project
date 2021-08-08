@@ -1,0 +1,11 @@
+{
+  "name": "asd_g5_21_project_something",
+  "version": "1.0.0",
+  "description": "ASD Assignment Group 5 2021 - Project <Something>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
