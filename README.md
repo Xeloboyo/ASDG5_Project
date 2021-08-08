@@ -1,46 +1,33 @@
-# ASD Group 5 (2021) - Project <Something?
+# ASD Group 5 (2021) - Project <Something>
 
 ## Table of Contents
 
 - [About](#about)
 - [Getting Started](#getting_started)
 - [Usage](#usage)
-- [Contributing](../CONTRIBUTING.md)
+- [Contributing](./HUMANS.txt)
 
 ## About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+Yeah
 
 ## Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+cd to `./database` and run `npm client-install"` to install databases file.
+See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
-
-```
-Give examples
-```
+To run the front-end `npm run`
+To run the back-end `npm server`
+To run both `npm dev`
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
+`npm used and installed: `
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
+`pictures of working app`
 
 ## Usage <a name = "usage"></a>
 
-Add notes about how to use the system.
+To use it, pray and wish it work, cheers.
