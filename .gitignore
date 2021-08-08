@@ -185,3 +185,7 @@ $RECYCLE.BIN/
 # environment file
 
 client/.env
+
+# mongoDB URI
+
+database/routes/api/Keys.js
