@@ -205,7 +205,7 @@ client/.env
 # mongoDB URI
 database/routes/api/Keys.js
 
-# packages lock
+# packages-lock
 client/package-lock.json
 database/package-lock.json
 package-lock.json
