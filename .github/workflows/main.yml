@@ -25,9 +25,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: cd client
 
       # Runs a set of commands using the runners shell
       - name: Setup Node.js environment
@@ -41,11 +38,13 @@ jobs:
           check-latest: true
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm
           cache: npm
+          
       - name: Install dependencies
         run: npm install
-
+        working-directory: client
       - name: Run the tests
         run: npm test
-
+        working-directory: client
       - name: Build
         run: npm run build
+        working-directory: client
