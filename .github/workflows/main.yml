@@ -51,6 +51,7 @@ jobs:
           project: ./client
           build: npm run build
           start: npm start
+          working-directory: client
       - name: Build
         run: npm run build
         working-directory: client
