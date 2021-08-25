@@ -17,5 +17,7 @@ steps:
 
 - script: |
     npm install
-    npm run build
+    npm test
+    npm run build 
+  workingDirectory: client
   displayName: 'npm install and build'
