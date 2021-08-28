@@ -34,6 +34,16 @@ function NavigationBar() {
           <span className="header__optionLineOne">Register</span>
         </div>
       </Link>
+      <Link to="/logout">
+        <div className="header__option">
+          <span className="header__optionLineOne">Logout</span>
+        </div>
+      </Link>
+      <Link to="/promotion">
+        <div className="header__option">
+          <span className="header__optionLineOne">Promotion</span>
+        </div>
+      </Link>
     </div>
   );
 }
