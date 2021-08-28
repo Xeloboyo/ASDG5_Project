@@ -1,0 +1,41 @@
+
+@import "bootstrap/scss/functions"; 
+
+
+$theme-colors: (
+    "primary":#51a584,
+    "success":#51a584,
+    "secondary":#84c2b5,
+    "dark": #444444,
+    "light": #dfeee8,
+    "info":   #50cb9b,    
+    "warning":  #d77766,
+    "danger":  #db344a
+);
+
+@mixin font($font-family, $font-file) {
+    @font-face {
+      font-family: $font-family;
+      src:  url($font-file+'.ttf') format('truetype');
+      font-weight: lighter;
+      font-style: normal;
+      font-stretch: semi-condensed;
+    }
+  }
+  
+
+@include font('FuturaBT', 'futura');
+@include font('Futura-BookBT', 'futura-book');
+
+$font-family-sans-serif: Futura-BookBT, -apple-system, system-ui, Futura, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+
+@import "bootstrap/scss/variables";
+@import 'bootstrap/scss/bootstrap';
+
+.shadow-inset{
+    box-shadow: inset 0 0.5rem 0.8rem -4px rgba(0, 0, 0, 0.35);  
+}
+.line-left {
+    border-left: 1px solid rgba(0, 0, 0, 0.322);
+}
