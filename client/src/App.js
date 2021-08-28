@@ -1,12 +1,17 @@
-import './App.css';
-
-require('dotenv').config(); //
+import "./App.css";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NavigationBar from "./Component/NavigationBar";
+require("dotenv").config(); //
 
 function App() {
   return (
-    <h1>Hello World!</h1>
+    <Router>
+      <Switch>
+        <NavigationBar />
+      </Switch>
+    </Router>
   );
 }
 
 export default App;
- 
