@@ -1,10 +1,7 @@
 import './Footer.css';
 
 import React from 'react';
-
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
-import { LinkContainer } from 'react-router-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
