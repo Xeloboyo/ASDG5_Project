@@ -8,6 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import { SiFacebook, SiInstagram, SiLinkedin, SiYoutube } from 'react-icons/si';
 
 const Footer = () => {
   return (
@@ -34,24 +35,28 @@ const Footer = () => {
           </Col>
           <Col>
             <Container className="col-md-7 mb-3">
-              <Card.Title>Social Media</Card.Title>
+              <Card.Title>Social Media(s)</Card.Title>
               <Card.Text href="#">
                 <i className="fab fa-facebook-f">
-                  <span style={{ marginLeft: '10px' }}>Facebook</span>
+                  <SiFacebook />
+                  <span style={{ marginLeft: '10px' }}>Facebook </span>
                 </i>
               </Card.Text>
               <Card.Text href="#">
                 <i className="fab fa-instagram">
+                  <SiInstagram />
                   <span style={{ marginLeft: '10px' }}>Instagram</span>
                 </i>
               </Card.Text>
               <Card.Text href="#">
-                <i className="fab fa-twitter">
-                  <span style={{ marginLeft: '10px' }}>Twitter</span>
+                <i className="fab fa-linkedIn">
+                  <SiLinkedin />
+                  <span style={{ marginLeft: '10px' }}>LinkedIn</span>
                 </i>
               </Card.Text>
               <Card.Text href="#">
                 <i className="fab fa-youtube">
+                  <SiYoutube />
                   <span style={{ marginLeft: '10px' }}>Youtube</span>
                 </i>
               </Card.Text>
