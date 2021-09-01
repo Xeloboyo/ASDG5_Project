@@ -55,6 +55,11 @@ function NavigationBar() {
               Community Page
             </Nav.Link>
           </LinkContainer>
+          <LinkContainer to="/promotions">
+            <Nav.Link href="#promotions" className="text-white line-left">
+              Promotions
+            </Nav.Link>
+          </LinkContainer>
         </Nav>
         <Nav>
           <LinkContainer to="/register" className="float-right mx-3">
