@@ -16,12 +16,11 @@ const sidebar = () => {
 
       <ListGroup.Item action href="#">
         Profile & Settings
-        {/* Choose Subscription */}
+        {/* Choose Subscription, Choose Filters, etc... */}
       </ListGroup.Item>
 
       <ListGroup.Item action href="#">
         Logout
-        {/* Choose Filters, and etc */}
       </ListGroup.Item>
     </ListGroup>
   );
