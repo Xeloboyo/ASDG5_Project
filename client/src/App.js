@@ -7,6 +7,8 @@ import Footer from "./Component/Footer";
 import Promotions from "./Component/Promotions";
 import Homepage from "./Component/Home/Homepage";
 import Container from "react-bootstrap/Container";
+import CommunityPageForm from "./Component/CommunityPageForm";
+import CommunityPageEdit from "./Component/CommunityPageEdit";
 require("dotenv").config(); //
 
 class App extends Component {
@@ -46,6 +48,12 @@ class App extends Component {
           <Switch>
             <Route path="/communitypage">
               <CommunityPage />
+            </Route>
+            <Route path="/communitypageform">
+              <CommunityPageForm />
+            </Route>
+            <Route path="/communitypageedit">
+              <CommunityPageEdit />
             </Route>
             <Route path="/promotions">
               <Promotions />

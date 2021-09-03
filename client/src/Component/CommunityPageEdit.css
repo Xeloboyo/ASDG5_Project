@@ -1,0 +1,18 @@
+.center {
+  width: 600px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+table {
+  width: 85%;
+  border-collapse: collapse;
+  padding: 0px 20px 25px 0px;
+}
+
+.title {
+  padding: 15px;
+}
