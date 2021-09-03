@@ -13,7 +13,7 @@ function CommunityPage() {
         <table className="tables">
           <tr>
             <h1 className="title">Community Page</h1>
-            <th>
+            <th className="right">
               <LinkContainer to="/communitypageform">
                 <Nav.Link>Create Post</Nav.Link>
               </LinkContainer>
@@ -35,7 +35,7 @@ function CommunityPage() {
                 </Dropdown.Menu>
               </Dropdown>
             </th>
-            <th>
+            <th className="right">
               <LinkContainer to="/communitypageedit">
                 <Nav.Link>Edit Post</Nav.Link>
               </LinkContainer>

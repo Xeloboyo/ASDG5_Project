@@ -9,6 +9,7 @@ import Homepage from "./Component/Home/Homepage";
 import Container from "react-bootstrap/Container";
 import CommunityPageForm from "./Component/CommunityPageForm";
 import CommunityPageEdit from "./Component/CommunityPageEdit";
+import CommunityPageEdits from "./Component/CommunityPageEdits";
 require("dotenv").config(); //
 
 class App extends Component {
@@ -51,6 +52,9 @@ class App extends Component {
             </Route>
             <Route path="/communitypageform">
               <CommunityPageForm />
+            </Route>
+            <Route path="/communitypageedits">
+              <CommunityPageEdits />
             </Route>
             <Route path="/communitypageedit">
               <CommunityPageEdit />

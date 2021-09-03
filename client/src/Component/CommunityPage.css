@@ -5,6 +5,10 @@
   padding: 0px 0px 0px 15px;
 }
 
+.right {
+  text-align: right;
+}
+
 .tables {
   width: 100%;
   border-collapse: collapse;

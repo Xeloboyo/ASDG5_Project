@@ -1,18 +1,40 @@
-.center {
-  width: 600px;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  padding: 20px;
-}
-
-table {
-  width: 85%;
-  border-collapse: collapse;
-  padding: 0px 20px 25px 0px;
-}
-
 .title {
   padding: 15px;
+}
+.dropdown {
+  padding: 0px 0px 0px 15px;
+}
+
+.right {
+  text-align: right;
+}
+
+.tables {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 0px 50px 25px 0px;
+}
+
+.content {
+  display: flex;
+  padding: 15px 40px 35px 15px;
+  background: rgba(0, 128, 0, 0.1);
+  min-height: 500px;
+}
+
+.containers {
+  padding: 20px 0px 20px 0px;
+}
+
+.post {
+  outline-style: double;
+  outline-width: thin;
+  display: 100%;
+  padding: 15px 40px 35px 15px;
+  height: fit-content;
+  width: 100%;
+}
+
+.edit_button {
+  padding: 0px !important;
 }
