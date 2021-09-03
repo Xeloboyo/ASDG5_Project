@@ -1,0 +1,8 @@
+.center{
+  width: 600px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 20px;
+}
