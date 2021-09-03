@@ -1,22 +1,19 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
-import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
-import "./CommunityPageEdit.css";
 import Dropdown from "react-bootstrap/esm/Dropdown";
 import { LinkContainer } from "react-router-bootstrap";
-import Nav from "react-bootstrap/Nav";
 
-function CommunityPageEdit() {
+function PromotionsPast() {
   return (
     <Container>
       <Container className="mx-0 px-0" fluid>
         <table>
           <tr>
-            <h1 className="title">Edit Posts</h1>
+            <h1 className="title">Past Promotions</h1>
             <th className="right">
-              <LinkContainer to="/communitypage">
+              <LinkContainer to="/promotions">
                 <Nav.Link>Back</Nav.Link>
               </LinkContainer>
             </th>
@@ -32,14 +29,12 @@ function CommunityPageEdit() {
                 <small>Username</small>
               </p>
               <p>Post</p>
+              <p>Restuarants</p>
             </div>
             <table className="edit_table">
               <tr>
                 <th>
-                  <LinkContainer
-                    to="/communitypageedits"
-                    className="edit_button"
-                  >
+                  <LinkContainer to="/promotionsedit" className="edit_button">
                     <Button variant="primary">Edit Post</Button>
                   </LinkContainer>
                 </th>
@@ -53,4 +48,4 @@ function CommunityPageEdit() {
   );
 }
 
-export default CommunityPageEdit;
+export default PromotionsPast;

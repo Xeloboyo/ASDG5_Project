@@ -1,0 +1,19 @@
+.PromotionsHomeBackground {
+  background-color: rgba(49, 85, 65, 0.2);
+}
+.PromotionsHomeBackground2 {
+  background-color: rgba(49, 85, 65, 0.4);
+}
+
+.PromotionsHomeTitle {
+  text-align: center;
+}
+
+h1 {
+  padding: 15px 70px 0px !important;
+  font-weight: bold !important;
+}
+
+h2 {
+  padding: 0px 70px 1px !important;
+}

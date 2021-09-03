@@ -36,5 +36,9 @@
 }
 
 .edit_button {
-  padding: 0px !important;
+  padding: 6px 12px !important;
+}
+
+.edit_table {
+  width: 15% !important;
 }
