@@ -84,6 +84,12 @@ const Sidebar = () => {
                   {/* How to use, etc */}
                 </MenuItem>
               </SubMenu>
+
+              <MenuItem>
+                &nbsp; Logout
+                <Route to="/" />
+                {/* Logout */}
+              </MenuItem>
             </Menu>
           </Router>
         </SidebarContent>

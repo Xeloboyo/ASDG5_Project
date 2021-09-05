@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import Sidebar from '../Sidebar';
+// import Sidebar from '../Sidebar';
 
 class BusinessPro extends Component {
   render() {
     return (
       <div>
         <div>
-          <Sidebar />
+          {/* <Sidebar /> */}
           {/* main body */}
-          <div style={{ marginLeft: '300px' }}>
-            Hello Worlddddddddddddddddddddddddddddddddddddddddddddd
-          </div>
+          <div>Hello Worlddddddddddddddddddddddddddddddddddddddddddddd</div>
         </div>
       </div>
     );

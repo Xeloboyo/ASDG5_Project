@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
+import App from './App';
 // import reportWebVitals from './reportWebVitals';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss';
 
-import BizPro from './components/business-pro/BusinessPro';
+// import BizPro from './components/business-pro/BusinessPro';
 import Ticket from './components/staff-takeaway-ticket/staffTakeawayTicket';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <BizPro />
+    <App />
+    {/* <BizPro /> */}
     {/* <Ticket /> */}
   </React.StrictMode>,
   document.getElementById('root')

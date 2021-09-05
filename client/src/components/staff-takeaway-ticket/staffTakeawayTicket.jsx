@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import Sidebar from '../Sidebar';
+// import Sidebar from '../dashboard/Sidebar';
+import Ticket from '../staff-takeaway-ticket/staffTakeawayTicket';
 
-class StaffTakeaway extends Component {
+class staffTakeawayTicket extends Component {
   render() {
     return (
       <div>
         <div>
-          <Sidebar />
+          {/* <Sidebar /> */}
           {/* main body */}
-          <div style={{ marginLeft: '300px' }}>
-            Hello Worlddddddddddddddddddddddddddddddddddddddddddddd
+          <div>
+            <Ticket />
           </div>
         </div>
       </div>
@@ -17,4 +18,4 @@ class StaffTakeaway extends Component {
   }
 }
 
-export default StaffTakeaway;
+export default staffTakeawayTicket;
