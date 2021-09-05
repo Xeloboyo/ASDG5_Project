@@ -1,30 +1,35 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
 
-const sidebar = () => {
+const Sidebar = () => {
   return (
     <ListGroup>
       <ListGroup.Item action href="#">
-        Home
-        {/* Go back to Business Pro Home */}
+        Tickets
+        {/* See your takeaway Ticket */}
       </ListGroup.Item>
 
       <ListGroup.Item action href="#">
-        Download
-        {/* Download your spreadsheet */}
+        Analytics
+        {/* Check your Restaurant Analytics */}
       </ListGroup.Item>
 
       <ListGroup.Item action href="#">
-        Profile & Settings
-        {/* Choose Subscription */}
+        Profile
+        {/* Change your Profile */}
       </ListGroup.Item>
 
       <ListGroup.Item action href="#">
-        Logout
-        {/* Choose Filters, and etc */}
+        Settings
+        {/* Change your Settings */}
+      </ListGroup.Item>
+
+      <ListGroup.Item action href="#">
+        Help
+        {/* How to use, etc */}
       </ListGroup.Item>
     </ListGroup>
   );
 };
 
-export default sidebar;
+export default Sidebar;

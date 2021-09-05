@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import { IconContext } from 'react-icons';
 import { FaCheckCircle } from 'react-icons/fa';
 
-export const Cards = () => {
+export const Ticket = () => {
   return (
     <IconContext.Provider>
       value ={{ color: 'green', size: '50px' }}
@@ -11,7 +11,7 @@ export const Cards = () => {
         <Card>
           <Card.Header>Takeaway Order</Card.Header>
           <Card.Body>
-            <Card.Title>Number # </Card.Title>
+            <Card.Title>Number #{/* automated uuid number */} </Card.Title>
             <Card.Text>Description</Card.Text>
             {/* <Card.Text>Description</Card.Text> */}
           </Card.Body>
@@ -25,4 +25,4 @@ export const Cards = () => {
   );
 };
 
-export default Card;
+export default Ticket;
