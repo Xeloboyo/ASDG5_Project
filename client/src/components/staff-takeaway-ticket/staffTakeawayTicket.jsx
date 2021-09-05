@@ -5,9 +5,11 @@ class StaffTakeaway extends Component {
   render() {
     return (
       <div>
-        <div>"Hello World"</div>
         <div>
           <Sidebar />
+          <div style={{ marginLeft: '300px' }}>
+            Hello Worlddddddddddddddddddddddddddddddddddddddddddddd
+          </div>
         </div>
       </div>
     );

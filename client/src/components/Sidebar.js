@@ -26,8 +26,15 @@ const Sidebar = () => {
   return (
     <div
       style={{
-        position: 'absolute',
-        height: '100%'
+        position: 'fixed',
+        height: '100%',
+        overflow: 'hidden',
+        whiteSpace: 'normal',
+        zIndex: '1',
+        overflowX: 'hidden',
+        top: 0,
+        left: 0
+        // marginRight: '300px'
       }}
     >
       <ProSidebar>
