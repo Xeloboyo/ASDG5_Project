@@ -21,7 +21,7 @@ import {
   IoOptions
 } from 'react-icons/io';
 
-const Sidebar = () => {
+function Sidebar() {
   return (
     <IconContext.Provider>
       <ProSidebar>
@@ -76,6 +76,6 @@ const Sidebar = () => {
       </ProSidebar>
     </IconContext.Provider>
   );
-};
+}
 
 export default Sidebar;

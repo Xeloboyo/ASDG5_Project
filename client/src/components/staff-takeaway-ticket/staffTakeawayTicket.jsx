@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import Sidebar from '../Sidebar';
 
 class StaffTakeaway extends Component {
   render() {
-    return <div>Hello World</div>;
-    // i have no clue lol, i havent thought about the design
-    // probably a simple card system
+    return (
+      <div>
+        <div>"Hello World"</div>
+        <div>
+          <Sidebar />
+        </div>
+      </div>
+    );
   }
 }
 
