@@ -23,56 +23,58 @@ import {
 
 const Sidebar = () => {
   return (
-    <ProSidebar>
-      <SidebarHeader>
-        {/* You can add a header for the sidebar ex: logo */}
-        Your Restaurant Dashboard
-      </SidebarHeader>
+    <IconContext.Provider>
+      <ProSidebar>
+        <SidebarHeader>
+          {/* You can add a header for the sidebar ex: logo */}
+          Your Restaurant Dashboard
+        </SidebarHeader>
 
-      <SidebarContent>
-        {/* You can add the content of the sidebar ex: menu, profile details, ... */}
-        <Menu>
-          <MenuItem>
-            <IoTicket />
-            Tickets
-            <Link to="/" />
-            {/* See your takeaway Ticket */}
-          </MenuItem>
-
-          <MenuItem>
-            <IoAnalytics />
-            Analytics
-            <Link to="/" />
-            {/* Check your Restaurant Analytics, Only Available using Business Pro */}
-          </MenuItem>
-
-          <SubMenu icon={<IoOptions />} title="Options">
+        <SidebarContent>
+          {/* You can add the content of the sidebar ex: menu, profile details, ... */}
+          <Menu>
             <MenuItem>
-              <IoPerson />
-              Profile
+              <IoTicket />
+              Tickets
               <Link to="/" />
-              {/* Change your Profile */}
+              {/* See your takeaway Ticket */}
             </MenuItem>
 
             <MenuItem>
-              <IoSettings />
-              Settings
+              <IoAnalytics />
+              Analytics
               <Link to="/" />
-              {/* Change your Settings */}
+              {/* Check your Restaurant Analytics, Only Available using Business Pro */}
             </MenuItem>
 
-            <MenuItem>
-              <IoHelpCircle />
-              Help
-              <Link to="/" />
-              {/* How to use, etc */}
-            </MenuItem>
-          </SubMenu>
-        </Menu>
-      </SidebarContent>
+            <SubMenu icon={<IoOptions />} title="Options">
+              <MenuItem>
+                <IoPerson />
+                Profile
+                <Link to="/" />
+                {/* Change your Profile */}
+              </MenuItem>
 
-      <SidebarFooter>2021, Tangle &copy;</SidebarFooter>
-    </ProSidebar>
+              <MenuItem>
+                <IoSettings />
+                Settings
+                <Link to="/" />
+                {/* Change your Settings */}
+              </MenuItem>
+
+              <MenuItem>
+                <IoHelpCircle />
+                Help
+                <Link to="/" />
+                {/* How to use, etc */}
+              </MenuItem>
+            </SubMenu>
+          </Menu>
+        </SidebarContent>
+
+        <SidebarFooter>2021, Tangle &copy;</SidebarFooter>
+      </ProSidebar>
+    </IconContext.Provider>
   );
 };
 
