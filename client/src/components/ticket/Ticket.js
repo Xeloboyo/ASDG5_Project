@@ -2,6 +2,15 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { IconContext } from 'react-icons';
 import { FaCheckCircle } from 'react-icons/fa';
+import { BsXCircleFill } from 'react-icons/bs';
+
+// create 2 Ticket Designs,  using if statement to determine whether
+// it's for takeaway and reservations
+// if takeaway, use logo
+// if reservations, use logo
+// both tickets have accept and cancel button
+// both tickets have more and less information
+// page allows cancel all, will show warning
 
 export const Ticket = () => {
   return (
@@ -9,14 +18,16 @@ export const Ticket = () => {
       value ={{ color: 'green', size: '50px' }}
       <div>
         <Card>
-          <Card.Header>Takeaway Order</Card.Header>
+          <Card.Header>Order:{/* Number using UUID */}, Name</Card.Header>
           <Card.Body>
-            <Card.Title>Number #{/* automated uuid number */} </Card.Title>
+            <Card.Title>Costs: $ {/* Price */}</Card.Title>
+
             <Card.Text>Description</Card.Text>
             {/* <Card.Text>Description</Card.Text> */}
           </Card.Body>
           <Button variant="success" size="lg">
-            Confirm <FaCheckCircle />
+            <FaCheckCircle />
+            <BsXCircleFill />
           </Button>
         </Card>
         ));

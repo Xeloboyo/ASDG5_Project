@@ -8,7 +8,8 @@ import {
   SidebarContent,
   Menu,
   MenuItem,
-  SubMenu
+  SubMenu,
+  IconContext
 } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import {
@@ -16,7 +17,8 @@ import {
   IoAnalytics,
   IoPerson,
   IoSettings,
-  IoHelpCircle
+  IoHelpCircle,
+  IoOptions
 } from 'react-icons/io';
 
 const Sidebar = () => {
@@ -24,7 +26,7 @@ const Sidebar = () => {
     <ProSidebar>
       <SidebarHeader>
         {/* You can add a header for the sidebar ex: logo */}
-        Your Business Dashboard
+        Your Restaurant Dashboard
       </SidebarHeader>
 
       <SidebarContent>
@@ -41,29 +43,31 @@ const Sidebar = () => {
             <IoAnalytics />
             Analytics
             <Link to="/" />
-            {/* Check your Restaurant Analytics */}
+            {/* Check your Restaurant Analytics, Only Available using Business Pro */}
           </MenuItem>
 
-          <MenuItem>
-            <IoPerson />
-            Profile
-            <Link to="/" />
-            {/* Change your Profile */}
-          </MenuItem>
+          <SubMenu icon={<IoOptions />} title="Options">
+            <MenuItem>
+              <IoPerson />
+              Profile
+              <Link to="/" />
+              {/* Change your Profile */}
+            </MenuItem>
 
-          <MenuItem>
-            <IoSettings />
-            Settings
-            <Link to="/" />
-            {/* Change your Settings */}
-          </MenuItem>
+            <MenuItem>
+              <IoSettings />
+              Settings
+              <Link to="/" />
+              {/* Change your Settings */}
+            </MenuItem>
 
-          <MenuItem>
-            <IoHelpCircle />
-            Help
-            <Link to="/" />
-            {/* How to use, etc */}
-          </MenuItem>
+            <MenuItem>
+              <IoHelpCircle />
+              Help
+              <Link to="/" />
+              {/* How to use, etc */}
+            </MenuItem>
+          </SubMenu>
         </Menu>
       </SidebarContent>
 
