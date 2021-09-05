@@ -6,14 +6,9 @@ import App from './App';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss';
 
-// import BizPro from './components/business-pro/BusinessPro';
-import Ticket from './components/staff-takeaway-ticket/staffTakeawayTicket';
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    {/* <BizPro /> */}
-    {/* <Ticket /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
