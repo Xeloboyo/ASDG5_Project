@@ -21,7 +21,7 @@ import {
   IoOptions
 } from 'react-icons/io';
 
-function Sidebar() {
+const Sidebar = () => {
   return (
     <IconContext.Provider>
       <ProSidebar>
