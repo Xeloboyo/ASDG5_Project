@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Sidebar from '../dashboard/Sidebar';
+import Dashboard from '../dashboard/Dashboard';
 import Ticket from '../staff-takeaway-ticket/staffTakeawayTicket';
 
 class staffTakeawayTicket extends Component {
@@ -7,9 +7,8 @@ class staffTakeawayTicket extends Component {
     return (
       <div>
         <div>
-          {/* <Sidebar /> */}
-          {/* main body */}
-          <div>
+          <Dashboard />
+          <div style={{ marginBottom: '200px;' }}>
             <Ticket />
           </div>
         </div>

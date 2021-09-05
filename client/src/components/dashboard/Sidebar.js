@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { ListGroup } from 'react-bootstrap';
 import 'react-pro-sidebar/dist/css/styles.css';
-import '../scss/style.scss';
+import '../../scss/style.scss';
 import {
   ProSidebar,
   SidebarHeader,

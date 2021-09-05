@@ -8,7 +8,6 @@ class Dashboard extends Component {
       <div>
         <Sidebar />
         <Header />
-        <div style={{ marginBottom: '270px;' }}></div> {/* add spacing */}
       </div>
     );
   }
