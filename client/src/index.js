@@ -6,7 +6,7 @@ import './index.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss';
 
-import Sidebar from './components/sidebar/Sidebar';
+import Sidebar from './components/Sidebar';
 
 ReactDOM.render(
   <React.StrictMode>

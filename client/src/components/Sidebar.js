@@ -2,8 +2,8 @@ import React from 'react';
 // import Link from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { ListGroup } from 'react-bootstrap';
-// import 'react-pro-sidebar/dist/css/styles.css';
-import '../../scss/style.scss';
+import 'react-pro-sidebar/dist/css/styles.css';
+import '../scss/style.scss';
 import {
   ProSidebar,
   SidebarHeader,
@@ -24,7 +24,12 @@ import {
 
 const Sidebar = () => {
   return (
-    <div>
+    <div
+      style={{
+        position: 'absolute',
+        height: '100%'
+      }}
+    >
       <ProSidebar>
         <SidebarHeader>
           {/* You can add a header for the sidebar ex: logo */}
