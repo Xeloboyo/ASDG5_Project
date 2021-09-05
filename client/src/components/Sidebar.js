@@ -56,7 +56,8 @@ const Sidebar = () => {
 
               <MenuItem>
                 <IoAnalytics />
-                &nbsp; Analytics
+                &nbsp; Unlock Pro Now
+                {/* Analytics */}
                 <Route to="/" />
                 {/* Check your Restaurant Analytics, Only Available using Business Pro */}
               </MenuItem>

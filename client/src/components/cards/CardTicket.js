@@ -13,7 +13,7 @@ import { BsChevronDoubleDown, BsChevronDoubleUp } from 'react-icons/bs';
 // both tickets have more and less information
 // page allows cancel all, will show warning
 
-export const Ticket = () => {
+export const CardTicket = () => {
   return (
     <IconContext.Provider>
       value ={{ color: 'green', size: '50px' }}
@@ -48,4 +48,4 @@ export const Ticket = () => {
   );
 };
 
-export default Ticket;
+export default CardTicket;

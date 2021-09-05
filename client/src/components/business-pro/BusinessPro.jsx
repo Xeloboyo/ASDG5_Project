@@ -7,6 +7,7 @@ class BusinessPro extends Component {
       <div>
         <div>
           <Sidebar />
+          {/* main body */}
           <div style={{ marginLeft: '300px' }}>
             Hello Worlddddddddddddddddddddddddddddddddddddddddddddd
           </div>
