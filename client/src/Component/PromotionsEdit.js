@@ -7,15 +7,15 @@ import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import "./Promotions.css";
 
-function Promotions() {
+function PromotionsEdit() {
   return (
     <Container>
       <table>
         <tr>
-          <h1 className="title">Promotions</h1>
+          <h1 className="title">Past Promotions Edit</h1>
           <th className="right">
             <LinkContainer to="/promotionspast">
-              <Nav.Link>Past Post</Nav.Link>
+              <Nav.Link>Back</Nav.Link>
             </LinkContainer>
           </th>
         </tr>
@@ -85,7 +85,7 @@ function Promotions() {
             </table>
 
             <div className="promotions_cancel">
-              <LinkContainer to="/" className="edit_buttons">
+              <LinkContainer to="/promotionspast" className="edit_buttons">
                 <Button variant="primary"> Cancel</Button>
               </LinkContainer>
             </div>
@@ -96,4 +96,4 @@ function Promotions() {
   );
 }
 
-export default Promotions;
+export default PromotionsEdit;
