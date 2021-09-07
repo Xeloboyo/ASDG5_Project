@@ -54,7 +54,7 @@ class App extends Component {
               <Homepage />
             </Route>
           </Switch>
-          <Footer />
+            <Footer />
         </Container>
       </Router>
     );
