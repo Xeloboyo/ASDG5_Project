@@ -5,10 +5,16 @@ import App from './App';
 // import reportWebVitals from './reportWebVitals';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss';
+import Dashboard from './components/dashboard/Dashboard';
+import staffTakeawayTicket from './components/staff-takeaway-ticket/staffTakeawayTicket';
+import BusinessPro from './components/business-pro/BusinessPro';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    {/* <staffTakeawayTicket /> */}
+    <Dashboard />
+    {/* <BusinessPro /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

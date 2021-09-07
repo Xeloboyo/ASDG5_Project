@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Row, Column } from 'react-bootstrap';
-import Dashboard from '../dashboard/Dashboard';
+import { Container, Row, Col } from 'react-bootstrap';
+// import Dashboard from '../dashboard/Dashboard';
 import CardAnalytics from '../cards/CardAnalytics';
 import RestaurantPerformance from '../graph/RestaurantPerformance';
 import RestaurantRevenue from '../graph/RestaurantRevenue';
@@ -10,25 +10,24 @@ class BusinessPro extends Component {
     return (
       <div>
         <div>
-          <Dashboard />
           {/* main body */}
           <div style={{ marginBottom: '200px;' }}>
             <Container>
               <h3>All Time Restaurant Analytics</h3>
-              {/* 4 column 1 rows */}
+              {/* 4 Col 1 rows */}
               <Row>
-                <Column>
+                <Col>
                   <CardAnalytics />
-                </Column>
-                <Column>
+                </Col>
+                <Col>
                   <CardAnalytics />
-                </Column>
-                <Column>
+                </Col>
+                <Col>
                   <CardAnalytics />
-                </Column>
-                <Column>
+                </Col>
+                <Col>
                   <CardAnalytics />
-                </Column>
+                </Col>
               </Row>
             </Container>
             <Container>

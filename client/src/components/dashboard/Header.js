@@ -1,23 +1,32 @@
 import React from 'react';
-import { Nav, NavDropdown } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Header = () => {
   return (
     <div
       style={{
-        marginLeft: '270px', // start after sidebar
+        marginLeft: '230px', // start after sidebar
         width: '100%',
         position: 'fixed',
-        marginBottom: '270px'
+        // marginBottom: '270px',
+        padding: '20px 0px', // top and botttom + left and right
+        background: '#50cb9b'
       }}
     >
-      <Nav>
-        <Nav.Item style={{ float: 'left' }}>Page {/* Name */}</Nav.Item>
-        <div style={{ float: 'right' }}>
-          <Nav.Item>Staff Name</Nav.Item>
-        </div>
-      </Nav>
+      <Container>
+        <Row>
+          <Nav>
+            <Col sm={9}>
+              <Nav.Item>Page Name {/* Name */}</Nav.Item>
+            </Col>
+            <Col sm={2}>
+              <Nav.Item>Staff Name</Nav.Item>
+            </Col>
+          </Nav>
+        </Row>
+      </Container>
     </div>
   );
 };
