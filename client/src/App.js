@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavigationBar from "./Component/NavigationBar";
 import CommunityPage from "./Component/CommunityPage";
@@ -13,7 +13,9 @@ import CommunityPageEdits from "./Component/CommunityPageEdits";
 import PromotionsPast from "./Component/PromotionsPast";
 import PromotionsEdit from "./Component/PromotionsEdit";
 import PromotionsHome from "./Component/PromotionsHome";
-require("dotenv").config(); //
+import Form from "./Component/Form";
+import Login from "./Component/Login";
+require("dotenv").config(); 
 
 class App extends Component {
   constructor() {
@@ -70,6 +72,12 @@ class App extends Component {
             </Route>
             <Route path="/promotions">
               <Promotions />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/register">
+              <Form />
             </Route>
             <Route path="/">
               <Homepage />
