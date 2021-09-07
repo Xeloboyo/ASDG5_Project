@@ -12,7 +12,9 @@ const Header = () => {
         position: 'fixed',
         // marginBottom: '270px',
         padding: '20px 0px', // top and botttom + left and right
-        background: '#50cb9b'
+        background: '#50cb9b',
+        zIndex: '1'
+        // marginBottom: '150px'
       }}
     >
       <Container>

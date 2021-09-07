@@ -10,37 +10,68 @@ class BusinessPro extends Component {
   render() {
     return (
       <div>
-        <div>
-          {/* main body */}
-          <div style={{ marginBottom: '200px;' }}>
+        &nbsp; <br />
+        <div
+          style={{
+            marginBottom: '150px',
+            marginLeft: '310px'
+          }}
+        >
+          <Container className="text-center">
+            <div style={{ background: 'lightgrey' }}>
+              <h3 style={{ marginTop: '100px' }}>Restaurant Overview</h3>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  marginTop: '70px',
+                  marginBottom: '50px'
+                }}
+              >
+                <CardAnalytics />
+                <CardAnalytics />
+                <CardAnalytics />
+                <CardAnalytics />
+              </div>
+            </div>
             <Container>
-              <h3>All Time Restaurant Analytics</h3>
-              {/* 4 Col 1 rows */}
+              <h3>Restaurant Income Revenue</h3>
+              <h5>Filter: This Week</h5>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  margin: '15px'
+                }}
+              >
+                <RestaurantRevenue />
+              </div>
+            </Container>
+            <Container style={{ marginTop: '50px' }}>
+              <h3>Restaurant Performance Analytics</h3>
+              <h5>Filter: This Week</h5>
               <Row>
-                <Col>
-                  <CardAnalytics />
+                <Col sm={10}>
+                  <RestaurantPerformance />
                 </Col>
-                <Col>
-                  <CardAnalytics />
-                </Col>
-                <Col>
-                  <CardAnalytics />
-                </Col>
-                <Col>
-                  <CardAnalytics />
+                <Col sm={1}>
+                  <div
+                    style={{
+                      justifyContent: 'space-between',
+                      display: 'flex',
+                      flexDirection: 'column'
+                    }}
+                  >
+                    <CardAnalytics />
+                    <CardAnalytics />
+                    <CardAnalytics />
+                    <CardAnalytics />
+                    <CardAnalytics />
+                  </div>
                 </Col>
               </Row>
             </Container>
-            <Container>
-              <h3>Profit / Loss Margin</h3>
-              <RestaurantRevenue />
-            </Container>
-            <Container>
-              <h3>Restaurant Performance Analytics</h3>
-              <subtitle>date</subtitle>
-              <RestaurantPerformance />
-            </Container>
-          </div>
+          </Container>
         </div>
       </div>
     );

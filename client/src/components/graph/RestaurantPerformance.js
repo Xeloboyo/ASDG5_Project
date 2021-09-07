@@ -17,7 +17,8 @@ const data = {
       data: [8, 9, 15, 13, 18, 20, 15],
       backgroundColor: ['rgba(75, 192, 192, 0.2)'],
       borderColor: ['rgba(75, 192, 192, 1)'],
-      borderWidth: 1
+      borderWidth: 1,
+      responsive: true
     }
   ]
 };
@@ -35,12 +36,9 @@ const options = {
 };
 
 const RestaurantPerformance = () => (
-  <>
-    <div className="header">
-      <h1 className="title text-center">Restaurant Performance</h1>
-    </div>
+  <div style={{ width: '65rem' }}>
     <Bar data={data} options={options} />
-  </>
+  </div>
 );
 
 export default RestaurantPerformance;

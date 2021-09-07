@@ -31,7 +31,7 @@ const Sidebar = () => {
         height: '100%',
         overflow: 'hidden',
         whiteSpace: 'normal',
-        zIndex: '1',
+        zIndex: '2',
         overflowX: 'hidden',
         top: 0,
         left: 0

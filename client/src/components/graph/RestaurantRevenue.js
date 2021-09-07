@@ -18,18 +18,16 @@ const data = {
         'rgba(54, 162, 235, 1)',
         'rgba(255, 206, 86, 1)'
       ],
-      borderWidth: 1
+      borderWidth: 1,
+      responsive: true
     }
   ]
 };
 
 const RestaurantRevenue = () => (
-  <Container>
-    <div className="header">
-      <h1 className="title text-center">Restaurant Revenue</h1>
-    </div>
+  <div style={{ width: '30rem' }}>
     <Doughnut data={data} />
-  </Container>
+  </div>
 );
 
 export default RestaurantRevenue;
