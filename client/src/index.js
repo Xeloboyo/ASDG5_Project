@@ -8,13 +8,15 @@ import './scss/style.scss';
 import Dashboard from './components/dashboard/Dashboard';
 import staffTakeawayTicket from './components/staff-takeaway-ticket/staffTakeawayTicket';
 import BusinessPro from './components/business-pro/BusinessPro';
+import Ticket from './components/cards/CardTicket';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
+    {/* <Dashboard /> */}
     {/* <staffTakeawayTicket /> */}
-    <Dashboard />
     {/* <BusinessPro /> */}
+    <Ticket />
   </React.StrictMode>,
   document.getElementById('root')
 );

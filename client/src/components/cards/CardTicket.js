@@ -4,47 +4,128 @@ import { IconContext } from 'react-icons';
 import { FaCheckCircle, FaTimesCircle, FaMotorcycle } from 'react-icons/fa';
 import { GiTabletopPlayers } from 'react-icons/gi';
 import { BsChevronDoubleDown, BsChevronDoubleUp } from 'react-icons/bs';
+import { Container, Row, Col } from 'react-bootstrap';
 
-// create 2 Ticket Designs,  using if statement to determine whether
-// it's for takeaway and reservations
-// if takeaway, use logo { FaMotorcycle }
-// if reservations, use logo { GiTabletopPlayers }
-// both tickets have accept and cancel button
-// both tickets have more and less information
-// page allows cancel all, will show warning
+/* create 2 Ticket Designs,  using if statement to determine whether
+ it's for takeaway and reservations
+ if takeaway, use logo { FaMotorcycle }
+ if reservations, use logo { GiTabletopPlayers }
+ both tickets have accept and cancel button
+ both tickets have more and less information
+ page allows cancel all, will show warning
+*/
 
 export const CardTicket = () => {
   return (
-    <IconContext.Provider>
-      value ={{ color: 'green', size: '50px' }}
-      <div>
-        <Card icon={FaMotorcycle}>
-          <Card.Header>
-            Order: number {/* Number using UUID */}, Name
-          </Card.Header>
-          <Card.Body>
-            <Card.Title>Costs: $price {/* Price */}</Card.Title>
-            <Card.Text>Description</Card.Text>
-          </Card.Body>
-          <Button>
+    <Container>
+      <IconContext.Provider value={{ size: '20px' }}>
+        <div>
+          <Card
+            style={{
+              width: '51rem',
+              marginTop: '15px',
+              marginLeft: 'auto',
+              marginRight: 'auto'
+            }}
+          >
+            {/* Takeaay */}
+
+            <Card.Header>
+              <Row>
+                <Col sm={10}>
+                  <span style={{ color: 'green', marginRight: '10px' }}>
+                    <FaMotorcycle />
+                  </span>
+                  Order: #1001 {/* Generate Number using UUID */}
+                </Col>
+                <Col sm={2}>
+                  <Button variant="success" size="sm">
+                    {/* to accept or cancel order */}
+                    <FaCheckCircle />
+                  </Button>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    style={{ marginLeft: '7px' }}
+                  >
+                    <FaTimesCircle />
+                  </Button>
+                </Col>
+              </Row>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title>John Doe</Card.Title>
+              <Card.Subtitle>
+                Total: $<i>100</i> {/* Price */}
+              </Card.Subtitle>
+              {/* <Card.Text style={{ background: 'yellow' }}>Description</Card.Text> */}
+            </Card.Body>
             {/* For more ticket information */}
-            <BsChevronDoubleDown />
-            <BsChevronDoubleUp />
-          </Button>
-          <Button variant="success" size="lg">
-            {/* to accept or cancel order */}
-            <FaCheckCircle />
-            <FaTimesCircle />
-          </Button>
-        </Card>
-        ));
-      </div>
-      <div>
-        <Button variant="danger">Cancel All</Button>{' '}
-        {/* Are you sure you want to cancel all: Yes/ No */}
-        {/* Form:*/} {/* Reason to Cancel Description */}
-      </div>
-    </IconContext.Provider>
+            <Button style={{ background: 'lightgrey' }}>
+              <BsChevronDoubleDown />
+              <Card.Text></Card.Text>
+              {/* <BsChevronDoubleUp /> 
+              <Card.Text></Card.Text>*/}
+            </Button>
+          </Card>
+        </div>
+
+        {/* Reservation */}
+
+        <div>
+          <Card
+            style={{
+              width: '51rem',
+              marginTop: '15px',
+              marginLeft: 'auto',
+              marginRight: 'auto'
+            }}
+          >
+            <Card.Header>
+              <Row>
+                <Col sm={10}>
+                  <span style={{ color: 'darkblue', marginRight: '10px' }}>
+                    <GiTabletopPlayers />
+                  </span>
+                  Reservation: #11{/* Generate Number using UUID */}
+                </Col>
+                <Col sm={2}>
+                  <Button variant="success" size="sm">
+                    {/* to accept or cancel order */}
+                    <FaCheckCircle />
+                  </Button>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    style={{ marginLeft: '7px' }}
+                  >
+                    <FaTimesCircle />
+                  </Button>
+                </Col>
+              </Row>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title>Jane Doe, 5 people</Card.Title>
+              <Card.Subtitle>
+                Details: <b>20 September, 2PM Thrusday</b> {/* Price */}
+              </Card.Subtitle>
+              {/* <Card.Text>Description</Card.Text> */}
+            </Card.Body>
+            {/* For more ticket information */}
+            <Button style={{ background: 'lightgrey' }}>
+              {/* <BsChevronDoubleDown />
+              <Card.Text style={{ background: 'yellow' }}></Card.Text> */}
+              <div>
+                <Card.Text style={{ background: 'yellow' }}>
+                  For Birthday Party
+                </Card.Text>
+              </div>
+              <BsChevronDoubleUp />
+            </Button>
+          </Card>
+        </div>
+      </IconContext.Provider>
+    </Container>
   );
 };
 
