@@ -6,17 +6,17 @@ import App from './App';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss';
 import Dashboard from './components/dashboard/Dashboard';
-import staffTakeawayTicket from './components/staff-takeaway-ticket/staffTakeawayTicket';
+import StaffTicket from './components/staff-ticket/StaffTicket';
 import BusinessPro from './components/business-pro/BusinessPro';
 import Ticket from './components/cards/CardTicket';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    {/* <Dashboard /> */}
-    {/* <staffTakeawayTicket /> */}
+    <Dashboard />
+    <StaffTicket />
     {/* <BusinessPro /> */}
-    <Ticket />
+    {/* <Ticket /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

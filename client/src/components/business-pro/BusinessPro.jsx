@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import CardAnalytics from '../cards/CardAnalytics';
 import RestaurantPerformance from '../graph/RestaurantPerformance';
 import RestaurantRevenue from '../graph/RestaurantRevenue';
+import '../../scss/style.scss';
 
 class BusinessPro extends Component {
   render() {

@@ -23,9 +23,9 @@ export const CardTicket = () => {
           <Card
             style={{
               width: '51rem',
-              marginTop: '15px',
-              marginLeft: 'auto',
-              marginRight: 'auto'
+              marginBottom: '30px',
+              marginLeft: '380px'
+              // marginRight: 'auto'
             }}
           >
             {/* Takeaay */}
@@ -76,9 +76,9 @@ export const CardTicket = () => {
           <Card
             style={{
               width: '51rem',
-              marginTop: '15px',
-              marginLeft: 'auto',
-              marginRight: 'auto'
+              marginBottom: '15px',
+              marginLeft: '380px'
+              // marginRight: 'auto'
             }}
           >
             <Card.Header>
