@@ -6,17 +6,23 @@ import App from './App';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss';
 import Dashboard from './components/dashboard/Dashboard';
-import StaffTicket from './components/staff-ticket/StaffTicket';
+// import StaffTicket from './components/staff-ticket/StaffTicket';
 import BusinessPro from './components/business-pro/BusinessPro';
 import Ticket from './components/cards/CardTicket';
+import CardAnalytics from './components/cards/CardAnalytics';
+import RestaurantPerformance from './components/graph/RestaurantPerformance';
+import RestaurantRevenue from './components/graph/RestaurantRevenue';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <Dashboard />
-    <StaffTicket />
+    {/* <Dashboard /> */}
+    {/* <StaffTicket /> */}
     {/* <BusinessPro /> */}
     {/* <Ticket /> */}
+    {/* <CardAnalytics /> */}
+    {/* <RestaurantRevenue /> */}
+    {/* <RestaurantPerformance /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
