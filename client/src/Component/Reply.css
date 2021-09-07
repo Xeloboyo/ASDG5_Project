@@ -1,0 +1,11 @@
+.replyBox {
+    border-style: solid;
+}
+
+.comment {
+    margin: 0px;
+}
+
+.editedText {
+    margin-top: 8px;
+}

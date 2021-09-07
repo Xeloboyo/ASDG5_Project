@@ -1,0 +1,17 @@
+.review {
+    border-style: solid;
+}
+
+.editedText {
+    margin-top: 8px;
+}
+
+.descriptionBox {
+    border-style: solid;
+    min-height: 150px;
+    margin-bottom: 0px;
+}
+
+.subject {
+    margin-left: 15px;
+}
