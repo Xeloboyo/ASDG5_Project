@@ -12,8 +12,8 @@ import CommunityPageForm from './Component/CommunityPage/CommunityPageForm';
 import CommunityPageEdit from './Component/CommunityPage/CommunityPageEdit';
 import CommunityPageEdits from './Component/CommunityPage/CommunityPageEdits';
 
-import Form from './Component/Form';
-import Login from './Component/Login';
+import Form from './Component/Login/Form';
+import Login from './Component/Login/Login';
 
 import Promotions from './Component/Promotions/Promotions';
 import PromotionsPast from './Component/Promotions/PromotionsPast';
