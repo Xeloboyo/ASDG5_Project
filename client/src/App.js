@@ -25,6 +25,14 @@ import Menu from './Component/Menu/Menu';
 import MenuEdit from './Component/Menu/MenuEdit';
 import MenuAdd from './Component/Menu/MenuAdd';
 
+// staff
+import Dashboard from './components/dashboard/Dashboard';
+import BusinessPro from './components/business-pro/BusinessPro';
+import StaffTicket from './components/staff-ticket/StaffTicket';
+import Settings from './components/Settings';
+import Profile from './components/Profile';
+import Help from './components/Help';
+
 require('dotenv').config();
 
 class App extends Component {
@@ -60,56 +68,106 @@ class App extends Component {
     return (
       <Router>
         <Container className="mx-0 px-0" fluid>
-          <NavigationBar />
           <Switch>
             <Route path="/communitypage">
+              <NavigationBar />
+              <Footer />
               <CommunityPage />
             </Route>
             <Route path="/communitypageform">
+              <NavigationBar />
+              <Footer />
               <CommunityPageForm />
             </Route>
             <Route path="/communitypageedits">
+              <NavigationBar />
+              <Footer />
               <CommunityPageEdits />
             </Route>
             <Route path="/communitypageedit">
+              <NavigationBar />
+              <Footer />
               <CommunityPageEdit />
             </Route>
             <Route path="/promotionspast">
+              <NavigationBar />
+              <Footer />
               <PromotionsPast />
             </Route>
             <Route path="/promotionsedit">
+              <NavigationBar />
+              <Footer />
               <PromotionsEdit />
             </Route>
             <Route path="/promotions">
+              <NavigationBar />
+              <Footer />
               <Promotions />
             </Route>
             <Route path="/menu">
+              <NavigationBar />
+              <Footer />
               <Menu />
             </Route>
             <Route path="/menuadd">
+              <NavigationBar />
+              <Footer />
               <MenuAdd />
             </Route>
             <Route path="/menuedit">
+              <NavigationBar />
+              <Footer />
               <MenuEdit />
             </Route>
             <Route path="/restaurant">
+              <NavigationBar />
+              <Footer />
               <Restaurant />
             </Route>
             <Route path="/restaurantdetails">
+              <NavigationBar />
+              <Footer />
               <RestaurantDetails />
             </Route>
             <Route path="/restaurantadd">
+              <NavigationBar />
+              <Footer />
               <RestaurantAdd />
             </Route>
             <Route path="/restaurantedit">
+              <NavigationBar />
+              <Footer />
               <RestaurantEdit />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/dashboard/ticket">
+              <Dashboard />
+              <StaffTicket />
+            </Route>
+            <Route path="/dashboard/analytics">
+              <Dashboard />
+              <BusinessPro />
+            </Route>
+            <Route path="/dashboard/profile">
+              <Dashboard />
+              <Profile />
+            </Route>
+            <Route path="/dashboard/settings">
+              <Dashboard />
+              <Settings />
+            </Route>
+            <Route path="/dashboard/help">
+              <Dashboard />
+              <Help />
             </Route>
             <Route path="/">
               <Homepage />
               <PromotionsHome />
+              <Footer />
             </Route>
           </Switch>
-          <Footer />
         </Container>
       </Router>
     );

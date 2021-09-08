@@ -1,5 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  useParams,
+  useRouteMatch
+} from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 // import { ListGroup } from 'react-bootstrap';
 import 'react-pro-sidebar/dist/css/styles.css';
@@ -30,6 +37,8 @@ import Profile from '../Profile';
 import Help from '../Help';
 
 const Sidebar = () => {
+  let { path, url } = useRouteMatch();
+
   return (
     <div
       style={{
@@ -51,19 +60,19 @@ const Sidebar = () => {
         </SidebarHeader>
 
         <SidebarContent>
-          <Linkr>
+          <Router>
             {/* You can add the content of the sidebar ex: menu, profile details, ... */}
             <Menu>
               <MenuItem>
                 <IoTicket />
-                <Link to="/dashboard">&nbsp; Tickets</Link>
+                <Link to={`${url}/ticket`}>&nbsp; Tickets</Link>
                 {/* See your takeaway Ticket */}
               </MenuItem>
 
               <MenuItem>
                 <IoAnalytics />
                 {/* Analytics */}
-                <Link to="/dashboard/analytics" />
+                <Link to={`${url}/analytics`} />
                 &nbsp; Analytics
                 {/* Check your Restaurant Analytics, Only Available using Business Pro */}
               </MenuItem>
@@ -71,66 +80,33 @@ const Sidebar = () => {
               <SubMenu icon={<IoOptions />} title="Options">
                 <MenuItem>
                   <IoPerson />
-                  <Link to="/dashboard/profile">&nbsp; Profile </Link>
+                  <Link to={`${url}/profile`}>&nbsp; Profile </Link>
                   {/* Change your Profile */}
                 </MenuItem>
 
                 <MenuItem>
                   <IoSettings />
-                  <Link to="/dashboard/settings">&nbsp; Settings</Link>
+                  <Link to={`${url}/settings`}>&nbsp; Settings</Link>
                   {/* Email notifications, SMS, etc */}
                 </MenuItem>
 
                 <MenuItem>
                   <IoHelpCircle />
-                  <Link to="/dashboard/help">&nbsp; Help </Link>
+                  <Link to={`${url}/help`}>&nbsp; Help </Link>
                   {/* How to use, etc */}
                 </MenuItem>
               </SubMenu>
 
               <MenuItem>
-                <Link to="/dashboard/logout">&nbsp; Logout </Link>
+                <Link to="home">&nbsp; Logout </Link>
                 {/* Logout */}
               </MenuItem>
             </Menu>
-          </Linkr>
+          </Router>
         </SidebarContent>
 
         <SidebarFooter>2021, Tangle &copy;</SidebarFooter>
       </ProSidebar>
-
-      <div>
-        <Switch>
-          <Route path="/dashboard">
-            <StaffTicket />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/dashboard/analytics">
-            <BusinessPro />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/dashboard/profile">
-            <Profile />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/dashboard/settings">
-            <Settings />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/dashboard/help">
-            <Help />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/dashboard/logout">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
     </div>
   );
 };
