@@ -104,7 +104,7 @@ class App extends Component {
               <PromotionsHome />
             </Route>
           </Switch>
-          <Footer />
+            <Footer />
         </Container>
       </Router>
     );
