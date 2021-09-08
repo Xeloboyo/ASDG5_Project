@@ -1,10 +1,10 @@
-import React from "react";
-import Container from "react-bootstrap/esm/Container";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/esm/Dropdown";
-import { LinkContainer } from "react-router-bootstrap";
-import "./CommunityPage.css";
+import React from 'react';
+import Container from 'react-bootstrap/esm/Container';
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/esm/Dropdown';
+import { LinkContainer } from 'react-router-bootstrap';
+import './css/CommunityPage.css';
 
 function CommunityPage() {
   return (
@@ -53,7 +53,7 @@ function CommunityPage() {
               </p>
               <p>Post</p>
             </div>
-            <Button variant="outline-success">Like</Button>{" "}
+            <Button variant="outline-success">Like</Button>{' '}
           </div>
         </div>
       </Container>

@@ -1,20 +1,20 @@
-import React from "react";
-import Container from "react-bootstrap/esm/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
-import "./CommunityPageEdits.css";
-import { LinkContainer } from "react-router-bootstrap";
-import Nav from "react-bootstrap/Nav";
+import React from 'react';
+import Container from 'react-bootstrap/esm/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
+import { LinkContainer } from 'react-router-bootstrap';
+import Nav from 'react-bootstrap/Nav';
+import './css/CommunityPageForm.css';
 
-function CommunityPageEdits() {
+function CommunityPageForm() {
   return (
     <Container>
       <table>
         <tr>
-          <h1 className="title">Edit Post</h1>
+          <h1 className="title">Create Post On Community Page</h1>
           <th className="right">
-            <LinkContainer to="/communitypageedit">
+            <LinkContainer to="/communitypage">
               <Nav.Link>Back</Nav.Link>
             </LinkContainer>
           </th>
@@ -58,4 +58,4 @@ function CommunityPageEdits() {
   );
 }
 
-export default CommunityPageEdits;
+export default CommunityPageForm;

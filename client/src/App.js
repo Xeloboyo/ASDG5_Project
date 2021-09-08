@@ -1,48 +1,63 @@
-import "./App.css";
-import React, { Component, useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NavigationBar from "./Component/NavigationBar";
-import CommunityPage from "./Component/CommunityPage";
-import Footer from "./Component/Footer";
-import Promotions from "./Component/Promotions";
-import Homepage from "./Component/Home/Homepage";
-import Container from "react-bootstrap/Container";
-import CommunityPageForm from "./Component/CommunityPageForm";
-import CommunityPageEdit from "./Component/CommunityPageEdit";
-import CommunityPageEdits from "./Component/CommunityPageEdits";
-import PromotionsPast from "./Component/PromotionsPast";
-import PromotionsEdit from "./Component/PromotionsEdit";
-import PromotionsHome from "./Component/PromotionsHome";
+
+import './App.css';
+import React, { Component, useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+
+import NavigationBar from './Component/NavigationBar';
+import Footer from './Component/Footer';
+
+import Homepage from './Component/Home/Homepage';
+import CommunityPage from './Component/CommunityPage/CommunityPage';
+import CommunityPageForm from './Component/CommunityPage/CommunityPageForm';
+import CommunityPageEdit from './Component/CommunityPage/CommunityPageEdit';
+import CommunityPageEdits from './Component/CommunityPage/CommunityPageEdits';
+
 import Form from "./Component/Form";
 import Login from "./Component/Login";
-require("dotenv").config(); 
+
+import Promotions from './Component/Promotions/Promotions';
+import PromotionsPast from './Component/Promotions/PromotionsPast';
+import PromotionsEdit from './Component/Promotions/PromotionsEdit';
+import PromotionsHome from './Component/Promotions/PromotionsHome';
+
+import Restaurant from './Component/Restaurants/Restaurant';
+import RestaurantDetails from './Component/Restaurants/RestaurantDetails';
+import RestaurantAdd from './Component/Restaurants/RestaurantAdd';
+import RestaurantEdit from './Component/Restaurants/RestaurantEdit';
+import Menu from './Component/Menu/Menu';
+import MenuEdit from './Component/Menu/MenuEdit';
+import MenuAdd from './Component/Menu/MenuAdd';
+
+require('dotenv').config();
+
 
 class App extends Component {
   constructor() {
     super();
   }
   componentWillMount() {
-    this.sendHook("Webhook Called within app haha.. uh.. app has been ran.");
+    this.sendHook('Webhook Called within app haha.. uh.. app has been ran.');
   }
   sendHook(msg) {
     if (!process.env.HOOK_URL) {
       return;
     }
     let x = new XMLHttpRequest();
-    x.open("POST", process.env.HOOK_URL);
-    x.setRequestHeader("Content-type", "application/json");
+    x.open('POST', process.env.HOOK_URL);
+    x.setRequestHeader('Content-type', 'application/json');
     let params = {
-      username: "Heroku",
+      username: 'Heroku',
       embeds: [
         {
-          title: "[Internal app message]",
+          title: '[Internal app message]',
           description: msg,
           footer: {
-            text: "This was made with procrastination <3",
-            icon_url: "https://i.imgur.com/VAFzZeX.jpeg",
-          },
-        },
-      ],
+            text: 'This was made with procrastination <3',
+            icon_url: 'https://i.imgur.com/VAFzZeX.jpeg'
+          }
+        }
+      ]
     };
     x.send(JSON.stringify(params));
   }
@@ -78,6 +93,27 @@ class App extends Component {
             </Route>
             <Route path="/register">
               <Form />
+            </Route>
+            <Route path="/menu">
+              <Menu />
+            </Route>
+            <Route path="/menuadd">
+              <MenuAdd />
+            </Route>
+            <Route path="/menuedit">
+              <MenuEdit />
+            </Route>
+            <Route path="/restaurant">
+              <Restaurant />
+            </Route>
+            <Route path="/restaurantdetails">
+              <RestaurantDetails />
+            </Route>
+            <Route path="/restaurantadd">
+              <RestaurantAdd />
+            </Route>
+            <Route path="/restaurantedit">
+              <RestaurantEdit />
             </Route>
             <Route path="/">
               <Homepage />
