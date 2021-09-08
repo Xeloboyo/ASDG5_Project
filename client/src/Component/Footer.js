@@ -19,18 +19,22 @@ const Footer = () => {
           <Col>
             <Container className="col-md-7 mb-3">
               <Card.Title>Explore</Card.Title>
-              <Card.Text href="#">Home</Card.Text>
-              <Card.Text href="#">Restaurants</Card.Text>
-              <Card.Text href="#">Reviews</Card.Text>
-              <Card.Text href="#">Community Page</Card.Text>
+              <Card.Text href="./Home/Homepage.jsx">Home</Card.Text>
+              <Card.Text href="./Restaurants/Restaurant.js">
+                Restaurants
+              </Card.Text>
+              <Card.Text href="./Reviews/ReviewsPage.css">Reviews</Card.Text>
+              <Card.Text href="./CommunityPage/CommunityPage.js">
+                Community Page
+              </Card.Text>
             </Container>
           </Col>
           <Col>
             <Container className="col-md-7 mb-3">
               <Card.Title>Services</Card.Title>
-              <Card.Text href="#">Join Us</Card.Text>
-              <Card.Text href="#">Business Pro</Card.Text>
-              <Card.Text href="#">Feedback</Card.Text>
+              <Card.Text href="#register-your-restaurant">Join Us</Card.Text>
+              <Card.Text href="#dashboard">Business Pro</Card.Text>
+              <Card.Text href="#feedback">Feedback</Card.Text>
             </Container>
           </Col>
           <Col>
@@ -65,9 +69,9 @@ const Footer = () => {
           <Col>
             <Container className="col-md-7 mb-3">
               <Card.Title>Legal</Card.Title>
-              <Card.Text href="#">Terms & Conditions</Card.Text>
-              <Card.Text href="#">Privacy Policy</Card.Text>
-              <Card.Text href="#">Terms of Use</Card.Text>
+              <Card.Text href="#terms-co">Terms & Conditions</Card.Text>
+              <Card.Text href="#privacy">Privacy Policy</Card.Text>
+              <Card.Text href="#tos">Terms of Use</Card.Text>
             </Container>
           </Col>
         </Row>
