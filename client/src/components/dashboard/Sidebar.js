@@ -101,28 +101,34 @@ const Sidebar = () => {
 
       <div>
         <Switch>
-          <Route path="/dashboard"></Route>
-          <StaffTicket />
+          <Route path="/dashboard">
+            <StaffTicket />
+          </Route>
         </Switch>
         <Switch>
-          <Route path="/dashboard/analytics"></Route>
-          <BusinessPro />
+          <Route path="/dashboard/analytics">
+            <BusinessPro />
+          </Route>
         </Switch>
         <Switch>
-          <Route path="/dashboard/profile"></Route>
-          <Profile />
+          <Route path="/dashboard/profile">
+            <Profile />
+          </Route>
         </Switch>
         <Switch>
-          <Route path="/dashboard/settings"></Route>
-          <Settings />
+          <Route path="/dashboard/settings">
+            <Settings />
+          </Route>
         </Switch>
         <Switch>
-          <Route path="/dashboard/help"></Route>
-          <Help />
+          <Route path="/dashboard/help">
+            <Help />
+          </Route>
         </Switch>
         <Switch>
-          <Route path="/dashboard/logout"></Route>
-          <Home />
+          <Route path="/dashboard/logout">
+            <Home />
+          </Route>
         </Switch>
       </div>
     </div>
