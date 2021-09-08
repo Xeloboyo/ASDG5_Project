@@ -13,7 +13,14 @@ import CommunityPageEdits from "./Component/CommunityPageEdits";
 import PromotionsPast from "./Component/PromotionsPast";
 import PromotionsEdit from "./Component/PromotionsEdit";
 import PromotionsHome from "./Component/PromotionsHome";
-require("dotenv").config(); //
+import Restaurant from "./Component/Restaurant";
+import Menu from "./Component/Menu";
+import RestaurantDetails from "./Component/RestaurantDetails";
+import RestaurantAdd from "./Component/RestaurantAdd";
+import MenuEdit from "./Component/MenuEdit";
+import MenuAdd from "./Component/MenuAdd";
+import RestaurantEdit from "./Component/RestaurantEdit";
+require("dotenv").config(); 
 
 class App extends Component {
   constructor() {
@@ -71,12 +78,33 @@ class App extends Component {
             <Route path="/promotions">
               <Promotions />
             </Route>
+            <Route path="/menu">
+              <Menu />
+            </Route>
+            <Route path="/menuadd">
+              <MenuAdd />
+            </Route>
+            <Route path="/menuedit">
+              <MenuEdit />
+            </Route>
+            <Route path="/restaurant">
+              <Restaurant />
+            </Route>
+            <Route path="/restaurantdetails">
+              <RestaurantDetails />
+            </Route>
+            <Route path="/restaurantadd">
+              <RestaurantAdd />
+            </Route>
+            <Route path="/restaurantedit">
+              <RestaurantEdit />
+            </Route>
             <Route path="/">
               <Homepage />
               <PromotionsHome />
             </Route>
           </Switch>
-          <Footer />
+            <Footer />
         </Container>
       </Router>
     );

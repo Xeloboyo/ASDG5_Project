@@ -1,14 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import FormControl from "react-bootstrap/FormControl";
-import { LinkContainer } from "react-router-bootstrap";
-import ReactLogo from "./logo.svg";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
+import { LinkContainer } from 'react-router-bootstrap';
+import ReactLogo from './logo.svg';
+import Home from './Home/Homepage';
+import Restaurants from './Restaurants/Restaurant';
+import Reviews from './Reviews/ReviewsPage';
+import CommunityPage from './CommunityPage/CommunityPage';
+import Login from './';
+import Register from './';
 
 function NavigationBar() {
   return (
@@ -35,28 +41,43 @@ function NavigationBar() {
             <Button variant="outline-success">Search</Button>
           </Form>
           <LinkContainer to="/">
-            <Nav.Link href="#home" className="text-white  line-left">
+            <Nav.Link
+              href="./Home/Homepage.jsx"
+              className="text-white  line-left"
+            >
               Home
             </Nav.Link>
           </LinkContainer>
 
-          <LinkContainer to="/restaurants">
-            <Nav.Link href="#features" className="text-white line-left">
+          <LinkContainer to="/restaurant">
+            <Nav.Link
+              href="./Restaurants/Restaurant.js"
+              className="text-white line-left"
+            >
               Restaurants
             </Nav.Link>
           </LinkContainer>
           <LinkContainer to="/reviews">
-            <Nav.Link href="#pricing" className="text-white line-left">
+            <Nav.Link
+              href="./Reviews/ReviewsPage.js"
+              className="text-white line-left"
+            >
               Reviews
             </Nav.Link>
           </LinkContainer>
           <LinkContainer to="/communitypage">
-            <Nav.Link href="#communitypage" className="text-white line-left">
+            <Nav.Link
+              href="./CommunityPage/CommunityPage.js"
+              className="text-white line-left"
+            >
               Community Page
             </Nav.Link>
           </LinkContainer>
           <LinkContainer to="/promotions">
-            <Nav.Link href="#promotions" className="text-white line-left">
+            <Nav.Link
+              href="./Promotions/Promotions.js"
+              className="text-white line-left"
+            >
               Promotions
             </Nav.Link>
           </LinkContainer>
