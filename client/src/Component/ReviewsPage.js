@@ -6,6 +6,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import "./ReviewsPage.css";
 import Review from "./ReviewPost";
 
+var editing = true;
+
 function Reviews() {
     return (
         <Container>

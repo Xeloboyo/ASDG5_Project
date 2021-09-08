@@ -11,15 +11,18 @@ function ReviewPost() {
         <Container>
             <Container className="review">
                 <h3 className="subject">Subject Line</h3>
-                <p className="subject">* * * * *</p>
+                <div className="subject">
+                    5 / 5
+                    </div>
                 <Container>
                     <p className="descriptionBox">
                         Description of the review in paragraph.
+                        <p className="editedText">Edited</p>
                     </p>
-                    <Nav>
+                    <Nav className="editBar">
                         <Nav.Link  href="">Edit</Nav.Link>
                         <Nav.Link href=""> Delete</Nav.Link>
-                        <p className="editedText">Edited</p>
+                        <Button className="likeButton">Like</Button>
                     </Nav>
                 </Container>
             </Container>

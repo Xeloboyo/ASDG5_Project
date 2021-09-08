@@ -3,18 +3,22 @@ import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import "./Reply.css";
+import "./ReviewPost.css"
 import { LinkContainer } from "react-router-bootstrap";
 
 function Reply() {
     return (
         <Container className="replyBox">
             <h5>name</h5>
-            <p className="comment">Comment in reply in paragraph.</p>
-            <Nav>
-                <Nav.Link href="">Edit</Nav.Link>
-                <Nav.Link href=""> Delete</Nav.Link>
+            <p className="comment">
+                Comment in reply in paragraph.
                 <p className="editedText">Edited</p>
-            </Nav>
+            </p>
+            <Nav className="editBar">
+                    <Nav.Link  href="">Edit</Nav.Link>
+                    <Nav.Link href=""> Delete</Nav.Link>
+                    <Button className="likeButton">Like</Button>
+                </Nav>
         </Container>
     )
 }
