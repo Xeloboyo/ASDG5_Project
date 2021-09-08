@@ -4,7 +4,6 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import "./Reply.css";
 import "./ReviewPost.css"
-import { LinkContainer } from "react-router-bootstrap";
 
 function Reply() {
     return (

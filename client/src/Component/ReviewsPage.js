@@ -1,12 +1,8 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
-import { LinkContainer } from "react-router-bootstrap";
-import "./ReviewsPage.css";
 import Review from "./ReviewPost";
-
-var editing = true;
+import ReviewEdit from "./ReviewForm";
+import "./ReviewsPage.css";
 
 function Reviews() {
     return (
@@ -19,6 +15,7 @@ function Reviews() {
             </Container>
             <Container className="reviewsBox">
                 <Review/>
+                <ReviewEdit/>
             </Container>
         </Container>
     );
