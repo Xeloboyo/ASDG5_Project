@@ -2,9 +2,9 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-import { LinkContainer } from "react-router-bootstrap";
-import "./ReviewPost.css";
 import Reply from "./Reply";
+import ReplyEdit from "./ReplyForm";
+import "./ReviewPost.css";
 
 function ReviewPost() {
     return (
@@ -28,6 +28,7 @@ function ReviewPost() {
             </Container>
             <Container>
                 <Reply/>
+                <ReplyEdit/>
             </Container>
         </Container>
     )
