@@ -1,33 +1,35 @@
 .review {
-  background-color: rgba(0, 128, 0, 0.1);
+    background-color: rgba(0, 128, 0, 0.1);
+    margin-top: 10px;
 }
 
+
 .editedText {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin-bottom: 0px;
-  font-size: 13px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 0px;
+    font-size: 13px;
 }
 
 .descriptionBox {
-  position: relative;
-  border-style: solid;
-  border-width: 1px;
-  min-height: 150px;
-  margin-bottom: 0px;
-  background-color: snow;
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    min-height: 150px;
+    margin-bottom: 0px;
+    background-color: snow;
 }
 
 .subject {
-  margin-left: 15px;
+    margin-left: 15px;
 }
 
 .editBar {
-  position: relative;
+    position: relative;
 }
 
 .likeButton {
-  position: absolute;
-  right: 0;
+    position: absolute;
+    right: 0;
 }
