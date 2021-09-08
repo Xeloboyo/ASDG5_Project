@@ -3,11 +3,10 @@ import Container from 'react-bootstrap/esm/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
-import './CommunityPageEdit.css';
 import Dropdown from 'react-bootstrap/esm/Dropdown';
 import { LinkContainer } from 'react-router-bootstrap';
 import Nav from 'react-bootstrap/Nav';
-import './css/CommunityPageEdit';
+import './css/CommunityPageEdit.css';
 
 function CommunityPageEdit() {
   return (

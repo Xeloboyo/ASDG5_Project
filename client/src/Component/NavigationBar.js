@@ -13,8 +13,8 @@ import Home from './Home/Homepage';
 import Restaurants from './Restaurants/Restaurant';
 import Reviews from './Reviews/ReviewsPage';
 import CommunityPage from './CommunityPage/CommunityPage';
-import Login from './';
-import Register from './';
+// import Login from './';
+// import Register from './';
 
 function NavigationBar() {
   return (
