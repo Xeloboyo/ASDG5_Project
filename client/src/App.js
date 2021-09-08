@@ -139,9 +139,6 @@ class App extends Component {
               <Footer />
               <RestaurantEdit />
             </Route>
-            <Route path="/dashboard">
-              <Dashboard />
-            </Route>
             <Route path="/dashboard/ticket">
               <Dashboard />
               <StaffTicket />
@@ -161,6 +158,9 @@ class App extends Component {
             <Route path="/dashboard/help">
               <Dashboard />
               <Help />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
             </Route>
             <Route path="/">
               <Homepage />
