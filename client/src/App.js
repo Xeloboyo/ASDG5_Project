@@ -106,7 +106,7 @@ class App extends Component {
               <RestaurantEdit />
             </Route>
             <Route path="/reviews">
-              p<Reviews />
+              <Reviews />
             </Route>
             <Route path="/">
               <Homepage />
