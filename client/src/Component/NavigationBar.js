@@ -40,8 +40,8 @@ function NavigationBar() {
             </Nav.Link>
           </LinkContainer>
 
-          <LinkContainer to="/restaurants">
-            <Nav.Link href="#features" className="text-white line-left">
+          <LinkContainer to="/restaurant">
+            <Nav.Link href="#restaurant" className="text-white line-left">
               Restaurants
             </Nav.Link>
           </LinkContainer>
