@@ -45,12 +45,12 @@ jobs:
       - name: Run the tests
         run: npm test --passWithNoTests
         working-directory: client
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v2.9.7
-        with:
-          build: npm run build
-          start: npm start
-          working-directory: client
+      #- name: Run Cypress tests
+      #  uses: cypress-io/github-action@v2.9.7
+      #  with:
+      #    build: npm run build
+      #    start: npm start
+      #    working-directory: client
       - name: Build
         run: npm run build
         working-directory: client
