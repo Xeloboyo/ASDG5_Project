@@ -31,11 +31,11 @@ import Reviews from './components-staff/Reviews/ReviewsPage';
 
 // staff
 import Dashboard from './components-staff/Dashboard/Dashboard';
-import BusinessPro from './components-staff/Analytics/Analytics';
+import Analytics from './components-staff/Analytics/Analytics';
 import StaffTicket from './components-staff/StaffTicket/StaffTicket';
 import Settings from './components-staff/Settings';
 import Profile from './components-staff/Profile';
-import Help from './components-staff/Help';
+import Help from './components-staff/Dashboard/Help';
 
 require('dotenv').config();
 
@@ -160,7 +160,7 @@ class App extends Component {
             </Route>
             <Route path="/dashboard/analytics">
               <Dashboard />
-              <BusinessPro />
+              <Analytics />
             </Route>
             <Route path="/dashboard/profile">
               <Dashboard />

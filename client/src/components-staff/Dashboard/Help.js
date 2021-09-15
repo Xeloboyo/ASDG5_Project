@@ -12,7 +12,11 @@ import { Container, Row, Col } from 'react-bootstrap';
 */
 
 export const Help = () => {
-  return <Container>Under Construction</Container>;
+  return (
+    <div>
+      <Container>Under Construction</Container>;
+    </div>
+  );
 };
 
 export default Help;

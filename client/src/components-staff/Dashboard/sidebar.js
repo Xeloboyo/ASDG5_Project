@@ -30,11 +30,11 @@ import {
 } from 'react-icons/io5';
 
 import Home from '../../components/Home/Homepage';
-import BusinessPro from '../Analytics/Analytics';
+import Analytics from '../Analytics/Analytics';
 import StaffTicket from '../StaffTicket/StaffTicket';
 import Settings from '../Settings';
 import Profile from '../Profile';
-import Help from '../Help';
+import Help from './Help';
 
 const Sidebar = () => {
   let { path, url } = useRouteMatch();

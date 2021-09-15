@@ -24,10 +24,10 @@ const data = {
   ]
 };
 
-const restaurantRevenue = () => (
+const RestaurantRevenue = () => (
   <div style={{ width: '30rem' }}>
     <Doughnut data={data} />
   </div>
 );
 
-export default restaurantRevenue;
+export default RestaurantRevenue;
