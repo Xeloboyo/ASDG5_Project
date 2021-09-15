@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 // import Dashboard from '../dashboard/Dashboard';
 import CardAnalytics from './CardAnalytics';
-import RestaurantPerformance from '../graph/RestaurantPerformance';
-import RestaurantRevenue from '../graph/RestaurantRevenue';
+import RestaurantPerformance from './RestaurantPerformance';
+import RestaurantRevenue from './RestaurantRevenue';
 import '../../scss/style.scss';
 
 class Analytics extends Component {

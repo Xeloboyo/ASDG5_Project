@@ -32,8 +32,8 @@ import {
 import Home from '../../components/Home/Homepage';
 import Analytics from '../Analytics/Analytics';
 import StaffTicket from '../StaffTicket/StaffTicket';
-import Settings from '../Settings';
-import Profile from '../Profile';
+import Settings from './Settings';
+import Profile from './Profile';
 import Help from './Help';
 
 const Sidebar = () => {
