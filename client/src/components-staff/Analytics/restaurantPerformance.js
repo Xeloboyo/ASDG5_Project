@@ -35,10 +35,10 @@ const options = {
   }
 };
 
-const RestaurantPerformance = () => (
+const restaurantPerformance = () => (
   <div style={{ width: '65rem' }}>
     <Bar data={data} options={options} />
   </div>
 );
 
-export default RestaurantPerformance;
+export default restaurantPerformance;

@@ -3,39 +3,39 @@ import React, { Component, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 
-import NavigationBar from './Component/NavigationBar';
-import Footer from './Component/Footer';
+import NavigationBar from './components-staff/NavigationBar';
+import Footer from './components-staff/Footer';
 
-import Homepage from './Component/Home/Homepage';
-import CommunityPage from './Component/CommunityPage/CommunityPage';
-import CommunityPageForm from './Component/CommunityPage/CommunityPageForm';
-import CommunityPageEdit from './Component/CommunityPage/CommunityPageEdit';
-import CommunityPageEdits from './Component/CommunityPage/CommunityPageEdits';
+import Homepage from './components-staff/Home/Homepage';
+import CommunityPage from './components-staff/CommunityPage/CommunityPage';
+import CommunityPageForm from './components-staff/CommunityPage/CommunityPageForm';
+import CommunityPageEdit from './components-staff/CommunityPage/CommunityPageEdit';
+import CommunityPageEdits from './components-staff/CommunityPage/CommunityPageEdits';
 
-import Form from './Component/Login/Form';
-import Login from './Component/Login/Login';
+import Form from './components-staff/Login/Form';
+import Login from './components-staff/Login/Login';
 
-import Promotions from './Component/Promotions/Promotions';
-import PromotionsPast from './Component/Promotions/PromotionsPast';
-import PromotionsEdit from './Component/Promotions/PromotionsEdit';
-import PromotionsHome from './Component/Promotions/PromotionsHome';
+import Promotions from './components-staff/Promotions/Promotions';
+import PromotionsPast from './components-staff/Promotions/PromotionsPast';
+import PromotionsEdit from './components-staff/Promotions/PromotionsEdit';
+import PromotionsHome from './components-staff/Promotions/PromotionsHome';
 
-import Restaurant from './Component/Restaurants/Restaurant';
-import RestaurantDetails from './Component/Restaurants/RestaurantDetails';
-import RestaurantAdd from './Component/Restaurants/RestaurantAdd';
-import RestaurantEdit from './Component/Restaurants/RestaurantEdit';
-import Menu from './Component/Menu/Menu';
-import MenuEdit from './Component/Menu/MenuEdit';
-import MenuAdd from './Component/Menu/MenuAdd';
-import Reviews from './Component/Reviews/ReviewsPage';
+import Restaurant from './components-staff/Restaurants/Restaurant';
+import RestaurantDetails from './components-staff/Restaurants/RestaurantDetails';
+import RestaurantAdd from './components-staff/Restaurants/RestaurantAdd';
+import RestaurantEdit from './components-staff/Restaurants/RestaurantEdit';
+import Menu from './components-staff/Menu/Menu';
+import MenuEdit from './components-staff/Menu/MenuEdit';
+import MenuAdd from './components-staff/Menu/MenuAdd';
+import Reviews from './components-staff/Reviews/ReviewsPage';
 
 // staff
-import Dashboard from './components/dashboard/Dashboard';
-import BusinessPro from './components/business-pro/BusinessPro';
-import StaffTicket from './components/staff-ticket/StaffTicket';
-import Settings from './components/Settings';
-import Profile from './components/Profile';
-import Help from './components/Help';
+import Dashboard from './components-staff/Dashboard/Dashboard';
+import BusinessPro from './components-staff/Analytics/Analytics';
+import StaffTicket from './components-staff/StaffTicket/StaffTicket';
+import Settings from './components-staff/Settings';
+import Profile from './components-staff/Profile';
+import Help from './components-staff/Help';
 
 require('dotenv').config();
 

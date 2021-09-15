@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 // import Dashboard from '../dashboard/Dashboard';
-import CardAnalytics from '../cards/CardAnalytics';
+import CardAnalytics from './cardAnalytics';
 import RestaurantPerformance from '../graph/RestaurantPerformance';
 import RestaurantRevenue from '../graph/RestaurantRevenue';
 import '../../scss/style.scss';

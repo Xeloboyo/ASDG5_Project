@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Sidebar from './Sidebar';
-import Header from './Header';
+import Sidebar from './sidebar';
+import Header from './header';
 
 class Dashboard extends Component {
   render() {
