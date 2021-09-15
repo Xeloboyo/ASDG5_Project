@@ -178,6 +178,7 @@ class App extends Component {
               <Dashboard />
             </Route>
             <Route path="/">
+              <NavigationBar />
               <Homepage />
               <PromotionsHome />
               <Footer />
