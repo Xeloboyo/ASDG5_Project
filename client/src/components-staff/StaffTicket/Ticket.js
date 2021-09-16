@@ -15,7 +15,7 @@ import { Container, Row, Col } from 'react-bootstrap';
  page allows cancel all, will show warning
 */
 
-export const CardTicket = () => {
+export const Ticket = () => {
   return (
     <Container>
       <IconContext.Provider value={{ size: '20px' }}>
@@ -129,4 +129,4 @@ export const CardTicket = () => {
   );
 };
 
-export default CardTicket;
+export default Ticket;

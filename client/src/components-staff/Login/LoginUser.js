@@ -3,7 +3,7 @@ import '../../scss/style.scss';
 import { Card, Form, Button } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 
-const loginStaff = () => {
+const LoginUser = () => {
   return (
     <div style={{ backgroundColor: 'theme-colors: primary' }}>
       <Card>
@@ -50,4 +50,4 @@ const loginStaff = () => {
   );
 };
 
-export default loginStaff;
+export default LoginUser;

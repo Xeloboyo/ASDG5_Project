@@ -29,12 +29,12 @@ import {
   IoOptions
 } from 'react-icons/io5';
 
-import Home from '../../Component/Home/Homepage';
-import BusinessPro from '../business-pro/BusinessPro';
-import StaffTicket from '../staff-ticket/StaffTicket';
-import Settings from '../Settings';
-import Profile from '../Profile';
-import Help from '../Help';
+import Home from '../../components/Home/Homepage';
+import Analytics from '../Analytics/Analytics';
+import StaffTicket from '../StaffTicket/StaffTicket';
+import Settings from './Settings';
+import Profile from './Profile';
+import Help from './Help';
 
 const Sidebar = () => {
   let { path, url } = useRouteMatch();

@@ -3,39 +3,40 @@ import React, { Component, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
-import NavigationBar from "./Component/NavigationBar";
-import Footer from "./Component/Footer";
+import NavigationBar from "./components/NavigationBar";
+import Footer from "./components/Footer";
 
-import Homepage from "./Component/Home/Homepage";
-import CommunityPage from "./Component/CommunityPage/CommunityPage";
-import CommunityPageForm from "./Component/CommunityPage/CommunityPageForm";
-import CommunityPageEdit from "./Component/CommunityPage/CommunityPageEdit";
-import CommunityPageEdits from "./Component/CommunityPage/CommunityPageEdits";
+import Homepage from "./components/Home/Homepage";
+import CommunityPage from "./components/CommunityPage/CommunityPage";
+import CommunityPageForm from "./components/CommunityPage/CommunityPageForm";
+import CommunityPageEdit from "./components/CommunityPage/CommunityPageEdit";
+import CommunityPageEdits from "./components/CommunityPage/CommunityPageEdits";
 
-import Form from "./Component/Login/Form";
-import Login from "./Component/Login/Login";
+import Form from "./components/Login/Form";
+import Login from "./components/Login/Login";
 
-import Promotions from "./Component/Promotions/Promotions";
-import PromotionsPast from "./Component/Promotions/PromotionsPast";
-import PromotionsEdit from "./Component/Promotions/PromotionsEdit";
-import PromotionsHome from "./Component/Promotions/PromotionsHome";
+import Promotions from "./components/Promotions/Promotions";
+import PromotionsPast from "./components/Promotions/PromotionsPast";
+import PromotionsEdit from "./components/Promotions/PromotionsEdit";
+import PromotionsHome from "./components/Promotions/PromotionsHome";
 
-import Restaurant from "./Component/Restaurants/Restaurant";
-import RestaurantDetails from "./Component/Restaurants/RestaurantDetails";
-import RestaurantAdd from "./Component/Restaurants/RestaurantAdd";
-import RestaurantEdit from "./Component/Restaurants/RestaurantEdit";
-import Menu from "./Component/Menu/Menu";
-import MenuEdit from "./Component/Menu/MenuEdit";
-import MenuAdd from "./Component/Menu/MenuAdd";
-import Reviews from "./Component/Reviews/ReviewsPage";
+import Restaurant from "./components/Restaurants/Restaurant";
+import RestaurantDetails from "./components/Restaurants/RestaurantDetails";
+import RestaurantAdd from "./components/Restaurants/RestaurantAdd";
+import RestaurantEdit from "./components/Restaurants/RestaurantEdit";
+import Menu from "./components/Menu/Menu";
+import MenuEdit from "./components/Menu/MenuEdit";
+import MenuAdd from "./components/Menu/MenuAdd";
+import Reviews from "./components/Reviews/ReviewsPage";
 
 // staff
-import Dashboard from "./components/dashboard/Dashboard";
-import BusinessPro from "./components/business-pro/BusinessPro";
-import StaffTicket from "./components/staff-ticket/StaffTicket";
-import Settings from "./components/Settings";
-import Profile from "./components/Profile";
-import Help from "./components/Help";
+import Dashboard from "./components-staff/Dashboard/Dashboard";
+import Analytics from "./components-staff/Analytics/Analytics";
+import StaffTicket from "./components-staff/StaffTicket/StaffTicket";
+import Settings from "./components-staff/Dashboard/Settings";
+import Profile from "./components-staff/Dashboard/Profile";
+import Help from "./components-staff/Dashboard/Help";
+
 import AdminHomeNav from "./Component/AdminHome/AdminHomeNav";
 import AdminHomePage from "./Component/AdminHome/AdminHomePage";
 import HomepageBottom from "./Component/Home/HomepageBottom";
@@ -160,7 +161,7 @@ class App extends Component {
             </Route>
             <Route path="/dashboard/analytics">
               <Dashboard />
-              <BusinessPro />
+              <Analytics />
             </Route>
             <Route path="/dashboard/profile">
               <Dashboard />

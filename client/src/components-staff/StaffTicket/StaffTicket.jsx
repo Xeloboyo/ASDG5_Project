@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../scss/style.scss';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import Ticket from '../cards/CardTicket';
+import Ticket from './Ticket';
 
 class StaffTicket extends Component {
   render() {

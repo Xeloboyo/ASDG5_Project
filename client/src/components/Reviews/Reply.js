@@ -3,7 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import "./Reply.css";
-import "./ReviewPost.css"
+import "./ReviewPost.css";
 
 function Reply() {
     return (
