@@ -1,70 +1,73 @@
-import './App.css';
-import React, { Component, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
+import "./App.css";
+import React, { Component, useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Container from "react-bootstrap/Container";
 
-import NavigationBar from './Component/NavigationBar';
-import Footer from './Component/Footer';
+import NavigationBar from "./Component/NavigationBar";
+import Footer from "./Component/Footer";
 
-import Homepage from './Component/Home/Homepage';
-import CommunityPage from './Component/CommunityPage/CommunityPage';
-import CommunityPageForm from './Component/CommunityPage/CommunityPageForm';
-import CommunityPageEdit from './Component/CommunityPage/CommunityPageEdit';
-import CommunityPageEdits from './Component/CommunityPage/CommunityPageEdits';
+import Homepage from "./Component/Home/Homepage";
+import CommunityPage from "./Component/CommunityPage/CommunityPage";
+import CommunityPageForm from "./Component/CommunityPage/CommunityPageForm";
+import CommunityPageEdit from "./Component/CommunityPage/CommunityPageEdit";
+import CommunityPageEdits from "./Component/CommunityPage/CommunityPageEdits";
 
-import Form from './Component/Login/Form';
-import Login from './Component/Login/Login';
+import Form from "./Component/Login/Form";
+import Login from "./Component/Login/Login";
 
-import Promotions from './Component/Promotions/Promotions';
-import PromotionsPast from './Component/Promotions/PromotionsPast';
-import PromotionsEdit from './Component/Promotions/PromotionsEdit';
-import PromotionsHome from './Component/Promotions/PromotionsHome';
+import Promotions from "./Component/Promotions/Promotions";
+import PromotionsPast from "./Component/Promotions/PromotionsPast";
+import PromotionsEdit from "./Component/Promotions/PromotionsEdit";
+import PromotionsHome from "./Component/Promotions/PromotionsHome";
 
-import Restaurant from './Component/Restaurants/Restaurant';
-import RestaurantDetails from './Component/Restaurants/RestaurantDetails';
-import RestaurantAdd from './Component/Restaurants/RestaurantAdd';
-import RestaurantEdit from './Component/Restaurants/RestaurantEdit';
-import Menu from './Component/Menu/Menu';
-import MenuEdit from './Component/Menu/MenuEdit';
-import MenuAdd from './Component/Menu/MenuAdd';
-import Reviews from './Component/Reviews/ReviewsPage';
+import Restaurant from "./Component/Restaurants/Restaurant";
+import RestaurantDetails from "./Component/Restaurants/RestaurantDetails";
+import RestaurantAdd from "./Component/Restaurants/RestaurantAdd";
+import RestaurantEdit from "./Component/Restaurants/RestaurantEdit";
+import Menu from "./Component/Menu/Menu";
+import MenuEdit from "./Component/Menu/MenuEdit";
+import MenuAdd from "./Component/Menu/MenuAdd";
+import Reviews from "./Component/Reviews/ReviewsPage";
 
 // staff
-import Dashboard from './components/dashboard/Dashboard';
-import BusinessPro from './components/business-pro/BusinessPro';
-import StaffTicket from './components/staff-ticket/StaffTicket';
-import Settings from './components/Settings';
-import Profile from './components/Profile';
-import Help from './components/Help';
+import Dashboard from "./components/dashboard/Dashboard";
+import BusinessPro from "./components/business-pro/BusinessPro";
+import StaffTicket from "./components/staff-ticket/StaffTicket";
+import Settings from "./components/Settings";
+import Profile from "./components/Profile";
+import Help from "./components/Help";
+import AdminHomeNav from "./Component/AdminHome/AdminHomeNav";
+import AdminHomePage from "./Component/AdminHome/AdminHomePage";
+import HomepageBottom from "./Component/Home/HomepageBottom";
 
-require('dotenv').config();
+require("dotenv").config();
 
 class App extends Component {
   constructor() {
     super();
   }
   componentWillMount() {
-    this.sendHook('Webhook Called within app haha.. uh.. app has been ran.');
+    this.sendHook("Webhook Called within app haha.. uh.. app has been ran.");
   }
   sendHook(msg) {
     if (!process.env.HOOK_URL) {
       return;
     }
     let x = new XMLHttpRequest();
-    x.open('POST', process.env.HOOK_URL);
-    x.setRequestHeader('Content-type', 'application/json');
+    x.open("POST", process.env.HOOK_URL);
+    x.setRequestHeader("Content-type", "application/json");
     let params = {
-      username: 'Heroku',
+      username: "Heroku",
       embeds: [
         {
-          title: '[Internal app message]',
+          title: "[Internal app message]",
           description: msg,
           footer: {
-            text: 'This was made with procrastination <3',
-            icon_url: 'https://i.imgur.com/VAFzZeX.jpeg'
-          }
-        }
-      ]
+            text: "This was made with procrastination <3",
+            icon_url: "https://i.imgur.com/VAFzZeX.jpeg",
+          },
+        },
+      ],
     };
     x.send(JSON.stringify(params));
   }
@@ -75,37 +78,34 @@ class App extends Component {
           <Switch>
             <Route path="/communitypage">
               <NavigationBar />
-              <Footer />
               <CommunityPage />
+              <Footer />
             </Route>
             <Route path="/communitypageform">
               <NavigationBar />
-              <Footer />
               <CommunityPageForm />
+              <Footer />
             </Route>
             <Route path="/communitypageedits">
               <NavigationBar />
-              <Footer />
               <CommunityPageEdits />
+              <Footer />
             </Route>
             <Route path="/communitypageedit">
               <NavigationBar />
-              <Footer />
               <CommunityPageEdit />
+              <Footer />
             </Route>
             <Route path="/promotionspast">
-              <NavigationBar />
-              <Footer />
+              <AdminHomeNav />
               <PromotionsPast />
             </Route>
             <Route path="/promotionsedit">
-              <NavigationBar />
-              <Footer />
+              <AdminHomeNav />
               <PromotionsEdit />
             </Route>
             <Route path="/promotions">
-              <NavigationBar />
-              <Footer />
+              <AdminHomeNav />
               <Promotions />
             </Route>
             <Route path="/login">
@@ -177,9 +177,16 @@ class App extends Component {
             <Route path="/dashboard">
               <Dashboard />
             </Route>
+            <Route path="/adminhomenav">
+              <AdminHomeNav />
+              <AdminHomePage />
+              <PromotionsHome />
+            </Route>
             <Route path="/">
+              <NavigationBar />
               <Homepage />
               <PromotionsHome />
+              <HomepageBottom />
               <Footer />
             </Route>
           </Switch>
