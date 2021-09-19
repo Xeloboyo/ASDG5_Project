@@ -3,6 +3,7 @@ import React, { Component, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
+// navbar
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 
@@ -37,9 +38,10 @@ import Settings from "./components-staff/Dashboard/Settings";
 import Profile from "./components-staff/Dashboard/Profile";
 import Help from "./components-staff/Dashboard/Help";
 
-import AdminHomeNav from "./Component/AdminHome/AdminHomeNav";
-import AdminHomePage from "./Component/AdminHome/AdminHomePage";
-import HomepageBottom from "./Component/Home/HomepageBottom";
+// admin
+import AdminHomeNav from "./components/AdminHome/AdminHomeNav";
+import AdminHomePage from "./components/AdminHome/AdminHomePage";
+import HomepageBottom from "./components/Home/HomepageBottom";
 
 require("dotenv").config();
 
