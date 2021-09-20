@@ -31,12 +31,12 @@ import MenuAdd from "./components/Menu/MenuAdd";
 import Reviews from "./components/Reviews/ReviewsPage";
 
 // staff
-import Dashboard from "./components-staff/Dashboard/Dashboard";
-import Analytics from "./components-staff/Analytics/Analytics";
-import StaffTicket from "./components-staff/StaffTicket/StaffTicket";
-import Settings from "./components-staff/Dashboard/Settings";
-import Profile from "./components-staff/Dashboard/Profile";
-import Help from "./components-staff/Dashboard/Help";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Analytics from "./components/Analytics/Analytics";
+import StaffTicket from "./components/StaffTicket/StaffTicket";
+import Settings from "./components/Dashboard/Settings";
+import Profile from "./components/Dashboard/Profile";
+import Help from "./components/Dashboard/Help";
 
 // admin
 import AdminHomeNav from "./components/AdminHome/AdminHomeNav";
