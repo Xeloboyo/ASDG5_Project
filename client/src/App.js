@@ -38,10 +38,9 @@ import Settings from "./components/Dashboard/Settings";
 import Profile from "./components/Dashboard/Profile";
 import Help from "./components/Dashboard/Help";
 
-// admin
-import AdminHomeNav from "./components/AdminHome/AdminHomeNav";
-import AdminHomePage from "./components/AdminHome/AdminHomePage";
-import HomepageBottom from "./components/Home/HomepageBottom";
+import AdminHomeNav from "./Components/AdminHome/AdminHomeNav";
+import AdminHomePage from "./Components/AdminHome/AdminHomePage";
+import HomepageBottom from "./Components/Home/HomepageBottom";
 
 require("dotenv").config();
 

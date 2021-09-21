@@ -1,12 +1,12 @@
-import React from 'react';
-import Container from 'react-bootstrap/esm/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
-import Dropdown from 'react-bootstrap/esm/Dropdown';
-import { LinkContainer } from 'react-router-bootstrap';
-import Nav from 'react-bootstrap/Nav';
-import './css/CommunityPageEdit.css';
+import React from "react";
+import Container from "react-bootstrap/esm/Container";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
+import Dropdown from "react-bootstrap/esm/Dropdown";
+import { LinkContainer } from "react-router-bootstrap";
+import Nav from "react-bootstrap/Nav";
+import "./css/CommunityPageEdit.css";
 
 function CommunityPageEdit() {
   return (
@@ -43,7 +43,7 @@ function CommunityPageEdit() {
                     <Button variant="primary">Edit Post</Button>
                   </LinkContainer>
                 </th>
-                <Button variant="outline-primary">Delete</Button>{' '}
+                <Button variant="outline-primary">Delete</Button>{" "}
               </tr>
             </table>
           </div>
