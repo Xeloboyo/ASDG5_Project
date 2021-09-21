@@ -13,7 +13,7 @@ router.post("/communitypageform", (req, res) => {
   Post_Community_Title = Post_Community_Title.trim();
   Post_Community_Category = Post_Community_Category.trim();
   Post_ID = Post_ID.trim();
-
+  console.log("ffff"); // testing line
   if (
     Post_Community_Title == "" ||
     Post_Community_Category == "" ||
