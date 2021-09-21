@@ -79,14 +79,6 @@ function NavigationBar() {
             Community Page
           </Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/promotions">
-          <Nav.Link
-            href="./Promotions/Promotions.js"
-            className="text-white line-left"
-          >
-            Promotions
-          </Nav.Link>
-        </LinkContainer>
       </Nav>
       <Nav style={{ marginRight: "30px" }}>
         <LinkContainer to="/register" className="float-left mx-3">
