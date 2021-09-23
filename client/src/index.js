@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
+import Header from './components/Dashboard/Header';
 
 import 'bootstrap/dist/css/bootstrap.css';
 // import reportWebVitals from './reportWebVitals';
@@ -10,7 +11,9 @@ import './scss/style.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    {/* <Dashboard /> */}
+    <Header />
   </React.StrictMode>,
   document.getElementById('root')
 );
