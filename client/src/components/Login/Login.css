@@ -1,0 +1,114 @@
+.form-container-login {
+  margin: 100px auto;
+  width: 1000px;
+  box-shadow: 0 5px 8px 0 rgba(41, 33, 33, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  border-radius: 10px;
+  height: 700px;
+  display: grid; 
+}
+
+
+.form-login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
+}
+
+.form-login h1 {
+  font-size: 2rem;
+  text-align: center;
+  width: 80%;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.form-inputs-login {
+  width: 80%;
+  text-align: center;
+}
+
+.form-inputs-login p {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: #f00e0e;
+}
+
+.form-label-login {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  margin-top: 2rem;
+  color: white;
+  text-align: center;
+}
+
+.form-input-login {
+  display: block;
+ 
+  padding-left: 10px;
+  outline: none;
+  border-radius: 2px;
+  height: 40px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  color:black;
+}
+
+.form-input-login::placeholder {
+  color: #595959;
+  font-size: 12px;
+  text-align: center;
+}
+
+.form-input-btn-login {
+  width: 80%;
+  height: 50px;
+  margin-top: 40px;
+  border-radius: 0.2rem;
+  background: linear-gradient(
+    90deg,
+    rgb(16, 202, 72) 0%,
+    rgb(35, 170, 96) 100%
+  );
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.form-input-btn-login:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(67, 196, 116) 0%,
+    rgb(92, 202, 82) 100%
+  );
+  transition: all 0.4s ease-out;
+}
+
+.form-input-register{
+  font-size: 0.9rem;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  border-radius: 0.2rem;
+}
+
+.form-input-register a {
+  text-decoration: none;
+  color: green;
+  font-weight: 600;
+}
