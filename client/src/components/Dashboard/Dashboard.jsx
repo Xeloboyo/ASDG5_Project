@@ -14,5 +14,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-
-// for testing
