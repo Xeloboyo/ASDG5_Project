@@ -4,28 +4,28 @@ const express = require("express");
 
 const router = express.Router();
 
-// mongodb user model
-const PostCommunity = require("../models/PostCommunity");
+const Promotions = require("../models/Promotions");
 
-//  Comunity post
-router.post("/communitypageform", (req, res) => {
+//  Promotions post
+router.post("/promotionsform", (req, res) => {
   let {
-    Post_Community_Title,
-    Post_Community_Category,
-    Post_Paragraph,
-    Post_Edited,
+    Promotions_Title,
+    Promotions_Categories,
+    Promotions_Description,
+    Promotions_Object,
     User_ID,
   } = req.body;
-  Post_Community_Title = Post_Community_Title.trim();
-  Post_Community_Category = Post_Community_Category.trim();
-  Post_Paragraph = Post_Paragraph.trim();
-  Post_Edited = Post_Edited.trim();
+  Promotions_Title = Promotions_Title.trim();
+  Promotions_Categories = Promotions_Categories.trim();
+  Promotions_Description = Promotions_Description.trim();
+  Promotions_Object = Promotions_Object.trim();
   User_ID = User_ID.trim();
-  console.log("ffff"); // testing line
+  console.log("kkkk"); // testing line
   if (
-    Post_Community_Title == "" ||
-    Post_Community_Category == "" ||
-    Post_Paragraph == ""
+    Promotions_Title == "" ||
+    Promotions_Categories == "" ||
+    Promotions_Description == "" ||
+    Promotions_Object == ""
   ) {
     res.json({
       status: "FAILED",
@@ -34,15 +34,15 @@ router.post("/communitypageform", (req, res) => {
   } else {
     // Checking if user already exists
 
-    const NewPostCommunity = new PostCommunity({
-      Post_Community_Title,
-      Post_Community_Category,
-      Post_Paragraph,
-      Post_Edited,
+    const NewPromotions = new Promotions({
+      Promotions_Title,
+      Promotions_Categories,
+      Promotions_Description,
+      Promotions_Object,
       User_ID,
     });
 
-    NewPostCommunity.save()
+    NewPromotions.save()
       .then((result) => {
         res.json({
           status: "SUCCESS",
@@ -60,12 +60,13 @@ router.post("/communitypageform", (req, res) => {
   }
 });
 
+// promotions update
+
 // get all post
 router.get("/", async (req, res) => {
   try {
-    const posts = await PostCommunity.find();
+    const posts = await Promotions.find();
     if (!posts) throw Error("No Items");
-    console.log(posts);
     res.status(200).json(posts);
   } catch (err) {
     res.status(400).json({ mesg: err });
@@ -75,7 +76,7 @@ router.get("/", async (req, res) => {
 // Show a post (replace :id)
 router.get("/:id", async (req, res) => {
   try {
-    const post = await PostCommunity.findById(req.params.id);
+    const post = await Promotions.findById(req.params.id);
     if (!post) throw Error("No Items");
     res.status(200).json(post);
   } catch (err) {
@@ -86,7 +87,7 @@ router.get("/:id", async (req, res) => {
 // Delete a post
 router.delete("/:id", async (req, res) => {
   try {
-    const post = await PostCommunity.findByIdAndDelete(req.params.id);
+    const post = await Promotions.findByIdAndDelete(req.params.id);
     if (!post) throw Error("No post found!");
     res.status(200).json({ success: true });
   } catch (err) {
@@ -98,22 +99,23 @@ router.delete("/:id", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     let {
-      Post_Community_Title,
-      Post_Community_Category,
-      Post_Paragraph,
-      Post_Edited,
+      Promotions_Title,
+      Promotions_Categories,
+      Promotions_Description,
+      Promotions_Object,
       User_ID,
     } = req.body;
-    Post_Community_Title = Post_Community_Title.trim();
-    Post_Community_Category = Post_Community_Category.trim();
-    Post_Paragraph = Post_Paragraph.trim();
-    Post_Edited = Post_Edited.trim();
+    Promotions_Title = Promotions_Title.trim();
+    Promotions_Categories = Promotions_Categories.trim();
+    Promotions_Description = Promotions_Description.trim();
+    Promotions_Object = Promotions_Object.trim();
     User_ID = User_ID.trim();
-    console.log("ffff"); // testing line
+    console.log("kkkk"); // testing line
     if (
-      Post_Community_Title == "" ||
-      Post_Community_Category == "" ||
-      Post_Paragraph == ""
+      Promotions_Title == "" ||
+      Promotions_Categories == "" ||
+      Promotions_Description == "" ||
+      Promotions_Object == ""
     ) {
       res.json({
         status: "FAILED",
@@ -122,17 +124,17 @@ router.patch("/:id", async (req, res) => {
     } else {
       // Checking if user already exists
 
-      const UpdatePostCommunity = new PostCommunity({
-        Post_Community_Title,
-        Post_Community_Category,
-        Post_Paragraph,
-        Post_Edited,
+      const UpdatePromotions = new Promotions({
+        Promotions_Title,
+        Promotions_Categories,
+        Promotions_Description,
+        Promotions_Object,
         User_ID,
       });
 
-      const post = await PostCommunity.findByIdAndUpdate(
+      const post = await Promotions.findByIdAndUpdate(
         req.params.id,
-        UpdatePostCommunity
+        UpdatePromotions
       );
       if (!post) throw Error("Something went wrong while updating the post");
       res.status(200).json({ success: true });
