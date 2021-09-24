@@ -1,3 +1,6 @@
+/* eslint-disable prefer-const */
+/* eslint-disable prefer-template */
+/* eslint-disable no-unused-vars */
 /* eslint-disable eqeqeq */
 /* eslint-disable camelcase */
 const express = require("express");
@@ -7,7 +10,7 @@ const router = express.Router();
 const Promotions = require("../models/Promotions");
 
 //  Promotions post
-router.post("/promotionsform", (req, res) => {
+router.post("/", (req, res) => {
   let {
     Promotions_Title,
     Promotions_Categories,
@@ -62,43 +65,97 @@ router.post("/promotionsform", (req, res) => {
 
 // promotions update
 
-// get all post
-router.get("/", async (req, res) => {
+// get all promotions
+router.get("/promotionspast", async (req, res) => {
   try {
     const posts = await Promotions.find();
     if (!posts) throw Error("No Items");
     res.status(200).json(posts);
   } catch (err) {
+    res.json({
+      status: "FAILED",
+      message: "An error occurred while saving user account!",
+    });
+    console.log(err);
+  }
+});
+
+// get a promotions by id (replace :id)
+router.get("/getones", async (req, res) => {
+  try {
+    let { _id } = req.body;
+    const post = await Promotions.findById(_id);
+    if (!post) throw Error("No Items");
+    res.json({
+      message: "Gotten",
+      data: post,
+    });
+  } catch (err) {
     res.status(400).json({ mesg: err });
   }
 });
 
-// Show a post (replace :id)
-router.get("/:id", async (req, res) => {
+// search function
+router.get("/getsearch", async (req, res) => {
   try {
-    const post = await Promotions.findById(req.params.id);
+    let { search } = req.body;
+    const post = await Promotions.find({
+      $or: [
+        { Promotions_Title: { $regex: ".*" + search + ".*" } },
+        { Promotions_Categories: { $regex: ".*" + search + ".*" } },
+        { Promotions_Description: { $regex: ".*" + search + ".*" } },
+      ],
+    });
     if (!post) throw Error("No Items");
-    res.status(200).json(post);
+    res.json({
+      message: "Gotten",
+      data: post,
+    });
+    // res.status(200).json(post);
+  } catch (err) {
+    res.status(400).json({ mesg: err });
+  }
+});
+
+// get category promtoions
+router.get("/getcategory", async (req, res) => {
+  try {
+    let { search } = req.body;
+    const post = await Promotions.find({
+      Promotions_Categories: { $regex: ".*" + search + ".*" },
+    });
+    if (!post) throw Error("No Items");
+    res.json({
+      message: "Gotten",
+      data: post,
+    });
+    // res.status(200).json(post);
   } catch (err) {
     res.status(400).json({ mesg: err });
   }
 });
 
 // Delete a post
-router.delete("/:id", async (req, res) => {
+router.delete("/deletepost", async (req, res) => {
   try {
-    const post = await Promotions.findByIdAndDelete(req.params.id);
+    let { _id } = req.body;
+    const post = await Promotions.findByIdAndDelete(_id);
     if (!post) throw Error("No post found!");
-    res.status(200).json({ success: true });
+    res.json({
+      message: "Gotdeletedten",
+      data: post,
+    });
+    // res.status(200).json({ success: true });
   } catch (err) {
     res.status(400).json({ msg: err });
   }
 });
 
 //  Update a post
-router.patch("/:id", async (req, res) => {
+router.put("/promotionsupdate", async (req, res) => {
   try {
     let {
+      _id,
       Promotions_Title,
       Promotions_Categories,
       Promotions_Description,
@@ -133,11 +190,18 @@ router.patch("/:id", async (req, res) => {
       });
 
       const post = await Promotions.findByIdAndUpdate(
-        req.params.id,
-        UpdatePromotions
+        _id,
+        {
+          $set: req.body,
+        },
+        { new: true, useFindAndModify: false }
       );
+      res.json({
+        message: "Done",
+        data: req.body,
+      });
       if (!post) throw Error("Something went wrong while updating the post");
-      res.status(200).json({ success: true });
+      // res.status(200).json({ success: true });
     }
   } catch (err) {
     res.status(400).json({ msg: err });
