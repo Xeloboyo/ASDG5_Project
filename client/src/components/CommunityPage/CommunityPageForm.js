@@ -57,26 +57,8 @@ export default class CommunityPageForm extends Component {
       Post_Community_Title: this.state.Post_Community_Title,
       Post_Community_Category: this.state.Post_Community_Category,
       Post_ID: "33",
-      //CommunityPage_Description: this.state.CommunityPage_Description,
-      //CommunityPage_Edited: this.state.CommunityPage_Edited,
     };
-    // const config = {
-    //   method: "post",
-    //   url: "http://localhost:5002/post/communitypageform",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   data: JSON.stringify(newTodo),
-    // };
 
-    // console.log(config.data);
-    // axios
-    //   .post(config)
-    //   .then((res) => console.log(res.data))
-    //   .catch((error) => {
-    //     console.log(error);
-    //     return error;
-    //   });
     const response = await fetch(
       "http://localhost:5002/post/communitypageform",
       {
@@ -133,6 +115,7 @@ export default class CommunityPageForm extends Component {
                     value={this.state.Post_Community_Category}
                     onChange={this.onChangePost_Community_Category}
                   >
+                    <option value="">Please choose</option>
                     <option value="food">Food</option>
                     <option value="resturant">Resturant</option>
                     <option value="other">Other</option>
