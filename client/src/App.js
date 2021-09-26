@@ -94,6 +94,9 @@ class App extends Component {
             <Route path="/register">
               <Form />
             </Route>
+            <Route path="/restaurantRegister">
+              <Form />
+            </Route>
             <Route path="/menu">
               <Menu />
             </Route>

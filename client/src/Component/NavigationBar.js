@@ -89,6 +89,9 @@ function NavigationBar() {
         </LinkContainer>
       </Nav>
       <Nav style={{ marginRight: '30px' }}>
+      <LinkContainer to="/restaurantRegister" className="float-left mx-3">
+          <Button variant="outline-success">Register as restaurant staff </Button>
+        </LinkContainer>
         <LinkContainer to="/register" className="float-left mx-3">
           <Button variant="outline-success">Register</Button>
         </LinkContainer>

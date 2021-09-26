@@ -36,6 +36,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
   }
   
   .form-img-2 {

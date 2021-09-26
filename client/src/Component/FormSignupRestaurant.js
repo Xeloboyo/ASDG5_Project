@@ -2,9 +2,8 @@ import React from "react";
 import useForm from "./useForm";
 import validate from "./valideInfo";
 import "./Form.css";
-import FormSignupRestaurant from "./FormSignupRestaurant";
 
-const FormSignup = ({ submitForm }) => {
+const FormSignupRestaurant = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(
     submitForm,
     validate
@@ -14,7 +13,7 @@ const FormSignup = ({ submitForm }) => {
     <div className="form-content-right">
       <form onSubmit={handleSubmit} className="form" noValidate>
         <h1>
-          Get started with us today! Create your account by filling out the
+          Create your restaurant management account by filling out the
           information below!
         </h1>
         {/* <div className="form-inputs">
@@ -51,6 +50,7 @@ const FormSignup = ({ submitForm }) => {
           />
           {errors.username && <p>{errors.username}</p>}
         </div>
+
         <div className="form-inputs">
           <label htmlFor="venue" className="form-label">
             Restaruant Name
@@ -66,7 +66,7 @@ const FormSignup = ({ submitForm }) => {
           />
           {errors.username && <p>{errors.username}</p>}
         </div>
-
+        
         <div className="form-inputs">
           <label htmlFor="email" className="form-label">
             Email
