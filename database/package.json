@@ -18,8 +18,5 @@
     "mongodb": "^4.1.0",
     "mongoose": "^5.13.5",
     "node": "^16.6.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.12"
   }
 }

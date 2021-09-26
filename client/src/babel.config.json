@@ -14,5 +14,10 @@
       }
     ]
   ],
-  "plugins": ["vuera/bebel"]
+  "env": {
+    "development": {
+      "plugins": ["vuera/bebel", "jsx"],
+      "presets": [["@babel/preset-react", { "development": true }]]
+    }
+  }
 }
