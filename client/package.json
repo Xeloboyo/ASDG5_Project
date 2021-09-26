@@ -36,7 +36,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
-    "presets": "@babel/preset-env",
     "babel": "nodemon --exec ./node_modules/.bin/babel-node src/index.js",
     "babel-build": "babel src -d lib"
   },
