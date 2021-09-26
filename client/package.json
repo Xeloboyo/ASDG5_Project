@@ -6,8 +6,6 @@
     "@testing-library/cypress": "^8.0.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "@wojtekmaj/react-daterange-picker": "^3.3.0",
-    "@wojtekmaj/react-timerange-picker": "^3.4.0",
     "axios": "^0.21.4",
     "bootstrap": "^5.1.0",
     "chart.js": "^3.5.1",
@@ -17,7 +15,6 @@
     "react": "^17.0.2",
     "react-axios": "^2.0.5",
     "react-bootstrap": "^2.0.0-beta.6",
-    "react-calendar": "^3.4.0",
     "react-chartjs-2": "^3.0.4",
     "react-clock": "^3.0.0",
     "react-dom": "^17.0.2",
@@ -28,6 +25,8 @@
     "react-router-dom": "^5.2.1",
     "react-scripts": "4.0.3",
     "uuid": "^8.3.2",
+    "v-calendar": "^2.3.2",
+    "vuera": "^0.2.7",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -35,7 +34,10 @@
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "presets": "@babel/preset-env",
+    "babel": "nodemon --exec ./node_modules/.bin/babel-node src/index.js",
+    "babel-build": "babel src -d lib"
   },
   "engines": {
     "node": "12.13.0"
@@ -57,5 +59,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/plugin-syntax-jsx": "^7.14.5",
+    "@babel/plugin-transform-react-display-name": "^7.15.1",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5"
   }
 }
