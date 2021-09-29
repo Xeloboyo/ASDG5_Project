@@ -3,13 +3,11 @@
 import axios from 'axios';
 import { response } from 'express';
 
-import {
-  GET_TICKETS,
-  ADD_TICKET,
-  CANCEL_TICKET,
-  CANCEL_ALL_TICKETS,
-  TICKETS_LOADING
-} from './types';
+const express = require('express');
+
+const router = express.Router();
+
+const Ticket = require('../models/Ticket');
 
 export const GET_TICKETS = () => (dispatch) => {};
 export const ADD_TICKET = () => (dispatch) => {};
