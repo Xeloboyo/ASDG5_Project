@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
-import "./PromotionsHome.css";
-import BannerImage from "../Promotions/promotions.jpeg";
+import "./css/PromotionsHome.css";
 
 //style={sectionStyle} fluid
 function PromotionsHome() {

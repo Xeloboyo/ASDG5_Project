@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect, useState, withRouter } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
@@ -88,7 +88,12 @@ class App extends Component {
               <CommunityPageForm />
               <Footer />
             </Route>
-            <Route path="/communitypageedits">
+            <Route
+              path="/communitypageedits/:id"
+              render={(props) => (
+                <CommunityPageEdits {...props} key={this.props.location.key} />
+              )}
+            >
               <NavigationBar />
               <CommunityPageEdits />
               <Footer />

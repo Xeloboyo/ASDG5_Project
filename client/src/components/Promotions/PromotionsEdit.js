@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
-import "./Promotions.css";
+import "./css/Promotions.css";
 
 function PromotionsEdit() {
   return (

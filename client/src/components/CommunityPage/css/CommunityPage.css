@@ -9,6 +9,18 @@
   text-align: right;
 }
 
+#tableCommunitypage {
+  border-collapse: separate;
+  border-spacing: 2rem !important;
+}
+
+#backgroundCommunityPage {
+  background: url(CPbackground.jpeg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+}
+
 .tables {
   width: 100%;
   border-collapse: collapse;
@@ -26,11 +38,28 @@
   padding: 20px 0px 20px 0px;
 }
 
-.post {
+.postCommunityPage {
   outline-style: double;
   outline-width: thin;
   display: 100%;
-  padding: 15px 40px 35px 15px;
+  padding: 3rem !important;
+  /* padding: 15px 40px 35px 15px; */
   height: fit-content;
   width: 100%;
+}
+
+.EdittedCommunityPost {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  color: green;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgb(65, 71, 67);
+  margin: 1em 0;
+  padding: 0;
 }
