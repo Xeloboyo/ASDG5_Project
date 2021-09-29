@@ -5,24 +5,24 @@ const { Schema } = mongoose.Schema;
 // create TicketSchema
 const TicketSchema = new Schema({
   Ticket_ID: {
-    // primary_key
-    type: String,
+    // primary key
+    type: Number,
     required: true
   },
 
   Reservation_ID: {
     // foreign_key
-    type: String
+    type: Number
   },
 
   User_ID: {
     // foreign_key
-    type: String
+    type: Number
   },
 
   Order_ID: {
     // foreign_key
-    type: String
+    type: Number
   },
 
   Ticket_Date: {
@@ -34,4 +34,6 @@ const TicketSchema = new Schema({
   }
 });
 
-// module.exports = Ticket = mongoose.model('ticket', TicketSchema);
+const Ticket = mongoose.model('Ticket', TicketSchema);
+module.exports = Ticket;
+// module.exports = Ticket = mongoose.model('Ticket', TicketSchema);

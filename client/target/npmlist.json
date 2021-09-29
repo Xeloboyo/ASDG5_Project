@@ -1,1 +1,34 @@
-{"version":"0.1.0","name":"client","dependencies":{"@testing-library/cypress":{"version":"8.0.1"},"@testing-library/react":{"version":"11.2.7"},"@testing-library/user-event":{"version":"12.8.3"},"axios":{"version":"0.21.4"},"bindings":{"version":"1.5.0"},"bootstrap":{"version":"5.1.0"},"chart.js":{"version":"3.5.1"},"dotenv":{"version":"8.2.0"},"file-uri-to-path":{"version":"1.0.0"},"json-server":{"version":"0.16.3"},"node-sass":{"version":"6.0.1"},"nodemon":{"version":"2.0.13"},"react-axios":{"version":"2.0.5"},"react-bootstrap":{"version":"2.0.0-beta.6"},"react-chartjs-2":{"version":"3.0.4"},"react-clock":{"version":"3.0.0"},"react-dom":{"version":"17.0.2"},"react-icons":{"version":"4.2.0"},"react-pro-sidebar":{"version":"0.6.0"},"react-redux":{"version":"7.2.5"},"react-router-bootstrap":{"version":"0.25.0"},"react-router-dom":{"version":"5.2.1"},"react-scripts":{"version":"4.0.3"},"react":{"version":"17.0.2"},"uuid":{"version":"8.3.2"},"v-calendar":{"version":"2.3.2"},"vuera":{"version":"0.2.7"},"web-vitals":{"version":"1.1.2"}}}
+{
+  "version": "0.1.0",
+  "name": "client",
+  "dependencies": {
+    "@testing-library/cypress": { "version": "8.0.1" },
+    "@testing-library/react": { "version": "11.2.7" },
+    "@testing-library/user-event": { "version": "12.8.3" },
+    "axios": { "version": "0.21.4" },
+    "bindings": { "version": "1.5.0" },
+    "bootstrap": { "version": "5.1.0" },
+    "chart.js": { "version": "3.5.1" },
+    "dotenv": { "version": "8.2.0" },
+    "file-uri-to-path": { "version": "1.0.0" },
+    "json-server": { "version": "0.16.3" },
+    "node-sass": { "version": "6.0.1" },
+    "nodemon": { "version": "2.0.13" },
+    "react-axios": { "version": "2.0.5" },
+    "react-bootstrap": { "version": "2.0.0-beta.6" },
+    "react-chartjs-2": { "version": "3.0.4" },
+    "react-clock": { "version": "3.0.0" },
+    "react-dom": { "version": "17.0.2" },
+    "react-icons": { "version": "4.2.0" },
+    "react-pro-sidebar": { "version": "0.6.0" },
+    "react-redux": { "version": "7.2.5" },
+    "react-router-bootstrap": { "version": "0.25.0" },
+    "react-router-dom": { "version": "5.2.1" },
+    "react-scripts": { "version": "4.0.3" },
+    "react": { "version": "17.0.2" },
+    "uuid": { "version": "8.3.2" },
+    "v-calendar": { "version": "2.3.2" },
+    "vuera": { "version": "0.2.7" },
+    "web-vitals": { "version": "1.1.2" }
+  }
+}

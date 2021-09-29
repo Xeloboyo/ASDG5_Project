@@ -4,37 +4,35 @@ const { Schema } = mongoose.Schema;
 
 // create TicketSchema
 const AnalyticsSchema = new Schema({
-  Analytics_Filter: {
-    type: String
-  },
-
   Analytics_PageViewsNum: {
-    type: String
+    type: Number
   },
 
   Analytics_ShareNum: {
-    type: String
+    type: Number
   },
 
   Analytics_RatingsNum: {
-    type: String
+    type: Number
   },
 
   Analytics_Popularity: {
-    type: String
+    type: Number
   },
 
   Order_ID: {
-    type: String
+    type: Number
   },
 
   Promotion_ID: {
-    type: String
+    type: Number
   },
 
   Analytics_Profit: {
-    type: String
+    type: Number
   }
 });
 
-// module.exports = Analytics = mongoose.model('analytics', AnalyticsSchema);
+const Analytics = mongoose.model('Analytics', AnalyticsSchema);
+module.exports = Analytics;
+// module.exports = Analytics = mongoose.model('Analytics', AnalyticsSchema);
