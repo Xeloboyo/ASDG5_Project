@@ -1,27 +1,25 @@
-// const express = require('express');
-// const mongoose = require('mongoose'); used inside db.js
-const bodyParser = require('body-parser');
-
 require('./config/db');
 
 require('./models/PostCommunity');
 
-const app = require('express')();
-// app.use = express();
+const cors = require('cors');
 
-const UserRouter = require('./api/CommunityPageForm');
+const app = require('express')();
+
+const port = process.env.PORT || 5002;
+
+const CommunityPostRouter = require('./api/CommunityPageForm');
+const PromotionsRouter = require('./api/PromotionsForm');
 
 // For accepting post form data
 // eslint-disable-next-line import/order
-// const bodyParser = require('express').json;
+const bodyParser = require('express').json;
 
-// BodyParser Middleware
-// app.use(bodyParser());
-app.use(bodyParser.json());
+app.use(cors());
+app.use(bodyParser());
 
-app.use('/post', UserRouter);
-
-const port = process.env.PORT || 5002;
+app.use('/promotions', PromotionsRouter);
+app.use('/post', CommunityPostRouter);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
