@@ -5,6 +5,14 @@ export const CANCEL_TICKET = 'CANCEL_TICKET';
 export const CANCEL_ALL_TICKETS = 'CANCEL_ALL_TICKETS';
 export const TICKETS_LOADING = 'TICKETS_LOADING';
 
+// Subscription (SUBSCRIBERActions)
+export const GET_SUBSCRIBERS = 'GET_SUBSCRIBERS';
+export const ADD_SUBSCRIBER = 'ADD_SUBSCRIBER';
+export const TRIAL_SUBSCRIBER = 'TRIAL_SUBSCRIBER';
+export const EDIT_SUBSCRIBER = 'EDIT_SUBSCRIBER';
+export const CANCEL_SUBSCRIBER = 'CANCEL_SUBSCRIBER';
+export const SUBSCRIBERS_LOADING = 'SUBSCRIBERS_LOADING';
+
 // Staff Analytics (analyticsActions)
 /* 
     needs more:

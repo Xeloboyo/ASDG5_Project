@@ -199,6 +199,7 @@ $RECYCLE.BIN/
 .env.test.local
 .env.production.local
 /requirements.md
+/lists.md
 
 # environment file
 client/.env
