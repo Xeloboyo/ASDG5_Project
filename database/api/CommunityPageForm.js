@@ -106,7 +106,7 @@ router.post("/getuserpost", async (req, res) => {
 });
 
 // search function
-router.get("/getsearch", async (req, res) => {
+router.post("/getsearch", async (req, res) => {
   try {
     let { search } = req.body;
     const post = await PostCommunity.find({
@@ -127,7 +127,7 @@ router.get("/getsearch", async (req, res) => {
 });
 
 // get category post
-router.get("/getcategory", async (req, res) => {
+router.post("/getcategory", async (req, res) => {
   try {
     let { search } = req.body;
     const post = await PostCommunity.find({

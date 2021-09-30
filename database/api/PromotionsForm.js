@@ -18,11 +18,7 @@ router.post("/", (req, res) => {
     Promotions_Object,
     User_ID,
   } = req.body;
-  Promotions_Title = Promotions_Title.trim();
-  Promotions_Categories = Promotions_Categories.trim();
-  Promotions_Description = Promotions_Description.trim();
-  Promotions_Object = Promotions_Object.trim();
-  User_ID = User_ID.trim();
+
   console.log("kkkk"); // testing line
   if (
     Promotions_Title == "" ||
@@ -49,21 +45,19 @@ router.post("/", (req, res) => {
       .then((result) => {
         res.json({
           status: "SUCCESS",
-          message: "Signup successful",
+          message: "Promotion successful",
           data: result,
         });
       })
       .catch((err) => {
         res.json({
           status: "FAILED",
-          message: "An error occurred while saving user account!",
+          message: "An error occurred while creating promotion!",
         });
         console.log(err);
       });
   }
 });
-
-// promotions update
 
 // get all promotions
 router.get("/promotionspast", async (req, res) => {
@@ -81,22 +75,29 @@ router.get("/promotionspast", async (req, res) => {
 });
 
 // get a promotions by id (replace :id)
-router.get("/getones", async (req, res) => {
+router.post("/getones", async (req, res) => {
   try {
     let { _id } = req.body;
     const post = await Promotions.findById(_id);
-    if (!post) throw Error("No Items");
-    res.json({
-      message: "Gotten",
-      data: post,
-    });
+    console.log(post);
+    if (post == null) {
+      res.json({
+        message: "Empty",
+        data: "",
+      });
+    } else {
+      res.json({
+        message: "One post",
+        data: post,
+      });
+    }
   } catch (err) {
     res.status(400).json({ mesg: err });
   }
 });
 
 // search function
-router.get("/getsearch", async (req, res) => {
+router.post("/getsearch", async (req, res) => {
   try {
     let { search } = req.body;
     const post = await Promotions.find({
@@ -118,7 +119,7 @@ router.get("/getsearch", async (req, res) => {
 });
 
 // get category promtoions
-router.get("/getcategory", async (req, res) => {
+router.post("/getcategory", async (req, res) => {
   try {
     let { search } = req.body;
     const post = await Promotions.find({
@@ -136,18 +137,22 @@ router.get("/getcategory", async (req, res) => {
 });
 
 // Delete a post
-router.delete("/deletepost", async (req, res) => {
+router.post("/deletepost", async (req, res) => {
   try {
     let { _id } = req.body;
     const post = await Promotions.findByIdAndDelete(_id);
     if (!post) throw Error("No post found!");
     res.json({
-      message: "Gotdeletedten",
+      status: "SUCCESS",
+      message: "Deleted Post!",
       data: post,
     });
     // res.status(200).json({ success: true });
   } catch (err) {
-    res.status(400).json({ msg: err });
+    res.json({
+      message: err,
+    });
+    console.log(err);
   }
 });
 
@@ -162,11 +167,7 @@ router.put("/promotionsupdate", async (req, res) => {
       Promotions_Object,
       User_ID,
     } = req.body;
-    Promotions_Title = Promotions_Title.trim();
-    Promotions_Categories = Promotions_Categories.trim();
-    Promotions_Description = Promotions_Description.trim();
-    Promotions_Object = Promotions_Object.trim();
-    User_ID = User_ID.trim();
+
     console.log("kkkk"); // testing line
     if (
       Promotions_Title == "" ||
@@ -197,7 +198,8 @@ router.put("/promotionsupdate", async (req, res) => {
         { new: true, useFindAndModify: false }
       );
       res.json({
-        message: "Done",
+        status: "SUCCESS",
+        message: "Updated Completed!",
         data: req.body,
       });
       if (!post) throw Error("Something went wrong while updating the post");
