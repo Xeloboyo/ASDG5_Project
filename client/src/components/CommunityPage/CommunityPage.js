@@ -27,9 +27,7 @@ export default class CommunityPage extends Component {
 
   onChangeCategory_Downdrop = async (e, eventKey) => {
     console.log(`l`);
-    // this.setState({
-    //   Category_Downdrop: e,
-    // });
+
     console.log(e);
     const select = { Category_Downdrop: e };
 
@@ -54,7 +52,6 @@ export default class CommunityPage extends Component {
   }
 
   render() {
-    //const { All_post } = this.All_post;
     const All_post = this.state.All_post;
     return (
       <Container>
@@ -106,9 +103,7 @@ export default class CommunityPage extends Component {
           <div className="content">
             <Table id="tableCommunitypage">
               {Object.values(All_post).map((e) => {
-                //console.log(this.state.All_post[d]);
                 return (
-                  // return All_post[0].Post_Community_Category;
                   <tr>
                     <td>
                       <div className="postCommunityPage">

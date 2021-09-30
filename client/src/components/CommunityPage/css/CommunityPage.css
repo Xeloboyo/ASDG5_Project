@@ -63,3 +63,9 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
+
+.emptyPost {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
