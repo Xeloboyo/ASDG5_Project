@@ -69,6 +69,7 @@ router.delete('/ticketdelete', async (req, res) => {
   } catch (err) {
     res.status(400).json({ msg: err });
   }
+  // check if ticket exist (using ID)
 });
 
 /*
@@ -80,7 +81,7 @@ router.delete('/ticketdelete', async (req, res) => {
 router.delete('/ticketdeleteall', async (req, res) => {
   try {
     let { _id } = req.body;
-    const ticket = await Ticket.deleteMany(_id);
+    const ticket = await Ticket.remove();
     if (!ticket) throw Error('Ticket queue is already empty');
     res.json({
       message: 'All Ticket is Deleted',
@@ -89,6 +90,7 @@ router.delete('/ticketdeleteall', async (req, res) => {
   } catch (err) {
     res.status(400).json({ msg: err });
   }
+  // check if ticket exist (using ID)
 });
 
 module.exports = router;
