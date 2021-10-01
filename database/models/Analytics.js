@@ -20,15 +20,20 @@ const AnalyticsSchema = new Schema({
     type: Number
   },
 
+  Analytics_Profit: {
+    type: Number
+  },
+
+  Analytics_Date: {
+    // get this from v-calendar
+    type: Date
+  },
+
   Order_ID: {
     type: Number
   },
 
   Promotion_ID: {
-    type: Number
-  },
-
-  Analytics_Profit: {
     type: Number
   }
 });
