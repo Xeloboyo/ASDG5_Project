@@ -1,12 +1,38 @@
 import {useState, useEffect} from "react";
+import axios from "axios";
 
 const useForm = (callback, validate) => {
     const [values, setValues] = useState({
-        username: "",
-        email: "",
-        password: "",
-        password2: ""
+        User_Name: "",
+        User_Dob:"",
+        venue:"",
+        User_Email: "",
+        User_password: "",
+        User_password2: ""
     });
+
+    
+
+    const registered = {
+      User_Name: useForm.User_Name,
+      User_Dob: useForm.User_Dob,
+      User_Email: useForm.User_Email,
+      User_Password: useForm.User_Password,
+      User_Password2: useForm.User_Password2,
+    }
+
+    axios.post("http://localhost:5002/register/form", useForm)
+      .then(response => console.log(response.data))
+      
+      // useForm.setState({
+      //   User_Name: "",
+      //   User_Dob:"",
+      //   venue:"",
+      //   User_Email: "",
+      //   User_password: "",
+      //   User_password2: ""
+      // })
+
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 

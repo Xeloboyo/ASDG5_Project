@@ -3,8 +3,7 @@ import useForm from "./useForm";
 import validate from "./valideInfo";
 import "./Form.css";
 
-
-const FormSignup = ({ submitForm }) => {
+const FormSignUpRestaurant = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(
     submitForm,
     validate
@@ -14,10 +13,9 @@ const FormSignup = ({ submitForm }) => {
     <div className="form-content-right">
       <form onSubmit={handleSubmit} className="form" noValidate>
         <h1>
-          Get started with us today! Create your account by filling out the
-          information below!
+          Register your restaurant management account below!
         </h1>
-        
+       
 
         <div className="form-inputs">
           <label htmlFor="username" className="form-label">
@@ -29,12 +27,28 @@ const FormSignup = ({ submitForm }) => {
             name="username"
             className="form-input"
             placeholder="Enter your username"
-            value={useForm.User_Name}
+            value={values.username}
             onChange={handleChange}
           />
           {errors.username && <p>{errors.username}</p>}
         </div>
 
+        <div className="form-inputs">
+          <label htmlFor="venue" className="form-label">
+            Restaruant Name
+          </label>
+          <input
+            id="venue"
+            type="text"
+            name="venue"
+            className="form-input"
+            placeholder="Enter your restaurant name"
+            value={values.venue}
+            onChange={handleChange}
+          />
+          {errors.venue && <p>{errors.venue}</p>}
+        </div>
+        
         <div className="form-inputs">
           <label htmlFor="email" className="form-label">
             Email
@@ -45,7 +59,7 @@ const FormSignup = ({ submitForm }) => {
             name="email"
             className="form-input"
             placeholder="Enter your email"
-            value={useForm.User_Email}
+            value={values.email}
             onChange={handleChange}
           />
           {errors.email && <p>{errors.email}</p>}
@@ -61,7 +75,7 @@ const FormSignup = ({ submitForm }) => {
             name="password"
             className="form-input"
             placeholder="Enter your password"
-            value={useForm.User_Password}
+            value={values.password}
             onChange={handleChange}
           />
           {errors.password && <p>{errors.password}</p>}
@@ -75,7 +89,7 @@ const FormSignup = ({ submitForm }) => {
             name="password2"
             className="form-input"
             placeholder="Confirm your password"
-            value={useForm.User_Password2}
+            value={values.password2}
             onChange={handleChange}
           />
           {errors.password2 && <p>{errors.password2}</p>}
@@ -85,11 +99,11 @@ const FormSignup = ({ submitForm }) => {
         </button>
         <span className="form-input-redirectLogin">
           Already have an account? Login{" "}
-          <a href="client/src/Component/LoginForm.js">here</a>.
+          <a href="client/src/components/Login/Login.js">here</a>.
         </span>
       </form>
     </div>
   );
 };
 
-export default FormSignup;
+export default FormSignUpRestaurant;
