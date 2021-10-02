@@ -12,13 +12,13 @@ const UserSchemaCopy = require("../models/User");
 
 //could be FormSignup and  FormSignUpRestaurant, make a second one of each for the  restaurant admin registration
 router.post("/form", (request, response) => {
+    console.log(request.body)
     const signedUpUser = new UserSchemaCopy({
         User_Name:request.body.User_Name,
-        User_Dob:request.body.User_Dob,
         User_Email:request.body.User_Email,
         User_Password:request.body.User_Password,
         User_Password2:request.body.User_Password2
-    })
+    }) 
     signedUpUser.save()
     .then(data =>{
         response.json(data)

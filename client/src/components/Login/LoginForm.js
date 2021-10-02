@@ -3,7 +3,7 @@ import LoginUseForm from './LoginUseForm';
 import Loginvalidate from './LoginValideInfo';
 import './Login.css'
 
-// ricky felix file
+
 
 const FormLogin = ({LoginSubmitForm}) => {
     const {handleChange, values, handleSubmit, errors} = LoginUseForm(
@@ -14,18 +14,19 @@ const FormLogin = ({LoginSubmitForm}) => {
     return (
         <div>
             <div className="form-content-login">
-                <form className="form-login">
+                <form onSubmit={handleSubmit} className="form-login">
                     <h1>Login</h1>
                     <div className="form-inputs-login">
                         <label htmlFor="email" className="form-label-login">
                         Email
                         </label>
                         <input 
-                            id="email"
+                            id="User_Email"
                             type="email"
-                            name="email"
+                            name="User_Email"
                             className="form-input-login"
                             placeholder="Enter your Email"
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-inputs-login">
@@ -33,11 +34,12 @@ const FormLogin = ({LoginSubmitForm}) => {
                         Password                         
                         </label>
                         <input 
-                            id="email"
+                            id="User_Password"
                             type="password"
-                            name="password"
+                            name="User_Password"
                             className="form-input-login"
                             placeholder="Enter your Password"
+                            onChange={handleChange}
                         />
                     </div>
                     <button className="form-input-btn-login" type="submit">

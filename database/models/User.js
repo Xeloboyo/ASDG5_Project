@@ -3,15 +3,11 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({ //check UserSchema name matching with others
-  User_ID: {
-    type: Number,
-    required: false
-  },
+  // User_ID: {
+  //   type: Number,
+  //   required: false
+  // },
   User_Name: {
-    type: String,
-    required: true
-  },
-  User_Dob: {
     type: String,
     required: true
   },
@@ -19,10 +15,10 @@ const UserSchema = new Schema({ //check UserSchema name matching with others
     type: String,
     required: true
   },
-  User_Category: {
-    type: String,
-    required: false
-  },
+  // User_Category: {
+  //   type: String,
+  //   required: false
+  // },
   User_Password: {
     type: String,
     required: true

@@ -1,10 +1,10 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
+import * as api from "../../api"; //
 
 const useForm = (callback, validate) => {
     const [values, setValues] = useState({
         User_Name: "",
-        User_Dob:"",
         venue:"",
         User_Email: "",
         User_password: "",
@@ -13,20 +13,18 @@ const useForm = (callback, validate) => {
 
     
 
-    const registered = {
-      User_Name: useForm.User_Name,
-      User_Dob: useForm.User_Dob,
-      User_Email: useForm.User_Email,
-      User_Password: useForm.User_Password,
-      User_Password2: useForm.User_Password2,
-    }
+    // const registered = {
+    //   User_Name: useForm.User_Name,
+    //   User_Email: useForm.User_Email,
+    //   User_Password: useForm.User_Password,
+    //   User_Password2: useForm.User_Password2,
+    // }
 
-    axios.post("http://localhost:5002/register/form", useForm)
-      .then(response => console.log(response.data))
+    // axios.post(process.env, useForm)
+    //   .then(response => console.log(response.data))
       
       // useForm.setState({
       //   User_Name: "",
-      //   User_Dob:"",
       //   venue:"",
       //   User_Email: "",
       //   User_password: "",
@@ -46,7 +44,15 @@ const useForm = (callback, validate) => {
 
     const handleSubmit = e =>{
         e.preventDefault(); //prevents the page from refreshing after clicking signup
-
+        const { User_Name, User_Email,  User_Password } = values;
+        console.log(values)
+        if (User_Name && User_Email && User_Password) {
+          axios
+            .post("http://localhost:5002/register/form", values)
+            .then((res) => console.log(res));
+        } else {
+          console.log("error")
+        }
         setErrors(validate(values));
         setIsSubmitting(true);
     };

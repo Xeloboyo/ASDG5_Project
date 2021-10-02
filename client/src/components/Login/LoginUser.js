@@ -40,8 +40,8 @@ const LoginUser = () => {
               Log in
             </Button>
             <p>
-              Don't have an account? <a href="www.blank.com">Sign up </a>
-              with us!
+               Don't have an account? <a href="www.blank.com">Sign up </a>
+              with us! 
             </p>
           </Form>
         </Card.Body>

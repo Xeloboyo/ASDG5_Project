@@ -16,7 +16,7 @@ const Form = () => {
   return (
     <>
       <div className="form-container">
-        <span className="close-btn">×</span>
+        <span className="close-btn">×</span> {/* redirect back to homepage */}
         <div className="form-content-left">
           <img
             className="form-img"
