@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 // import Dashboard from '../dashboard/Dashboard';
-import CardAnalytics from './CardAnalytics';
+// import CardAnalytics from './CardAnalytics';
+import RestaurantOverview from './RestaurantOverview';
 import RestaurantPerformance from './RestaurantPerformance';
-import RestaurantRevenue from './RestaurantRevenue';
 import '../../scss/style.scss';
 
 class Analytics extends Component {
@@ -27,12 +27,7 @@ class Analytics extends Component {
                   marginTop: '70px',
                   marginBottom: '50px'
                 }}
-              >
-                <CardAnalytics />
-                <CardAnalytics />
-                <CardAnalytics />
-                <CardAnalytics />
-              </div>
+              ></div>
             </div>
             <Container>
               <h3>Restaurant Income Revenue</h3>
@@ -44,7 +39,7 @@ class Analytics extends Component {
                   margin: '15px'
                 }}
               >
-                <RestaurantRevenue />
+                <RestaurantOverview />
               </div>
             </Container>
             <Container style={{ marginTop: '50px' }}>
@@ -61,13 +56,7 @@ class Analytics extends Component {
                       display: 'flex',
                       flexDirection: 'column'
                     }}
-                  >
-                    <CardAnalytics />
-                    <CardAnalytics />
-                    <CardAnalytics />
-                    <CardAnalytics />
-                    <CardAnalytics />
-                  </div>
+                  ></div>
                 </Col>
               </Row>
             </Container>

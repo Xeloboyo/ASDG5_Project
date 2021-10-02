@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
-import Header from './components/Dashboard/Header';
+import App from './App';
+import Dashboard from './components/Dashboard/Dashboard';
+import StaffTicket from './components/StaffTicket/StaffTicket';
+// import Header from './components/Dashboard/Header';
 
 import 'bootstrap/dist/css/bootstrap.css';
 // import reportWebVitals from './reportWebVitals';
@@ -12,8 +14,9 @@ import './scss/style.scss';
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    {/* <Dashboard /> */}
-    <Header />
+    <Dashboard />
+    <StaffTicket />
+    {/* <Header /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

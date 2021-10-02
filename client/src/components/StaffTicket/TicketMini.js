@@ -7,15 +7,23 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 
 function TicketMini() {
+  // make flexbox dynamic
+
   return (
     <div>
       <Container>
-        <Card>
+        <Card style={{ width: '15rem', height: '4rem' }}>
           <Row>
-            <Col></Col> {/* logo */}
+            <Col sm={4} style={{ marginLeft: '15px' }}>
+              <IconContext.Provider value={{ color: 'purple', size: '65px' }}>
+                <FaMotorcycle />
+              </IconContext.Provider>
+            </Col>
             <Col>
-              <Col></Col> {/* name */}
-              <Col></Col> {/* id */}
+              {/* username */}
+              <span style={{ fontSize: '19px' }}>User Name</span> <br />
+              {/* order ID */}
+              <span style={{ fontSize: '17px', color: 'grey' }}>#Order ID</span>
             </Col>
           </Row>
         </Card>

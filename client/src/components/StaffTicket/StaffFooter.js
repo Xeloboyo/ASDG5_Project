@@ -3,7 +3,7 @@ import { Card, Button, Form } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
 import TicketFooter from './TicketMini';
 
-const StaffFooter() {
+function StaffFooter() {
   return (
     <div
       style={{
@@ -13,7 +13,7 @@ const StaffFooter() {
         left: '0',
         bottom: '0',
         // marginBottom: '270px',
-        padding: '40px 0px', // top and botttom + left and right
+        padding: '15px 0px', // top and botttom + left and right
         background: '#50cb9b',
         zIndex: '1'
         // marginBottom: '150px'
@@ -25,6 +25,6 @@ const StaffFooter() {
       </Container>
     </div>
   );
-};
+}
 
 export default StaffFooter;
