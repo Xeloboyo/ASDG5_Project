@@ -107,7 +107,12 @@ class App extends Component {
               <AdminHomeNav />
               <PromotionsPast />
             </Route>
-            <Route path="/promotionsedit">
+            <Route
+              path="/promotionsedit/:id"
+              render={(props) => (
+                <PromotionsEdit {...props} key={this.props.location.key} />
+              )}
+            >
               <AdminHomeNav />
               <PromotionsEdit />
             </Route>

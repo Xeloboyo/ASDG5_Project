@@ -16,17 +16,38 @@ export default class Promotions extends Component {
       this.onChangePromotions_Categories.bind(this);
     this.onChangePromotions_Description =
       this.onChangePromotions_Description.bind(this);
-    this.onChangePromotions_Object = this.onChangePromotions_Object.bind(this);
+    this.onChangePromotions_Object_List =
+      this.onChangePromotions_Object_List.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onChangeErrorCommunityPost =
+      this.onChangeErrorCommunityPost.bind(this);
+    this.onChangeSuccessCommunityPost =
+      this.onChangeSuccessCommunityPost.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       Promotions_Title: "",
       Promotions_Categories: "",
       Promotions_Description: "",
-      Promotions_Object: "",
-      checkboxes: [],
+      Promotions_Object_List: ["bat", "baseball", "shoes", "cap"], // replcae with real list
+      Promotions_Object: [],
+      ErrorCommunityPost: "",
+      SuccessCommunityPost: "",
     };
   }
+
+  onChangeSuccessCommunityPost(e) {
+    this.setState({
+      SuccessCommunityPost: e.target.value,
+    });
+  }
+
+  onChangeErrorCommunityPost(e) {
+    this.setState({
+      ErrorCommunityPost: e.target.value,
+    });
+  }
+
   onChangePromotions_Title(e) {
     this.setState({
       Promotions_Title: e.target.value,
@@ -45,47 +66,83 @@ export default class Promotions extends Component {
     });
   }
 
-  onChangePromotions_Object(e) {
-    this.setState({
-      Promotions_Object: e.target.value,
-    });
+  onChangePromotions_Object_List(event) {
+    console.log(event.target.value);
+    console.log(this.state.Promotions_Object);
+    if (event.target.checked) {
+      this.setState({
+        Promotions_Object: this.state.Promotions_Object.concat(
+          event.target.value
+        ),
+      });
+      console.log("bana");
+    } else {
+      const newList = this.state.Promotions_Object.filter(
+        (p) => p !== event.target.defaultValue
+      );
+      console.log(event);
+      this.setState({ Promotions_Object: newList });
+      console.log("apple");
+    }
   }
+
+  handleClick = async (e) => {
+    window.location.reload();
+  };
 
   onSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(this.state.Promotions_Object);
     console.log(`Form submitted:`);
     console.log(`Todo Description: ${this.state.Promotions_Title}`);
     console.log(`Todo Priority: ${this.state.Promotions_Description}`);
-    console.log(`Todo Completed: ${this.state.CommunityPage_Edited}`);
 
     const newPromotions = {
       Promotions_Title: this.state.Promotions_Title,
       Promotions_Categories: this.state.Promotions_Categories,
       Promotions_Description: this.state.Promotions_Description,
       Promotions_Object: this.state.Promotions_Object,
-      User_ID: "3222",
+      User_ID: "3222", // replace with admin userID
     };
 
-    const response = await fetch(
-      "http://localhost:5002/promotions/promotionsform",
-      {
-        method: "post",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newPromotions),
-      }
-    );
+    const response = await fetch("http://localhost:5002/promotions/", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newPromotions),
+    });
+    const jsonData = await response.json();
+    console.log(`${jsonData.message}`);
+
+    if (jsonData.status == "FAILED") {
+      this.setState({ ErrorCommunityPost: jsonData });
+      console.log(`${jsonData.message}`);
+      this.setState({
+        SuccessCommunityPost: "",
+      });
+    } else if (jsonData.status == "SUCCESS") {
+      this.setState({ SuccessCommunityPost: jsonData });
+      this.setState({
+        ErrorCommunityPost: "",
+      });
+    } else {
+      this.setState({
+        ErrorCommunityPost: "",
+        SuccessCommunityPost: "",
+      });
+    }
 
     this.setState({
       Promotions_Title: "",
       Promotions_Categories: "",
       Promotions_Description: "",
-      Promotions_Object: "",
+      // Promotions_Object: [],
     });
   };
   render() {
+    const ErrorCommunityPost = this.state.ErrorCommunityPost;
+    const SuccessCommunityPost = this.state.SuccessCommunityPost;
     return (
       <Container>
         <table>
@@ -98,6 +155,18 @@ export default class Promotions extends Component {
             </th>
           </tr>
         </table>
+        <div>
+          {ErrorCommunityPost.status === "FAILED" ? (
+            ErrorCommunityPost.message
+          ) : (
+            <p></p>
+          )}
+          {SuccessCommunityPost.status === "SUCCESS" ? (
+            SuccessCommunityPost.message
+          ) : (
+            <p></p>
+          )}
+        </div>
         <Container className="center">
           <Container className="mx-0 px-0" fluid>
             <Form onSubmit={this.onSubmit}>
@@ -141,31 +210,20 @@ export default class Promotions extends Component {
                 />
               </Form.Group>
               <Form.Label>Resturants</Form.Label>
-              {["checkbox"].map((type) => (
-                <div key={`inline-${type}`} className="mb-3">
-                  <Form.Check
-                    inline
-                    label="1"
-                    name="group1"
-                    type={type}
-                    id={`inline-${type}-1`}
-                  />
-                  <Form.Check
-                    inline
-                    label="2"
-                    name="group1"
-                    type={type}
-                    id={`inline-${type}-2`}
-                  />
-                  <Form.Check
-                    inline
-                    label="2"
-                    name="group1"
-                    type={type}
-                    id={`inline-${type}-2`}
-                  />
-                </div>
-              ))}
+              {this.state.Promotions_Object_List.map((e, index) => {
+                return ["checkbox"].map((type) => (
+                  <div key={index} className="mb-3">
+                    <Form.Check
+                      inline
+                      label={e}
+                      name="group1"
+                      type={type}
+                      value={e}
+                      onChange={this.onChangePromotions_Object_List}
+                    />
+                  </div>
+                ));
+              })}
               <table className="promotions_table">
                 <tr>
                   <th>
@@ -173,12 +231,19 @@ export default class Promotions extends Component {
                       Submit
                     </Button>
                   </th>
-                  <Button variant="outline-primary">Delete</Button>{" "}
+                  <Button
+                    variant="outline-primary"
+                    onClick={() => this.handleClick()}
+                    // type="reset"
+                    // defaultValue="Reset"
+                  >
+                    Delete
+                  </Button>{" "}
                 </tr>
               </table>
 
               <div className="promotions_cancel">
-                <LinkContainer to="/" className="edit_buttons">
+                <LinkContainer to="/adminhomenav" className="edit_buttons">
                   <Button variant="primary"> Cancel</Button>
                 </LinkContainer>
               </div>

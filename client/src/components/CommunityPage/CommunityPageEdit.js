@@ -45,7 +45,6 @@ export default class CommunityPageEdit extends Component {
   }
 
   handleClick = async (e) => {
-    // e.preventDefault();
     console.log(e);
 
     const newTodo = {
@@ -68,6 +67,7 @@ export default class CommunityPageEdit extends Component {
       const newList = this.state.All_postEdit.data.filter((p) => p._id !== e);
       console.log(newList);
       this.setState({ All_postEdit: newList });
+      window.scrollTo(0, 0);
     } else {
       this.setState({
         SuccessCommunityPost: "",
