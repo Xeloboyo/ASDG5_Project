@@ -74,11 +74,28 @@ router.get("/promotionspast", async (req, res) => {
   }
 });
 
+// get latetess promotions
+router.get("/promotionshome", async (req, res) => {
+  try {
+    const posts = await Promotions.findOne()
+      .sort({ field: "asc", _id: -1 })
+      .limit(1);
+    if (!posts) throw Error("No Items");
+    res.status(200).json(posts);
+  } catch (err) {
+    res.json({
+      status: "FAILED",
+      message: "An error occurred while saving user account!",
+    });
+    console.log(err);
+  }
+});
+
 // get a promotions by id (replace :id)
 router.post("/getones", async (req, res) => {
   try {
-    let { _id } = req.body;
-    const post = await Promotions.findById(_id);
+    let { PostID } = req.body;
+    const post = await Promotions.findById(PostID);
     console.log(post);
     if (post == null) {
       res.json({
@@ -160,7 +177,7 @@ router.post("/deletepost", async (req, res) => {
 router.put("/promotionsupdate", async (req, res) => {
   try {
     let {
-      _id,
+      PostID,
       Promotions_Title,
       Promotions_Categories,
       Promotions_Description,
@@ -191,22 +208,30 @@ router.put("/promotionsupdate", async (req, res) => {
       });
 
       const post = await Promotions.findByIdAndUpdate(
-        _id,
+        PostID,
         {
           $set: req.body,
         },
         { new: true, useFindAndModify: false }
       );
-      res.json({
-        status: "SUCCESS",
-        message: "Updated Completed!",
-        data: req.body,
-      });
-      if (!post) throw Error("Something went wrong while updating the post");
+      if (!post) {
+        res.json({
+          message: "Empty",
+          data: "",
+        });
+      } else {
+        res.json({
+          status: "SUCCESS",
+          message: "Updated Completed!",
+          data: req.body,
+        });
+      }
+      // if (!post) throw Error("Something went wrong while updating the post");
       // res.status(200).json({ success: true });
     }
   } catch (err) {
     res.status(400).json({ msg: err });
+    console.log(err);
   }
 });
 
