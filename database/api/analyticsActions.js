@@ -33,7 +33,9 @@ const Analytics = require('../models/Analytics');
 */
 router.get('/', (req, res) => {
   try {
-    const analytics = await Analytics.find();
+    let { _id } = req.body;
+    const analytics = await Analytics.find(_id);
+    // const analytics = await Analytics.find();
     if (!analytics) throw Error('No data available');
     console.log(analytics);
   } catch (err) {

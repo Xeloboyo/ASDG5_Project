@@ -81,7 +81,7 @@ router.delete('/ticketdelete', async (req, res) => {
 router.delete('/ticketdeleteall', async (req, res) => {
   try {
     let { _id } = req.body;
-    const ticket = await Ticket.remove();
+    const ticket = await Ticket.remove(_id);
     if (!ticket) throw Error('Ticket queue is already empty');
     res.json({
       message: 'All Ticket is Deleted',

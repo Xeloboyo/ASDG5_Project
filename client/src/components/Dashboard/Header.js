@@ -3,7 +3,7 @@ import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const Header = () => {
+function Header() {
   return (
     <div
       style={{
@@ -31,6 +31,6 @@ const Header = () => {
       </Container>
     </div>
   );
-};
+}
 
 export default Header;

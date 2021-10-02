@@ -35,7 +35,7 @@ const options = {
   }
 };
 
-const RestaurantPerformance = () => (
+function RestaurantPerformance() (
   <div style={{ width: '65rem' }}>
     <Bar data={data} options={options} />
   </div>

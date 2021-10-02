@@ -36,7 +36,7 @@ import Settings from './Settings';
 import Profile from './Profile';
 import Help from './Help';
 
-const Sidebar = () => {
+const Sidebar() {
   let { path, url } = useRouteMatch();
 
   return (

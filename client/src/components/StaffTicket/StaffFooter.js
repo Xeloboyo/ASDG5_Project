@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
-import TicketFooter from './TicketFooter';
+import TicketFooter from './TicketMini';
 
-const StaffFooter = () => {
+const StaffFooter() {
   return (
     <div
       style={{

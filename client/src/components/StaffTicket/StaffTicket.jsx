@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../scss/style.scss';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import Ticket from './Ticket';
+import TicketMain from './TicketMain';
 import StaffFooter from './StaffFooter';
 
 class StaffTicket extends Component {
@@ -28,7 +28,7 @@ class StaffTicket extends Component {
           </div>
           <div>
             <div>
-              <Ticket />
+              <TicketMain />
             </div>
           </div>
           <div>
