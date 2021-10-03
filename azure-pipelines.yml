@@ -26,11 +26,11 @@ steps:
       npm start
     displayName: "npm install and build"
 
-- task: CopyFiles@2
-    inputs:
-      script: |
-        npm run ci
-  displayName: "npm"
+  - task: CopyFiles@2
+      inputs:
+        script: |
+          npm run ci
+    displayName: "npm"
 
   # - task: CmdLine@2
   #     script: |
