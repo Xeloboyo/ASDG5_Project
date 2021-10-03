@@ -27,9 +27,9 @@ steps:
     displayName: "npm install and build"
 
   - task: CmdLine@2
-    inputs:
-      script: |
-      npm run ci
+      inputs:
+        script: |
+        npm run ci
     displayName: "Cypress"
 
 
