@@ -8,6 +8,8 @@
     "format": "prettier -w .",
     "server": "nodemon database/Server.js",
     "start": "cd client && npm start",
+    "startDatabase": "cd database && npm i",
+    "startClient": "cd client && npm i",
     "e2e": "cypress run"
   },
   
