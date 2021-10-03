@@ -24,7 +24,7 @@ steps:
       npm run startDatabase
       npm run startClient
       npm start
-    displayName: "npm install and start"
+    displayName: "npm install and build"
 
     # steps:
 # - task: NodeTool@0
