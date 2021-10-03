@@ -13,6 +13,10 @@ steps:
   - script: echo Hello, world!
     displayName: "Run a one-line script"
 
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+    displayName: "Run a multi-line script"
 # steps:
 # - task: NodeTool@0
 #   inputs:
@@ -31,7 +35,3 @@ steps:
 #   cypress run
 # displayName: "npm install and build"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: "Run a multi-line script"
