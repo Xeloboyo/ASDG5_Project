@@ -10,9 +10,12 @@
     "start": "cd client && npm run build",
     "startDatabase": "cd database && npm i",
     "startClient": "cd client && npm i",
-    "e2e": "cypress run"
+    "e2e": "cypress run",
+    "start-server": "concurrently \"cd client\" \"npm wait-on http://localhost:3000\"",
+    
+    "test": "cypress open",
+    "ci": "start-server-and-test start http://localhost:3000 test"
   },
-  
   "license": "MIT",
   "devDependencies": {
     "cypress": "^8.5.0",
@@ -24,7 +27,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "start-server-and-test": "^1.14.0"
   },
   "dependencies": {
     "concurrently": "^6.3.0",
