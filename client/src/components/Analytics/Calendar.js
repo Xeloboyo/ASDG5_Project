@@ -1,19 +1,18 @@
 // import Clock from 'react-clock';
-import { VCalendar } from 'v-calendar'; // this is a Vue package
+// import { VCalendar } from 'v-calendar'; // this is a Vue package
 
 // Use `onChange` prop for getting new values.
 // reference on states: https://reactpatterns.com/#state-hoisting
 
-import React from 'react';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 
-function Calendar() {
+const Calendar = () => {
   return (
     <div>
-      {/* <Clock /> */}
-      <VCalendar />
-      {/* lmao */}
+      <div>
+        {/* <VCalendar /> */}
+      </div>
     </div>
   );
-}
-
-export default Calendar;
+};

@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Dashboard from './components/Dashboard/Dashboard';
-import StaffTicket from './components/StaffTicket/StaffTicket';
 // import Header from './components/Dashboard/Header';
+// import StaffTicket from './components/StaffTicket/StaffTicket';
+import Analytics from './components/Analytics/Analytics';
+import Calendar from './components/Analytics/Calendar';
+import RestaurantOverview from './components/Analytics/RestaurantOverview';
+import RestaurantPerformance from './components/Analytics/RestaurantPerformance';
 
 import 'bootstrap/dist/css/bootstrap.css';
 // import reportWebVitals from './reportWebVitals';
@@ -15,8 +19,12 @@ ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     <Dashboard />
-    <StaffTicket />
     {/* <Header /> */}
+    {/* <StaffTicket /> */}
+    <Analytics />
+    {/* <RestaurantOverview /> */}
+    {/* <Calendar /> */}
+    {/* <RestaurantPerformance /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

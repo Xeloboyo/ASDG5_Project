@@ -17,17 +17,28 @@ class RestaurantOverview extends Component {
 
     return (
       <div>
-        <h3>Restaurant Overview</h3>
-        <Container>
-          <Card>
-            <Row>
-              <Col>
-                {title}
-                {number}
-              </Col>
-            </Row>
-          </Card>
-        </Container>
+        <div>
+          <h3>Restaurant Overview</h3>
+          <Container>
+            <Card
+              style={{
+                width: '10rem',
+                // width: '40%',
+                // marginBottom: '30px',
+                // marginLeft: '50px',
+                margin: '10px 50px',
+                padding: '15px',
+                display: 'block'
+              }}
+            >
+              <div className="text-center">
+                <span style={{ fontSize: '12px' }}>{title}name</span>
+                <br />
+                <span style={{ fontSize: '20px' }}>{number}number</span>
+              </div>
+            </Card>
+          </Container>
+        </div>
       </div>
     );
   }
