@@ -30,7 +30,7 @@ steps:
     inputs:
       script: |
       npm run ci
-    displayname: "Cypress"
+    displayName: "Cypress"
 
   #  - task: CmdLine@2
   #   inputs:
