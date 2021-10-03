@@ -149,15 +149,21 @@ export default class CommunityPageEdit extends Component {
                                 <p></p>
                               )}
                             </div>
-                            <table className="edit_table">
+                            <table name="editbutton" className="edit_table">
                               <tr>
                                 <td>
                                   <LinkContainer
                                     to={`/communitypageedits/${e._id}`}
                                     // add a + "_id" to the end of this
                                     className="edit_button"
+                                    name="buttonContainer"
                                   >
-                                    <Button variant="primary">Edit Post</Button>
+                                    <Button
+                                      name="editbuttonLink"
+                                      variant="primary"
+                                    >
+                                      Edit Post
+                                    </Button>
                                   </LinkContainer>
                                 </td>
                                 <td>

@@ -132,7 +132,7 @@ export default class CommunityPageForm extends Component {
             </th>
           </tr>
         </table>
-        <div>
+        <div name="messageDatabase">
           {ErrorCommunityPost.status === "FAILED" ? (
             ErrorCommunityPost.message
           ) : (
