@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 // import Dashboard from '../dashboard/Dashboard';
 // import CardAnalytics from './CardAnalytics';
-import Calendar from './Calendar';
+import CalendarDate from './CalendarDate';
 import RestaurantOverview from './RestaurantOverview';
 import RestaurantPerformance from './RestaurantPerformance';
 import '../../scss/style.scss';
@@ -35,7 +35,7 @@ class Analytics extends Component {
                     paddingBottom: '50px'
                   }}
                 >
-                  <Calendar />
+                  <CalendarDate />
                 </div>
               </Col>
 
