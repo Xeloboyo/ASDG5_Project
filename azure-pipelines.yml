@@ -13,23 +13,23 @@ steps:
   - script: echo Hello, world!
     displayName: "Run a one-line script"
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-  
-- script: |
-    npm install
-    npm start
-  displayName: "npm install and start"
+# steps:
+# - task: NodeTool@0
+#   inputs:
+#     versionSpec: '10.x'
+#   displayName: 'Install Node.js'
 
-- script: |
-  npm install
-  npm run build
-  npm start
-  cypress run
-displayName: "npm install and build"
+# - script: |
+#     npm install
+#     npm start
+#   displayName: "npm install and start"
+
+# - script: |
+#   npm install
+#   npm run build
+#   npm start
+#   cypress run
+# displayName: "npm install and build"
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
