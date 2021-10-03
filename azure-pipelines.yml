@@ -27,11 +27,10 @@ steps:
     displayName: "npm install and build"
 
   - task: CmdLine@2
-      inputs: 
-        script: |
-          npm run ci
+    inputs:
+      script: |
+        npm run ci
     displayName: "Cypress"
-
 
   #  - task: CmdLine@2
   #   inputs:
@@ -40,7 +39,7 @@ steps:
   #       npm run ci
   #   displayName: 'Cypress Smoke Tests'
 
-    # steps:
+  # steps:
 # - task: NodeTool@0 "start-server": "cd client && npm start & wait-on http://localhost:3000",
 #   inputs:
 #     versionSpec: '10.x'
