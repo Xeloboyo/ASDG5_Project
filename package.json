@@ -5,10 +5,15 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --fix main.js",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "server": "nodemon database/Server.js",
+    "start": "cd client && npm start",
+    "e2e": "cypress run"
   },
+  
   "license": "MIT",
   "devDependencies": {
+    "cypress": "^8.5.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -18,5 +23,10 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "wait-on": "^6.0.0"
   }
 }
