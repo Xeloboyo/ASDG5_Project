@@ -21,6 +21,8 @@ steps:
   - script: |
       npm install
       npm i react-scripts
+      npm run startDatabase
+      npm run startClient
       npm start
     displayName: "npm install and start"
 
