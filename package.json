@@ -7,7 +7,7 @@
     "lint": "eslint --fix main.js",
     "format": "prettier -w .",
     "server": "nodemon database/Server.js",
-    "start": "cd client && npm start",
+    "start": "cd client && npm run build",
     "startDatabase": "cd database && npm i",
     "startClient": "cd client && npm i",
     "e2e": "cypress run"
