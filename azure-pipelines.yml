@@ -19,20 +19,17 @@ steps:
     displayName: "Run a multi-line script"
 
   - script: |
+      npm install
+      npm i react-scripts
+      npm run startDatabase
+      npm run startClient
+      npm start
       npm run ci
-    displayName: "npm"
-
-  # - script: |
-  #     npm install
-  #     npm i react-scripts
-  #     npm run startDatabase
-  #     npm run startClient
-  #     npm start
-  #   displayName: "npm install and build"
+    displayName: "npm install and build"
 
   # - task: CopyFiles@2
-  #   script: |
-  #     npm run ci
+  #     script: |
+  #       npm run ci
   #   displayName: "npm"
 
   # - task: CmdLine@2
