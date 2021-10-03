@@ -27,8 +27,8 @@ steps:
   #   displayName: "npm install and build"
 
   - task: CopyFiles@2
-      script: |
-        npm run ci
+    script: |
+      npm run ci
     displayName: "npm"
 
   # - task: CmdLine@2
