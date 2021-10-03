@@ -8,7 +8,9 @@ const FormSignUpRestaurant = ({ submitForm }) => {
     submitForm,
     validate
   );
-
+  values.User_Category = "restaurant_owner";
+  values.route = "/restaurant" //change route if necessary
+console.log(values)
   return (
     <div className="form-content-right">
       <form onSubmit={handleSubmit} className="form" noValidate>
@@ -22,15 +24,15 @@ const FormSignUpRestaurant = ({ submitForm }) => {
             Username
           </label>
           <input
-            id="username"
+            id="User_Name"
             type="text"
-            name="username"
+            name="User_Name"
             className="form-input"
             placeholder="Enter your username"
-            value={values.username}
+            value={values.User_Name}
             onChange={handleChange}
           />
-          {errors.username && <p>{errors.username}</p>}
+          {errors.User_Name && <p>{errors.User_Name}</p>}
         </div>
 
         <div className="form-inputs">
@@ -54,15 +56,15 @@ const FormSignUpRestaurant = ({ submitForm }) => {
             Email
           </label>
           <input
-            id="email"
+            id="User_Email"
             type="email"
-            name="email"
+            name="User_Email"
             className="form-input"
             placeholder="Enter your email"
-            value={values.email}
+            value={values.User_Email}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.User_Email && <p>{errors.User_Email}</p>}
         </div>
 
         <div className="form-inputs">
@@ -70,29 +72,29 @@ const FormSignUpRestaurant = ({ submitForm }) => {
             Password
           </label>
           <input
-            id="password"
+            id="User_Password"
             type="password"
-            name="password"
+            name="User_Password"
             className="form-input"
             placeholder="Enter your password"
-            value={values.password}
+            value={values.User_Password}
             onChange={handleChange}
           />
-          {errors.password && <p>{errors.password}</p>}
+          {errors.User_Password && <p>{errors.User_Password}</p>}
         </div>
 
         <div className="form-inputs">
           <label className="form-label">Confirm Password</label>
           <input
-            id="password2"
+            id="User_Password2"
             type="password"
-            name="password2"
+            name="User_Password2"
             className="form-input"
             placeholder="Confirm your password"
-            value={values.password2}
+            value={values.User_Password2}
             onChange={handleChange}
           />
-          {errors.password2 && <p>{errors.password2}</p>}
+          {errors.User_Password2 && <p>{errors.User_Password2}</p>}
         </div>
         <button className="form-input-btn" type="submit">
           Sign up

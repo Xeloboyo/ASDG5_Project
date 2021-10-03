@@ -6,7 +6,6 @@ const router = express.Router()
 
 const UserSchemaCopy = require("../models/User");
 
-
 //routes routes
 app.post("/form", (req, res) => {
     const { User_Email,  User_Password } = req.body;
@@ -23,6 +22,6 @@ app.post("/form", (req, res) => {
     });
   });
 
-//could be FormSignup and  FormSignUpRestaurant, make a second one of each for the  restaurant admin registration
+//could be FormSignup and FormSignUpRestaurant, make a second one of each for the  restaurant admin registration
 
 module.exports= router

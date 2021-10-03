@@ -5,12 +5,12 @@ import "./Form.css";
 
 
 const FormSignup = ({ submitForm }) => {
-  const { handleChange, values, handleSubmit, errors } = useForm(
+  const { handleChange, values, handleSubmit, errors, redirectRoute } = useForm(
     submitForm,
     validate
   );
-
-  console.log(values)
+    values.User_Category = "user";
+    values.route = "/";
   return (
     <div className="form-content-right">
       <form onSubmit={handleSubmit} className="form" noValidate>

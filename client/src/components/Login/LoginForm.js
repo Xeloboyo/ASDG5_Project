@@ -10,12 +10,30 @@ const FormLogin = ({LoginSubmitForm}) => {
         LoginSubmitForm,
         Loginvalidate
     );
-
+    console.log(values)
     return (
         <div>
             <div className="form-content-login">
                 <form onSubmit={handleSubmit} className="form-login">
                     <h1>Login</h1>
+          <div className="form-inputs">
+            <label htmlFor="UserType" className="form-label">
+              Who would you like to login as?
+            </label>
+            <select
+              class="dropdown"
+              id="User_Category"
+              type="text"
+              name="User_Category"
+              className="form-input"
+              onChange={handleChange}
+            >
+              <option value="user" selected>Customer</option>
+              <option value="restaurant_owner">Restaurant Owner</option>
+              <option value="admin">Admin</option>
+              {errors.User_Category && <p>{errors.User_Category}</p>}
+            </select>
+          </div>   
                     <div className="form-inputs-login">
                         <label htmlFor="email" className="form-label-login">
                         Email

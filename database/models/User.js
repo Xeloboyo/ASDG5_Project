@@ -11,6 +11,9 @@ const UserSchema = new Schema({ //check UserSchema name matching with others
     type: String,
     required: true
   },
+  User_Category: {
+    type: String,
+  },
   User_Email: {
     type: String,
     required: true

@@ -1,14 +1,17 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 import * as api from "../../api"; //
+import { useHistory } from "react-router-dom";
 
 const useForm = (callback, validate) => {
+  let history = useHistory();
     const [values, setValues] = useState({
         User_Name: "",
         venue:"",
         User_Email: "",
         User_password: "",
-        User_password2: ""
+        User_password2: "",
+        User_Category: "",
     });
 
     
@@ -33,6 +36,7 @@ const useForm = (callback, validate) => {
 
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [route, setRoute] = useState("");
 
     const handleChange = e => {
         const {name, value} = e.target;
@@ -42,9 +46,9 @@ const useForm = (callback, validate) => {
         });
     };
 
-    const handleSubmit = e =>{
+    const handleSubmit = (e) =>{
         e.preventDefault(); //prevents the page from refreshing after clicking signup
-        const { User_Name, User_Email,  User_Password } = values;
+        const { User_Name, User_Email,  User_Password, route } = values;
         console.log(values)
         if (User_Name && User_Email && User_Password) {
           axios
@@ -55,6 +59,7 @@ const useForm = (callback, validate) => {
         }
         setErrors(validate(values));
         setIsSubmitting(true);
+        history.push(route);
     };
 
     useEffect(

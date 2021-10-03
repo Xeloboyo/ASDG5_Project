@@ -17,8 +17,9 @@ router.post("/form", (request, response) => {
         User_Name:request.body.User_Name,
         User_Email:request.body.User_Email,
         User_Password:request.body.User_Password,
-        User_Password2:request.body.User_Password2
-    }) 
+        User_Password2:request.body.User_Password2,
+        User_Category: request.body.User_Category
+    })  
     signedUpUser.save()
     .then(data =>{
         response.json(data)
