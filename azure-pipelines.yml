@@ -26,12 +26,18 @@ steps:
       npm start
     displayName: "npm install and build"
 
-   - task: CmdLine@2
+  - task: CmdLine@2
     inputs:
       script: |
-        echo Write your commands here
-        npm run ci
-    displayName: 'Cypress Smoke Tests'
+      npm run ci
+    displayname: "Cypress"
+
+  #  - task: CmdLine@2
+  #   inputs:
+  #     script: |
+  #       echo Write your commands here
+  #       npm run ci
+  #   displayName: 'Cypress Smoke Tests'
 
     # steps:
 # - task: NodeTool@0 "start-server": "cd client && npm start & wait-on http://localhost:3000",
