@@ -28,8 +28,8 @@ steps:
 
   - task: CopyFiles@2
     inputs:
-    script: |
-      npm run ci
+      script: |
+        npm run ci
     displayName: "npm"
 
   # - task: CmdLine@2
