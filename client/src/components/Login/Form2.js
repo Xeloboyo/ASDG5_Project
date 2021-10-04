@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import FormSignup from './FormSignup';
+import FormSignUpRestaurant from './FormSignUpRestaurant';
 import FormSuccess from './FormSuccess';
-import axios from "axios";
 import './Form.css';
-
-
-
   
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -16,7 +12,7 @@ const Form = () => {
   return (
     <>
       <div className="form-container">
-        <span className="close-btn">×</span> {/* redirect back to homepage */}
+        <span className="close-btn">×</span>
         <div className="form-content-left">
           <img
             className="form-img"
@@ -25,7 +21,7 @@ const Form = () => {
           />
         </div>
         {!isSubmitted ? (
-          <FormSignup submitForm={submitForm} />
+          <FormSignUpRestaurant submitForm={submitForm} />
         ) : (
           <FormSuccess />
         )}
