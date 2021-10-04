@@ -24,6 +24,7 @@ steps:
       npm run startDatabase
       npm run startClient
       npm start
+      npm run ci
     displayName: "npm install and build"
 
   - script: |
