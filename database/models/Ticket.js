@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose.Schema;
+const { Schema } = mongoose;
 
 // create TicketSchema
 const TicketSchema = new Schema({
   Ticket_ID: {
     // primary key
-    type: Number,
-    required: true
+    type: Number
   },
 
   Reservation_ID: {
@@ -26,7 +25,7 @@ const TicketSchema = new Schema({
   },
 
   Ticket_Date: {
-    type: String
+    type: Date
   },
 
   Ticket_Description: {

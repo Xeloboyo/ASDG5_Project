@@ -6,8 +6,6 @@
     - Cancel All Tickets
 */
 
-import { response } from 'express';
-
 const express = require('express');
 
 const router = express.Router();
@@ -17,10 +15,10 @@ const Ticket = require('../models/Ticket');
 /*
     - get all ticket from takeaway
     @route GET api/tickets
-    @desc Get All Items
+    @desc Get All Tickets
     @access Public
 */
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const tickets = await Ticket.find();
     if (!tickets) throw Error('No Tickets');
@@ -59,7 +57,7 @@ router.post('/ticketadd', async (req, res) => {
 */
 router.delete('/ticketdelete', async (req, res) => {
   try {
-    let { _id } = req.body;
+    const { _id } = req.body;
     const ticket = await Ticket.findByIdandDelete(_id);
     if (!ticket) throw Error('No ticket found from the id');
     res.json({
@@ -80,7 +78,7 @@ router.delete('/ticketdelete', async (req, res) => {
 */
 router.delete('/ticketdeleteall', async (req, res) => {
   try {
-    let { _id } = req.body;
+    const { _id } = req.body;
     const ticket = await Ticket.remove(_id);
     if (!ticket) throw Error('Ticket queue is already empty');
     res.json({

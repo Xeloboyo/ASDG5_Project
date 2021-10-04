@@ -16,8 +16,6 @@
 
 */
 
-import { response } from 'express';
-
 const express = require('express');
 
 const router = express.Router();
@@ -31,9 +29,9 @@ const Analytics = require('../models/Analytics');
     @access public
 
 */
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    let { _id } = req.body;
+    const { _id } = req.body;
     const analytics = await Analytics.find(_id);
     // const analytics = await Analytics.find();
     if (!analytics) throw Error('No data available');
@@ -42,6 +40,7 @@ router.get('/', (req, res) => {
     res.status(400).json({ msg: err });
     // Analytics.find().then((analytics) => res.json(analytics));
   }
+});
 
 /*
     - show the analytics
