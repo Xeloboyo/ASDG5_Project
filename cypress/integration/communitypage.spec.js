@@ -1,6 +1,11 @@
 /* eslint-disable no-undef */
 describe("Community page", () => {
   // run server and database on pipeline
+  beforeEach(() => {
+    // reset and seed the database prior to every test
+    // cy.exec("npm run start-server");
+  });
+
   it("Testing empty input", () => {
     cy.visit("http://localhost:3000/communitypageform"); // change URL to match your dev URL
 
