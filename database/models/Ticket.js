@@ -42,11 +42,11 @@ const TicketSchema = new Schema(
     //   default: Date().toLocaleTimeString() // hh:mm:ss
     // },
 
-    TicketOrderDescription: {
-      type: String,
-      required: true,
-      default: ''
-    },
+    // TicketOrderDescription: {
+    //   type: String,
+    //   required: true,
+    //   default: ''
+    // },
 
     // TicketDuration: {
     //   type: Number,
@@ -57,12 +57,12 @@ const TicketSchema = new Schema(
     TicketStatus: {
       type: String,
       required: true,
-      default: ''
+      default: 'Pending'
     },
 
-    TicketUpdate: {
-      type: String
-      // default:
+    TicketUpdateDescription: {
+      type: String,
+      default: ''
       //   'We apologize but we have to cancel your order due to unfortunate circumstances.'
     }
   },

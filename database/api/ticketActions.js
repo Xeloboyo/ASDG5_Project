@@ -2,17 +2,16 @@
     Lists of API for ticketing:
     - Show All ticket
     - Add ticket
-    - Cancel ticket
-    - Cancel All ticket
-    - Confirm ticket
-    - Update ticket 
+    - Cancel ticket -> add description
+    - Cancel All ticket -> add description
+    - Confirm ticket -> add description
 */
 
 const express = require('express').Router();
 
-// const router = express.Router();
+const router = express.Router();
 
-const ticketing = require('../models/Ticket');
+const Ticketing = require('../models/Ticket');
 
 /*
     - Get All ticketing (from Payment)
@@ -20,11 +19,18 @@ const ticketing = require('../models/Ticket');
     @desc Get All ticketing
     @access Private
 */
-router.post('/', (req, res) => {
-  ticketing
-    .find()
-    .then((ticketAction) => res.json(ticketAction))
-    .catch((err) => res.status(400).json(`Error: ${err}`));
+router.post('/', async (req, res) => {
+  try {
+    const ticket = await Ticketing.find();
+    if (!ticket) throw Error('No Ticket');
+    res.status(200).json(ticket);
+  } catch (err) {
+    res.json({
+      status: 'FAILED',
+      message: 'An error occurred'
+    });
+    console.log(err);
+  }
 });
 
 /*
@@ -43,7 +49,7 @@ router.post('/', (req, res) => {
     TicketOrderDescription,
     TicketStatus,
     TicketUpdate
-  } = req.body();
+  } = req.body;
 
   UserID = UserID.trim();
   ReservationID = ReservationID.trim();
@@ -53,14 +59,15 @@ router.post('/', (req, res) => {
   TicketOrderDescription = TicketOrderDescription.trim();
   TicketStatus = TicketStatus.trim();
   TicketUpdate = TicketUpdate.trim();
+  console.log('kek');
 
-  if ( OrderID = '' || RestaurantID = '' ) {
+  if (OrderID == '' || RestaurantID == '') {
     res.json({
-      status: "FAILED",
-      message: "Reservation is not created".
+      status: 'FAILED',
+      message: 'Reservation is not created'
     });
-
-    let NewTicket = new ticketing({
+  } else {
+    const NewTicket = new Ticketing({
       TicketOwner,
       TicketOrderDescription,
       TicketStatus,
@@ -68,33 +75,62 @@ router.post('/', (req, res) => {
     });
 
     NewTicket.save()
-    .then((result) =? {
-      res.json({
-        status: "SUCCESS"
-        message: "New Ticket is created",
-        data: result
+      .then((result) => {
+        res.json({
+          status: 'SUCCESS',
+          message: 'New Ticket is created',
+          data: result
+        });
+      })
+      .catch((err) => {
+        res.json({
+          status: 'FAILED',
+          message: 'An error occurred'
+        });
+        console.log(err);
       });
-    })
-    .catch(err) => {
-      res.json({
-        status: "FAILED",
-        message: "idk lmao"
-      });
-      console.log(err);
-    }};
-  });
+  }
+});
 
 /*
     - cancel ticketing
-    @route DELETE api/ticketing/ticketdelete/{id}
+    @route POST  api/ticketing/ticketdelete/{id}
     @desc delete ticket from page
     @access Private
 */
-router.delete('/ticketingdelete', async (req, res) => {
+router.post('/ticketingdelete', async (req, res) => {
   try {
-    const { _id } = req.body;
-    const ticket = await ticketing.findByIdandDelete(_id);
-    if (!ticket) throw Error('No ticketing found from the id');
+    let { _id, TicketStatus, TicketUpdateDescription } = req.body;
+    TicketStatus = TicketStatus.trim();
+    TicketUpdateDescription = TicketUpdateDescription.trim();
+    console.log('kek');
+
+    // change ticket description
+    const TicketDelete = new Ticketing({
+      TicketStatus,
+      TicketUpdateDescription
+    });
+
+    const update = await Ticketing.findByIDAndUpdate(
+      _id,
+      {
+        $set: req.body
+      },
+      { new: true, useFindandModify: false }
+    );
+    res.json({
+      message: 'Ticket Queue is deleted',
+      data: req.body,
+      TicketStatus: 'Cancelled',
+      TicketUpdateDescription:
+        'We apologize but we have to cancel your order due to unfortunate circumstances.'
+    });
+    if (!update) throw Error('Error when updating ticket description');
+
+    const ticket = await Ticketing.findByIdandDelete(_id);
+    // change ticket description
+
+    if (!ticket) throw Error('No ticketing found based on the id');
     res.json({
       message: 'Ticket is Deleted',
       data: POST
@@ -102,29 +138,60 @@ router.delete('/ticketingdelete', async (req, res) => {
   } catch (err) {
     res.status(400).json({ msg: err });
   }
-  // check if ticketing exist (using ID)
 });
 
 /*
     - cancel ALL ticketings
-    @route DELETE api/ticketing/ticketdelete
+    @route POST api/ticketing/ticketdelete
     @desc delete all ticket from page
     @access Private
 */
-router.delete('/ticketingdeleteall', async (req, res) => {
+router.post('/ticketingdeleteall', async (req, res) => {
   try {
-    const { _id } = req.body;
-    const ticket = await ticketing.remove(_id);
-    if (!ticket) throw Error('ticketing queue is already empty');
-    res.json({
-      message: 'All ticketing is Deleted',
-      data: POST
+    let { _id, TicketStatus, TicketUpdateDescription } = req.body;
+    TicketStatus = TicketStatus.trim();
+    TicketUpdateDescription = TicketUpdateDescription.trim();
+    console.log('kek');
+
+    // change ticket description
+    const TicketDeleteAll = new Ticketing({
+      TicketStatus,
+      TicketUpdateDescription
     });
+
+    const update = await Ticketing.findByIDAndUpdate(
+      _id,
+      {
+        $set: req.body
+      },
+      { new: true, useFindandModify: false }
+    );
+    res.json({
+      message: 'Every Ticket Queue is deleted',
+      data: req.body,
+      TicketStatus: 'Cancelled',
+      TicketUpdateDescription:
+        'We apologize but we have to cancel your order due to unfortunate circumstances.'
+    });
+    if (!update) throw Error('Error when updating ticket description');
+
+    // delete all ticket
+    const deleteall = await Ticketing.deleteMany(_id);
+    if (!deleteall) throw Error('Ticket Queue is empty');
   } catch (err) {
     res.status(400).json({ msg: err });
   }
-  // check if ticketing exist (using ID)
 });
+
+//     if (!ticket) throw Error('Ticketing queue is already empty');
+//     res.json({
+//       message: 'Every Ticket has been deleted',
+//       data: POST
+//     });
+//   } catch (err) {
+//     res.status(400).json({ msg: err });
+//   }
+// });
 
 /*
   - confirm ticketing
@@ -132,10 +199,50 @@ router.delete('/ticketingdeleteall', async (req, res) => {
   @desc status is changed and order is made
 */
 
+router.post('/ticketingconfirm', async (req, res) => {
+  try {
+    let { _id, TicketStatus, TicketUpdateDescription } = req.body;
+    TicketStatus = TicketStatus.trim();
+    TicketUpdateDescription = TicketUpdateDescription.trim();
+    console.log('kek');
+
+    const confirm = new Ticketing({
+      TicketStatus,
+      TicketUpdateDescription
+    });
+
+    const update = await Ticketing.findByIDAndUpdate(
+      _id,
+      {
+        $set: req.body
+      },
+      { new: true, useFindandModify: false }
+    );
+    res.json({
+      message: 'Ticket Confirm',
+      data: req.body
+    });
+    if (!update) throw Error('Error when updating ticket description');
+  } catch (err) {
+    res.status(400).json({ msg: err });
+  }
+});
 /*
-  - update ticketing
+  - update ticketing 
   @route PATH api/ticketing/ticketupdate/{id}
   @desc description and status change
+
+try {
+  let {
+    _id,
+    TicketOwner,
+    TicketStatus,
+    TicketUpdateDescription,
+  } = req.body;
+        TicketOwner = TicketOwner.trim();
+        TicketStatus = TicketStatus.trim();
+      TicketUpdateDescription= TicketUpdateDescription.trim();
+}
 */
 
 module.exports = router;
