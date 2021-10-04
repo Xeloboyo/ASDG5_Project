@@ -6,6 +6,7 @@ const UserSchema = new Schema({
   Post_ID: Number,
   Post_Paragraph: String,
   Post_Edited: Boolean,
+  Post_Type: String,
   User_ID: Number,
 });
 

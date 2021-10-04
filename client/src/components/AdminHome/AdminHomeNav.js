@@ -14,7 +14,6 @@ import "./AdminHomeNav.css";
 function AdminHome() {
   return (
     <Navbar sticky="top" className="bg-dark py-2 flex-grow-1">
-      {/* <Container className="bg-dark px-5 mx-0 d-flex"> */}
       <LinkContainer to="/adminhomenav">
         <Navbar.Brand className="text-white">
           <img
@@ -57,7 +56,7 @@ function AdminHome() {
         </LinkContainer>
       </Nav>
       <Nav style={{ marginRight: "30px" }}>
-        <Navbar.Brand className="text">Login as Staff</Navbar.Brand>
+        <Navbar.Brand className="text">Login as Admin</Navbar.Brand>
         <LinkContainer to="/" className="float-right">
           <Button variant="light">Logout</Button>
         </LinkContainer>
@@ -67,4 +66,3 @@ function AdminHome() {
 }
 
 export default AdminHome;
-// Home, restaurants, reviews, community page, Login, Register

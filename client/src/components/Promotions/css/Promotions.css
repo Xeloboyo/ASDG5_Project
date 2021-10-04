@@ -9,3 +9,7 @@
 .promotions_table {
   width: 40% !important;
 }
+
+ul.b {
+  list-style-type: square;
+}
