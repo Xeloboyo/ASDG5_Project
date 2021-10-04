@@ -2,7 +2,8 @@ require('./config/db');
 
 const cors = require('cors');
 
-const app = require('express')();
+const app = require("express")(); 
+const mongoose = require("mongoose");
 
 const port = process.env.PORT || 5002;
 
@@ -31,6 +32,37 @@ const AnalyticsRouter = require('./api/analyticsActions');
 
 app.use('/dashboard/ticket', TicketRouter);
 app.use('/dashboard/analytics', AnalyticsRouter);
+app.use(cors());
+
+// ismail features
+require("./models/User");
+const UserSchemaCopy = require("./models/User");
+const Routes = require("./api/Register"); //
+
+app.use("/register", Routes);
+
+app.use("/post", UserRouter); 
+
+// const userSchema = new mongoose.Schema({
+//   User_Email: String,
+//   User_Password: String,
+// });
+
+// const User = new mongoose.model("User", userSchema);
+
+app.post("/login", (req, res) => {
+  console.log(req.body)
+  const { User_Email,  User_Password } = req.body;
+  UserSchemaCopy.findOne({ User_Email: User_Email }, (err, user) => {
+    if (user) {
+      if (User_Password === user.User_Password) {
+        res.json({ message: "login success", user: user });
+      } else {
+        res.json({ message: "wrong credentials" });
+      }
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
