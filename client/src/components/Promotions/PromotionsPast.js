@@ -3,7 +3,6 @@ import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
-import Dropdown from "react-bootstrap/esm/Dropdown";
 import { LinkContainer } from "react-router-bootstrap";
 import { withRouter } from "react-router";
 
@@ -21,22 +20,25 @@ class PromotionsPast extends Component {
     };
   }
 
+  // Change all promotions post
   onChangeAll_promotions(e) {
     this.setState({
       All_promotions: e.target.value,
     });
   }
 
+  // Validatate if delete is successful
   onChangeSuccessCommunityPost(e) {
     this.setState({
       SuccessCommunityPost: e.target.value,
     });
   }
 
+  // Delete promotions
   handleClick = async (e) => {
     console.log(e);
 
-    const newTodo = {
+    const promotionsPost = {
       _id: e, // change to actual userID later
     };
 
@@ -47,7 +49,7 @@ class PromotionsPast extends Component {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(newTodo),
+        body: JSON.stringify(promotionsPost),
       }
     );
     const jsonData = await response.json();
@@ -68,15 +70,14 @@ class PromotionsPast extends Component {
     }
   };
 
+  // Get all past promotions post before page loads
   async componentDidMount() {
     try {
       const response = await fetch(
         "http://localhost:5002/promotions/promotionspast",
         {
           method: "GET",
-          headers: {
-            //jwtToken: localStorage.jwtToken,
-          },
+          headers: {},
         }
       );
       const jsonData = await response.json();
@@ -123,7 +124,7 @@ class PromotionsPast extends Component {
                         <div>
                           <h2>{e.Promotions_Title}</h2>
                           <p>
-                            <small>Username : {e.User_ID}</small>
+                            <small>User ID : {e.User_ID}</small>
                           </p>
                           <p>{e.Promotions_Description}</p>
                           <ul class="b">
@@ -137,7 +138,6 @@ class PromotionsPast extends Component {
                               <p>Emptyu</p>
                             )}
                           </ul>
-                          {/* map in map */}
                         </div>
                         <table className="edit_table">
                           <tr>

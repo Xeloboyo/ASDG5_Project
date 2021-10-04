@@ -25,30 +25,36 @@ export default class CommunityPageEdit extends Component {
     };
   }
 
+  // Set all post
   onChangeAll_postEdit(e) {
     this.setState({
       All_postEdit: e.target.value,
     });
   }
+
+  // Set post to delete
   onChangeDeleteCommunityPost(e) {
     e.preventDefault();
   }
 
+  // Set post to edit
   onEditCommunityPost = async (e) => {
     e.preventDefault();
   };
 
+  // Set success for deleting community post
   onChangeSuccessCommunityPost(e) {
     this.setState({
       SuccessCommunityPost: e.target.value,
     });
   }
 
+  // Deleting post from database
   handleClick = async (e) => {
     console.log(e);
 
     const newTodo = {
-      _id: e, // change to actual userID later
+      _id: e,
     };
 
     const response = await fetch("http://localhost:5002/post/deletepost/", {
@@ -61,6 +67,7 @@ export default class CommunityPageEdit extends Component {
     const jsonData = await response.json();
     console.log(`${jsonData.message}`);
 
+    // Message back from database to see it was successful
     if (jsonData.status == "SUCCESS") {
       this.setState({ SuccessCommunityPost: jsonData });
       console.log(`${jsonData.message}`);
@@ -75,6 +82,7 @@ export default class CommunityPageEdit extends Component {
     }
   };
 
+  // Get the all post before page loads
   async componentDidMount() {
     const UserID = { UserID: "1234" };
     console.log("apple");
@@ -154,7 +162,6 @@ export default class CommunityPageEdit extends Component {
                                 <td>
                                   <LinkContainer
                                     to={`/communitypageedits/${e._id}`}
-                                    // add a + "_id" to the end of this
                                     className="edit_button"
                                     name="buttonContainer"
                                   >
@@ -243,5 +250,3 @@ export default class CommunityPageEdit extends Component {
     );
   }
 }
-
-//export default CommunityPageEdit;

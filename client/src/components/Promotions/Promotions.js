@@ -29,43 +29,49 @@ export default class Promotions extends Component {
       Promotions_Title: "",
       Promotions_Categories: "",
       Promotions_Description: "",
-      Promotions_Object_List: ["bat", "baseball", "shoes", "cap"], // replcae with real list
+      Promotions_Object_List: ["Harrys Cafe", "KFC", "La Piazza", "Holy basil"], // replcae with real list
       Promotions_Object: [],
       ErrorCommunityPost: "",
       SuccessCommunityPost: "",
     };
   }
 
+  // Set success for creating promtoions post
   onChangeSuccessCommunityPost(e) {
     this.setState({
       SuccessCommunityPost: e.target.value,
     });
   }
 
+  // Set error for creating promtoions post
   onChangeErrorCommunityPost(e) {
     this.setState({
       ErrorCommunityPost: e.target.value,
     });
   }
 
+  // Set promotions title
   onChangePromotions_Title(e) {
     this.setState({
       Promotions_Title: e.target.value,
     });
   }
 
+  // Set promotions categories
   onChangePromotions_Categories(e) {
     this.setState({
       Promotions_Categories: e.target.value,
     });
   }
 
+  // Set promotions description
   onChangePromotions_Description(e) {
     this.setState({
       Promotions_Description: e.target.value,
     });
   }
 
+  // Set checkbox to be removed into new array
   onChangePromotions_Object_List(event) {
     console.log(event.target.value);
     console.log(this.state.Promotions_Object);
@@ -75,21 +81,21 @@ export default class Promotions extends Component {
           event.target.value
         ),
       });
-      console.log("bana");
     } else {
       const newList = this.state.Promotions_Object.filter(
         (p) => p !== event.target.defaultValue
       );
       console.log(event);
       this.setState({ Promotions_Object: newList });
-      console.log("apple");
     }
   }
 
+  // clear promotions form
   handleClick = async (e) => {
     window.location.reload();
   };
 
+  // Submit a new promotions to the database
   onSubmit = async (e) => {
     e.preventDefault();
     console.log(this.state.Promotions_Object);
@@ -102,7 +108,7 @@ export default class Promotions extends Component {
       Promotions_Categories: this.state.Promotions_Categories,
       Promotions_Description: this.state.Promotions_Description,
       Promotions_Object: this.state.Promotions_Object,
-      User_ID: "3222", // replace with admin userID
+      User_ID: "6158811e44c3c679ec5c295f", // replace with admin userID
     };
 
     const response = await fetch("http://localhost:5002/promotions/", {
@@ -137,7 +143,6 @@ export default class Promotions extends Component {
       Promotions_Title: "",
       Promotions_Categories: "",
       Promotions_Description: "",
-      // Promotions_Object: [],
     });
   };
   render() {
@@ -234,8 +239,6 @@ export default class Promotions extends Component {
                   <Button
                     variant="outline-primary"
                     onClick={() => this.handleClick()}
-                    // type="reset"
-                    // defaultValue="Reset"
                   >
                     Delete
                   </Button>{" "}
@@ -254,5 +257,3 @@ export default class Promotions extends Component {
     );
   }
 }
-
-//export default Promotions;

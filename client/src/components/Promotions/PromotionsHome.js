@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Container from "react-bootstrap/esm/Container";
 import "./css/PromotionsHome.css";
 
-//style={sectionStyle} fluid
 export default class PromotionsHome extends Component {
   constructor(props) {
     super(props);
@@ -13,20 +12,22 @@ export default class PromotionsHome extends Component {
       All_post: [{}],
     };
   }
+
+  // Set the latest promotions post
   onChangeAll_post(e) {
     this.setState({
       All_post: e.target.value,
     });
   }
+
+  // Get latest promotions post before page loads
   async componentDidMount() {
     try {
       const response = await fetch(
         "http://localhost:5002/promotions/promotionshome",
         {
           method: "GET",
-          headers: {
-            //jwtToken: localStorage.jwtToken,
-          },
+          headers: {},
         }
       );
       const jsonData = await response.json();
@@ -40,7 +41,6 @@ export default class PromotionsHome extends Component {
 
   render() {
     const All_post = this.state.All_post;
-    // console.log(`${All_post.Promotions_Title}`);
     return (
       <div className="bg-dark text-white">
         <Container className="PromotionsHomeTitle">
@@ -57,7 +57,7 @@ export default class PromotionsHome extends Component {
                     return <li>{e}</li>;
                   })
                 ) : (
-                  <p>Emptyu</p>
+                  <p>No Post</p>
                 )}
               </ul>
             </div>
@@ -67,5 +67,3 @@ export default class PromotionsHome extends Component {
     );
   }
 }
-
-//export default PromotionsHome;

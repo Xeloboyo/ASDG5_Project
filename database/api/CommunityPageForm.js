@@ -10,7 +10,7 @@ const router = express.Router();
 // mongodb user model
 const PostCommunity = require("../models/PostCommunity");
 
-//  Comunity post
+//  Create omunity post
 router.post("/communitypageform", (req, res) => {
   let {
     Post_Community_Title,
@@ -20,7 +20,7 @@ router.post("/communitypageform", (req, res) => {
     User_ID,
   } = req.body;
 
-  console.log("ffff"); // testing line
+  // Checking if input is empty
   if (
     Post_Community_Title == "" ||
     Post_Community_Category == "" ||
@@ -31,8 +31,6 @@ router.post("/communitypageform", (req, res) => {
       message: "Empty input fields!",
     });
   } else {
-    // Checking if user already exists
-
     const NewPostCommunity = new PostCommunity({
       Post_Community_Title,
       Post_Community_Category,
@@ -59,7 +57,7 @@ router.post("/communitypageform", (req, res) => {
   }
 });
 
-// get a post by id (replace :id)
+// Get a post by id
 router.post("/getone", async (req, res) => {
   try {
     let { PostID } = req.body;
@@ -81,11 +79,10 @@ router.post("/getone", async (req, res) => {
   }
 });
 
-// get a user's post
+// Get one user's post
 router.post("/getuserpost", async (req, res) => {
   try {
     let { UserID } = req.body;
-    // let { UserID } = "1234";
     console.log(UserID);
     const post = await PostCommunity.find({ User_ID: UserID });
     if (!post.length) {
@@ -105,7 +102,7 @@ router.post("/getuserpost", async (req, res) => {
   }
 });
 
-// search function
+// Search community post
 router.post("/getsearch", async (req, res) => {
   try {
     let { search } = req.body;
@@ -126,7 +123,7 @@ router.post("/getsearch", async (req, res) => {
   }
 });
 
-// get category post
+// Get community post by category
 router.post("/getcategory", async (req, res) => {
   try {
     let { search } = req.body;
@@ -143,7 +140,7 @@ router.post("/getcategory", async (req, res) => {
   }
 });
 
-// Delete a post
+// Delete a community post
 router.post("/deletepost", async (req, res) => {
   try {
     let { _id } = req.body;
@@ -163,9 +160,8 @@ router.post("/deletepost", async (req, res) => {
   }
 });
 
-//  Update a post
+//  Update a community post
 router.put("/communitypageedits", async (req, res) => {
-  console.log("ffjjff");
   try {
     let {
       PostID,
@@ -177,7 +173,7 @@ router.put("/communitypageedits", async (req, res) => {
     } = req.body;
     console.log(req.body);
 
-    console.log("ffj2jff"); // testing line
+    // Checking if input is empty
     if (
       Post_Community_Title == "" ||
       Post_Community_Category == "" ||
@@ -188,8 +184,6 @@ router.put("/communitypageedits", async (req, res) => {
         message: "Empty input fields!",
       });
     } else {
-      // Checking if user already exists
-
       const UpdatePostCommunity = PostCommunity({
         Post_Community_Title,
         Post_Community_Category,
@@ -197,7 +191,6 @@ router.put("/communitypageedits", async (req, res) => {
         Post_Edited,
         User_ID,
       });
-      console.log("aple");
       const post = await PostCommunity.findByIdAndUpdate(
         PostID,
         {
@@ -219,7 +212,7 @@ router.put("/communitypageedits", async (req, res) => {
   }
 });
 
-// get all post
+// Get all community post
 router.get("/", async (req, res) => {
   try {
     const posts = await PostCommunity.find();

@@ -36,42 +36,50 @@ class CommunityPageEdits extends Component {
       All_post: [{}],
     };
   }
+
+  // Set all post
   onChangeAll_post(e) {
     this.setState({
       All_post: e.target.value,
     });
   }
 
+  // Set success for updating community post
   onChangeSuccessCommunityPost(e) {
     this.setState({
       SuccessCommunityPost: e.target.value,
     });
   }
 
+  // Set error for updating community post
   onChangeErrorCommunityPost(e) {
     this.setState({
       ErrorCommunityPost: e.target.value,
     });
   }
 
+  // Set community post title
   onChangePost_Community_Title(e) {
     this.setState({
       Post_Community_Title: e.target.value,
     });
   }
 
+  // Set community post category
   onChangePost_Community_Category(e) {
     this.setState({
       Post_Community_Category: e.target.value,
     });
   }
 
+  // Set community post paragraph
   onChangePost_Paragraph(e) {
     this.setState({
       Post_Paragraph: e.target.value,
     });
   }
 
+  // Submit a update post to the database
   onSubmit = async (e) => {
     e.preventDefault();
 
@@ -80,7 +88,6 @@ class CommunityPageEdits extends Component {
     console.log(`Todo Priority: ${this.state.Post_Paragraph}`);
     console.log(`Todo Completed: ${this.state.Post_Edited}`);
 
-    // const postId = { PostID: this.props.match.params.id };
     const newTodo = {
       PostID: this.props.match.params.id,
       Post_Community_Title: this.state.Post_Community_Title,
@@ -103,6 +110,7 @@ class CommunityPageEdits extends Component {
     const jsonData = await response.json();
     console.log(`${jsonData.message}`);
 
+    // Message back from database to see it was successful
     if (jsonData.status == "FAILED") {
       this.setState({ ErrorCommunityPost: jsonData });
       console.log(`${jsonData.message}`);
@@ -122,6 +130,7 @@ class CommunityPageEdits extends Component {
     }
   };
 
+  // Get the editting post before page loads
   async componentWillMount() {
     const postId = { PostID: this.props.match.params.id }; // get post not id
     console.log(this.props.match.params.id);
@@ -143,8 +152,6 @@ class CommunityPageEdits extends Component {
           this.state.All_post.data.Post_Community_Category,
         Post_Paragraph: this.state.All_post.data.Post_Paragraph,
       });
-
-      // console.log(`${jsonData.data.Post_Community_Title}`);
     } catch (err) {
       console.error(err.message);
     }
@@ -189,10 +196,8 @@ class CommunityPageEdits extends Component {
                   <Form.Control
                     type="text"
                     placeholder="Enter Title"
-                    // defaultValue={All_post.data.Post_Community_Title || ""}
                     value={this.state.Post_Community_Title}
                     onChange={this.onChangePost_Community_Title}
-                    // value={}
                   />
                 </Form.Group>
 

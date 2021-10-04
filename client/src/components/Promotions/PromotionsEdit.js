@@ -29,7 +29,7 @@ class PromotionsEdit extends Component {
       Promotions_Title: "",
       Promotions_Categories: "",
       Promotions_Description: "",
-      Promotions_Object_List: ["bat", "baseball", "shoes", "cap"], // replcae with real list
+      Promotions_Object_List: ["Harrys Cafe", "KFC", "La Piazza", "Holy basil"], // replcae with real list
       Promotions_Object: [],
       Temp_Promotions_Object: [],
       ErrorCommunityPost: "",
@@ -38,42 +38,49 @@ class PromotionsEdit extends Component {
     };
   }
 
+  // Set promotions post
   onChangeAll_post(e) {
     this.setState({
       All_post: e.target.value,
     });
   }
 
+  // Set success for updating promotions post
   onChangeSuccessCommunityPost(e) {
     this.setState({
       SuccessCommunityPost: e.target.value,
     });
   }
 
+  // Set error for updating promtoions post
   onChangeErrorCommunityPost(e) {
     this.setState({
       ErrorCommunityPost: e.target.value,
     });
   }
 
+  // Set promotions title
   onChangePromotions_Title(e) {
     this.setState({
       Promotions_Title: e.target.value,
     });
   }
 
+  // Set promotions categories
   onChangePromotions_Categories(e) {
     this.setState({
       Promotions_Categories: e.target.value,
     });
   }
 
+  // Set promotions description
   onChangePromotions_Description(e) {
     this.setState({
       Promotions_Description: e.target.value,
     });
   }
 
+  // Set checkbox to be removed into new array
   onChangePromotions_Object_List(event) {
     console.log(event.target.value);
     if (event.target.checked) {
@@ -82,7 +89,6 @@ class PromotionsEdit extends Component {
           event.target.value
         ),
       });
-      console.log("bana");
     } else {
       const newList = this.state.Promotions_Object.filter(
         (p) => p !== event.target.defaultValue
@@ -93,14 +99,15 @@ class PromotionsEdit extends Component {
     }
   }
 
+  // Submit an update to the database
   onSubmit = async (e) => {
     e.preventDefault();
     console.log(this.state.Promotions_Object);
     console.log(`Form submitted:`);
-    console.log(`Todo Description: ${this.state.Promotions_Title}`);
-    console.log(`Todo Priority: ${this.state.Promotions_Description}`);
-    console.log(`Todo Priority: ${this.state.Promotions_Categories}`);
-    console.log(`Todo Priority: ${this.state.Promotions_Object}`);
+    console.log(`Title: ${this.state.Promotions_Title}`);
+    console.log(`Description: ${this.state.Promotions_Description}`);
+    console.log(`Category: ${this.state.Promotions_Categories}`);
+    console.log(`Object: ${this.state.Promotions_Object}`);
 
     const newPromotions = {
       PostID: this.props.match.params.id,
@@ -108,7 +115,7 @@ class PromotionsEdit extends Component {
       Promotions_Categories: this.state.Promotions_Categories,
       Promotions_Description: this.state.Promotions_Description,
       Promotions_Object: this.state.Promotions_Object,
-      User_ID: "3222", // replace with admin userID
+      User_ID: "6158811e44c3c679ec5c295f", // replace with admin userID
     };
 
     const response = await fetch(
@@ -143,8 +150,9 @@ class PromotionsEdit extends Component {
     }
   };
 
+  // Get promotions post before page loads
   async componentWillMount() {
-    const postId = { PostID: this.props.match.params.id }; // get post not id
+    const postId = { PostID: this.props.match.params.id };
     console.log(this.props.match.params.id);
 
     try {
@@ -164,8 +172,6 @@ class PromotionsEdit extends Component {
         Promotions_Description: this.state.All_post.data.Promotions_Description,
         Promotions_Object: this.state.All_post.data.Promotions_Object,
       });
-
-      // console.log(`${jsonData.data.Post_Community_Title}`);
     } catch (err) {
       console.error(err.message);
     }

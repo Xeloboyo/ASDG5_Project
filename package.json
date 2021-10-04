@@ -11,8 +11,8 @@
     "startDatabase": "cd database && npm i",
     "startClient": "cd client && npm i",
     "e2e": "cypress run",
-    "start-server": "concurrently \"cd client\" \"npm wait-on http://localhost:3000\"",
-    "test": "cypress open",
+    "start-server": "concurrently \"cd client && npm start wait-on http://localhost:3000\" \"nodemon database/Server.js\"",
+    "test": "./node_modules/.bin/cypress run",
     "ci": "start-server-and-test start http://localhost:3000 test"
   },
   "license": "MIT",

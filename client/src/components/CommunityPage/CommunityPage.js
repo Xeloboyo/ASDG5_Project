@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import Dropdown from "react-bootstrap/esm/Dropdown";
 import { LinkContainer } from "react-router-bootstrap";
@@ -19,12 +18,14 @@ export default class CommunityPage extends Component {
       All_post: [{}],
     };
   }
+  // Set all post
   onChangeAll_post(e) {
     this.setState({
       All_post: e.target.value,
     });
   }
 
+  // set search category
   onChangeCategory_Downdrop = async (e, eventKey) => {
     console.log(`l`);
 
@@ -34,13 +35,12 @@ export default class CommunityPage extends Component {
     console.log(select);
   };
 
+  // Get the all post before page loads
   async componentDidMount() {
     try {
       const response = await fetch("http://localhost:5002/post/", {
         method: "GET",
-        headers: {
-          //jwtToken: localStorage.jwtToken,
-        },
+        headers: {},
       });
       const jsonData = await response.json();
 
@@ -48,7 +48,7 @@ export default class CommunityPage extends Component {
     } catch (err) {
       console.error(err.message);
     }
-    console.log(`${this.state.All_post[1].Post_Community_Title}`);
+    // console.log(`${this.state.All_post[1].Post_Community_Title}`);
   }
 
   render() {
@@ -110,7 +110,7 @@ export default class CommunityPage extends Component {
                         <div>
                           <h2>{e.Post_Community_Title}</h2>
                           <p>
-                            <small>Username</small>
+                            <small>Username: {e.User_ID}</small>
                           </p>
                           <hr />
                           <p>
@@ -125,7 +125,6 @@ export default class CommunityPage extends Component {
                             <p></p>
                           )}
                         </div>
-                        {/* <Button variant="outline-success">Like</Button>{" "} */}
                       </div>
                     </td>
                   </tr>
@@ -138,63 +137,3 @@ export default class CommunityPage extends Component {
     );
   }
 }
-
-// export default CommunityPage;
-// {/* {this.state.All_post.map((favourRequests) => (
-//               <tr>
-//                 <td>{favourRequests.favourrequest_date}</td>
-//                 <td>{favourRequests.user_name}</td>
-//                 <td>{favourRequests.title}</td>
-//                 <td>{favourRequests.favour_description}</td>
-//                 <td>{favourRequests.rewards}</td>
-//               </tr>
-//             ))} */}
-//             {/* {this.renderItem()} */}
-//             <div>
-//               {/* {Object.keys(All_post).map((e, ee) => {
-//                 //console.log(this.state.All_post[d]);
-//                 return <p>Coffee type {e[ee]} in a size.</p>;
-//                 // return All_post[0].Post_Community_Category;
-//               })} */}
-//               {/* {Object.keys(All_post[0]).map((e) => {
-//                 //console.log(this.state.All_post[d]);
-//                 return <p>Coffee type {e} in a size.</p>;
-//                 // return All_post[0].Post_Community_Category;
-//               })} */}
-//               {/* {Object.entries(All_post).map(([key, val], i) => {
-//                 return (
-//                   <p key={i}>
-//                     {key}: {val}
-//                   </p>
-//                 );
-//               })} */}
-//               {/* {Object.values(All_post).map((e) => {
-//                 //console.log(this.state.All_post[d]);
-//                 return (
-//                   <p>
-//                     Coffewwe type {e.Post_Community_Title}{" "}
-//                     {e.Post_Community_Category}in a size.
-//                   </p>
-//                 );
-//                 // return All_post[0].Post_Community_Category;
-//               })} */}
-//                <div>
-
-// useEffect (() => {getFavourRequest();
-// }, []);
-// renderItem() {
-//   const { All_post } = this.state.All_post;
-//   console.log(`${this.state.All_post}`);
-//   console.log(`lll`);
-//   // const All_post = {
-//   //   All_post: this.All_post,
-//   // };
-//   return (
-//     <div>
-//       {Object.entries(All_post).map(function (d, i) {
-//         //return <li key={i}>{All_post[0]}</li>;
-//         return <p key={i}>{d[0]}</p>;
-//       })}
-//     </div>
-//   );
-// }

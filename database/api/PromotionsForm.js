@@ -9,7 +9,7 @@ const router = express.Router();
 
 const Promotions = require("../models/Promotions");
 
-//  Promotions post
+//  Create Promotions post
 router.post("/", (req, res) => {
   let {
     Promotions_Title,
@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
     User_ID,
   } = req.body;
 
-  console.log("kkkk"); // testing line
+  // Checking if input is empty
   if (
     Promotions_Title == "" ||
     Promotions_Categories == "" ||
@@ -31,8 +31,6 @@ router.post("/", (req, res) => {
       message: "Empty input fields!",
     });
   } else {
-    // Checking if user already exists
-
     const NewPromotions = new Promotions({
       Promotions_Title,
       Promotions_Categories,
@@ -59,7 +57,7 @@ router.post("/", (req, res) => {
   }
 });
 
-// get all promotions
+// Get all promotions
 router.get("/promotionspast", async (req, res) => {
   try {
     const posts = await Promotions.find();
@@ -74,7 +72,7 @@ router.get("/promotionspast", async (req, res) => {
   }
 });
 
-// get latetess promotions
+// Get most recent promotions
 router.get("/promotionshome", async (req, res) => {
   try {
     const posts = await Promotions.findOne()
@@ -91,7 +89,7 @@ router.get("/promotionshome", async (req, res) => {
   }
 });
 
-// get a promotions by id (replace :id)
+// Get a promotions by id
 router.post("/getones", async (req, res) => {
   try {
     let { PostID } = req.body;
@@ -113,7 +111,7 @@ router.post("/getones", async (req, res) => {
   }
 });
 
-// search function
+// Search Post in database
 router.post("/getsearch", async (req, res) => {
   try {
     let { search } = req.body;
@@ -129,13 +127,12 @@ router.post("/getsearch", async (req, res) => {
       message: "Gotten",
       data: post,
     });
-    // res.status(200).json(post);
   } catch (err) {
     res.status(400).json({ mesg: err });
   }
 });
 
-// get category promtoions
+// Get promtoions by category
 router.post("/getcategory", async (req, res) => {
   try {
     let { search } = req.body;
@@ -147,13 +144,12 @@ router.post("/getcategory", async (req, res) => {
       message: "Gotten",
       data: post,
     });
-    // res.status(200).json(post);
   } catch (err) {
     res.status(400).json({ mesg: err });
   }
 });
 
-// Delete a post
+// Delete a promotions
 router.post("/deletepost", async (req, res) => {
   try {
     let { _id } = req.body;
@@ -164,7 +160,6 @@ router.post("/deletepost", async (req, res) => {
       message: "Deleted Post!",
       data: post,
     });
-    // res.status(200).json({ success: true });
   } catch (err) {
     res.json({
       message: err,
@@ -173,7 +168,7 @@ router.post("/deletepost", async (req, res) => {
   }
 });
 
-//  Update a post
+// Update a promtoions
 router.put("/promotionsupdate", async (req, res) => {
   try {
     let {
@@ -185,7 +180,7 @@ router.put("/promotionsupdate", async (req, res) => {
       User_ID,
     } = req.body;
 
-    console.log("kkkk"); // testing line
+    // Checking if input is empty
     if (
       Promotions_Title == "" ||
       Promotions_Categories == "" ||
@@ -197,8 +192,6 @@ router.put("/promotionsupdate", async (req, res) => {
         message: "Empty input fields!",
       });
     } else {
-      // Checking if user already exists
-
       const UpdatePromotions = new Promotions({
         Promotions_Title,
         Promotions_Categories,
@@ -226,8 +219,6 @@ router.put("/promotionsupdate", async (req, res) => {
           data: req.body,
         });
       }
-      // if (!post) throw Error("Something went wrong while updating the post");
-      // res.status(200).json({ success: true });
     }
   } catch (err) {
     res.status(400).json({ msg: err });

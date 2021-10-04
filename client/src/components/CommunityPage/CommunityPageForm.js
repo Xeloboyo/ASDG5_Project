@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -33,50 +32,56 @@ export default class CommunityPageForm extends Component {
     };
   }
 
+  // Set success for creating community post
   onChangeSuccessCommunityPost(e) {
     this.setState({
       SuccessCommunityPost: e.target.value,
     });
   }
 
+  // Set serror for creating community post
   onChangeErrorCommunityPost(e) {
     this.setState({
       ErrorCommunityPost: e.target.value,
     });
   }
 
+  // Set community post title
   onChangePost_Community_Title(e) {
     this.setState({
       Post_Community_Title: e.target.value,
     });
   }
 
+  // Set community post category
   onChangePost_Community_Category(e) {
     this.setState({
       Post_Community_Category: e.target.value,
     });
   }
 
+  // Set community post paragraph
   onChangePost_Paragraph(e) {
     this.setState({
       Post_Paragraph: e.target.value,
     });
   }
 
+  // Submit a create post to the database
   onSubmit = async (e) => {
     e.preventDefault();
 
     console.log(`Form submitted:`);
-    console.log(`Todo Description: ${this.state.Post_Community_Title}`);
-    console.log(`Todo Priority: ${this.state.Post_Paragraph}`);
-    console.log(`Todo Completed: ${this.state.Post_Edited}`);
+    console.log(`Description: ${this.state.Post_Community_Title}`);
+    console.log(`Paragraph: ${this.state.Post_Paragraph}`);
+    console.log(`Edited: ${this.state.Post_Edited}`);
 
-    const newTodo = {
+    const newPost = {
       Post_Community_Title: this.state.Post_Community_Title,
       Post_Community_Category: this.state.Post_Community_Category,
       Post_Paragraph: this.state.Post_Paragraph,
       Post_Edited: this.state.Post_Edited,
-      User_ID: "1234",
+      User_ID: "1234", // replace with user name
     };
 
     const response = await fetch(
@@ -86,12 +91,13 @@ export default class CommunityPageForm extends Component {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(newTodo),
+        body: JSON.stringify(newPost),
       }
     );
     const jsonData = await response.json();
     console.log(`${jsonData.message}`);
 
+    // Message back from database to see it was successful
     if (jsonData.status == "FAILED") {
       this.setState({ ErrorCommunityPost: jsonData });
       console.log(`${jsonData.message}`);
@@ -198,5 +204,3 @@ export default class CommunityPageForm extends Component {
     );
   }
 }
-
-//export default CommunityPageForm;
