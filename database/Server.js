@@ -37,7 +37,7 @@ app.use('/dashboard/analytics', AnalyticsRouter);
 
 // ismail features
 require('./models/User');
-const UserSchemaCopy = require('./models/User');
+// const UserSchemaCopy = require('./models/User');
 const Routes = require('./api/Register'); //
 
 app.use('/register', Routes);
