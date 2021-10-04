@@ -35,11 +35,6 @@ steps:
     displayName: "Run cypress tests"
     continueOnError: true
 
-  # - task: CopyFiles@2
-  #     script: |
-  #       npm run ci
-  #   displayName: "npm"
-
   # - task: CmdLine@2
   #     script: |
   #       npm run ci
