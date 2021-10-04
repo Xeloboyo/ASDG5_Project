@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = require('express')();
 const mongoose = require('mongoose');
 
-// const port = process.env.PORT || 5002;
+const port = process.env.PORT || 5002;
 
 // For accepting post form data
 // eslint-disable-next-line import/order
@@ -62,6 +62,8 @@ app.use('/register', Routes);
 //     }
 //   });
 // });
+
+app.use(cors());
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

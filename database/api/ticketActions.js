@@ -1,65 +1,100 @@
 /*
-    Lists of API for Ticket:
-    - Get all Ticket from Takeaway
-    - Add Ticket (using id)
-    - Cancel Ticket (using id)
-    - Cancel All Tickets
+    Lists of API for ticketing:
+    - Show All ticket
+    - Add ticket
+    - Cancel ticket
+    - Cancel All ticket
+    - Confirm ticket
+    - Update ticket 
 */
 
-const express = require('express');
+const express = require('express').Router();
 
-const router = express.Router();
+// const router = express.Router();
 
-const Ticket = require('../models/Ticket');
+const ticketing = require('../models/Ticket');
 
 /*
-    - get all ticket from takeaway
-    @route GET api/tickets
-    @desc Get All Tickets
-    @access Public
+    - Get All ticketing (from Payment)
+    @route GET api/ticketing/
+    @desc Get All ticketing
+    @access Private
 */
-router.get('/', async (req, res) => {
-  try {
-    const tickets = await Ticket.find();
-    if (!tickets) throw Error('No Tickets');
-    console.log(tickets);
-  } catch (err) {
-    res.status(400).json({ msg: err });
-  }
-  // Ticket.find().then((ticket) => res.json(ticket));
+router.post('/', (req, res) => {
+  ticketing
+    .find()
+    .then((ticketAction) => res.json(ticketAction))
+    .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
 /*
-    - add ticket and show it to the page
-    @route POST api/tickets
-    @desc add ticket to page
-    @access Public
+    - Add ticketing
+    @route POST api/ticketing/
+    @desc add ticket
+    @access Private
 */
-router.post('/ticketadd', async (req, res) => {
-  try {
-    const ticket = await Ticket.find();
-    if (!ticket) throw Error('No Tickets');
-    res.status(200).json(ticket);
-  } catch (err) {
+router.post('/', (req, res) => {
+  let {
+    UserID,
+    ReservationID,
+    OrderID,
+    TakeawayID,
+    TicketOwner,
+    TicketOrderDescription,
+    TicketStatus,
+    TicketUpdate
+  } = req.body();
+
+  UserID = UserID.trim();
+  ReservationID = ReservationID.trim();
+  OrderID = OrderID.trim();
+  TakeawayID = TakeawayID.trim();
+  TicketOwner = TicketOwner.trim();
+  TicketOrderDescription = TicketOrderDescription.trim();
+  TicketStatus = TicketStatus.trim();
+  TicketUpdate = TicketUpdate.trim();
+
+  if ( OrderID = '' || RestaurantID = '' ) {
     res.json({
-      status: 'FAILED',
-      message: 'An error occurred while trying to create new ticket'
+      status: "FAILED",
+      message: "Reservation is not created".
     });
-    console.log(err);
-  }
-});
+
+    let NewTicket = new ticketing({
+      TicketOwner,
+      TicketOrderDescription,
+      TicketStatus,
+      TicketUpdate
+    });
+
+    NewTicket.save()
+    .then((result) =? {
+      res.json({
+        status: "SUCCESS"
+        message: "New Ticket is created",
+        data: result
+      });
+    })
+    .catch(err) => {
+      res.json({
+        status: "FAILED",
+        message: "idk lmao"
+      });
+      console.log(err);
+    }};
+  });
 
 /*
-    - cancel ticket
-    @route DELETE api/ticket
+    - cancel ticketing
+    @route DELETE api/ticketing/ticketdelete/{id}
     @desc delete ticket from page
-    @access public
+    @access Private
 */
-router.delete('/ticketdelete', async (req, res) => {
+router.delete('/ticketingdelete', async (req, res) => {
   try {
     const { _id } = req.body;
-    const ticket = await Ticket.findByIdandDelete(_id);
-    if (!ticket) throw Error('No ticket found from the id');
+    const ticket = await ticketing.findByIdandDelete(_id);
+    if (!ticket) throw Error('No ticketing found from the id');
     res.json({
       message: 'Ticket is Deleted',
       data: POST
@@ -67,28 +102,40 @@ router.delete('/ticketdelete', async (req, res) => {
   } catch (err) {
     res.status(400).json({ msg: err });
   }
-  // check if ticket exist (using ID)
+  // check if ticketing exist (using ID)
 });
 
 /*
-    - cancel ALL tickets
-    @route DELETE api/ticket
+    - cancel ALL ticketings
+    @route DELETE api/ticketing/ticketdelete
     @desc delete all ticket from page
-    @access public
+    @access Private
 */
-router.delete('/ticketdeleteall', async (req, res) => {
+router.delete('/ticketingdeleteall', async (req, res) => {
   try {
     const { _id } = req.body;
-    const ticket = await Ticket.remove(_id);
-    if (!ticket) throw Error('Ticket queue is already empty');
+    const ticket = await ticketing.remove(_id);
+    if (!ticket) throw Error('ticketing queue is already empty');
     res.json({
-      message: 'All Ticket is Deleted',
+      message: 'All ticketing is Deleted',
       data: POST
     });
   } catch (err) {
     res.status(400).json({ msg: err });
   }
-  // check if ticket exist (using ID)
+  // check if ticketing exist (using ID)
 });
+
+/*
+  - confirm ticketing
+  @route PATCH api/ticketing/ticketupdate/{id}
+  @desc status is changed and order is made
+*/
+
+/*
+  - update ticketing
+  @route PATH api/ticketing/ticketupdate/{id}
+  @desc description and status change
+*/
 
 module.exports = router;
