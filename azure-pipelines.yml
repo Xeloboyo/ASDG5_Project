@@ -30,10 +30,10 @@ steps:
       npm run start-server
     displayName: "run server"
 
-   - script: |
-       ./node_modules/.bin/cypress run --browser chrome
-     displayName: 'Run cypress tests'
-     continueOnError: true
+  - script: |
+      ./node_modules/.bin/cypress run --browser chrome
+    displayName: "Run cypress tests"
+    continueOnError: true
 
   # - task: CopyFiles@2
   #     script: |
