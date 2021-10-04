@@ -2,6 +2,7 @@
   "name": "database",
   "version": "1.0.0",
   "main": "index.js",
+  "proxy": "http://localhost:5002",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client-install": "npm install --prefix client",
@@ -17,10 +18,10 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongodb": "^4.1.0",
-    "mongoose": "^5.13.5",
+    "mongoose": "^5.13.9",
     "node": "^16.6.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.13"
   }
 }
