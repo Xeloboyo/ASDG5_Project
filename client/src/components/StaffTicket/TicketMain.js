@@ -6,6 +6,7 @@ import { FaCheckCircle, FaTimesCircle, FaMotorcycle } from 'react-icons/fa';
 import { GiTabletopPlayers } from 'react-icons/gi';
 import { Container, Row, Col } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
+import { uniqueNamesGenerator, Config, names } from 'unique-names-generator';
 
 /* 
   create 2 Ticket Designs, using if statement to determine whether
@@ -110,6 +111,13 @@ function TicketMain() {
 }
 
 export default TicketMain;
+
+
+const config: Config = {
+  dictionaries: [names]
+};
+
+const characterName: string = uniqueNamesGenerator(config); // random name
 
 // old
 /*
