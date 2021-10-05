@@ -47,6 +47,12 @@ const TicketSchema = new Schema(
     //   type: String
     // },
 
+    TicketOrderQuantity: {
+      type: Number,
+      required: true,
+      default: ''
+    },
+
     TicketOrderDescription: {
       type: String,
       required: true,

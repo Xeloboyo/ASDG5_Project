@@ -57,9 +57,10 @@ router.post('/', (req, res) => {
     // TicketOrderDescription,
     TicketOwner,
     // TicketOrder,
-    TicketOrderDescription
+    TicketOrderQuantity,
+    TicketOrderDescription,
     TicketStatus,
-    TicketUpdateDescription
+    TicketUpdateDescription,
   } = req.body;
 
   console.log('kek');
@@ -75,6 +76,7 @@ router.post('/', (req, res) => {
       // TicketTimeReceived,
       // TicketOrderDescription,
       TicketOwner,
+      TicketOrderQuantity,
       TicketOrderDescription,
       TicketStatus,
       TicketUpdateDescription
