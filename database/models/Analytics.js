@@ -3,40 +3,74 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 // create TicketSchema
-const AnalyticsSchema = new Schema({
-  Analytics_PageViewsNum: {
-    type: Number
-  },
+const AnalyticsSchema = new Schema(
+  {
+    OrderID: {
+      // foreign_key
+      type: Number
+    },
 
-  Analytics_ShareNum: {
-    type: Number
-  },
+    PromotionID: {
+      // foreign_key
+      type: Number
+    },
 
-  Analytics_RatingsNum: {
-    type: Number
-  },
+    SubscriptionID: {
+      // foreign_key
+      type: Number
+    },
 
-  Analytics_Popularity: {
-    type: Number
-  },
+    AnalyticsView: {
+      // view toggle
+      type: Boolean,
+      default: false // if not subscribe
+    },
 
-  Analytics_Profit: {
-    type: Number
-  },
+    AnalyticsPageViewsNum: {
+      type: Number
+    },
 
-  Analytics_Date: {
-    // get this from v-calendar
-    type: Date
-  },
+    AnalyticsShareNum: {
+      type: Number
+    },
 
-  Order_ID: {
-    type: Number
-  },
+    AnalyticsRatingsNum: {
+      type: Number
+    },
 
-  Promotion_ID: {
-    type: Number
+    AnalyticsBookingsNum: {
+      type: Number
+    },
+
+    AnalyticsBookingAvg: {
+      type: String
+    },
+
+    AnalyticsTakeawayNum: {
+      type: Number
+    },
+
+    AnalyticsTakeawayAvg: {
+      type: String
+    },
+
+    // AnalyticsPopularity: {
+    //   type: Number
+    // },
+
+    AnalyticsTakeawayProfit: {
+      type: Number
+    },
+
+    AnalyticsFilter: {
+      type: Date,
+      default: ''
+    }
+  },
+  {
+    timestamps: true
   }
-});
+);
 
 const Analytics = mongoose.model('Analytics', AnalyticsSchema);
 module.exports = Analytics;

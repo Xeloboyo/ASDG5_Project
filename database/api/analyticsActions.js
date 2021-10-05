@@ -1,18 +1,18 @@
 /*
     REST API Analytics Actions:
-    - get analytics
 
-    show analytics for: (using date)
-    - revenue
-    - page view
-    - share number
-    - ratings
+    - get analytics -> restaurant id
+    - "create" analytics when restaurant is made
+    - "show" the analytics when restaurant subscribe
+    - stop showing analytics if user stop subscribing
+    - filter data based on date
 
-    update the analytics: (using date)
-    - revenue
-    - page view
-    - share number
-    - ratings
+    each one needs to render:
+    1. count: share, views, ratings, takeaway, bookings
+    2. average: day and hours of booking, day and hours of reservations 
+    // popularity
+    3. total: takeaway
+    4. filter: date ( to change all the value above )
 
 */
 
@@ -21,41 +21,43 @@ const express = require('express');
 const router = express.Router();
 
 const Analytics = require('../models/Analytics');
+const Subscribe = require('../models/Subscribe');
 
 /*
     - get analytics
-    @route GET api/analytics
+    @route GET api/analytics/analytics/{id}
     @desc get analytics data
-    @access public
+    @access private
 
 */
-router.get('/', async (req, res) => {
-  try {
-    const { _id } = req.body;
-    const analytics = await Analytics.find(_id);
-    // const analytics = await Analytics.find();
-    if (!analytics) throw Error('No data available');
-    console.log(analytics);
-  } catch (err) {
-    res.status(400).json({ msg: err });
-    // Analytics.find().then((analytics) => res.json(analytics));
-  }
-});
+
+/*
+    - create analytics
+    @route POST api/analytics/analytics/{id}
+    @desc create analytics data based on restaurant
+    @access private
+
+*/
 
 /*
     - show the analytics
-    @route POST api/analytics
-    @desc show analytics from page
-    revenue, page views number, share number , ratings number
-    @access public
+    @route POST api/analytics/analyticsshow/{id}
+    @desc show restaurant analytics based on restaurant id
+    @access private
 */
 
 /*
-    - update the analytics
-    @route PATCH api/ticket
-    @desc update analytics
-    revenue, page views number, share number , ratings number
-    @access public
+    - stop showing analytics
+    @route PATCH api/analytics/analyticsstop/{id}
+    @desc stop showing analytics when restaurant stop subscribing
+    @access private
+*/
+
+/*
+    - filter analytics (based on date)
+    @route PATCH api/analytics/analytics/analyticsfilter/{id}
+    @desc filter restaurant analytics based on date
+    @access private
 */
 
 module.exports = router;

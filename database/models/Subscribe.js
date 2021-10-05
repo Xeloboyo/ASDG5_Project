@@ -4,33 +4,38 @@ const { Schema } = mongoose.Schema;
 
 // create Subscribe schema
 const SubscribeSchema = new Schema({
-  Subscription_ID: {
-    type: String
+  RestaurantID: {
+    // foreign_key
+    type: Number
   },
 
-  Restaurant_ID: {
-    type: String
+  PaymentID: {
+    // foreign_key
+    type: Number
   },
 
-  Payment_ID: {
-    type: String
+  SubscriptionOptions: {z
+    type: String,
+    default: ''
+    // monthly or yearly
   },
 
-  Subscription_Options: {
-    type: String
+  SubscriptionStartDate: {
+    type: Date.now(),
+    default: ''
   },
 
-  Subscription_Start: {
-    type: String
+  SubscriptionEndDate: {
+    type: Date,
+    default: ''
   },
 
-  Subscription_End: {
-    type: String
-  },
-
-  Subscription_Trial: {
-    type: String
+  SubscriptionTrial: {
+    type: Boolean,
+    default: false
   }
 });
 
+const Subscribe = mongoose.model('Subscribe', SubscribeSchema);
+module.exports = Subscribe;
 // module.exports = Subscribe = mongoose.model('subscribe', SubscribeSchema);

@@ -44,34 +44,37 @@ router.post('/', (req, res) => {
     UserID,
     ReservationID,
     OrderID,
-    TakeawayID,
-    TicketOwner,
+    PaymentID,
+    TicketDateReceived,
+    TicketTimeReceived,
     TicketOrderDescription,
     TicketStatus,
-    TicketUpdate
+    TicketUpdateDescription
   } = req.body;
 
   UserID = UserID.trim();
   ReservationID = ReservationID.trim();
   OrderID = OrderID.trim();
-  TakeawayID = TakeawayID.trim();
-  TicketOwner = TicketOwner.trim();
+  PaymentID = PaymentID.trim();
+  TicketDateReceived = TicketDateReceived.trim();
+  TicketTimeReceived = TicketTimeReceived.trim();
   TicketOrderDescription = TicketOrderDescription.trim();
   TicketStatus = TicketStatus.trim();
-  TicketUpdate = TicketUpdate.trim();
+  TicketUpdateDescription = TicketUpdateDescription.trim();
   console.log('kek');
 
-  if (OrderID == '' || RestaurantID == '') {
+  if (UserID = '' || OrderID == '' || RestaurantID == '') {
     res.json({
       status: 'FAILED',
-      message: 'Reservation is not created'
+      message: 'Reservation is not yet created'
     });
   } else {
     const NewTicket = new Ticketing({
-      TicketOwner,
+      TicketDateReceived,
+      TicketTimeReceived,
       TicketOrderDescription,
       TicketStatus,
-      TicketUpdate
+      TicketUpdateDescription
     });
 
     NewTicket.save()

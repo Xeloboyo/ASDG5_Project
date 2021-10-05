@@ -26,6 +26,7 @@ const TicketSchema = new Schema(
     },
 
     TicketOwner: {
+      // ????
       type: String,
       default: ''
     },
@@ -46,12 +47,6 @@ const TicketSchema = new Schema(
     //   type: String,
     //   required: true,
     //   default: ''
-    // },
-
-    // TicketDuration: {
-    //   type: Number,
-    //   required: true,
-    //   default: '15' // minutes
     // },
 
     TicketStatus: {
