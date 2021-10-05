@@ -13,6 +13,10 @@ const UserRouter = require("./api/CommunityPageForm");
 
 const Routes = require("./api/Register"); //
 
+const Route = require("./api/Login"); //
+
+// const RouteDelete = require("./api/Delete"); 
+
 const cors = require("cors"); //
 const UserSchemaCopy = require("./models/User");
 
@@ -31,10 +35,16 @@ app.use(bodyParser());
 
 app.use(cors());
 
-app.use("/register", Routes);
+app.use("/register", Routes);//
 
 app.use("/post", UserRouter); 
 
+app.delete("/delete", Route);
+
+
+
+
+//login user
 app.post("/login", (req, res) => {
   console.log(req.body)
   const { User_Email,  User_Password } = req.body;
@@ -48,6 +58,22 @@ app.post("/login", (req, res) => {
     }
   });
 });
+
+//delete user
+app.delete("/delete", (req, res) => {
+  console.log(req.body)
+  const { User_Email } = req.body;
+  UserSchemaCopy.findOne({ User_Email: User_Email }, (err, user) => {
+    if (user) {
+      if (User_Email === user.User_Email) {
+        res.json({ message: "deleted", user: user });
+      } else {
+        res.json({ message: "error" });
+      }
+    }
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
