@@ -15,18 +15,16 @@ router.route('/').get((req, res) => {
 // create a menu
 router.post('/createmenu', (req, res) =>{
     // get input from body request
-    let {Menu_Product_ID, Menu_Product_Name, 
-        Menu_Product_Description, Menu_Product_Price} = req.body;
+    let { Restaurant_Name, Menu_Product_Name, Menu_Product_Description, Menu_Product_Price} = req.body;
 
-    // tirm off white spaces
-    Menu_Product_ID = Menu_Product_ID.trim();
-    Menu_Product_Name = Menu_Product_Name.trim();
-    Menu_Product_Description = Menu_Product_Description.trim();
-    Menu_Product_Price = Menu_Product_Price.trim();
+    // tirm off white spaces - this can be done in the schema
+    //Menu_Product_Name = Menu_Product_Name.trim();
+    //Menu_Product_Description = Menu_Product_Description.trim();
+    //Menu_Product_Price = Menu_Product_Price.trim();
 
     // check if fields are empty
     if ( 
-        Menu_Product_ID == "" ||
+        Restaurant_Name == "" ||
         Menu_Product_Name == "" ||
         Menu_Product_Description == "" ||
         Menu_Product_Price == ""
@@ -38,7 +36,7 @@ router.post('/createmenu', (req, res) =>{
     } else {
         // create a new menu
         const NewMenu = new Menu({
-            Menu_Product_ID,
+            Restaurant_Name,
             Menu_Product_Name,
             Menu_Product_Description,
             Menu_Product_Price
@@ -48,7 +46,7 @@ router.post('/createmenu', (req, res) =>{
         NewMenu.save().then((result) => {
                 res.json({
                 status: "SUCCESS",
-                message: "Successfully Added Restaurant",
+                message: "Successfully Added Menu",
                 data: result,
             });
         })
@@ -80,7 +78,7 @@ router.route('/:id').delete((req, res) =>{
 router.route('/update/:id').post((req, res) => {
     Menu.findById(req.params.id)
         .then(menu => {
-            menu.Menu_Product_ID = req.body.Menu_Product_ID;
+            menu.Restaurant_Name = req.body.Restaurant_Name;
             menu.Menu_Product_Name = req.body.Menu_Product_Name;
             menu.Menu_Product_Description = req.body.Menu_Product_Description;
             menu.Menu_Product_Price = req.body.Menu_Product_Price;

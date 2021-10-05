@@ -101,6 +101,7 @@ router.route('/update/:id').post((req, res) => {
                 .catch(err => res.status(400).json('Error: ' + err));
         })
         .catch(err => res.status(400).json('Error: '+ err)); 
+        console.log("it didnt update");
 });
 
 

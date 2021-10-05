@@ -2,6 +2,7 @@ import "./App.css";
 import React, { Component, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // navbar
 import NavigationBar from "./components/NavigationBar";

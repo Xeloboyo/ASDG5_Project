@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const MenuSchema = new Schema({
     // menu data
-    Menu_Product_ID: Number, 
+    Restaurant_Name: String,
     Menu_Product_Name: String,
     Menu_Product_Description: String,
     Menu_Product_Price: Number,
