@@ -30,6 +30,8 @@ import MenuEdit from './Component/Menu/MenuEdit';
 import MenuAdd from './Component/Menu/MenuAdd';
 import Reviews from './Component/Reviews/ReviewsPage';
 
+import ReservationAdd from './Component/Reservations/ReservationAdd';
+
 require('dotenv').config();
 
 
@@ -118,6 +120,9 @@ class App extends Component {
             </Route>
             <Route path="/reviews">
               <Reviews />
+            </Route>
+            <Route path="/addReservation/:params">
+              <ReservationAdd />
             </Route>
             <Route path="/">
               <Homepage />

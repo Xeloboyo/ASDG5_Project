@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import { LinkContainer } from 'react-router-bootstrap';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import './Restaurant.css';
 
@@ -48,10 +49,11 @@ function Restaurant() {
                 <Nav.Link>Menu</Nav.Link>
               </LinkContainer>
             </th>
-            <th>Book Here</th>
+            <th><Link to={`/addReservation`}>Book Here</Link></th>
           </tr>
         </table>
       </Container>
+      
     </Container>
   );
 }
