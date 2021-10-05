@@ -119,38 +119,38 @@ class App extends Component {
             </Route>
             <Route path="/menu">
               <NavigationBar />
-              <Footer />
               <Menu />
+              <Footer />
             </Route>
             <Route path="/menuadd">
               <NavigationBar />
-              <Footer />
               <MenuAdd />
+              <Footer />
             </Route>
             <Route path="/menuedit">
               <NavigationBar />
-              <Footer />
               <MenuEdit />
+              <Footer />
             </Route>
             <Route path="/restaurant">
               <NavigationBar />
-              <Footer />
               <Restaurant />
+              <Footer />
             </Route>
             <Route path="/restaurantdetails">
               <NavigationBar />
-              <Footer />
               <RestaurantDetails />
+              <Footer />
             </Route>
             <Route path="/restaurantadd">
               <NavigationBar />
-              <Footer />
               <RestaurantAdd />
+              <Footer />
             </Route>
             <Route path="/restaurantedit">
               <NavigationBar />
-              <Footer />
               <RestaurantEdit />
+              <Footer />
             </Route>
             <Route path="/reviews">
               <NavigationBar />
