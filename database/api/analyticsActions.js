@@ -5,7 +5,7 @@
     - "create" analytics when restaurant is made
     - "show" the analytics when restaurant subscribe
     - stop showing analytics if user stop subscribing
-    - filter data based on date
+    - filter database based on date
 
     each one needs to render:
     1. count: share, views, ratings, takeaway, bookings
@@ -20,8 +20,8 @@ const express = require('express');
 
 const router = express.Router();
 
-const Analytics = require('../models/Analytics');
-const Subscribe = require('../models/Subscribe');
+// const Analytics = require('../models/Analytics');
+// const Subscribe = require('../models/Subscribe');
 
 /*
     - get analytics

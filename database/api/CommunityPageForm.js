@@ -2,7 +2,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable prefer-template */
 /* eslint-disable eqeqeq */
-/* eslint-disable camelcase */
+/* eslint-disable camelcase */  
 const express = require("express");
 
 const router = express.Router();

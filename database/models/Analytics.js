@@ -5,26 +5,46 @@ const { Schema } = mongoose;
 // create TicketSchema
 const AnalyticsSchema = new Schema(
   {
-    OrderID: {
-      // foreign_key
-      type: Number
-    },
-
-    PromotionID: {
-      // foreign_key
-      type: Number
-    },
-
     SubscriptionID: {
       // foreign_key
       type: Number
     },
 
-    AnalyticsView: {
-      // view toggle
-      type: Boolean,
-      default: false // if not subscribe
+    RestaurantID: {
+      // foreign_key
+      type: Number
     },
+
+    // OrderID: {
+    //   // foreign_key
+    //   type: Number
+    // },
+
+    // PromotionID: {
+    //   // foreign_key
+    //   type: Number
+    // },
+
+    // PaymentID: {
+    //   // foreign_key
+    //   type: Number
+    // },
+
+    // ReservationID: {
+    //   // foreign_key
+    //   type: Number
+    // },
+
+    // TakeawayID: {
+    //   // foreign_key
+    //   type: Number
+    // },
+
+    // AnalyticsView: {
+    //   // view toggle
+    //   type: Boolean,
+    //   default: false // if not subscribe
+    // },
 
     AnalyticsPageViewsNum: {
       type: Number
@@ -42,12 +62,12 @@ const AnalyticsSchema = new Schema(
       type: Number
     },
 
-    AnalyticsBookingAvg: {
-      type: String
-    },
-
     AnalyticsTakeawayNum: {
       type: Number
+    },
+
+    AnalyticsBookingAvg: {
+      type: String
     },
 
     AnalyticsTakeawayAvg: {

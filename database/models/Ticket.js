@@ -14,7 +14,6 @@ const TicketSchema = new Schema(
       // foreign_key
       type: Number
     },
-
     OrderID: {
       // foreign_key
       type: Number

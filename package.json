@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "ASD Assignment Group 5 2021 - Project <Something>",
   "main": "index.js",
-  "proxy": "http://localhost:5002",
   "scripts": {
     "lint": "eslint --fix main.js",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
   },
   "license": "MIT",
   "devDependencies": {

@@ -28,11 +28,11 @@ app.use('/post', CommunityPostRouter);
 require('./models/Ticket');
 require('./models/Analytics');
 
-const TicketRouter = require('./api/ticketActions');
-const AnalyticsRouter = require('./api/analyticsActions');
+const TicketRouter = require('./api/TicketActions');
+const AnalyticsRouter = require('./api/AnalyticsActions');
 
-app.use('/dashboard/ticket', TicketRouter);
-app.use('/dashboard/analytics', AnalyticsRouter);
+app.use('/ticket', TicketRouter);
+app.use('/analytics', AnalyticsRouter);
 // app.use(cors());
 
 // ismail features

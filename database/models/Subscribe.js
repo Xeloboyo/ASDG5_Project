@@ -4,6 +4,8 @@ const { Schema } = mongoose.Schema;
 
 // create Subscribe schema
 const SubscribeSchema = new Schema({
+  // analytics
+
   RestaurantID: {
     // foreign_key
     type: Number
@@ -14,14 +16,15 @@ const SubscribeSchema = new Schema({
     type: Number
   },
 
-  SubscriptionOptions: {z
+  SubscriptionOptions: {
+    // none, show no analytics
+    // monthly or yearly
     type: String,
     default: ''
-    // monthly or yearly
   },
 
   SubscriptionStartDate: {
-    type: Date.now(),
+    type: Date,
     default: ''
   },
 
