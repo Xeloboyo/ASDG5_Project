@@ -6,7 +6,7 @@ import { FaCheckCircle, FaTimesCircle, FaMotorcycle } from 'react-icons/fa';
 import { GiTabletopPlayers } from 'react-icons/gi';
 import { Container, Row, Col } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
-import { uniqueNamesGenerator, Config, names } from 'unique-names-generator';
+import { uniqueNamesGenerator, NumberDictionary, names, adjectives, animals } from 'unique-names-generator';
 
 /* 
   create 2 Ticket Designs, using if statement to determine whether
@@ -17,8 +17,25 @@ import { uniqueNamesGenerator, Config, names } from 'unique-names-generator';
     page allows cancel all, will show warning
 */
 
-function TicketMain() {
-  // need to make the flexbox grid responsive
+/* typescript
+  const config: Config = {
+    dictionaries: [names]
+    const characterName: string = uniqueNamesGenerator(config);
+};
+*/
+
+function TicketMain(data) {
+  console.log(data)
+
+  const {
+    UserID,
+    ReservationID,
+    OrderID,
+    PaymentID,
+    TicketStatus,
+    TicketOwner
+    TicketUpdateDescription
+  } = data.data[0]
 
   return (
     <div>
@@ -49,7 +66,7 @@ function TicketMain() {
               </Col>
               <Col>
                 {/* username */}
-                <span style={{ fontSize: '18px' }}>User Name</span> <br />
+                <span style={{ fontSize: '18px' }}> ${randomName} </span> <br />
                 {/* order ID */}
                 <span style={{ color: 'grey' }}>#Order ID</span>
               </Col>
@@ -61,12 +78,16 @@ function TicketMain() {
             <Row>
               <Col sm={3}>
                 {/* order quantity */}
-                12 x
+                <span>
+                  ${randomQuantity} x
+                </span>
               </Col>
 
               <Col sm={9}>
                 {/* items description */}
-                Fish and Chips
+                <span>
+                  ${RandomFood}
+                </span>
               </Col>
             </Row>
           </Card.Body>
@@ -110,14 +131,38 @@ function TicketMain() {
   );
 }
 
+// using uniqueNamesGenerator to Generate random names within the npm package database
+
+const randomName = uniqueNamesGenerator({ 
+  // database contains 4900 unique names
+
+  dictionaries: [names], 
+  length: 2, 
+  style: 'capital',
+  separator: ' '
+  // output random names with format: First Last
+}); 
+
+const randomQuantity = uniqueNamesGenerator({ 
+  // database generate random number from 1 - 999 by default
+  
+  dictionaries: [NumberDictionary], 
+  length: 2
+   // output random number from: 1 - 99 
+  }); 
+
+const randomFood = uniqueNamesGenerator({
+  // database generate random adjectives and animals
+
+  dictionaries: [adjectives, animals],
+  length: 2,
+  style: 'capital',
+  separator: ' '
+  // output Adjectives Animals
+});
+
+
 export default TicketMain;
-
-
-const config: Config = {
-  dictionaries: [names]
-};
-
-const characterName: string = uniqueNamesGenerator(config); // random name
 
 // old
 /*
