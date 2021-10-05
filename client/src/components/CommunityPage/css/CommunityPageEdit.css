@@ -30,9 +30,15 @@
   outline-style: double;
   outline-width: thin;
   display: 100%;
-  padding: 15px 40px 35px 15px;
+  padding: 3rem !important;
+  /* padding: 15px 40px 35px 15px; */
   height: fit-content;
   width: 100%;
+}
+
+#tableCommunitypages {
+  border-collapse: separate;
+  border-spacing: 2rem !important;
 }
 
 .edit_button {
@@ -40,5 +46,14 @@
 }
 
 .edit_table {
-  width: 15% !important;
+  width: 18% !important;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgb(65, 71, 67);
+  margin: 1em 0;
+  padding: 0;
 }

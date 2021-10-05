@@ -3,12 +3,23 @@
   "version": "1.0.0",
   "description": "ASD Assignment Group 5 2021 - Project <Something>",
   "main": "index.js",
+  "proxy": "http://localhost:5002",
   "scripts": {
     "lint": "eslint --fix main.js",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "server": "nodemon database/Server.js",
+    "start": "cd client && npm run build",
+    "starts": "cd client && npm start",
+    "startDatabase": "cd database && npm i",
+    "startClient": "cd client && npm i",
+    "e2e": "cypress run",
+    "start-server": "concurrently \"cd client && npm start wait-on http://localhost:3000\" \"nodemon database/Server.js\"",
+    "test": "./node_modules/.bin/cypress run",
+    "ci": "start-server-and-test starts http://localhost:3000 test"
   },
   "license": "MIT",
   "devDependencies": {
+    "cypress": "^8.5.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -17,6 +28,20 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "nodemon": "^2.0.13",
+    "start-server-and-test": "^1.14.0"
+  },
+  "dependencies": {
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "wait-on": "^6.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.8",
+    "passport": "^0.5.0",
+    "passport-jwt": "^4.0.0"
   }
 }

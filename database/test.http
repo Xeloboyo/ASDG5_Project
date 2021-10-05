@@ -1,0 +1,12 @@
+//mimic the front end of the application
+
+POST http://localhost:5002/register/form
+Content-Type: application/json
+
+{
+    "User_Name":"Ismail Swaiy",
+    "User_Dob":"08/11/1998",
+    "User_Email":"iswaiy98@gmail.com",
+    "User_Password":"password",
+    "User_Password2":"password"
+}
