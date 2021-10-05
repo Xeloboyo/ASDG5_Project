@@ -18,6 +18,9 @@ const PromotionsRouter = require("./api/PromotionsForm");
 
 const Routes = require("./api/Register"); //
 
+const ReviewRouter = require("./api/Review");
+const ReplyRouter = require("./api/Reply");
+
 const UserSchemaCopy = require("./models/User");
 
 // const userSchema = new mongoose.Schema({
@@ -41,6 +44,10 @@ app.use("/post", CommunityPostRouter);
 app.use(cors());
 
 app.use("/register", Routes);
+
+//Review and Reply
+app.use("/review", ReviewRouter);
+app.use("/reply", ReplyRouter);
 
 app.post("/login", (req, res) => {
   console.log(req.body);

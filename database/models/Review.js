@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
-const { ObjectId } = Schema.Types.ObjectId;
 
 const ReviewSchema = new Schema({
   Post_Review_Title: String,
   Post_Review_Rate: Number,
-  Post_ID: String,
+  Post_Review_Comment: String,
+  Post_Edited: Boolean,
+  User_ID: String,
   Venue_ID: String,
 });
 

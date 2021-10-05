@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
-const { ObjectId } = Schema.Types.ObjectId;
 
 const ReplySchema = new Schema({
-  Replying_to: ObjectId,
-  Post_ID: ObjectId,
+  Post_Reply_Comment: String,
+  Post_Edited: Boolean,
+  User_ID: String,
+  Replying_to: String,
 });
 
 const PostReply = mongoose.model("PostReply", ReplySchema);
