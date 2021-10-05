@@ -1,0 +1,59 @@
+.title {
+  padding: 15px;
+}
+.dropdown {
+  padding: 0px 0px 0px 15px;
+}
+
+.right {
+  text-align: right;
+}
+
+.tables {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 0px 50px 25px 0px;
+}
+
+.content {
+  display: flex;
+  padding: 15px 40px 35px 15px;
+  background: rgba(0, 128, 0, 0.1);
+  min-height: 500px;
+}
+
+.containers {
+  padding: 20px 0px 20px 0px;
+}
+
+.post {
+  outline-style: double;
+  outline-width: thin;
+  display: 100%;
+  padding: 3rem !important;
+  /* padding: 15px 40px 35px 15px; */
+  height: fit-content;
+  width: 100%;
+}
+
+#tableCommunitypages {
+  border-collapse: separate;
+  border-spacing: 2rem !important;
+}
+
+.edit_button {
+  padding: 6px 12px !important;
+}
+
+.edit_table {
+  width: 18% !important;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgb(65, 71, 67);
+  margin: 1em 0;
+  padding: 0;
+}

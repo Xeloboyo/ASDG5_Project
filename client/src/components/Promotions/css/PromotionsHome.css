@@ -1,0 +1,41 @@
+.PromotionsHomeBackground {
+  /* background-color: rgba(49, 85, 65, 0.2); */
+  background-color: whitesmoke;
+}
+.PromotionsHomeBackground2 {
+  background-color: rgba(49, 85, 65, 0.4);
+}
+
+.PromotionsHomeTitle {
+  text-align: left;
+}
+.smalltitle {
+  text-align: center;
+}
+
+h1 {
+  padding: 15px 70px 0px !important;
+  font-weight: bold !important;
+}
+
+h3 {
+  padding: 0px 70px 1px !important;
+}
+
+.containers {
+  padding: 15px 70px 1px;
+}
+
+.style {
+  max-width: inherit;
+  max-height: inherit;
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
+}
+#example1 {
+  background: url(promotions.jpeg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+}
