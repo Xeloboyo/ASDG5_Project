@@ -10,43 +10,48 @@ const TicketSchema = new Schema(
       type: Number
     },
 
-    ReservationID: {
-      // foreign_key
-      type: Number
-    },
+    // ReservationID: {
+    //   // foreign_key
+    //   type: Number
+    // },
+
     OrderID: {
       // foreign_key
       type: Number
     },
 
-    PaymentID: {
-      // foreign_key is associate with restaurant and user
-      type: Number
-    },
+    // PaymentID: {
+    //   // foreign_key is associate with restaurant and user
+    //   type: Number
+    // },
 
     TicketOwner: {
-      // ????
       type: String,
-      default: ''
+      default: '',
+      required: true
     },
 
     // TicketDateReceived: {
     //   type: String,
     //   required: true,
     //   default: Date.toLocaleDateString() // mm/dd/yyyy
-    // },
+    // }, CreatedBy
 
     // TicketTimeReceived: {
     //   type: String,
     //   required: true,
     //   default: Date().toLocaleTimeString() // hh:mm:ss
+    // }, CreatedBy
+
+    // TicketOrder: {
+    //   type: String
     // },
 
-    // TicketOrderDescription: {
-    //   type: String,
-    //   required: true,
-    //   default: ''
-    // },
+    TicketOrderDescription: {
+      type: String,
+      required: true,
+      default: ''
+    },
 
     TicketStatus: {
       type: String,
@@ -55,8 +60,7 @@ const TicketSchema = new Schema(
     },
 
     TicketUpdateDescription: {
-      type: String,
-      default: ''
+      type: String
       //   'We apologize but we have to cancel your order due to unfortunate circumstances.'
     }
   },

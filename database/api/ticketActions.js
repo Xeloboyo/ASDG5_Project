@@ -49,12 +49,15 @@ router.get('/', async (req, res) => {
 router.post('/', (req, res) => {
   let {
     UserID,
-    ReservationID,
+    // ReservationID,
     OrderID,
     // PaymentID,
     // TicketDateReceived,
     // TicketTimeReceived,
     // TicketOrderDescription,
+    TicketOwner,
+    // TicketOrder,
+    TicketOrderDescription
     TicketStatus,
     TicketUpdateDescription
   } = req.body;
@@ -71,6 +74,8 @@ router.post('/', (req, res) => {
       // TicketDateReceived,
       // TicketTimeReceived,
       // TicketOrderDescription,
+      TicketOwner,
+      TicketOrderDescription,
       TicketStatus,
       TicketUpdateDescription
     });
@@ -79,7 +84,7 @@ router.post('/', (req, res) => {
       .then((result) => {
         res.json({
           status: 'SUCCESS',
-          message: 'New Ticket is created',
+          message: 'New Ticket Order',
           data: result
         });
       })
@@ -196,55 +201,60 @@ router.post('/ticketdeleteall', async (req, res) => {
   } catch (err) {
     res.status(400).json({ msg: err });
   }
-});
+);
 
 /*
   - confirm ticketing
-  @route PATCH api/ticketing/ticketupdate/{id}
-  @desc status is changed and order is made
+  @route PATCH api/ticketing/ticketupdate/{d}
+  desc status is changed and order is made
 */
 
-router.post('/ticketconfirm/:_id', async (req, res) => {
+router.post('/ticketcomplete/:id', async (req, res) => {
   try {
-    let { _id, TicketStatus, TicketUpdateDescription } = req.body;
-    TicketStatus = TicketStatus.trim();
-    TicketUpdateDescription = TicketUpdateDescription.trim();
-    console.log('kek');
 
-    const confirm = new Ticketing({
-      TicketStatus,
-      TicketUpdateDescription
-    });
+    let { id } = req.params;
+    const update = await Ticketing.findByIDAndUpdate(id);
 
-    const update = await Ticketing.findByIDAndUpdate(_id);
+    // TicketStatus = TicketStatus.trim();
+    // TicketUpdateDescripion = TicketUpdateDescription.trim();
+   console.log('kek');
+
+    const complete = new Ticketing({
+      TicketStatus: 'Success',
+      TicketUpdateDescription: 'Order Finish'
+   });
+
     res.json({
-      message: 'Ticket Confirm',
-      data: req.body,
-      TicketStatus: 'Completed'
-    });
+      message: 'Order Finish and Ticket Sent',
+      // data: req.body,
+      Status: 'Completed',
+      TicketStatus: 'Success',
+      TicketUpdateDescription: 'Order Complete'
+   });
 
     if (!update) throw Error('Error when updating ticket description');
   } catch (err) {
-    res.status(400).json({ msg: err });
+   res.status(400).json({ msg: err });
   }
-});
+);
 
 /*
   - update ticketing 
   @route PATH api/ticketing/ticketupdate/{id}
-  @desc description and status change
-
-try {
-  let {
-    _id,
-    TicketOwner,
-    TicketStatus,
-    TicketUpdateDescription,
-  } = req.body;
-        TicketOwner = TicketOwner.trim();
-        TicketStatus = TicketStatus.trim();
-      TicketUpdateDescription= TicketUpdateDescription.trim();
-}
+ @desc description and status change
 */
+// router.post('/ticketupdate/:id', async (req, res) => {
+// try {
+//   let {
+//     _id,
+//     TicketOwner,
+//     TicketStatus,
+//     TicketUpdateDescription,
+//   } = req.body;
+//         TicketOwner = TicketOwner.trim();
+//         TicketStatus = TicketStatus.trim();
+//      TicketUpdateDescription= TicketUpdateDescription.trim();
+// }
+// /
 
 module.exports = router;
