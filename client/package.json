@@ -37,7 +37,6 @@
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress:open": "cypress open",
     "babel": "nodemon --exec ./node_modules/.bin/babel-node src/index.js",
     "babel-build": "babel src -d lib"
   },

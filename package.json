@@ -6,9 +6,14 @@
   "scripts": {
     "lint": "eslint --fix main.js",
     "format": "prettier -w .",
+    "cypress:open": "cypress open",
+    "dev-database": "concurrently \"cd ./database && npm run server\" \"cd ./database npm run client\"",
+    "dev-client": "concurrently \"cd ./client && npm start\"",
+    "dev": "concurrently \"npm start dev-client\" \"npm start dev-database\""
   },
   "license": "MIT",
   "devDependencies": {
+    "cypress": "^8.5.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
