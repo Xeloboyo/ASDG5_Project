@@ -28,26 +28,27 @@ Community Page | Lily
 
 
 ## Getting Started <a name = "getting_started"></a>
+  
+### Installing
 
 To install dependencies run `npm i`, `npm run startDatabase` and `npm run startClient`.
 
 See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-### Prerequisites
 
+### Running
 
 To run the front-end `npm run starts`
 
 To run the back-end `npm run server`
 
 To run the project `npm run start-server`.
+  
 
-### Installing
-
-`npm used and installed: `
-
-`pictures of working app`
 
 ## Usage <a name = "usage"></a>
 
-To use it, pray and wish it work, cheers.
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
