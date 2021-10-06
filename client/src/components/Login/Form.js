@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import FormSignup from './FormSignup';
 import FormSuccess from './FormSuccess';
+import axios from "axios";
 import './Form.css';
+
+
+
   
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -12,7 +16,7 @@ const Form = () => {
   return (
     <>
       <div className="form-container">
-        <span className="close-btn">×</span>
+        <span className="close-btn">×</span> {/* redirect back to homepage */}
         <div className="form-content-left">
           <img
             className="form-img"

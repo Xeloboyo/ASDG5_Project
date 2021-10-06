@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect, useState, withRouter } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -15,6 +15,7 @@ import CommunityPageEdit from "./components/CommunityPage/CommunityPageEdit";
 import CommunityPageEdits from "./components/CommunityPage/CommunityPageEdits";
 
 import Form from "./components/Login/Form";
+import Form2 from "./components/Login/Form2";
 import Login from "./components/Login/Login";
 
 import Promotions from "./components/Promotions/Promotions";
@@ -39,10 +40,10 @@ import Settings from "./components/Dashboard/Settings";
 import Profile from "./components/Dashboard/Profile";
 import Help from "./components/Dashboard/Help";
 
-// admin
 import AdminHomeNav from "./components/AdminHome/AdminHomeNav";
 import AdminHomePage from "./components/AdminHome/AdminHomePage";
 import HomepageBottom from "./components/Home/HomepageBottom";
+import FormSignupRestaurant from "./components/Login/FormSignUpRestaurant";
 
 require("dotenv").config();
 
@@ -90,7 +91,12 @@ class App extends Component {
               <CommunityPageForm />
               <Footer />
             </Route>
-            <Route path="/communitypageedits">
+            <Route
+              path="/communitypageedits/:id"
+              render={(props) => (
+                <CommunityPageEdits {...props} key={this.props.location.key} />
+              )}
+            >
               <NavigationBar />
               <CommunityPageEdits />
               <Footer />
@@ -104,7 +110,12 @@ class App extends Component {
               <AdminHomeNav />
               <PromotionsPast />
             </Route>
-            <Route path="/promotionsedit">
+            <Route
+              path="/promotionsedit/:id"
+              render={(props) => (
+                <PromotionsEdit {...props} key={this.props.location.key} />
+              )}
+            >
               <AdminHomeNav />
               <PromotionsEdit />
             </Route>
@@ -114,6 +125,10 @@ class App extends Component {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/restregister">
+              <Form2 />
+              <Form />
             </Route>
             <Route path="/register">
               <Form />

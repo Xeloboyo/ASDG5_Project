@@ -3,12 +3,14 @@ import useForm from "./useForm";
 import validate from "./valideInfo";
 import "./Form.css";
 
+
 const FormSignup = ({ submitForm }) => {
-  const { handleChange, values, handleSubmit, errors } = useForm(
+  const { handleChange, values, handleSubmit, errors, redirectRoute } = useForm(
     submitForm,
     validate
   );
-
+    values.User_Category = "user";
+    values.route = "/";
   return (
     <div className="form-content-right">
       <form onSubmit={handleSubmit} className="form" noValidate>
@@ -16,40 +18,22 @@ const FormSignup = ({ submitForm }) => {
           Get started with us today! Create your account by filling out the
           information below!
         </h1>
-        <div className="form-inputs">
-          <label htmlFor="UserType" className="form-label">
-            Who would you like to register as?
-          </label>
-          <select
-            class="dropdown"
-            id="username"
-            type="text"
-            name="username"
-            className="form-input"
-          >
-            <option value="customer">Customer</option>
-            <option value="staff">Restaurant Staff</option>
-            <option value="admin">Website Admin</option>
-            value={values.username}
-            onChange={handleChange}
-            {errors.username && <p>{errors.username}</p>}
-          </select>
-        </div>
+        
 
         <div className="form-inputs">
           <label htmlFor="username" className="form-label">
             Username
           </label>
           <input
-            id="username"
+            id="User_Name"
             type="text"
-            name="username"
+            name="User_Name"
             className="form-input"
             placeholder="Enter your username"
-            value={values.username}
+            value={useForm.User_Name}
             onChange={handleChange}
           />
-          {errors.username && <p>{errors.username}</p>}
+          {errors.User_Name && <p>{errors.User_Name}</p>}
         </div>
 
         <div className="form-inputs">
@@ -57,15 +41,15 @@ const FormSignup = ({ submitForm }) => {
             Email
           </label>
           <input
-            id="email"
+            id="User_Email"
             type="email"
-            name="email"
+            name="User_Email"
             className="form-input"
             placeholder="Enter your email"
-            value={values.email}
+            value={useForm.User_Email}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.User_Email && <p>{errors.User_Email}</p>}
         </div>
 
         <div className="form-inputs">
@@ -73,29 +57,29 @@ const FormSignup = ({ submitForm }) => {
             Password
           </label>
           <input
-            id="password"
+            id="User_Password"
             type="password"
-            name="password"
+            name="User_Password"
             className="form-input"
             placeholder="Enter your password"
-            value={values.password}
+            value={useForm.User_Password}
             onChange={handleChange}
           />
-          {errors.password && <p>{errors.password}</p>}
+          {errors.User_Password && <p>{errors.User_Password}</p>}
         </div>
 
         <div className="form-inputs">
           <label className="form-label">Confirm Password</label>
           <input
-            id="password2"
+            id="User_Password2"
             type="password"
-            name="password2"
+            name="User_Password2"
             className="form-input"
             placeholder="Confirm your password"
-            value={values.password2}
+            value={useForm.User_Password2}
             onChange={handleChange}
           />
-          {errors.password2 && <p>{errors.password2}</p>}
+          {errors.User_Password2 && <p>{errors.User_Password2}</p>}
         </div>
         <button className="form-input-btn" type="submit">
           Sign up
