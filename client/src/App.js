@@ -41,14 +41,14 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Analytics from './components/Analytics/Analytics';
 import StaffTicket from './components/StaffTicket/StaffTicket';
 
-import AdminHomeNav from "./components/AdminHome/AdminHomeNav";
-import AdminHomePage from "./components/AdminHome/AdminHomePage";
-import HomepageBottom from "./components/Home/HomepageBottom";
-import FormSignupRestaurant from "./components/Login/FormSignUpRestaurant";
-import Store from "./components/Reservations/Store";
+import AdminHomeNav from './components/AdminHome/AdminHomeNav';
+import AdminHomePage from './components/AdminHome/AdminHomePage';
+import HomepageBottom from './components/Home/HomepageBottom';
+import FormSignupRestaurant from './components/Login/FormSignUpRestaurant';
+import Store from './components/Reservations/Store';
 require('dotenv').config();
 
-require("dotenv").config();
+require('dotenv').config();
 
 class App extends Component {
   constructor() {
@@ -82,158 +82,158 @@ class App extends Component {
   render() {
     return (
       <Store>
-      <Router>
-        <Container className="mx-0 px-0" fluid>
-          <Switch>
-            <Route path="/communitypage">
-              <NavigationBar />
-              <CommunityPage />
-              <Footer />
-            </Route>
-            <Route path="/communitypageform">
-              <NavigationBar />
-              <CommunityPageForm />
-              <Footer />
-            </Route>
-            <Route
-              path="/communitypageedits/:id"
-              render={(props) => (
-                <CommunityPageEdits {...props} key={this.props.location.key} />
-              )}
-            >
-              <NavigationBar />
-              <CommunityPageEdits />
-              <Footer />
-            </Route>
-            <Route path="/communitypageedit">
-              <NavigationBar />
-              <CommunityPageEdit />
-              <Footer />
-            </Route>
-            <Route path="/promotionspast">
-              <AdminHomeNav />
-              <PromotionsPast />
-            </Route>
-            <Route
-              path="/promotionsedit/:id"
-              render={(props) => (
-                <PromotionsEdit {...props} key={this.props.location.key} />
-              )}
-            >
-              <AdminHomeNav />
-              <PromotionsEdit />
-            </Route>
-            <Route path="/promotions">
-              <AdminHomeNav />
-              <Promotions />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/restregister">
-              <Form2 />
-              <Form />
-            </Route>
-            <Route path="/register">
-              <Form />
-            </Route>
-            <Route path="/menu">
-              <NavigationBar />
-              <Menu />
-              <Footer />
-            </Route>
-            <Route path="/menuadd">
-              <NavigationBar />
-              <MenuAdd />
-              <Footer />
-            </Route>
-            <Route
-              path="/menuedit/:id"
-              render={(props) => (
-                <RestaurantEdit {...props} key={this.props.location.key} />
-              )}
-            >
-              <NavigationBar />
-              <MenuEdit />
-              <Footer />
-            </Route>
-            <Route path="/restaurant">
-              <NavigationBar />
-              <Restaurant />
-              <Footer />
-            </Route>
-            <Route path="/restaurantdetails">
-              <NavigationBar />
-              <RestaurantDetails />
-              <Footer />
-            </Route>
-            <Route path="/restaurantadd">
-              <NavigationBar />
-              <RestaurantAdd />
-              <Footer />
-            </Route>
-            <Route
-              path="/restaurantedit/:id"
-              render={(props) => (
-                <RestaurantEdit {...props} key={this.props.location.key} />
-              )}
-            >
-              <NavigationBar />
-              <RestaurantEdit />
-              <Footer />
-            </Route>
-            <Route path="/reviews">
-              <NavigationBar />
-              <Reviews />
-              <Footer />
-            </Route>
-            <Route
-              path="/ticket/:id"
-              render={(props) => (
-                <StaffTicket {...props} key={this.props.location.key} />
-              )}
-            >
-            
+        <Router>
+          <Container className="mx-0 px-0" fluid>
+            <Switch>
+              <Route path="/communitypage">
+                <NavigationBar />
+                <CommunityPage />
+                <Footer />
+              </Route>
+              <Route path="/communitypageform">
+                <NavigationBar />
+                <CommunityPageForm />
+                <Footer />
+              </Route>
+              <Route
+                path="/communitypageedits/:id"
+                render={(props) => (
+                  <CommunityPageEdits
+                    {...props}
+                    key={this.props.location.key}
+                  />
+                )}
+              >
+                <NavigationBar />
+                <CommunityPageEdits />
+                <Footer />
+              </Route>
+              <Route path="/communitypageedit">
+                <NavigationBar />
+                <CommunityPageEdit />
+                <Footer />
+              </Route>
+              <Route path="/promotionspast">
+                <AdminHomeNav />
+                <PromotionsPast />
+              </Route>
+              <Route
+                path="/promotionsedit/:id"
+                render={(props) => (
+                  <PromotionsEdit {...props} key={this.props.location.key} />
+                )}
+              >
+                <AdminHomeNav />
+                <PromotionsEdit />
+              </Route>
+              <Route path="/promotions">
+                <AdminHomeNav />
+                <Promotions />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/restregister">
+                <Form2 />
+                <Form />
+              </Route>
+              <Route path="/register">
+                <Form />
+              </Route>
+              <Route path="/menu">
+                <NavigationBar />
+                <Menu />
+                <Footer />
+              </Route>
+              <Route path="/menuadd">
+                <NavigationBar />
+                <MenuAdd />
+                <Footer />
+              </Route>
+              <Route
+                path="/menuedit/:id"
+                render={(props) => (
+                  <RestaurantEdit {...props} key={this.props.location.key} />
+                )}
+              >
+                <NavigationBar />
+                <MenuEdit />
+                <Footer />
+              </Route>
+              <Route path="/restaurant">
+                <NavigationBar />
+                <Restaurant />
+                <Footer />
+              </Route>
+              <Route path="/restaurantdetails">
+                <NavigationBar />
+                <RestaurantDetails />
+                <Footer />
+              </Route>
+              <Route path="/restaurantadd">
+                <NavigationBar />
+                <RestaurantAdd />
+                <Footer />
+              </Route>
+              <Route
+                path="/restaurantedit/:id"
+                render={(props) => (
+                  <RestaurantEdit {...props} key={this.props.location.key} />
+                )}
+              >
+                <NavigationBar />
+                <RestaurantEdit />
+                <Footer />
+              </Route>
+              <Route path="/reviews">
+                <NavigationBar />
+                <Reviews />
+                <Footer />
+              </Route>
+
               <Route path="/addReservation/:params">
-                
-                  <NavigationBar />
-                  <ReservationAdd />
-                  <Footer />
-                
+                <NavigationBar />
+                <ReservationAdd />
+                <Footer />
               </Route>
               <Route path="/viewReservation">
                 <NavigationBar />
-                <ReservationView/>
+                <ReservationView />
                 <Footer />
               </Route>
-             <Route path="/dashboard/ticket">
-              <Dashboard />
-              <StaffTicket />
-            </Route>
-            <Route
-              path="/analytics/:id"
-              render={(props) => (
-                <Analytics {...props} key={this.props.location.key} />
-              )}
-            >
-              <Dashboard />
-              <Analytics />
-            </Route>
-            <Route path="/adminhomenav">
-              <AdminHomeNav />
-              <AdminHomePage />
-              <PromotionsHome />
-            </Route>
-            <Route path="/">
-              <NavigationBar />
-              <Homepage />
-              <PromotionsHome />
-              <HomepageBottom />
-              <Footer />
-            </Route>
-          </Switch>
-        </Container>
-      </Router>
+              <Route
+                path="/ticket/:id"
+                render={(props) => (
+                  <StaffTicket {...props} key={this.props.location.key} />
+                )}
+              >
+                <Dashboard />
+                <StaffTicket />
+              </Route>
+              <Route
+                path="/analytics/:id"
+                render={(props) => (
+                  <Analytics {...props} key={this.props.location.key} />
+                )}
+              >
+                <Dashboard />
+                <Analytics />
+              </Route>
+              <Route path="/adminhomenav">
+                <AdminHomeNav />
+                <AdminHomePage />
+                <PromotionsHome />
+              </Route>
+              <Route path="/">
+                <NavigationBar />
+                <Homepage />
+                <PromotionsHome />
+                <HomepageBottom />
+                <Footer />
+              </Route>
+            </Switch>
+          </Container>
+        </Router>
       </Store>
     );
   }
