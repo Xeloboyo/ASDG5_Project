@@ -42,7 +42,7 @@ To run the front-end `npm run starts`
 
 To run the back-end `npm run server`
 
-To run the project `npm run start-server`.
+To run the both front-end and back-end `npm run start-server`.
   
 
 
