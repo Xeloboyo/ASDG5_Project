@@ -22,6 +22,10 @@ function ReservationView() {
         posts = <p>Something went wrong: <span>{state.error}</span></p>;
     }
 
+    const deleteThis = (id) =>{
+        dispatch({type: 'REMOVE_POST', payload: id});
+    }
+
     if (!state.error && state.posts) {
         posts = state.posts.map(post => {
             return (
@@ -35,6 +39,7 @@ function ReservationView() {
                 time={post.time}
                 people={post.people}
                 accepted="Yes"/>
+                <Button onClick={()=>{deleteThis(post.id)}}> delete </Button>
                 </td>
                 </tr>);
         });
