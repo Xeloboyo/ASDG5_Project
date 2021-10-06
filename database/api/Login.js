@@ -6,7 +6,7 @@ const router = express.Router();
 
 const UserSchemaCopy = require("../models/User");
 
-//routes routes
+//login user L
 app.post("/form", (req, res) => {
   const { User_Email, User_Password } = req.body;
   User.findOne({ User_Email: User_Email }, (err, user) => {
@@ -22,6 +22,39 @@ app.post("/form", (req, res) => {
   });
 });
 
-//could be FormSignup and FormSignUpRestaurant, make a second one of each for the  restaurant admin registration
+
+//delete user L
+app.delete("/delete", async (req, res) => {
+  try {
+    let { _id } = req.body;
+    console.log(_id);
+    const user = await UserSchemaCopy.findByIdAndDelete(_id);
+    if (!user) throw Error("Error!");
+    res.json({
+      status: "Deleted",
+      message: "Deleted!",
+      data: user,
+    });
+  } catch (err) {
+    res.json({
+      message: err,
+    });
+    console.log(err);
+  }
+});
+
+//Get user L
+app.get("/", async (req, res) => {
+  try {
+    const user = await UserSchemaCopy.find();
+    if (!user) throw Error("No user");
+    console.log(user);
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json({ msg: err });
+  }
+});
+
+
 
 module.exports = router;

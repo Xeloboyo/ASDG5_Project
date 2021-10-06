@@ -2,6 +2,7 @@
 import React, { Component, useEffect, useState, withRouter } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // navbar
 import NavigationBar from "./components/NavigationBar";
@@ -139,18 +140,21 @@ class App extends Component {
             </Route>
             <Route path="/menu">
               <NavigationBar />
-              <Footer />
               <Menu />
+              <Footer />
             </Route>
             <Route path="/menuadd">
               <NavigationBar />
-              <Footer />
               <MenuAdd />
-            </Route>
-            <Route path="/menuedit">
-              <NavigationBar />
               <Footer />
+            </Route>
+            <Route path="/menuedit/:id"
+            render={(props) => (
+              <RestaurantEdit {...props} key={this.props.location.key} />
+            )}>
+              <NavigationBar />
               <MenuEdit />
+              <Footer />
             </Route>
             <Route path="/restaurant">
               <NavigationBar />
@@ -164,18 +168,22 @@ class App extends Component {
             </Route>
             <Route path="/restaurantadd">
               <NavigationBar />
-              <Footer />
               <RestaurantAdd />
+              <Footer />
             </Route>
-            <Route path="/restaurantedit">
+            <Route path="/restaurantedit/:id"
+              render={(props) => (
+                <RestaurantEdit {...props} key={this.props.location.key} />
+              )}
+            >
               <NavigationBar />
               <RestaurantEdit />
               <Footer />
             </Route>
             <Route path="/reviews">
               <NavigationBar />
-              <Footer />
               <Reviews />
+              <Footer />
             </Route>
             
               <Route path="/addReservation/:params">

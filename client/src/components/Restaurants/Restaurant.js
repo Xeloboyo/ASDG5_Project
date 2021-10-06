@@ -1,62 +1,101 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import './Restaurant.css';
+import Button from "react-bootstrap/Button";
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-function Restaurant() {
-  const id = 0;
-  return (
-    <Container>
-      <Container>
-        <table className="">
-          <tr>
-            <th>
-              <h1>Restaurant List</h1>
-            </th>
-            <th>
-              <LinkContainer to="/restaurantadd">
-                <Nav.Link>Add Restaurant</Nav.Link>
-              </LinkContainer>
-            </th>
-          </tr>
-        </table>
-      </Container>
 
-      <Container>
-        <table className="table">
-          <tr>
-            <th>Restaurant Name</th>
-            <th>Phone Number</th>
-            <th>Address</th>
-            <th>Rating</th>
-            <th>Menu</th>
-            <th>Book</th>
-          </tr>
-          <tr>
-            <th>
-              <tr>
-                <LinkContainer to="/restaurantdetails">
-                  <Nav.Link>Pickle Restaurant</Nav.Link>
-                </LinkContainer>
-              </tr>
-            </th>
-            <th>987654322</th>
-            <th>31 Jessie Street</th>
-            <th>5/5</th>
-            <th>
-              <LinkContainer to="/menu">
-                <Nav.Link>Menu</Nav.Link>
-              </LinkContainer>
-            </th>
-            <th><Link to={{pathname:`/addReservation/${id}`, state: { name: 'Pickle Restaurant',  id: '0' } }}>Book Here</Link></th>
-          </tr>
+const RestarurantList = props =>(
+  <tr>
+    <td>{props.restaurant.Restaurant_Name}</td>
+    <td>{props.restaurant.Restaurant_Email}</td>
+    <td>{props.restaurant.Restaurant_Address}</td>
+    <td>{props.restaurant.Restaurant_Phone_Number}</td>
+    <td>{props.restaurant.Restaurant_Rating}</td>
+    <td>{props.restaurant.Restaurant_Capacity}</td>
+    <td>
+      <Link to={"/restaurantedit/"+props.restaurant._id}>edit</Link> | <a href="#" onClick={() => { props.deleteRestaurant(props.restaurant._id) }}>delete</a>
+    </td>
+    <td>
+      <th><Link to={{pathname:`/addReservation/0`, state: { name: props.restaurant.Restaurant_Name,  id: '0' } }}>Book Here</Link></th>
+    </td>
+  </tr>
+)
+
+export default class Restaurant extends Component {
+
+  // constructor
+  constructor(props){
+    super(props);
+
+    this.deleteRestaurant = this.deleteRestaurant.bind(this);
+
+    this.state = {
+      restaurants: []
+      //Restaurant_Email: ''
+    }
+
+  }
+
+  // get the list of restaurants
+  componentDidMount(){
+    axios.get('http://localhost:5002/restaurant/')
+      .then(response => {
+        this.setState({
+          restaurants: response.data,
+          //Restaurant_Email: response.data
+        })
+      })
+  }
+
+  // delete restuarant
+  deleteRestaurant(id) {
+    axios.delete('http://localhost:5002/restaurant/'+id)
+      .then(res => console.log(res.data));
+    this.setState({
+      restaurants: this.state.restaurants.filter(el => el._id != id)
+    })
+  }
+
+  // restaurantlist
+  restarurantList() {
+    return this.state.restaurants.map(currentRestaurant => {
+      return <RestarurantList restaurant={currentRestaurant} deleteRestaurant={this.deleteRestaurant} key={currentRestaurant._id}/>;
+    })
+  }
+
+  render() {
+    return (
+      <div>
+            <LinkContainer to="/restaurantadd">
+              <Button> Add Restaurant</Button>
+            </LinkContainer> 
+          
+            <LinkContainer to="/menu">
+              <Button>View all menus </Button>
+            </LinkContainer> 
+           
+      <h1>Restaurant List</h1>
+        <table className="table" id="restaurantlist">
+          <thead className="thead-light">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Rating</th>
+              <th>Capacity</th>
+            </tr>
+          </thead>
+          <tbody>
+            { this.restarurantList() }
+          </tbody>
         </table>
-      </Container>
-      
-    </Container>
-  );
+    </div>
+    )
+  }
 }
-
-export default Restaurant;
