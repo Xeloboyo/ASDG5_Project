@@ -8,10 +8,13 @@ require("./config/db");
 // configures to access dotenv environment
 require("dotenv").config();
 
+<<<<<<< HEAD
+=======
 // create express app
 
 const port = process.env.PORT || 5002;
 
+>>>>>>> master
 const app = require("express")();
 require("./models/User");
 
@@ -37,6 +40,7 @@ const PromotionsRouter = require("./api/PromotionsForm");
 
 const Routes = require("./api/Register"); //
 
+const LoginRoute = require("./api/Login"); //
 
 const ReviewRouter = require("./api/Review");
 const ReplyRouter = require("./api/Reply");
@@ -74,6 +78,10 @@ app.use("/register", Routes); //
 app.use("/review", ReviewRouter);
 app.use("/reply", ReplyRouter);
 
+app.use("/login", LoginRoute);//
+
+
+//login user s
 app.post("/login", (req, res) => {
   console.log(req.body);
   const { User_Email, User_Password } = req.body;
@@ -90,6 +98,24 @@ app.post("/login", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
+//delete user s
+app.delete("/delete", (req, res) => {
+  console.log(req.body)
+  const { _id } = req.body;
+  UserSchemaCopy.findByIdAndDelete({ _id }, (err, user) => {
+    if (user) {
+      if (_id === user._id) {
+        res.json({ message: "deleted", user: user });
+      } else {
+        res.json({ message: "deleted" });
+      }
+    }
+  });
+});
+
+=======
+>>>>>>> master
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
