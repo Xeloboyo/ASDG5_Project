@@ -7,5 +7,7 @@ Feature 10 - Takeaway for Staff
 Feature 11 - Business Pro 
 
 Lily
+Feature 08 - Promotions
+Feature 12 - Community page
 
 Vivian
