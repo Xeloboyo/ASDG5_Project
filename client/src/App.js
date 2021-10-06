@@ -1,8 +1,8 @@
-import "./App.css";
-import React, { Component, useEffect, useState, withRouter } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import "bootstrap/dist/css/bootstrap.min.css";
+import './App.css';
+import React, { Component, useEffect, useState, withRouter } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // navbar
 import NavigationBar from './components/NavigationBar';
@@ -38,10 +38,10 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Analytics from './components/Analytics/Analytics';
 import StaffTicket from './components/StaffTicket/StaffTicket';
 
-import AdminHomeNav from "./components/AdminHome/AdminHomeNav";
-import AdminHomePage from "./components/AdminHome/AdminHomePage";
-import HomepageBottom from "./components/Home/HomepageBottom";
-import FormSignupRestaurant from "./components/Login/FormSignUpRestaurant";
+import AdminHomeNav from './components/AdminHome/AdminHomeNav';
+import AdminHomePage from './components/AdminHome/AdminHomePage';
+import HomepageBottom from './components/Home/HomepageBottom';
+import FormSignupRestaurant from './components/Login/FormSignUpRestaurant';
 
 require('dotenv').config();
 
@@ -141,10 +141,12 @@ class App extends Component {
               <MenuAdd />
               <Footer />
             </Route>
-            <Route path="/menuedit/:id"
-            render={(props) => (
-              <RestaurantEdit {...props} key={this.props.location.key} />
-            )}>
+            <Route
+              path="/menuedit/:id"
+              render={(props) => (
+                <RestaurantEdit {...props} key={this.props.location.key} />
+              )}
+            >
               <NavigationBar />
               <MenuEdit />
               <Footer />
@@ -164,7 +166,8 @@ class App extends Component {
               <RestaurantAdd />
               <Footer />
             </Route>
-            <Route path="/restaurantedit/:id"
+            <Route
+              path="/restaurantedit/:id"
               render={(props) => (
                 <RestaurantEdit {...props} key={this.props.location.key} />
               )}
@@ -216,3 +219,5 @@ class App extends Component {
 }
 
 export default App;
+
+// test
