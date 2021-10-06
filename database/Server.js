@@ -37,8 +37,11 @@ const PromotionsRouter = require("./api/PromotionsForm");
 
 const Routes = require("./api/Register"); //
 
-const Route = require("./api/Login"); //
 
+const ReviewRouter = require("./api/Review");
+const ReplyRouter = require("./api/Reply");
+
+const Route = require("./api/Login"); //
 // const RouteDelete = require("./api/Delete");
 
 const UserSchemaCopy = require("./models/User");
@@ -66,6 +69,10 @@ app.use("/post", CommunityPostRouter);
 app.use(cors());
 
 app.use("/register", Routes); //
+
+//Review and Reply
+app.use("/review", ReviewRouter);
+app.use("/reply", ReplyRouter);
 
 app.post("/login", (req, res) => {
   console.log(req.body);
