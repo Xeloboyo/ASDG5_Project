@@ -169,8 +169,8 @@ class App extends Component {
             </Route>
             <Route path="/reviews">
               <NavigationBar />
-              <Footer />
               <Reviews />
+              <Footer />
             </Route>
             <Route path="/dashboard/ticket">
               <Dashboard />

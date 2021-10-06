@@ -5,9 +5,12 @@ const router = express.Router();
 const PostReview = require("../models/Review");
 
 //Find all reviews by user id
-router.get("/User/:id", (req, res) => {
+router.get("/user/:id", (req, res) => {
     PostReview.find({
         User_ID: req.params.id
+    },
+    {
+        _id: 1
     })
     .then( result => {
         res.json({
@@ -25,9 +28,12 @@ router.get("/User/:id", (req, res) => {
 });
 
 //Find All reviews by restaurant id
-router.get("/Restaurant/:id", (req, res) => {
+router.get("/restaurant/:id", (req, res) => {
     PostReview.find({
         Venue_ID: req.params.id
+    },
+    {
+        _id: 1
     })
     .then( result => {
         res.json({
