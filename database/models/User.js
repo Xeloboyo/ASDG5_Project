@@ -18,10 +18,6 @@ const UserSchema = new Schema({ //check UserSchema name matching with others
     type: String,
     required: true
   },
-  // User_Category: {
-  //   type: String,
-  //   required: false
-  // },
   User_Password: {
     type: String,
     required: true
@@ -29,11 +25,7 @@ const UserSchema = new Schema({ //check UserSchema name matching with others
   User_Password2: {
     type: String,
     required: true
-  },
-  User_isLoggedin: {
-    type: Boolean,
-    default: false
-  },
+  }
  
 });
 
