@@ -1,9 +1,16 @@
+const express = require('express');
+const cors = require('cors');
+//const mongoose = require('mongoose');
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 require("./config/db");
 
-require("./models/PostCommunity");
+// configures to access dotenv environment
+require('dotenv').config();
 
+// create express app
+const app = express();
+const port = process.env.PORT || 5002;
 const cors = require("cors");
 
 const app = require("express")();
@@ -11,8 +18,19 @@ require("./models/User");
 
 const mongoose = require("mongoose");
 
-const port = 5002;
+// middleware
+app.use(cors());
+app.use(express.json());
 
+require("./config/db");
+require("./models/PostCommunity");
+
+// restaurant 
+const restaurantRouter = require("./api/RestaurantForm");
+app.use('/restaurant', restaurantRouter);
+// menu
+const menuRouter = require("./api/MenuForm");
+app.use('/menu', menuRouter);
 const CommunityPostRouter = require("./api/CommunityPageForm");
 const PromotionsRouter = require("./api/PromotionsForm");
 
@@ -35,6 +53,8 @@ const UserSchemaCopy = require("./models/User");
 // For accepting post form data
 // eslint-disable-next-line import/order
 const bodyParser = require("express").json;
+app.use(bodyParser());
+
 
 app.use(cors());
 app.use(bodyParser());
