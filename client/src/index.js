@@ -17,7 +17,7 @@ import './scss/style.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <Dashboard /> */}
     {/* <Header /> */}
     {/* <StaffTicket /> */}

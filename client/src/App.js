@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useEffect, useState, withRouter } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 
@@ -36,9 +36,6 @@ import Reviews from './components/Reviews/ReviewsPage';
 import Dashboard from './components/Dashboard/Dashboard';
 import Analytics from './components/Analytics/Analytics';
 import StaffTicket from './components/StaffTicket/StaffTicket';
-import Settings from './components/Dashboard/Settings';
-import Profile from './components/Dashboard/Profile';
-import Help from './components/Dashboard/Help';
 
 // admin
 import AdminHomeNav from './components/AdminHome/AdminHomeNav';
@@ -164,28 +161,23 @@ class App extends Component {
               <Footer />
               <Reviews />
             </Route>
-            <Route path="/dashboard/ticket">
+            <Route
+              path="/ticket/:id"
+              render={(props) => (
+                <StaffTicket {...props} key={this.props.location.key} />
+              )}
+            >
               <Dashboard />
               <StaffTicket />
             </Route>
-            <Route path="/dashboard/analytics">
+            <Route
+              path="/analytics/:id"
+              render={(props) => (
+                <Analytics {...props} key={this.props.location.key} />
+              )}
+            >
               <Dashboard />
               <Analytics />
-            </Route>
-            <Route path="/dashboard/profile">
-              <Dashboard />
-              <Profile />
-            </Route>
-            <Route path="/dashboard/settings">
-              <Dashboard />
-              <Settings />
-            </Route>
-            <Route path="/dashboard/help">
-              <Dashboard />
-              <Help />
-            </Route>
-            <Route path="/dashboard">
-              <Dashboard />
             </Route>
             <Route path="/adminhomenav">
               <AdminHomeNav />

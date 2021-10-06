@@ -5,6 +5,25 @@ import TicketMain from './TicketMain';
 import StaffFooter from './StaffFooter';
 
 class StaffTicket extends Component {
+  /*
+  // this.handleClick = this.handleClick.bind(this);
+  // this.onChangeDeleteAllTicket = this.onChangeDeleteAllTicket.bind(this);
+
+  // Delete All Tickets
+  onChangeDeleteAllTicket(e) {
+    e.preventDefault();
+
+  const response = await fetch("http://localhost:5002/ticketdeleteall", {
+    method: 'POST',
+    headers: {
+      "content-type": 'application/json',
+    },
+    body: JSON.stringify(newList),
+  }),
+  const jsonData = await response.json();
+  console.log(`${jsonData.message}`);
+}
+*/
   render() {
     return (
       <div

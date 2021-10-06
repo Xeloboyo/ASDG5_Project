@@ -4,7 +4,6 @@ import { IconContext } from 'react-icons';
 import { FaMotorcycle } from 'react-icons/fa';
 import { GiTabletopPlayers } from 'react-icons/gi';
 import { Container, Row, Col } from 'react-bootstrap';
-import { v4 as uuidv4 } from 'uuid';
 
 function TicketMini() {
   // make flexbox dynamic

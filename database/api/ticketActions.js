@@ -194,7 +194,7 @@ router.post('/ticketdeleteall', async (req, res) => {
     if (!deleteall) throw Error('Ticket Queue is empty');
     res.json({
       message: 'Every Ticket has been deleted',
-      status: 'success'
+      status: 'SUCCESS'
       // TicketStatus: 'Cancelled',
       // TicketUpdateDescription:
       // 'We apologize but we have to cancel your order due to unfortunate circumstances.',
@@ -222,7 +222,7 @@ router.post('/ticketcomplete/:id', async (req, res) => {
    console.log('kek');
 
     const complete = new Ticketing({
-      TicketStatus: 'Success',
+      TicketStatus: 'SUCCESS',
       TicketUpdateDescription: 'Order Finish'
    });
 
