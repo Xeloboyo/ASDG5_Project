@@ -106,6 +106,7 @@ export default class CreateRestaurant extends Component {
           <div className="form-group">
           <label>Restaurant Name: </label>
           <input 
+              name="restaurantname"
               type="text" 
               className="form-control"
               value={this.state.Restaurant_Name}
@@ -117,6 +118,7 @@ export default class CreateRestaurant extends Component {
           <div className="form-group">
           <label>Restaurant Email: </label>
           <input 
+              name="restaurantemail"
               type="text" 
               className="form-control"
               value={this.state.Restaurant_Email}
@@ -128,6 +130,7 @@ export default class CreateRestaurant extends Component {
           <div className="form-group">
           <label>Restaurant Address: </label>
           <input 
+              name="restaurantaddress"
               type="text" 
               className="form-control"
               value={this.state.Restaurant_Address}
@@ -139,6 +142,7 @@ export default class CreateRestaurant extends Component {
           <div className="form-group">
           <label>Restaurant Phone Number: </label>
           <input 
+              name="restaurantnumber"
               type="text" 
               className="form-control"
               value={this.state.Restaurant_Phone_Number}
@@ -150,6 +154,7 @@ export default class CreateRestaurant extends Component {
           <div className="form-group">
           <label>Restaurant Rating: </label>
           <input 
+              name="restaurantrating"
               type="text" 
               className="form-control"
               value={this.state.Restaurant_Rating}
@@ -161,6 +166,7 @@ export default class CreateRestaurant extends Component {
           <div className="form-group">
           <label>Restaurant Capacity: </label>
           <input 
+              name="restaurantcapacity"
               type="text" 
               className="form-control"
               value={this.state.Restaurant_Capacity}

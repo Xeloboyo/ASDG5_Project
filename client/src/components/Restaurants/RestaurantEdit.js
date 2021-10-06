@@ -3,9 +3,11 @@ import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import { Mongoose } from "mongoose";
+import { withRouter } from "react-router";
 
 
-export default class UpdateRestaurant extends Component {
+class UpdateRestaurant extends Component {
     constructor(props){
         super(props);
 
@@ -29,11 +31,8 @@ export default class UpdateRestaurant extends Component {
         }
     }
 
-    componentDidMount() {
-           // const { idparam } = this.props.match.params.id;
-           //console.log(this.props.match.params.id);
-           if (this.props.match && this.props.match.params.id) {
-            console.log("??? update");
+    componentDidMount() {           
+            //console.log("??? update");
             axios.get('http://localhost:5002/restaurant/'+this.props.match.params.id)
             
             .then(response => {
@@ -50,8 +49,6 @@ export default class UpdateRestaurant extends Component {
             .catch(function(err) {
                 console.log(err);
             })
-            
-           }
             
 
         axios.get('http://localhost:5002/restaurant/')
@@ -116,6 +113,7 @@ export default class UpdateRestaurant extends Component {
         e.preventDefault();
     
         const restaurant = {
+          RestaurantID: this.props.match.params.id,
           Restaurant_Name: this.state.Restaurant_Name,
           Restaurant_Email: this.state.Restaurant_Email,
           Restaurant_Address: this.state.Restaurant_Address,
@@ -127,10 +125,10 @@ export default class UpdateRestaurant extends Component {
         console.log(restaurant);
     
         // send input data to backend
-        if (this.props.match && this.props.match.params.id) {
-            axios.post('http://localhost:5002/restaurant/update'+this.props.match.params.id)
-            .then(res => console.log(res.data)); 
-        }
+        //if (this.props.match && this.props.match.params.id) {
+            axios.post('http://localhost:5002/restaurant/update/'+this.props.match.params.id, restaurant)
+            .then(response => console.log(response.data));
+        //}
     
         window.location = '/restaurant';
       }
@@ -225,3 +223,5 @@ export default class UpdateRestaurant extends Component {
         )
       }
 }
+
+export default withRouter(UpdateRestaurant);

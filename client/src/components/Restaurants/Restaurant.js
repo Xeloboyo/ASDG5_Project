@@ -75,7 +75,7 @@ export default class Restaurant extends Component {
             </LinkContainer> 
            
       <h1>Restaurant List</h1>
-        <table className="table">
+        <table className="table" id="restaurantlist">
           <thead className="thead-light">
             <tr>
               <th>Name</th>

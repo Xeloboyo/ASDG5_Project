@@ -121,6 +121,7 @@ export default class CreateMenu extends Component {
           </select>
           <label>Product Name: </label>
           <input 
+              name="productname"
               type="text" 
               className="form-control"
               value={this.state.Menu_Product_Name}
@@ -131,7 +132,8 @@ export default class CreateMenu extends Component {
         <div className="form-group"> 
           <div className="form-group">
           <label>Product Description: </label>
-          <input 
+          <input
+              name="productdescription"
               type="text" 
               className="form-control"
               value={this.state.Menu_Product_Description}
@@ -143,6 +145,7 @@ export default class CreateMenu extends Component {
           <div className="form-group">
           <label>Product Price: </label>
           <input 
+              name="productprice"
               type="text" 
               className="form-control"
               value={this.state.Menu_Product_Price}

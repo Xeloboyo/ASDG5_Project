@@ -128,7 +128,10 @@ class App extends Component {
               <MenuAdd />
               <Footer />
             </Route>
-            <Route path="/menuedit">
+            <Route path="/menuedit/:id"
+            render={(props) => (
+              <RestaurantEdit {...props} key={this.props.location.key} />
+            )}>
               <NavigationBar />
               <MenuEdit />
               <Footer />
@@ -148,7 +151,11 @@ class App extends Component {
               <RestaurantAdd />
               <Footer />
             </Route>
-            <Route path="/restaurantedit">
+            <Route path="/restaurantedit/:id"
+              render={(props) => (
+                <RestaurantEdit {...props} key={this.props.location.key} />
+              )}
+            >
               <NavigationBar />
               <RestaurantEdit />
               <Footer />

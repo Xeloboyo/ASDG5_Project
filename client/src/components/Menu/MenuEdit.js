@@ -5,8 +5,9 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import axios from "axios";
+import { withRouter } from "react-router";
 
-export default class UpdateMenu extends Component{
+class UpdateMenu extends Component{
     // constructor
     constructor(props){
         super(props);
@@ -23,13 +24,38 @@ export default class UpdateMenu extends Component{
         Menu_Product_Name: '',
         Menu_Product_Description: '',
         Menu_Product_Price: 0,
-        Menu_Restaurant: []
+        restaurants: []
         }
     }
 
     componentDidMount() {
         //console.log(this.props.math.params.id)
-        //axios.get('http://localhost:5002/menu/'+this.props.match.params.id)
+        axios.get('http://localhost:5002/menu/'+this.props.match.params.id)
+            .then(response => {
+                this.setState({
+                    Restaurant_Name: response.data.Restaurant_Name,
+                    Menu_Product_Name: response.data.Menu_Product_Name,
+                    Menu_Product_Description: response.data.Menu_Product_Description,
+                    Menu_Product_Price: response.data.Menu_Product_Price
+                })
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+
+        // shows restaurants in drop down option
+        axios.get('http://localhost:5002/restaurant/')
+            .then(response => {
+                if (response.data.length > 0) {
+                    this.setState({
+                        restaurants: response.data.map( restaurant => restaurant.Restaurant_Name ),
+                        Restaurant_Name: response.data[0].Restaurant_Name
+                    })
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
     
     onChangeRestaurantName(e) {
@@ -62,11 +88,26 @@ export default class UpdateMenu extends Component{
 
     onSubmit(e){
         e.preventDefault();
+
+        const menu = {
+            RestaurantID: this.props.match.params.id,
+            Restaurant_Name: this.state.Restaurant_Name,
+            Menu_Product_Name: this.state.Menu_Product_Name,
+            Menu_Product_Description: this.state.Menu_Product_Description,
+            Menu_Product_Price: this.state.Menu_Product_Price
+        }
+
+        console.log(menu);
+
+        axios.post('http://localhost:5002/menu/update/'+this.props.match.params.id, menu)
+            .then(response => console.log(response.data));
+
+        window.location = '/menu';
     }
 
     render(){
         return(
-        <Container>
+        <div>
             <table>
                 <th>
                     <h1>Edit Menu Details</h1>
@@ -78,18 +119,67 @@ export default class UpdateMenu extends Component{
                 </th>
             </table>
 
-            <Container>
-                <Form>
-                    <Form.Group className="">
-                        <Form.Label>Product Name</Form.Label>
-                        <Form.Control type="" placeholder="Enter Product Name"/>
-                        <Form.Label>Product Price</Form.Label>
-                        <Form.Control type="" placeholder="Enter Product Price"/>
-                        <button type="submit">Confirm Edit Product</button>
-                    </Form.Group>
-                </Form>
-            </Container>
-        </Container>
+            <form onSubmit={this.onSubmit}>
+            <div className="form-group"> 
+              <div className="form-group">
+              <label>Restaurant Name: </label>
+              <select ref="userInput"
+              required
+              className="form-control"
+              value={this.state.Restaurant_Name}
+              onChange={this.onChangeRestaurantName}>
+              {
+                this.state.restaurants.map(function(restaurant) {
+                  return <option 
+                    key={restaurant}
+                    value={restaurant}>{restaurant}
+                    </option>;
+                })
+              }
+          </select>
+                </div>
+            </div>
+            <div className="form-group"> 
+              <div className="form-group">
+              <label>Product Name: </label>
+              <input 
+                  type="text" 
+                  className="form-control"
+                  value={this.state.Menu_Product_Name}
+                  onChange={this.onChangeMenuProductName}
+                  />
+                </div>
+            </div>
+            <div className="form-group"> 
+              <div className="form-group">
+              <label>Product Description: </label>
+              <input 
+                  type="text" 
+                  className="form-control"
+                  value={this.state.Menu_Product_Description}
+                  onChange={this.onChangeMenuProductDescription}
+                  />
+                </div>
+            </div>
+            <div className="form-group"> 
+              <div className="form-group">
+              <label>Product Price: </label>
+              <input 
+                  type="text" 
+                  className="form-control"
+                  value={this.state.Menu_Product_Price}
+                  onChange={this.onChangeProductPrice}
+                  />
+                </div>
+            </div>
+            
+            <div className="form-group">
+              <input type="submit" value="Update Product" className="btn btn-primary" />
+            </div>
+          </form>
+          </div>
         )
     }
 }
+
+export default withRouter(UpdateMenu);
