@@ -1,16 +1,40 @@
+const express = require("express");
+const cors = require("cors");
+
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 require("./config/db");
 
-require("./models/PostCommunity");
+// configures to access dotenv environment
+require("dotenv").config();
 
+<<<<<<< HEAD
+=======
+// create express app
+
+const port = process.env.PORT || 5002;
+
+>>>>>>> master
 const app = require("express")();
 require("./models/User");
 
 const mongoose = require("mongoose");
 
-const port = 5002;
+// middleware
+app.use(cors());
+app.use(express.json());
 
+require("./config/db");
+require("./models/PostCommunity");
+
+// restaurant
+const restaurantRouter = require("./api/RestaurantForm");
+
+app.use("/restaurant", restaurantRouter);
+// menu
+const menuRouter = require("./api/MenuForm");
+
+app.use("/menu", menuRouter);
 const CommunityPostRouter = require("./api/CommunityPageForm");
 const PromotionsRouter = require("./api/PromotionsForm");
 
@@ -18,9 +42,12 @@ const Routes = require("./api/Register"); //
 
 const LoginRoute = require("./api/Login"); //
 
-// const RouteDelete = require("./api/Delete"); 
+const ReviewRouter = require("./api/Review");
+const ReplyRouter = require("./api/Reply");
 
-const cors = require("cors"); //
+const Route = require("./api/Login"); //
+// const RouteDelete = require("./api/Delete");
+
 const UserSchemaCopy = require("./models/User");
 
 // const userSchema = new mongoose.Schema({
@@ -34,6 +61,8 @@ const UserSchemaCopy = require("./models/User");
 // eslint-disable-next-line import/order
 const bodyParser = require("express").json;
 
+app.use(bodyParser());
+
 app.use(cors());
 app.use(bodyParser());
 
@@ -43,7 +72,11 @@ app.use("/promotions", PromotionsRouter);
 app.use("/post", CommunityPostRouter);
 app.use(cors());
 
-app.use("/register", Routes);//
+app.use("/register", Routes); //
+
+//Review and Reply
+app.use("/review", ReviewRouter);
+app.use("/reply", ReplyRouter);
 
 app.use("/login", LoginRoute);//
 
@@ -65,6 +98,7 @@ app.post("/login", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 //delete user s
 app.delete("/delete", (req, res) => {
   console.log(req.body)
@@ -80,6 +114,8 @@ app.delete("/delete", (req, res) => {
   });
 });
 
+=======
+>>>>>>> master
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
