@@ -29,7 +29,7 @@ import {
   IoOptions
 } from 'react-icons/io5';
 
-import Home from '../../components/Home/Homepage';
+import Home from '../Home/Homepage';
 import Analytics from '../Analytics/Analytics';
 import StaffTicket from '../StaffTicket/StaffTicket';
 import Settings from './Settings';

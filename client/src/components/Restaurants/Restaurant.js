@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import './Restaurant.css';
 
 function Restaurant() {
+  const id = 0;
   return (
     <Container>
       <Container>
@@ -49,7 +50,7 @@ function Restaurant() {
                 <Nav.Link>Menu</Nav.Link>
               </LinkContainer>
             </th>
-            <th><Link to={`/addReservation`}>Book Here</Link></th>
+            <th><Link to={{pathname:`/addReservation/${id}`, state: { name: 'Pickle Restaurant',  id: '0' } }}>Book Here</Link></th>
           </tr>
         </table>
       </Container>

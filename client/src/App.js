@@ -1,4 +1,4 @@
-import "./App.css";
+
 import React, { Component, useEffect, useState, withRouter } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Container from "react-bootstrap/Container";
@@ -31,6 +31,9 @@ import MenuEdit from "./components/Menu/MenuEdit";
 import MenuAdd from "./components/Menu/MenuAdd";
 import Reviews from "./components/Reviews/ReviewsPage";
 
+import ReservationAdd from './components/Reservations/ReservationAdd';
+import ReservationView from './components/Reservations/ReservationView';
+
 // staff
 import Dashboard from "./components/Dashboard/Dashboard";
 import Analytics from "./components/Analytics/Analytics";
@@ -39,15 +42,13 @@ import Settings from "./components/Dashboard/Settings";
 import Profile from "./components/Dashboard/Profile";
 import Help from "./components/Dashboard/Help";
 
-import ReservationAdd from './Component/Reservations/ReservationAdd';
 import AdminHomeNav from "./components/AdminHome/AdminHomeNav";
 import AdminHomePage from "./components/AdminHome/AdminHomePage";
 import HomepageBottom from "./components/Home/HomepageBottom";
 import FormSignupRestaurant from "./components/Login/FormSignUpRestaurant";
+import Store from "./components/Reservations/Store";
 require('dotenv').config();
 
-
-require("dotenv").config();
 
 class App extends Component {
   constructor() {
@@ -80,6 +81,7 @@ class App extends Component {
   }
   render() {
     return (
+      <Store>
       <Router>
         <Container className="mx-0 px-0" fluid>
           <Switch>
@@ -152,13 +154,13 @@ class App extends Component {
             </Route>
             <Route path="/restaurant">
               <NavigationBar />
-              <Footer />
               <Restaurant />
+              <Footer />
             </Route>
             <Route path="/restaurantdetails">
               <NavigationBar />
-              <Footer />
               <RestaurantDetails />
+              <Footer />
             </Route>
             <Route path="/restaurantadd">
               <NavigationBar />
@@ -167,17 +169,27 @@ class App extends Component {
             </Route>
             <Route path="/restaurantedit">
               <NavigationBar />
-              <Footer />
               <RestaurantEdit />
+              <Footer />
             </Route>
             <Route path="/reviews">
               <NavigationBar />
               <Footer />
               <Reviews />
             </Route>
-            <Route path="/addReservation/:params">
-              <ReservationAdd />
-            </Route>
+            
+              <Route path="/addReservation/:params">
+                
+                  <NavigationBar />
+                  <ReservationAdd />
+                  <Footer />
+                
+              </Route>
+              <Route path="/viewReservation">
+                <NavigationBar />
+                <ReservationView/>
+                <Footer />
+              </Route>
              <Route path="/dashboard/ticket">
               <Dashboard />
               <StaffTicket />
@@ -216,6 +228,7 @@ class App extends Component {
           </Switch>
         </Container>
       </Router>
+      </Store>
     );
   }
 }
