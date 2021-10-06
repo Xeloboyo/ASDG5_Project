@@ -8,13 +8,10 @@ require("./config/db");
 // configures to access dotenv environment
 require("dotenv").config();
 
-<<<<<<< HEAD
-=======
 // create express app
 
 const port = process.env.PORT || 5002;
 
->>>>>>> master
 const app = require("express")();
 require("./models/User");
 
@@ -50,15 +47,6 @@ const Route = require("./api/Login"); //
 
 const UserSchemaCopy = require("./models/User");
 
-// const userSchema = new mongoose.Schema({
-//   User_Email: String,
-//   User_Password: String,
-// });
-
-// const User = new mongoose.model("User", userSchema);
-
-// For accepting post form data
-// eslint-disable-next-line import/order
 const bodyParser = require("express").json;
 
 app.use(bodyParser());
@@ -98,7 +86,6 @@ app.post("/login", (req, res) => {
   });
 });
 
-<<<<<<< HEAD
 //delete user s
 app.delete("/delete", (req, res) => {
   console.log(req.body)
@@ -114,8 +101,6 @@ app.delete("/delete", (req, res) => {
   });
 });
 
-=======
->>>>>>> master
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
