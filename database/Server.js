@@ -4,8 +4,6 @@ require("./config/db");
 
 require("./models/PostCommunity");
 
-const cors = require("cors");
-
 const app = require("express")();
 require("./models/User");
 
@@ -18,7 +16,7 @@ const PromotionsRouter = require("./api/PromotionsForm");
 
 const Routes = require("./api/Register"); //
 
-const Route = require("./api/Login"); //
+const LoginRoute = require("./api/Login"); //
 
 // const RouteDelete = require("./api/Delete"); 
 
@@ -47,6 +45,10 @@ app.use(cors());
 
 app.use("/register", Routes);//
 
+app.use("/login", LoginRoute);//
+
+
+//login user s
 app.post("/login", (req, res) => {
   console.log(req.body);
   const { User_Email, User_Password } = req.body;
@@ -63,21 +65,20 @@ app.post("/login", (req, res) => {
   });
 });
 
-//delete user
+//delete user s
 app.delete("/delete", (req, res) => {
   console.log(req.body)
-  const { User_Email } = req.body;
-  UserSchemaCopy.findOne({ User_Email: User_Email }, (err, user) => {
+  const { _id } = req.body;
+  UserSchemaCopy.findByIdAndDelete({ _id }, (err, user) => {
     if (user) {
-      if (User_Email === user.User_Email) {
+      if (_id === user._id) {
         res.json({ message: "deleted", user: user });
       } else {
-        res.json({ message: "error" });
+        res.json({ message: "deleted" });
       }
     }
   });
 });
-
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
