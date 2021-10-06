@@ -65,6 +65,9 @@ function ReservationAdd() {
 
     if (!state.error && state.posts) {
         posts = state.posts.map(post => {
+            if(post.restaurant != name){
+                return;
+            }
             return (
                 <tr>
                 <td>
