@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import { LinkContainer } from 'react-router-bootstrap';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import './Restaurant.css';
 import Button from "react-bootstrap/Button";
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 
 const RestarurantList = props =>(
   <tr>
@@ -17,6 +18,9 @@ const RestarurantList = props =>(
     <td>{props.restaurant.Restaurant_Capacity}</td>
     <td>
       <Link to={"/restaurantedit/"+props.restaurant._id}>edit</Link> | <a href="#" onClick={() => { props.deleteRestaurant(props.restaurant._id) }}>delete</a>
+    </td>
+    <td>
+      <th><Link to={{pathname:`/addReservation/0`, state: { name: props.restaurant.Restaurant_Name,  id: '0' } }}>Book Here</Link></th>
     </td>
   </tr>
 )

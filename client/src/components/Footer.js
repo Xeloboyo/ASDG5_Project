@@ -10,8 +10,8 @@ import { SiFacebook, SiInstagram, SiLinkedin, SiYoutube } from 'react-icons/si';
 const Footer = () => {
   return (
     <div>
-      <Container className="mx-auto px-auto" fluid>
-        <Card className="bg-dark text-white">
+      <Container className="mx-auto px-0" fluid>
+        <Card className="bg-dark text-white p-2">
           <Card.Title className="text-center">2021 Tangle </Card.Title>
           <Row>
             <Col sm={3}>

@@ -33,17 +33,22 @@ import MenuEdit from './components/Menu/MenuEdit';
 import MenuAdd from './components/Menu/MenuAdd';
 import Reviews from './components/Reviews/ReviewsPage';
 
+import ReservationAdd from './components/Reservations/ReservationAdd';
+import ReservationView from './components/Reservations/ReservationView';
+
 // staff
 import Dashboard from './components/Dashboard/Dashboard';
 import Analytics from './components/Analytics/Analytics';
 import StaffTicket from './components/StaffTicket/StaffTicket';
 
-import AdminHomeNav from './components/AdminHome/AdminHomeNav';
-import AdminHomePage from './components/AdminHome/AdminHomePage';
-import HomepageBottom from './components/Home/HomepageBottom';
-import FormSignupRestaurant from './components/Login/FormSignUpRestaurant';
-
+import AdminHomeNav from "./components/AdminHome/AdminHomeNav";
+import AdminHomePage from "./components/AdminHome/AdminHomePage";
+import HomepageBottom from "./components/Home/HomepageBottom";
+import FormSignupRestaurant from "./components/Login/FormSignUpRestaurant";
+import Store from "./components/Reservations/Store";
 require('dotenv').config();
+
+require("dotenv").config();
 
 class App extends Component {
   constructor() {
@@ -76,6 +81,7 @@ class App extends Component {
   }
   render() {
     return (
+      <Store>
       <Router>
         <Container className="mx-0 px-0" fluid>
           <Switch>
@@ -187,6 +193,20 @@ class App extends Component {
                 <StaffTicket {...props} key={this.props.location.key} />
               )}
             >
+            
+              <Route path="/addReservation/:params">
+                
+                  <NavigationBar />
+                  <ReservationAdd />
+                  <Footer />
+                
+              </Route>
+              <Route path="/viewReservation">
+                <NavigationBar />
+                <ReservationView/>
+                <Footer />
+              </Route>
+             <Route path="/dashboard/ticket">
               <Dashboard />
               <StaffTicket />
             </Route>
@@ -214,6 +234,7 @@ class App extends Component {
           </Switch>
         </Container>
       </Router>
+      </Store>
     );
   }
 }
