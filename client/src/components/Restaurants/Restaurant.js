@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import './Restaurant.css';
 import Button from "react-bootstrap/Button";
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
