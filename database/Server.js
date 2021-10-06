@@ -1,5 +1,30 @@
-const express = require("express");
-const cors = require("cors");
+require('./config/db');
+
+const cors = require('cors');
+
+const app = require('express')();
+const mongoose = require('mongoose');
+
+const port = process.env.PORT || 5002;
+
+// For accepting post form data
+// eslint-disable-next-line import/order
+const bodyParser = require('express').json;
+
+app.use(cors());
+app.use(bodyParser());
+
+// lily features
+require('./models/PostCommunity');
+
+const CommunityPostRouter = require('./api/CommunityPageForm');
+const PromotionsRouter = require('./api/PromotionsForm');
+
+app.use('/promotions', PromotionsRouter);
+app.use('/post', CommunityPostRouter);
+// app.use('/post', UserRouter);
+
+
 
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
@@ -10,12 +35,10 @@ require("dotenv").config();
 
 // create express app
 
-const port = process.env.PORT || 5002;
 
 const app = require("express")();
 require("./models/User");
 
-const mongoose = require("mongoose");
 
 // middleware
 app.use(cors());
@@ -28,15 +51,25 @@ require("./models/PostCommunity");
 const restaurantRouter = require("./api/RestaurantForm");
 
 app.use("/restaurant", restaurantRouter);
+
 // menu
 const menuRouter = require("./api/MenuForm");
 
 app.use("/menu", menuRouter);
-const CommunityPostRouter = require("./api/CommunityPageForm");
-const PromotionsRouter = require("./api/PromotionsForm");
 
-const Routes = require("./api/Register"); //
+const TicketRouter = require('./api/TicketActions');
+const AnalyticsRouter = require('./api/AnalyticsActions');
 
+app.use('/ticket', TicketRouter);
+app.use('/analytics', AnalyticsRouter);
+// app.use(cors());
+
+// ismail features
+require('./models/User');
+// const UserSchemaCopy = require('./models/User');
+const Routes = require('./api/Register'); //
+
+app.use('/register', Routes);
 const LoginRoute = require("./api/Login"); //
 
 const ReviewRouter = require("./api/Review");
@@ -47,9 +80,21 @@ const Route = require("./api/Login"); //
 
 const UserSchemaCopy = require("./models/User");
 
-const bodyParser = require("express").json;
+// const User = new mongoose.model("User", userSchema);
 
-app.use(bodyParser());
+// app.post('/login', (req, res) => {
+//   console.log(req.body);
+//   const { User_Email, User_Password } = req.body;
+//   UserSchemaCopy.findOne({ User_Email }, (err, user) => {
+//     if (user) {
+//       if (User_Password === user.User_Password) {
+//         res.json({ message: 'login success', user });
+//       } else {
+//         res.json({ message: 'wrong credentials' });
+//       }
+//     }
+//   });
+// });
 
 app.use(cors());
 app.use(bodyParser());

@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "ASD Assignment Group 5 2021 - Project <Something>",
   "main": "index.js",
-  "proxy": "http://localhost:5002",
   "scripts": {
     "lint": "eslint --fix main.js",
     "format": "prettier -w .",
+    "cypress:open": "cypress open",
+    "dev-database": "concurrently \"cd ./database && npm run server\" \"cd ./database npm run client\"",
+    "dev-client": "concurrently \"cd ./client && npm start\"",
+    "dev": "concurrently \"npm start dev-client\" \"npm start dev-database\"",
     "server": "nodemon database/Server.js",
     "start": "cd client && npm run build",
     "starts": "cd client && npm start",
@@ -23,6 +26,8 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
@@ -47,5 +52,10 @@
     "jsonwebtoken": "^8.5.1",
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:cypress/recommended"
+    ]
   }
 }

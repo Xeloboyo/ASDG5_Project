@@ -17,27 +17,27 @@ import {
   SidebarFooter,
   SidebarContent,
   Menu,
-  MenuItem,
-  SubMenu
+  MenuItem
+  // SubMenu
 } from 'react-pro-sidebar';
 import {
   IoTicket,
   IoAnalytics,
-  IoPerson,
-  IoSettings,
-  IoHelpCircle,
-  IoOptions
+  IoPerson
+  // IoSettings,
+  // IoHelpCircle,
+  // IoOptions
 } from 'react-icons/io5';
 
 import Home from '../Home/Homepage';
 import Analytics from '../Analytics/Analytics';
 import StaffTicket from '../StaffTicket/StaffTicket';
-import Settings from './Settings';
-import Profile from './Profile';
-import Help from './Help';
+// import Settings from './Settings';
+// import Profile from './Profile';
+// import Help from './Help';
 
-const Sidebar = () => {
-  let { path, url } = useRouteMatch();
+function Sidebar() {
+  // let { path, url } = useRouteMatch();
 
   return (
     <div
@@ -65,37 +65,38 @@ const Sidebar = () => {
             <Menu>
               <MenuItem>
                 <IoTicket />
-                <Link to={`${url}/ticket`}>&nbsp; Tickets</Link>
+                &nbsp; Tickets
+                {/* <Link to={`${url}/ticket`}>&nbsp; Tickets</Link> */}
                 {/* See your takeaway Ticket */}
               </MenuItem>
 
               <MenuItem>
                 <IoAnalytics />
-                {/* Analytics */}
-                <Link to={`${url}/analytics`} />
                 &nbsp; Analytics
-                {/* Check your Restaurant Analytics, Only Available using Business Pro */}
+                {/* <Link to={`${url}/analytics`} /> */}
+                {/* Check your Restaurant Analytics */}
               </MenuItem>
 
-              <SubMenu icon={<IoOptions />} title="Options">
-                <MenuItem>
-                  <IoPerson />
-                  <Link to={`${url}/profile`}>&nbsp; Profile </Link>
-                  {/* Change your Profile */}
-                </MenuItem>
+              <MenuItem>
+                <IoPerson />
+                &nbsp; Profile
+                {/* <Link to={`${url}/profile`}>&nbsp; Profile </Link> */}
+                {/* Change your Profile */}
+              </MenuItem>
 
+              {/* 
                 <MenuItem>
                   <IoSettings />
-                  <Link to={`${url}/settings`}>&nbsp; Settings</Link>
-                  {/* Email notifications, SMS, etc */}
-                </MenuItem>
+                  {/* <Link to={`${url}/settings`}>&nbsp; Settings</Link>
+                  {/* Email notifications, SMS, etc 
+                </MenuItem> 
 
                 <MenuItem>
                   <IoHelpCircle />
-                  <Link to={`${url}/help`}>&nbsp; Help </Link>
-                  {/* How to use, etc */}
+                  {/* <Link to={`${url}/help`}>&nbsp; Help </Link>
+                  {/* How to use, etc 
                 </MenuItem>
-              </SubMenu>
+              */}
 
               <MenuItem>
                 <Link to="home">&nbsp; Logout </Link>
@@ -109,6 +110,6 @@ const Sidebar = () => {
       </ProSidebar>
     </div>
   );
-};
+}
 
 export default Sidebar;

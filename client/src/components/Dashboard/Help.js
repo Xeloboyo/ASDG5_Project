@@ -11,7 +11,7 @@ import { Container, Row, Col } from 'react-bootstrap';
  page allows cancel all, will show warning
 */
 
-export const Help = () => {
+function Help() {
   return (
     <div>
       <Container>Under Construction</Container>;

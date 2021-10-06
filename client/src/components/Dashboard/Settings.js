@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Container } from 'react-bootstrap';
 
-export const Settings = () => {
+const Settings = () =>  {
   return (
     <Container>
       <Form>
