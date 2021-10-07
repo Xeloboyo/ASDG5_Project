@@ -36,13 +36,13 @@ require("dotenv").config();
 // create express app
 
 
-const app = require("express")();
+//const app = require("express")();
 require("./models/User");
 
 
 // middleware
 app.use(cors());
-app.use(express.json());
+//app.use(express.json());
 
 require("./config/db");
 require("./models/PostCommunity");

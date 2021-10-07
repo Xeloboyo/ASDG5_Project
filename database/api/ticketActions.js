@@ -203,7 +203,7 @@ router.post('/ticketdeleteall', async (req, res) => {
   } catch (err) {
     res.status(400).json({ msg: err });
   }
-);
+});
 
 /*
   - confirm ticketing
@@ -238,7 +238,7 @@ router.post('/ticketcomplete/:id', async (req, res) => {
   } catch (err) {
    res.status(400).json({ msg: err });
   }
-);
+});
 
 /*
   - update ticketing 
