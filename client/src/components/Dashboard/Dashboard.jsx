@@ -6,13 +6,11 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <Sidebar />
         <Header />
+        <Sidebar />
       </div>
     );
   }
 }
 
 export default Dashboard;
-
-// for testing

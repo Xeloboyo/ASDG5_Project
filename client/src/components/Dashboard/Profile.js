@@ -10,7 +10,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
  page allows cancel all, will show warning
 */
 
-export const Profile = () => {
+function Profile() {
   return (
     <Container>
       <Form>
