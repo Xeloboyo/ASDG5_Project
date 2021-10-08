@@ -8,7 +8,7 @@ import FormControl from "react-bootstrap/FormControl";
 import "react-datetime/css/react-datetime.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, Redirect  } from 'react-router-dom';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import Reservation from "./Reservation";
@@ -17,6 +17,7 @@ import {Context} from './Store'
 function ReservationAdd() {
     const location = useLocation();
     const [state, dispatch] = useContext(Context);
+
     const { name } = location.state
     const [date, setDate] = useState(
         moment()
@@ -26,6 +27,10 @@ function ReservationAdd() {
     const [minute, setMinute] = useState(1);
     const [people, setPeople] = useState(1);
     const [error, setError] = useState("");
+
+    if(Object.keys(state.session).length === 0){
+        return <Redirect to='/' />
+    }
 
     const dateChanged = (newdate)=>{
         setDate(newdate);
@@ -53,15 +58,38 @@ function ReservationAdd() {
         posts = <p>Something went wrong: <span>{state.error}</span></p>;
     }
 
+    const getTable = ()=>{
+        let ctable = 0;
+        let maxTable = 5;
+        for(let rindex = 0;rindex<state.posts.length;rindex++){
+            let reservation = state.posts[rindex];
+            if(!(reservation.restaurant == name)){
+                continue;
+            }
+            let timesplit = reservation.time.split(':');
+            console.log(parseInt(timesplit[0]));
+            if(Math.abs(parseInt(timesplit[0]) - hour)<=1){
+                ctable++;
+            }
+        }
+        return ctable>=maxTable?-1:ctable;
+    }
+
     const addReservation = ()=>{
-        setError("oh no");
+        let table = getTable();
+        if(table==-1){
+            setError("Reservation has conflict");
+            return;
+        }
         dispatch({type: 'ADD_POST', payload: {
             restaurant: name,
             date: date,
             time: hour+":"+(minute<10? "0"+minute:minute),
-            people: people+" people, Table "+ Math.floor(Math.random() * 10)
+            people: people+" people, Table "+ table,
+            accepted: "pending"
         }});
     }
+    
 
     if (!state.error && state.posts) {
         posts = state.posts.map(post => {
@@ -69,20 +97,17 @@ function ReservationAdd() {
                 return;
             }
             return (
-                <tr>
+            <tr>
                 <td>
-            <Reservation
-                date={post.date}
-                time={post.time}
-                people={post.people}
-                accepted="Yes"/>
+                    <Reservation
+                    date={post.date}
+                    time={post.time}
+                    people={post.people}
+                    accepted={post.accepted}/>
                 </td>
-                </tr>);
+            </tr>);
         });
-        
     }
-
-    
 
     return (
     <Container>

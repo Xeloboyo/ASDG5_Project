@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import { LinkContainer } from "react-router-bootstrap";
 import ReactLogo from "./logo.svg";
+import {Context} from './Reservations/Store'
 
 /*
   import Home from './Home/Homepage';
@@ -20,6 +21,12 @@ import ReactLogo from "./logo.svg";
 */
 
 function NavigationBar() {
+  const [state, dispatch] = React.useContext(Context);
+  const logout=()=>{
+    if(!(state.session.name)){return;}
+    dispatch({type: 'USER_SESSION_LOGOUT', payload: {}});
+  }
+
   return (
     <Navbar sticky="top" className="bg-dark py-2 flex-grow-1">
       {/* <Container className="bg-dark px-5 mx-0 d-flex"> */}
@@ -80,17 +87,32 @@ function NavigationBar() {
           </Nav.Link>
         </LinkContainer>
       </Nav>
-      <Nav style={{ marginRight: "30px" }}>
-      <LinkContainer to="/restregister" className="float-left mx-3">
-          <Button variant="outline-success">Register for restaurant management</Button>
-        </LinkContainer>
-        <LinkContainer to="/register" className="float-left mx-3">
-          <Button variant="outline-success">Register</Button>
-        </LinkContainer>
-        <LinkContainer to="/login" className="float-right">
-          <Button variant="light">Login</Button>
-        </LinkContainer>
-      </Nav>
+      {
+      (state.session.name) ?
+        (<Nav style={{ marginRight: "30px" }}>
+          <Container className="float-left mx-3 text-white">
+            Welcome {state.session.name} - {state.session.type}
+          </Container>
+          <LinkContainer to="/logout" className="float-right">
+            <Button variant="light"  onClick={(e)=>logout()}>Logout</Button>
+          </LinkContainer>
+        </Nav>)
+        :
+        (
+        <Nav style={{ marginRight: "30px" }}>
+        
+          <LinkContainer to="/restregister" className="float-left mx-3">
+            <Button variant="outline-success">Register for restaurant management</Button>
+          </LinkContainer>
+          <LinkContainer to="/register" className="float-left mx-3">
+            <Button variant="outline-success">Register</Button>
+          </LinkContainer>
+          <LinkContainer to="/login" className="float-right">
+            <Button variant="light">Login</Button>
+          </LinkContainer>
+          
+        </Nav>
+      )}
     </Navbar>
   );
 }

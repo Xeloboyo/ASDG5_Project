@@ -51,36 +51,7 @@ import Store from "./components/Reservations/Store";
 require('dotenv').config();
 
 
-class App extends Component {
-  constructor() {
-    super();
-  }
-  componentWillMount() {
-    this.sendHook("Webhook Called within app haha.. uh.. app has been ran.");
-  }
-  sendHook(msg) {
-    if (!process.env.HOOK_URL) {
-      return;
-    }
-    let x = new XMLHttpRequest();
-    x.open("POST", process.env.HOOK_URL);
-    x.setRequestHeader("Content-type", "application/json");
-    let params = {
-      username: "Heroku",
-      embeds: [
-        {
-          title: "[Internal app message]",
-          description: msg,
-          footer: {
-            text: "This was made with procrastination <3",
-            icon_url: "https://i.imgur.com/VAFzZeX.jpeg",
-          },
-        },
-      ],
-    };
-    x.send(JSON.stringify(params));
-  }
-  render() {
+const App = () => {
     return (
       <Store>
       <Router>
@@ -238,7 +209,6 @@ class App extends Component {
       </Router>
       </Store>
     );
-  }
 }
 
 export default App;

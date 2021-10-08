@@ -1,11 +1,12 @@
 
 import React, {createContext, useReducer} from "react";
 import Reducer from './Reducer'
-
+import {setSessionCookie,getSessionCookie} from '../Cookies'
 
 const initialState = {
     posts: [],
     gloablid: 0,
+    session: getSessionCookie(),
     error: null
 };
 
