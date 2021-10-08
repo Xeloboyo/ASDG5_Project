@@ -24,38 +24,33 @@ app.use('/promotions', PromotionsRouter);
 app.use('/post', CommunityPostRouter);
 // app.use('/post', UserRouter);
 
-
-
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
-require("./config/db");
+require('./config/db');
 
 // configures to access dotenv environment
-require("dotenv").config();
+require('dotenv').config();
 
 // create express app
 
-
-const app = require("express")();
-require("./models/User");
-
+require('./models/User');
 
 // middleware
 app.use(cors());
-app.use(express.json());
+// app.use(express.json());
 
-require("./config/db");
-require("./models/PostCommunity");
+require('./config/db');
+require('./models/PostCommunity');
 
 // restaurant
-const restaurantRouter = require("./api/RestaurantForm");
+const restaurantRouter = require('./api/RestaurantForm');
 
-app.use("/restaurant", restaurantRouter);
+app.use('/restaurant', restaurantRouter);
 
 // menu
-const menuRouter = require("./api/MenuForm");
+const menuRouter = require('./api/MenuForm');
 
-app.use("/menu", menuRouter);
+app.use('/menu', menuRouter);
 
 const TicketRouter = require('./api/TicketActions');
 const AnalyticsRouter = require('./api/AnalyticsActions');
@@ -70,15 +65,15 @@ require('./models/User');
 const Routes = require('./api/Register'); //
 
 app.use('/register', Routes);
-const LoginRoute = require("./api/Login"); //
+const LoginRoute = require('./api/Login'); //
 
-const ReviewRouter = require("./api/Review");
-const ReplyRouter = require("./api/Reply");
+const ReviewRouter = require('./api/Review');
+const ReplyRouter = require('./api/Reply');
 
-const Route = require("./api/Login"); //
+const Route = require('./api/Login'); //
 // const RouteDelete = require("./api/Delete");
 
-const UserSchemaCopy = require("./models/User");
+const UserSchemaCopy = require('./models/User');
 
 // const User = new mongoose.model("User", userSchema);
 
@@ -92,7 +87,7 @@ const UserSchemaCopy = require("./models/User");
 //       } else {
 //         res.json({ message: 'wrong credentials' });
 //       }
-//     }
+//     }\
 //   });
 // });
 
@@ -100,22 +95,21 @@ app.use(cors());
 app.use(bodyParser());
 
 // router to promotions database
-app.use("/promotions", PromotionsRouter);
+app.use('/promotions', PromotionsRouter);
 // router to post database
-app.use("/post", CommunityPostRouter);
+app.use('/post', CommunityPostRouter);
 app.use(cors());
 
-app.use("/register", Routes); //
+app.use('/register', Routes); //
 
-//Review and Reply
-app.use("/review", ReviewRouter);
-app.use("/reply", ReplyRouter);
+// Review and Reply
+app.use('/review', ReviewRouter);
+app.use('/reply', ReplyRouter);
 
-app.use("/login", LoginRoute);//
+app.use('/login', LoginRoute); //
 
-
-//login user s
-app.post("/login", (req, res) => {
+// login user s
+app.post('/login', (req, res) => {
   console.log(req.body);
   const { User_Email, User_Password } = req.body;
   // eslint-disable-next-line object-shorthand
@@ -123,24 +117,24 @@ app.post("/login", (req, res) => {
     if (user) {
       if (User_Password === user.User_Password) {
         // eslint-disable-next-line object-shorthand
-        res.json({ message: "login success", user: user });
+        res.json({ message: 'login success', user: user });
       } else {
-        res.json({ message: "wrong credentials" });
+        res.json({ message: 'wrong credentials' });
       }
     }
   });
 });
 
-//delete user s
-app.delete("/delete", (req, res) => {
-  console.log(req.body)
+// delete user
+app.delete('/delete', (req, res) => {
+  console.log(req.body);
   const { _id } = req.body;
   UserSchemaCopy.findByIdAndDelete({ _id }, (err, user) => {
     if (user) {
       if (_id === user._id) {
-        res.json({ message: "deleted", user: user });
+        res.json({ message: 'deleted', user });
       } else {
-        res.json({ message: "deleted" });
+        res.json({ message: 'deleted' });
       }
     }
   });

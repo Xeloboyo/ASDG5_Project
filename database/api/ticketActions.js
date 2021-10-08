@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
     TicketOrderQuantity,
     TicketOrderDescription,
     TicketStatus,
-    TicketUpdateDescription,
+    TicketUpdateDescription
   } = req.body;
 
   console.log('kek');
@@ -203,7 +203,7 @@ router.post('/ticketdeleteall', async (req, res) => {
   } catch (err) {
     res.status(400).json({ msg: err });
   }
-);
+});
 
 /*
   - confirm ticketing
@@ -213,18 +213,17 @@ router.post('/ticketdeleteall', async (req, res) => {
 
 router.post('/ticketcomplete/:id', async (req, res) => {
   try {
-
     let { id } = req.params;
     const update = await Ticketing.findByIDAndUpdate(id);
 
     // TicketStatus = TicketStatus.trim();
     // TicketUpdateDescripion = TicketUpdateDescription.trim();
-   console.log('kek');
+    console.log('kek');
 
     const complete = new Ticketing({
       TicketStatus: 'SUCCESS',
       TicketUpdateDescription: 'Order Finish'
-   });
+    });
 
     res.json({
       message: 'Order Finish and Ticket Sent',
@@ -232,13 +231,13 @@ router.post('/ticketcomplete/:id', async (req, res) => {
       Status: 'Completed',
       TicketStatus: 'Success',
       TicketUpdateDescription: 'Order Complete'
-   });
+    });
 
     if (!update) throw Error('Error when updating ticket description');
   } catch (err) {
-   res.status(400).json({ msg: err });
+    res.status(400).json({ msg: err });
   }
-);
+});
 
 /*
   - update ticketing 
