@@ -42,7 +42,7 @@ const LoginRoute = require("./api/Login"); //
 const ReviewRouter = require("./api/Review");
 const ReplyRouter = require("./api/Reply");
 
-const Route = require("./api/Login"); //
+// const Route = require("./api/Login"); //
 // const RouteDelete = require("./api/Delete");
 
 const UserSchemaCopy = require("./models/User");
@@ -69,22 +69,7 @@ app.use("/reply", ReplyRouter);
 app.use("/login", LoginRoute);//
 
 
-//login user s
-app.post("/login", (req, res) => {
-  console.log(req.body);
-  const { User_Email, User_Password } = req.body;
-  // eslint-disable-next-line object-shorthand
-  UserSchemaCopy.findOne({ User_Email: User_Email }, (err, user) => {
-    if (user) {
-      if (User_Password === user.User_Password) {
-        // eslint-disable-next-line object-shorthand
-        res.json({ message: "login success", user: user });
-      } else {
-        res.json({ message: "wrong credentials" });
-      }
-    }
-  });
-});
+
 
 //delete user s
 app.delete("/delete", (req, res) => {
