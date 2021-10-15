@@ -53,7 +53,11 @@ const useForm = (callback, validate) => {
         if (User_Name && User_Email && User_Password) {
           axios
             .post("http://localhost:5002/register/form", values)
-            .then((res) => console.log(res));
+            //.then((res) => console.log(res));
+            .then((res) => {
+              console.log(res.data)
+              localStorage.setItem("profile", JSON.stringify(res.data))//saves data to local storage
+            })
         } else {
           console.log("error")
         }

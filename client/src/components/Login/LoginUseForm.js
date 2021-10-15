@@ -30,7 +30,10 @@ const LoginUseForm = (callback, validate) => {
         if (User_Email && User_Password) {
           axios
             .post("http://localhost:5002/login", values)
-            .then((res) => console.log(res.data))
+            .then((res) => {
+              console.log(res.data)
+              localStorage.setItem("profile", JSON.stringify(res.data))//saves data to local storage
+            })
         } else {
           console.log("error")
         }
