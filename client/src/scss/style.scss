@@ -36,6 +36,23 @@ $font-family-sans-serif: Futura-BookBT, -apple-system, system-ui, Futura,
 .line-left {
   border-left: 1px solid rgba(0, 0, 0, 0.322);
 }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
 // Your variable overrides
 $sidebar-bg-color: #1d1d1d;
 

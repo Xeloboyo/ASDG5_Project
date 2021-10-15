@@ -1,78 +1,64 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 // import Dashboard from '../dashboard/Dashboard';
-import CardAnalytics from './CardAnalytics';
+// import CardAnalytics from './CardAnalytics';
+import CalendarDate from './CalendarDate';
+import RestaurantOverview from './RestaurantOverview';
 import RestaurantPerformance from './RestaurantPerformance';
-import RestaurantRevenue from './RestaurantRevenue';
 import '../../scss/style.scss';
 
 class Analytics extends Component {
   render() {
     return (
-      <div>
-        &nbsp; <br />
-        <div
-          style={{
-            marginBottom: '150px',
-            marginLeft: '310px'
-          }}
-        >
-          <Container className="text-center">
-            <div style={{ background: 'lightgrey' }}>
-              <h3 style={{ marginTop: '100px' }}>Restaurant Overview</h3>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  marginTop: '70px',
-                  marginBottom: '50px'
-                }}
-              >
-                <CardAnalytics />
-                <CardAnalytics />
-                <CardAnalytics />
-                <CardAnalytics />
-              </div>
-            </div>
-            <Container>
-              <h3>Restaurant Income Revenue</h3>
-              <h5>Filter: This Week</h5>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  margin: '15px'
-                }}
-              >
-                <RestaurantRevenue />
-              </div>
-            </Container>
-            <Container style={{ marginTop: '50px' }}>
-              <h3>Restaurant Performance Analytics</h3>
-              <h5>Filter: This Week</h5>
-              <Row>
-                <Col sm={10}>
-                  <RestaurantPerformance />
-                </Col>
-                <Col sm={1}>
-                  <div
-                    style={{
-                      justifyContent: 'space-between',
-                      display: 'flex',
-                      flexDirection: 'column'
-                    }}
-                  >
-                    <CardAnalytics />
-                    <CardAnalytics />
-                    <CardAnalytics />
-                    <CardAnalytics />
-                    <CardAnalytics />
-                  </div>
-                </Col>
-              </Row>
-            </Container>
+      <div
+        style={{
+          // marginBottom: '150px',
+          // marginLeft: '310px',
+          background: 'lightgrey',
+          paddingTop: '85px',
+          // position: 'absolute'
+          // margin: 'auto',
+          marginLeft: '220px' // start after sidebar
+        }}
+      >
+        <div>
+          <Container>
+            {/* 1. Calendar */}
+            <Row>
+              <Col xs={6}>
+                <div
+                  style={{
+                    background: 'white',
+                    // display: 'flex',
+                    // marginTop: '70px',
+                    // marginLeft: '210px', // to be commented out
+                    paddingBottom: '50px'
+                  }}
+                >
+                  <CalendarDate />
+                </div>
+              </Col>
+
+              {/* 2. Restaurant Overview*/}
+              <Col xs={6}>
+                <div style={{ background: 'white', display: 'flex' }}>
+                  <RestaurantOverview />
+                </div>
+              </Col>
+            </Row>
           </Container>
         </div>
+
+        {/* 3. Restaurant Analytics  */}
+        <Container>
+          <div style={{ background: 'white', marginTop: '30px' }}>
+            <Row>
+              <Col sm={10}>
+                <RestaurantPerformance />
+              </Col>
+            </Row>
+          </div>
+        </Container>
       </div>
     );
   }
