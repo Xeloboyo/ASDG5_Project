@@ -1,23 +1,33 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import Cards from './Cards';
 
 const data = {
   labels: [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
+    'Restaurant a',
+    'Restaurant b',
+    'Restaurant c',
+    'Restaurant d',
+    'Restaurant  e',
+    'Restaurant f',
+    'Restaurant g'
   ],
+
   datasets: [
     {
-      label: 'Popularity',
+      label: 'Reservation',
       data: [8, 9, 15, 13, 18, 20, 15],
       backgroundColor: ['rgba(75, 192, 192, 0.2)'],
       borderColor: ['rgba(75, 192, 192, 1)'],
+      borderWidth: 1,
+      responsive: true
+    },
+    {
+      label: 'Takeaway',
+      data: [10, 4, 6, 12, 21, 3, 18],
+      backgroundColor: ['red'],
+      borderColor: ['white'],
       borderWidth: 1,
       responsive: true
     }
@@ -40,10 +50,10 @@ function RestaurantPerformance() {
   return (
     <div>
       <Container>
-        <h3>Restaurant Performance Analytics</h3>
+        <h3>Tangle Restaurant Analytics</h3>
 
         <Row>
-          <Col sm={9}>
+          <Col sm={8}>
             <div
               style={{
                 width: '42rem',
@@ -55,27 +65,17 @@ function RestaurantPerformance() {
             </div>
           </Col>
 
-          <Col sm={3}>
-            <div>
-              <div>
-                <Card
-                  style={{
-                    width: '10rem',
-                    // width: '40%',
-                    marginBottom: '30px',
-                    marginLeft: '150px',
-                    // margin: '30px 80px',
-                    padding: '15px',
-                    display: 'block'
-                  }}
-                >
-                  <div className="text-center">
-                    <span style={{ fontSize: '12px' }}>name</span>
-                    <br />
-                    <span style={{ fontSize: '20px' }}>number</span>
-                  </div>
-                </Card>
-              </div>
+          <Col sm={4}>
+            <div
+              style={{
+                marginLeft: '110px',
+                justifyContent: 'center'
+              }}
+            >
+              <Cards /> <hr />
+              <Cards /> <hr />
+              <Cards /> <hr />
+              <Cards /> <hr />
             </div>
           </Col>
         </Row>

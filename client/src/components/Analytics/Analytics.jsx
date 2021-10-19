@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 // import Dashboard from '../dashboard/Dashboard';
 // import CardAnalytics from './CardAnalytics';
-import CalendarDate from './CalendarDate';
-import RestaurantOverview from './RestaurantOverview';
+// import CalendarDate from './CalendarDate';
+import Overview from './Overview';
 import RestaurantPerformance from './RestaurantPerformance';
 import '../../scss/style.scss';
 
@@ -18,14 +18,14 @@ class Analytics extends Component {
           paddingTop: '85px',
           // position: 'absolute'
           // margin: 'auto',
-          marginLeft: '220px' // start after sidebar
+          // marginLeft: '220px' // start after sidebar
         }}
       >
         <div>
           <Container>
-            {/* 1. Calendar */}
             <Row>
-              <Col xs={6}>
+              {/* 0. Calendar */}
+              {/* <Col xs={6}>
                 <div
                   style={{
                     background: 'white',
@@ -35,14 +35,14 @@ class Analytics extends Component {
                     paddingBottom: '50px'
                   }}
                 >
-                  <CalendarDate />
+                   <CalendarDate />
                 </div>
-              </Col>
+              </Col> */}
 
-              {/* 2. Restaurant Overview*/}
-              <Col xs={6}>
+              {/* 1. Website Overview*/}
+              <Col>
                 <div style={{ background: 'white', display: 'flex' }}>
-                  <RestaurantOverview />
+                  <Overview />
                 </div>
               </Col>
             </Row>
