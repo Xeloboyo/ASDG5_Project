@@ -18,25 +18,31 @@ class Overview extends Component {
 
     return (
       <div>
-        <div>
+        <Container>
           <h3>Website Overview</h3>
           <Row>
-            <div
+            {/* <div
               style={{
                 margin: '10px 15px'
                 // justifyContent: 'space-around'
                 // alignItems: 'stretch'
               }}
-            >
-              <Col sm={1}>
-                <Cards />
-                <Cards />
-                <Cards />
-                <Cards />
-              </Col>
-            </div>
+            > */}
+            <Col sm={3}>
+              <Cards />
+            </Col>
+            <Col sm={3}>
+              <Cards />
+            </Col>
+            <Col sm={3}>
+              <Cards />
+            </Col>
+            <Col sm={3}>
+              <Cards />
+            </Col>
+            {/* </div> */}
           </Row>
-        </div>
+        </Container>
       </div>
     );
   }

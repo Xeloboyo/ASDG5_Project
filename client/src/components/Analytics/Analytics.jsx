@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 // import CalendarDate from './CalendarDate';
 import Overview from './Overview';
 import RestaurantPerformance from './RestaurantPerformance';
+import UserLists from './UserLists';
 import '../../scss/style.scss';
 
 class Analytics extends Component {
@@ -15,7 +16,7 @@ class Analytics extends Component {
           // marginBottom: '150px',
           // marginLeft: '310px',
           background: 'lightgrey',
-          paddingTop: '85px',
+          paddingTop: '35px'
           // position: 'absolute'
           // margin: 'auto',
           // marginLeft: '220px' // start after sidebar
@@ -49,12 +50,25 @@ class Analytics extends Component {
           </Container>
         </div>
 
-        {/* 3. Restaurant Analytics  */}
+        {/* 2. Restaurant Analytics  */}
         <Container>
           <div style={{ background: 'white', marginTop: '30px' }}>
             <Row>
               <Col sm={10}>
                 <RestaurantPerformance />
+              </Col>
+            </Row>
+          </div>
+        </Container>
+
+        {/* 3. User Lists */}
+        <Container>
+          <div style={{ background: 'white', marginTop: '30px' }}>
+            <Row>
+              <Col>
+                <div>
+                  <UserLists />
+                </div>
               </Col>
             </Row>
           </div>

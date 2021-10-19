@@ -12,6 +12,7 @@ import Overview from './components/Analytics/Overview';
 import RestaurantPerformance from './components/Analytics/RestaurantPerformance';
 import Analytics from './components/Analytics/Analytics';
 import Ticket from './components/StaffTicket/Ticket';
+import UserLists from './components/Analytics/UserLists';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ ReactDOM.render(
     {/* <RestaurantPerformance /> */}
     <Analytics />
     {/* <Ticket /> */}
+    {/* <UserLists /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

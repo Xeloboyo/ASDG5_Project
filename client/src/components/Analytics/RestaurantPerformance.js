@@ -53,11 +53,12 @@ function RestaurantPerformance() {
         <h3>Tangle Restaurant Analytics</h3>
 
         <Row>
-          <Col sm={8}>
+          <Col sm={9}>
             <div
               style={{
-                width: '42rem',
-                marginLeft: '60px'
+                width: '38rem',
+                marginTop: '50px',
+                marginLeft: '10px'
                 // marginRight: '120px'
               }}
             >
@@ -65,17 +66,18 @@ function RestaurantPerformance() {
             </div>
           </Col>
 
-          <Col sm={4}>
+          <Col sm={1}>
             <div
               style={{
-                marginLeft: '110px',
-                justifyContent: 'center'
+                marginLeft: '80px',
+                justifyContent: 'center',
+                display: 'block'
               }}
             >
               <Cards /> <hr />
               <Cards /> <hr />
               <Cards /> <hr />
-              <Cards /> <hr />
+              <Cards />
             </div>
           </Col>
         </Row>

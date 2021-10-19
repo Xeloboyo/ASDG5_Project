@@ -9,7 +9,7 @@ const Cards = () => {
           style={{
             width: '10rem',
             padding: '10px',
-            display: 'block',
+            // display: 'block',
             margin: '10px 15px'
           }}
         >
