@@ -5,15 +5,6 @@ const { Schema } = mongoose;
 // create TicketSchema
 const TicketSchema = new Schema(
   {
-    UserID: {
-      // foreign_key
-      type: Number
-    },
-
-    // ReservationID: {
-    //   // foreign_key
-    //   type: Number
-    // },
 
     OrderID: {
       // foreign_key
