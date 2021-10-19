@@ -63,7 +63,12 @@ class Analytics extends Component {
 
         {/* 3. User Lists */}
         <Container>
-          <div style={{ background: 'white', marginTop: '30px' }}>
+          <div
+            style={{
+              background: 'white',
+              marginTop: '30px'
+            }}
+          >
             <Row>
               <Col>
                 <div>

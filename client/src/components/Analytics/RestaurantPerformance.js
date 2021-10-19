@@ -69,7 +69,7 @@ function RestaurantPerformance() {
           <Col sm={1}>
             <div
               style={{
-                marginLeft: '80px',
+                marginLeft: '95px',
                 justifyContent: 'center',
                 display: 'block'
               }}
