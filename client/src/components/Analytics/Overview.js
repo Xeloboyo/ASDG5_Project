@@ -28,7 +28,7 @@ class Overview extends Component {
                 // alignItems: 'stretch'
               }}
             >
-              <Col sm={5}>
+              <Col sm={1}>
                 <Cards />
                 <Cards />
                 <Cards />
