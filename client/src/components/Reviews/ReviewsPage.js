@@ -11,11 +11,13 @@ export default class Reviews extends Component {
         this.state = {
             User_ID: "6158811e44c3c679ec5c295f",
             ReviewPosts: []
-            //ReviewPosts: [<Review postID = {"615c728f9bd32c571c55f6e0"}/>, <Review postID = {"615c7324f9928160d09a2f17"}/>, <Review postID = {"615c7347f9928160d09a2f19"}/>]
         }
     }
 
     async componentDidMount() {
+        //get user ID from session
+        //check if user loged-in
+        //true set user id at state
         const response = await fetch("http://localhost:5002/review/user/" + this.state.User_ID);
         const data = await response.json();
         
