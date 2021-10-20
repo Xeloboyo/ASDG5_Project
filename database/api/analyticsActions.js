@@ -1,18 +1,29 @@
 /*
     REST API Analytics Actions:
 
-    - get analytics -> restaurant id
-    - "create" analytics when restaurant is made
-    - "show" the analytics when restaurant subscribe
-    - stop showing analytics if user stop subscribing
-    - filter database based on date
+    how does information update:
+    // 1. changes realtime, 
+    2. get notification to refresh? (YES)
 
-    each one needs to render:
-    1. count: share, views, ratings, takeaway, bookings
-    2. average: day and hours of booking, day and hours of reservations 
-    // popularity
-    3. total: takeaway
-    4. filter: date ( to change all the value above )
+    GET, PATCH
+    - Total Users
+    - Total Restaurants
+    - Total Community Posts
+
+    GET, PATCH
+    Monthly Graph:
+        - Number of Visits
+        - Number of Advertisement Usedd
+        - Number of Takeaway Ordered ( & Revenue )
+
+    GET, PATCH, DELETE 
+    User Table:
+        - Filter Users ( All Users / Registered Users / Restaurants )
+        - User ID
+        - Username
+        - Password
+        - Date Created
+        - Delete
 
 */
 
@@ -20,44 +31,60 @@ const express = require('express');
 
 const router = express.Router();
 
-// const Analytics = require('../models/Analytics');
-// const Subscribe = require('../models/Subscribe');
-
 /*
-    - get analytics
-    @route GET api/analytics/analytics/{id}
-    @desc get analytics data
+    - show analytics overview
+    @route GET api/analytics/overview
+    @desc get analytics overview data
     @access private
-
 */
 
-/*
-    - create analytics
-    @route POST api/analytics/analytics/{id}
-    @desc create analytics data based on restaurant
-    @access private
 
+/*
+    - show restaurant's analytics (based on month)
+    @route GET api/analytics/restaurants
+    @desc get analytics data based on restaurant
+    @access private
 */
 
+
 /*
-    - show the analytics
-    @route POST api/analytics/analyticsshow/{id}
+    - update analytics overview
+    @route PATCH api/analytics/refresh/overview
     @desc show restaurant analytics based on restaurant id
     @access private
 */
 
+
 /*
-    - stop showing analytics
-    @route PATCH api/analytics/analyticsstop/{id}
-    @desc stop showing analytics when restaurant stop subscribing
+    - update restaurant's analytics
+    @route PATCH api/analytics/refresh/restaurant
+    @desc show restaurant analytics based on restaurant id
     @access private
 */
 
+
 /*
-    - filter analytics (based on date)
-    @route PATCH api/analytics/analytics/analyticsfilter/{id}
-    @desc filter restaurant analytics based on date
+    - update user lists
+    @route PATCH api/analytics/refresh/<i class="fa fa-user" aria-hidden="true"></i>
+    @desc show restaurant analytics based on restaurant id
     @access private
 */
+
+
+/*
+    - filter user lists (based on user's input)
+    @route POST api/analytics/user/filter
+    @desc filter user lists based on users
+    @access private
+*/
+
+
+/*
+    - delete user
+    @route PATCH api/analytics/user/delete
+    @desc filter user lists based on users
+    @access private
+*/
+
 
 module.exports = router;
