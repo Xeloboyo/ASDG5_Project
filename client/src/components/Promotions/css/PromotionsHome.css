@@ -22,6 +22,10 @@ h3 {
   padding: 0px 70px 1px !important;
 }
 
+.center {
+  text-align: center;
+}
+
 .containers {
   padding: 15px 70px 1px;
 }
