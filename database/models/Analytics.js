@@ -2,46 +2,58 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-// create AnalyticsSchem
+// create AnalyticsSchema
 const AnalyticsSchema = new Schema({
-  UsersTotal: {
-    type: Number
-  },
-
-  RestaurantsTotal: {
-    type: Number
-  },
-
-  TrafficVisits: {
-    type: Number
-  },
-
-  CommPostsTotal: {
-    type: Number
-  },
-
-  Restaurant: [
+  Date: [
     {
-      Month: {
-        type: Date
-        // needs to return MM YYYY
-      },
+      type: Date,
+      default: Date.now
+      // default returns YYYY MM DD
+      // needs to return YYYY MM
+      // filter it at API
+    },
+    {
+      Overview: [
+        {
+          UsersTotal: {
+            type: Number
+          },
 
-      Traffic: {
-        type: Number
-      },
+          RestaurantsTotal: {
+            type: Number
+          },
 
-      Bookings: {
-        type: Number
-      },
+          TrafficVisits: {
+            type: Number
+          },
 
-      ProfitTakeaway: {
-        type: Number
-      },
+          CommPostsTotal: {
+            type: Number
+          }
+        }
+      ]
+    },
 
-      Takeaway: {
-        type: Number
-      }
+    {
+      MonthlyData: [
+        {
+          Traffic: {
+            type: Number
+          },
+
+          Bookings: {
+            type: Number
+          },
+
+          ProfitTakeaway: {
+            type: Number
+          },
+
+          Takeaway: {
+            type: Number
+          }
+        }
+      ]
     }
   ]
 });
