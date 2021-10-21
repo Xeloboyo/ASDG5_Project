@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import "./css/CommunityPageEdit.css";
 import Table from "react-bootstrap/esm/Table";
+import { Redirect } from "react-router";
 
 export default class CommunityPageEdit extends Component {
   constructor(props) {
@@ -84,6 +85,7 @@ export default class CommunityPageEdit extends Component {
 
   // Get the all post before page loads
   async componentDidMount() {
+    // if (localStorage.profile){}
     const UserID = { UserID: "1234" };
     console.log("apple");
     console.log(this.state.SuccessCommunityPost);
@@ -106,6 +108,9 @@ export default class CommunityPageEdit extends Component {
   }
 
   render() {
+    if (!localStorage.profile) {
+      return <Redirect to={"/login"} />;
+    }
     const All_postEdit = this.state.All_postEdit;
     const SuccessCommunityPost = this.state.SuccessCommunityPost;
     return (

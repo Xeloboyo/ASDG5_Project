@@ -58,6 +58,13 @@ class CommunityPage extends Component {
 
   // Get the all post before page loads
   async componentDidMount() {
+    // localStorage.removeItem("profile");
+    // localStorage.removeItem("position");
+
+    if (localStorage.profile) {
+      console.log(localStorage.profile);
+      console.log(localStorage.position);
+    }
     if (window.location.pathname == "/communitypage") {
       try {
         const response = await fetch("http://localhost:5002/post/", {
@@ -103,9 +110,13 @@ class CommunityPage extends Component {
             <tr>
               <h1 className="title">Community Page</h1>
               <th className="right">
-                <LinkContainer to="/communitypageform">
-                  <Nav.Link>Create Post</Nav.Link>
-                </LinkContainer>
+                {localStorage.profile ? (
+                  <LinkContainer to="/communitypageform">
+                    <Nav.Link>Create Post</Nav.Link>
+                  </LinkContainer>
+                ) : (
+                  <p></p>
+                )}
               </th>
             </tr>
             <tr>
@@ -138,9 +149,13 @@ class CommunityPage extends Component {
                 </Dropdown>
               </th>
               <th className="right">
-                <LinkContainer to="/communitypageedit">
-                  <Nav.Link>Edit Post</Nav.Link>
-                </LinkContainer>
+                {localStorage.profile ? (
+                  <LinkContainer to="/communitypageedit">
+                    <Nav.Link>Edit Post</Nav.Link>
+                  </LinkContainer>
+                ) : (
+                  <p></p>
+                )}
               </th>
             </tr>
           </table>
