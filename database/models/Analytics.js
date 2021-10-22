@@ -13,7 +13,7 @@ const AnalyticsSchema = new Schema({
       // filter it at API
     },
     {
-      Overview: [
+      OverviewData: [
         {
           UsersTotal: {
             type: Number
@@ -35,7 +35,7 @@ const AnalyticsSchema = new Schema({
     },
 
     {
-      MonthlyData: [
+      RestaurantData: [
         {
           Traffic: {
             type: Number
