@@ -6,7 +6,7 @@ import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import "./css/CommunityPageEdits.css";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 
 class CommunityPageEdits extends Component {
   constructor(props) {
@@ -94,7 +94,7 @@ class CommunityPageEdits extends Component {
       Post_Community_Category: this.state.Post_Community_Category,
       Post_Paragraph: this.state.Post_Paragraph,
       Post_Edited: this.state.Post_Edited,
-      User_ID: "1234", // change to actual userID later
+      User_ID: localStorage.id.slice(1, -1), // change to actual userID later
     };
 
     const response = await fetch(
@@ -158,6 +158,9 @@ class CommunityPageEdits extends Component {
   }
 
   render() {
+    if (!localStorage.profile) {
+      return <Redirect to={"/login"} />;
+    }
     if (this.state.All_post.data) {
       console.log(this.state.All_post.data.Post_Community_Title);
     }

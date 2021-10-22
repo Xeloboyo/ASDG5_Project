@@ -122,11 +122,18 @@ router.post("/getsearch", async (req, res) => {
         { Promotions_Description: { $regex: ".*" + search + ".*" } },
       ],
     });
-    if (!post) throw Error("No Items");
-    res.json({
-      message: "Gotten",
-      data: post,
-    });
+    console.log(post);
+    if (post.length == 0) {
+      res.json({
+        message: "Empty",
+        data: "",
+      });
+    } else {
+      res.json({
+        message: "Gotten",
+        data: post,
+      });
+    }
   } catch (err) {
     res.status(400).json({ mesg: err });
   }

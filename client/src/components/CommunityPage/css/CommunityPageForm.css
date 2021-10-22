@@ -19,3 +19,9 @@ table {
 .title {
   padding: 15px;
 }
+
+.post_colour {
+  color: black !important;
+  text-align: left !important;
+  font-size: 1rem !important;
+}

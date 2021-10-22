@@ -5,8 +5,9 @@ import Table from "react-bootstrap/Table";
 import Dropdown from "react-bootstrap/esm/Dropdown";
 import { LinkContainer } from "react-router-bootstrap";
 import "./css/CommunityPage.css";
+import { withRouter } from "react-router";
 
-export default class CommunityPage extends Component {
+class CommunityPage extends Component {
   constructor(props) {
     super(props);
 
@@ -16,8 +17,10 @@ export default class CommunityPage extends Component {
     this.state = {
       Category_Downdrop: "",
       All_post: [{}],
+      search: "",
     };
   }
+
   // Set all post
   onChangeAll_post(e) {
     this.setState({
@@ -35,20 +38,67 @@ export default class CommunityPage extends Component {
     console.log(select);
   };
 
-  // Get the all post before page loads
-  async componentDidMount() {
+  myFunction = async (searchs) => {
+    const category = { search: searchs };
+    console.log(searchs);
+
     try {
-      const response = await fetch("http://localhost:5002/post/", {
-        method: "GET",
-        headers: {},
+      const response = await fetch("http://localhost:5002/post/getcategory", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(category),
       });
       const jsonData = await response.json();
-
-      this.setState({ All_post: jsonData });
+      console.log(`${jsonData.message}`);
+      this.setState({ All_post: jsonData.data });
     } catch (err) {
       console.error(err.message);
     }
-    // console.log(`${this.state.All_post[1].Post_Community_Title}`);
+  };
+
+  // Get the all post before page loads
+  async componentDidMount() {
+    // localStorage.removeItem("profile");
+    // localStorage.removeItem("position");
+
+    if (localStorage.profile) {
+      console.log(localStorage.profile);
+      console.log(localStorage.position);
+    }
+    if (window.location.pathname == "/communitypage") {
+      try {
+        const response = await fetch("http://localhost:5002/post/", {
+          method: "GET",
+          headers: {},
+        });
+        const jsonData = await response.json();
+
+        this.setState({ All_post: jsonData });
+      } catch (err) {
+        console.error(err.message);
+        // console.log(`${this.state.All_post[1].Post_Community_Title}`);}
+      }
+    } else {
+      console.log(window.location.pathname);
+      if (window.location.pathname === "/communitypage/resturant") {
+        this.setState({ search: "RESTURANT" }, function () {
+          console.log(this.state.search);
+          this.myFunction(this.state.search);
+        });
+      } else if (window.location.pathname === "/communitypage/food") {
+        this.setState({ search: "FOOD" }, function () {
+          console.log(this.state.search);
+          this.myFunction(this.state.search);
+        });
+
+        console.log(this.state.search);
+      } else {
+        this.setState({ search: "OTHER" }, function () {
+          console.log(this.state.search);
+          this.myFunction(this.state.search);
+        });
+      }
+    }
   }
 
   render() {
@@ -60,9 +110,13 @@ export default class CommunityPage extends Component {
             <tr>
               <h1 className="title">Community Page</h1>
               <th className="right">
-                <LinkContainer to="/communitypageform">
-                  <Nav.Link>Create Post</Nav.Link>
-                </LinkContainer>
+                {localStorage.profile ? (
+                  <LinkContainer to="/communitypageform">
+                    <Nav.Link>Create Post</Nav.Link>
+                  </LinkContainer>
+                ) : (
+                  <p></p>
+                )}
               </th>
             </tr>
             <tr>
@@ -76,25 +130,32 @@ export default class CommunityPage extends Component {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item eventKey="all" href="#/action-1">
+                    <Dropdown.Item eventKey="all" href="/communitypage">
                       All
                     </Dropdown.Item>
-                    <Dropdown.Item eventKey="resturant" href="#/action-1">
+                    <Dropdown.Item
+                      eventKey="resturant"
+                      href="/communitypage/resturant"
+                    >
                       Resturant
                     </Dropdown.Item>
-                    <Dropdown.Item eventKey="food" href="#/action-2">
+                    <Dropdown.Item eventKey="food" href="/communitypage/food">
                       Food
                     </Dropdown.Item>
-                    <Dropdown.Item eventKey="Other" href="#/action-3">
+                    <Dropdown.Item eventKey="Other" href="/communitypage/other">
                       Other
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </th>
               <th className="right">
-                <LinkContainer to="/communitypageedit">
-                  <Nav.Link>Edit Post</Nav.Link>
-                </LinkContainer>
+                {localStorage.profile ? (
+                  <LinkContainer to="/communitypageedit">
+                    <Nav.Link>Edit Post</Nav.Link>
+                  </LinkContainer>
+                ) : (
+                  <p></p>
+                )}
               </th>
             </tr>
           </table>
@@ -109,9 +170,7 @@ export default class CommunityPage extends Component {
                       <div className="postCommunityPage">
                         <div>
                           <h2>{e.Post_Community_Title}</h2>
-                          <p>
-                            <small>Username: {e.User_ID}</small>
-                          </p>
+                          <p>{/* <small>Username: {e.User_ID}</small> */}</p>
                           <hr />
                           <p>
                             <small>{e.Post_Community_Category}</small>
@@ -137,3 +196,5 @@ export default class CommunityPage extends Component {
     );
   }
 }
+
+export default withRouter(CommunityPage);
