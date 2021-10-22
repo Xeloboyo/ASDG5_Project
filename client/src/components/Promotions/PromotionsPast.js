@@ -6,7 +6,7 @@ import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import { LinkContainer } from "react-router-bootstrap";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 
 class PromotionsPast extends Component {
   constructor(props) {
@@ -143,6 +143,12 @@ class PromotionsPast extends Component {
   }
 
   render() {
+    if (
+      !localStorage.profile ||
+      localStorage.position.slice(1, -1) !== "admin"
+    ) {
+      return <Redirect to={"/"} />;
+    }
     const All_promotions = this.state.All_promotions;
     const SuccessCommunityPost = this.state.SuccessCommunityPost;
     const EmptyInput = this.state.EmptyInput;

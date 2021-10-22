@@ -86,7 +86,8 @@ export default class CommunityPageEdit extends Component {
   // Get the all post before page loads
   async componentDidMount() {
     // if (localStorage.profile){}
-    const UserID = { UserID: "1234" };
+    const id = localStorage.id.slice(1, -1);
+    const UserID = { UserID: id };
     console.log("apple");
     console.log(this.state.SuccessCommunityPost);
     try {
@@ -147,7 +148,9 @@ export default class CommunityPageEdit extends Component {
                             <div>
                               <h2>{e.Post_Community_Title}</h2>
                               <p>
-                                <small>Username : {e.User_ID}</small>
+                                <small>
+                                  Username : {localStorage.profile.slice(1, -1)}
+                                </small>
                               </p>
                               <hr />
                               <p>

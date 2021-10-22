@@ -170,9 +170,7 @@ class CommunityPage extends Component {
                       <div className="postCommunityPage">
                         <div>
                           <h2>{e.Post_Community_Title}</h2>
-                          <p>
-                            <small>Username: {e.User_ID}</small>
-                          </p>
+                          <p>{/* <small>Username: {e.User_ID}</small> */}</p>
                           <hr />
                           <p>
                             <small>{e.Post_Community_Category}</small>

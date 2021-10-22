@@ -13,3 +13,9 @@
 ul.b {
   list-style-type: square;
 }
+
+.promotions_colour {
+  color: black !important;
+  text-align: left !important;
+  font-size: 1rem !important;
+}
