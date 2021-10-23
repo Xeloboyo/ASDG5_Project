@@ -39,6 +39,8 @@ const Routes = require("./api/Register"); //
 
 const LoginRoute = require("./api/Login"); //
 
+const TakeawayRoute = require("./api/Takeaway") //
+
 const ReviewRouter = require("./api/Review");
 const ReplyRouter = require("./api/Reply");
 
@@ -59,6 +61,9 @@ app.use("/promotions", PromotionsRouter);
 // router to post database
 app.use("/post", CommunityPostRouter);
 app.use(cors());
+
+//takeaway route
+app.use("/takeaway", TakeawayRoute); //
 
 app.use("/register", Routes); //
 

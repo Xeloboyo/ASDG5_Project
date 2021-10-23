@@ -35,25 +35,25 @@ const Footer = () => {
               <Card.Title>Social Media(s)</Card.Title>
               <Card.Text href="#">
                 <i className="fab fa-facebook-f">
-                  <SiFacebook />
+                  {/* <SiFacebook /> */}
                   <span style={{ marginLeft: "10px" }}>Facebook </span>
                 </i>
               </Card.Text>
               <Card.Text href="#">
                 <i className="fab fa-instagram">
-                  <SiInstagram />
+                  {/* <SiInstagram /> */}
                   <span style={{ marginLeft: "10px" }}>Instagram</span>
                 </i>
               </Card.Text>
               <Card.Text href="#">
-                <i className="fab fa-linkedIn">
-                  <SiLinkedin />
+              <i className="fab fa-linkedin">
+                  {/* <SiLinkedin /> */}
                   <span style={{ marginLeft: "10px" }}>LinkedIn</span>
                 </i>
               </Card.Text>
               <Card.Text href="#">
                 <i className="fab fa-youtube">
-                  <SiYoutube />
+                  {/* <SiYoutube /> */}
                   <span style={{ marginLeft: "10px" }}>Youtube</span>
                 </i>
               </Card.Text>{" "}
