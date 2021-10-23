@@ -7,8 +7,7 @@
 
 /* REST API Analytics Actions:
 
-    1. Overview
-    
+    1. Overview:
     GET:
     - Total Users
     - Total Restaurants
@@ -29,7 +28,6 @@
     - New Month
 
     3. Users Lists:
-    
     GET (based on User Category: All Users / Registered Users / Restaurants )
     - Filter Users 
     
@@ -51,23 +49,34 @@ const express = require('express');
 
 const router = express.Router();
 
+const moment = require('moment');
+
+/* for date
+    using moment to compare collectionDate with currentMonth and compare with currentYear
+    if true then use current collection
+    if not make a new collection
+    compare this moment(Date.now).format('MMMM YYYY') with Analytics.Date()
+    let dateFormat = moment(Date.now()).format('MMMMM YYYY');
+    // let compare = moment(dateFormat).isSame(Analysis.find()); // can only be compared inside query
+*/
+
+// current document
 const Analysis = require('../models/Analytics');
 
-// to filter Date.now
-// const Month =
+// other documents:
 
-//  Overview
-//   Month,
-//   UsersTotal,
-//   RestaurantsTotal,
-//   TrafficVisits,
-//   CommPostsTotal
+// user schema
+const User = require('../models/User');
+const PostCommunity = require('../models/PostCommunity');
 
-//  Restaurant
-//   Traffic,
-//   Bookings,
-//   ProfitTakeaway,
-//   Takeaway,
+// Restaurant schema
+const Restaurant = require('../models/Restaurant');
+const Promotion = require('../models/Promotions');
+const Product = require('../models/Product');
+
+// might not work
+// const OverviewStats = require('../models/User' && '../models/Restaurant' && '../models/PostCommunity');
+// const RestaurantStats = require('../models/Restaurant' && '../models/Promotions' && '../models/Products');
 
 /*
     - Get ALl Analytics data
@@ -88,7 +97,6 @@ router.get('/', async (req, res) => {
     });
     console.log(err);
   }
-  // check if month and year exist
 });
 
 /*
@@ -98,13 +106,13 @@ router.get('/', async (req, res) => {
     @access private
 */
 router.post('/overview/', async (req, res) => {
-  let { Month, UsersTotal, RestaurantsTotal, TrafficVisits, CommPostsTotal } =
+  let { Date, UsersTotal, RestaurantsTotal, TrafficVisits, CommPostsTotal } =
     req.body;
 
   console.log('it`s all kek');
 
   // if month is not the same, then make new collection
-  if ((Month = '')) {
+  if ((Date = '')) {
     // check if month is already created
     res.json({
       status: '404',
@@ -112,7 +120,7 @@ router.post('/overview/', async (req, res) => {
     });
   } else {
     const NewAnalysis = new Analysis({
-      Month,
+      Date,
       UsersTotal,
       RestaurantsTotal,
       TrafficVisits,
@@ -144,8 +152,9 @@ router.post('/overview/', async (req, res) => {
     @desc get analytics data based on restaurant
     @access private
 */
+
 router.post('/restaurants/', async (req, res) => {
-  let { Month, Traffic, Bookings, ProfitTakeaway, Takeaway } = req.body;
+  let { Date, Traffic, Bookings, ProfitTakeaway, Takeaway } = req.body;
 
   console.log('its kek');
 
@@ -156,7 +165,7 @@ router.post('/restaurants/', async (req, res) => {
     });
   } else {
     const NewAnalysis = new Analysis({
-      Month,
+      Date,
       Traffic,
       Bookings,
       ProfitTakeaway,
@@ -180,20 +189,6 @@ router.post('/restaurants/', async (req, res) => {
       });
   }
 });
-
-/*
-    - Update analytics overview
-    @route POST api/analytics/update/
-    @desc get analytics overview data
-    @access private
-*/
-
-/*
-    - Update restaurant's analytics
-    @route PATCH api/analytics/update
-    @desc update restaurant analytics
-    @access private
-*/
 
 //  User Lists (User, Admin, Restaurant)
 //   UserID
@@ -238,7 +233,7 @@ router.post('/users/', async (req, res) => {
   } catch (err) {
     res.json({
       status: '404',
-      message: 'An error occured'
+      message: 'An error occurred'
     });
     console.log(err);
   }
@@ -250,7 +245,9 @@ router.post('/users/', async (req, res) => {
     @desc filter user lists based on users
     @access private
 */
-router.get('/users', authenticate, async (req, res) => {
+
+// router.get('/users', authenticate, async (req, res) => {
+router.get('/users', async (req, res) => {
   const match = {};
 
   if (req.query.User_Category) {
@@ -260,11 +257,11 @@ router.get('/users', authenticate, async (req, res) => {
     await req.user
       .populate({
         path: 'users',
-        match,
-        options: {
-          limit: parseInt(req.query.limit),
-          skip: parseInt(req.query.skip)
-        }
+        match
+        // options: {
+        // limit: parseInt(req.query.limit),
+        // skip: parseInt(req.query.skip)
+        // }
       })
       .execPopulate();
     res.send(req.user.posts);
@@ -279,10 +276,10 @@ router.get('/users', authenticate, async (req, res) => {
     @desc delete specific user based on id
     @access private
 */
-router.post('/deleteusers/:id', async (req, res) => {
+router.post('/delete/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const deleteuser = await Analysis.deleteOne(id);
+    const deleteuser = await Analysis.findByIdAndDelete(id);
 
     console.log('kek');
 
@@ -295,6 +292,54 @@ router.post('/deleteusers/:id', async (req, res) => {
     res.status(400).json({ msg: err });
   }
 });
+
+/*
+  Test Files
+*/
+
+// query to test count ✅
+router.route('/test/count').post((req, res) => {
+  User.count({}, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json('number of documents inside the collection is = ' + result);
+    }
+  });
+});
+
+// query to test validate month and year ✅
+
+/* ways to validate
+      let compare = moment(dateFormat).isSame(dateData); // can only be compared inside query
+      output: true
+      desc: check if two var is the same format
+
+      const compare = await Analysis.exists({ Date: dateFormat });
+      output: true or false
+      desc: check if dateFormat(Date now) exists within collection
+*/
+
+router.post('/test/validate', async (req, res) => {
+  // let compare = moment(dateFormat).isSame(dateData); // can only be compared inside query
+  // console.log(dateFormat);
+  try {
+    const compare = await Analysis.exists({ Date: dateFormat });
+    console.log(compare); // true or false
+
+    if (!compare) throw Error('No such date exist within the collection');
+    res.status(200).json(data);
+  } catch (err) {
+    res.json({
+      status: '400',
+      message: 'Data not found'
+    });
+    console.log(err);
+  }
+});
+
+let dateFormat = moment(Date.now()).format('MMMM YYYY');
+let dateData = moment(Analysis.Date).format('MMMM YYYY');
 
 module.exports = router;
 
@@ -322,4 +367,26 @@ module.exports = router;
     2. mongoose dates - https://mongoosejs.com/docs/tutorials/dates.html
     3. dateFromParts - https://docs.mongodb.com/manual/reference/operator/aggregation/dateFromParts/. 
 
+    /* lists 
+  todo: check number of document inside a collection 
+
+  Overview
+    Month,
+    UsersTotal,
+    RestaurantsTotal,
+    TrafficVisits,
+    CommPostsTotal
+
+  Restaurant
+    Traffic,
+    Bookings,
+    ProfitTakeaway,
+    Takeaway,
+
+  Model/Schema Needed:
+    User -> User + User Lists
+    PostCommunity -> Overview
+    Restaurant -> Restaurant
+    Promotion -> Promotion
+    Products -> Takeaway & Profit Takeaway
 */

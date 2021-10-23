@@ -3,7 +3,7 @@ require('./config/db');
 const cors = require('cors');
 
 const app = require('express')();
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 const port = process.env.PORT || 5002;
 
@@ -52,8 +52,8 @@ const menuRouter = require('./api/MenuForm');
 
 app.use('/menu', menuRouter);
 
-const TicketRouter = require('./api/TicketActions');
-const AnalyticsRouter = require('./api/AnalyticsActions');
+const TicketRouter = require('./api/ticketActions');
+const AnalyticsRouter = require('./api/analyticsActions');
 
 app.use('/ticket', TicketRouter);
 app.use('/analytics', AnalyticsRouter);
@@ -63,7 +63,6 @@ app.use('/analytics', AnalyticsRouter);
 require('./models/User');
 // const UserSchemaCopy = require('./models/User');
 const Routes = require('./api/Register'); //
-
 
 // const Route = require("./api/Login"); //
 
@@ -112,21 +111,20 @@ app.use('/reply', ReplyRouter);
 
 app.use('/login', LoginRoute); //
 
-
 // delete user
-app.delete('/delete', (req, res) => {
-  console.log(req.body);
-  const { _id } = req.body;
-  UserSchemaCopy.findByIdAndDelete({ _id }, (err, user) => {
-    if (user) {
-      if (_id === user._id) {
-        res.json({ message: 'deleted', user });
-      } else {
-        res.json({ message: 'deleted' });
-      }
-    }
-  });
-});
+// app.delete('/delete', (req, res) => {
+//   console.log(req.body);
+//   const { id } = req.body;
+//   UserSchemaCopy.findByIdAndDelete({ id }, (err, user) => {
+//     if (user) {
+//       if (id === user.id) {
+//         res.json({ message: 'deleted', user });
+//       } else {
+//         res.json({ message: 'deleted' });
+//       }
+//     }
+//   });
+// });
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

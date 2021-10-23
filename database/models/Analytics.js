@@ -2,15 +2,16 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const moment = require('moment');
+
 // create AnalyticsSchema
 const AnalyticsSchema = new Schema({
   Date: [
     {
       type: Date,
-      default: Date.now
-      // default returns YYYY MM DD
-      // needs to return YYYY MM
-      // filter it at API
+      // default: Date.now // default returns MM DD YYYY
+      default: () => moment(Date.now).format('MMMM YYYY')
+      // today's date formatted to: October 2021
     },
     {
       OverviewData: [
