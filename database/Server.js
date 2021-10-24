@@ -11,9 +11,9 @@ require('dotenv').config();
 // create express app
 const app = express();
 const port = process.env.PORT || 5002;
-const cors = require("cors");
+//const cors = require("cors");
 
-const app = require("express")();
+//const app = require("express")();
 require("./models/User");
 
 const mongoose = require("mongoose");
@@ -40,7 +40,7 @@ const Route = require("./api/Login"); //
 
 // const RouteDelete = require("./api/Delete"); 
 
-const cors = require("cors"); //
+//const cors = require("cors"); //
 const UserSchemaCopy = require("./models/User");
 
 // const userSchema = new mongoose.Schema({
