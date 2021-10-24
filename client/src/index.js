@@ -19,9 +19,9 @@ ReactDOM.render(
     {/* <App /> */}
     {/* <Overview /> */}
     {/* <RestaurantPerformance /> */}
-    {/* <Analytics /> */}
+    <Analytics />
     {/* <Ticket /> */}
-    <UserLists />
+    {/* <UserLists /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

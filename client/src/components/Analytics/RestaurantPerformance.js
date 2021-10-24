@@ -1,7 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import Cards from './Cards';
 
 const data = {
   labels: [
@@ -46,6 +45,13 @@ const options = {
   }
 };
 
+const restaurants = [
+  { title: 'Number of New Users', number: '20' },
+  { title: 'Advertisement Used', number: '20' },
+  { title: 'Net Bookings', number: '20' },
+  { title: 'Takeaway Ordered', number: '20' }
+];
+
 function RestaurantPerformance() {
   return (
     <div>
@@ -65,20 +71,38 @@ function RestaurantPerformance() {
               <Bar data={data} options={options} />
             </div>
           </Col>
-
           <Col sm={1}>
-            <div
-              style={{
-                marginLeft: '95px',
-                justifyContent: 'center',
-                display: 'block'
-              }}
-            >
-              <Cards /> <hr />
-              <Cards /> <hr />
-              <Cards /> <hr />
-              <Cards />
-            </div>
+            {restaurants.map((restaurant) => {
+              return (
+                <div
+                  style={{
+                    marginLeft: '95px',
+                    justifyContent: 'center',
+                    display: 'block'
+                  }}
+                >
+                  <Card
+                    style={{
+                      width: '10rem',
+                      padding: '10px',
+                      // display: 'block',
+                      margin: '10px 15px'
+                    }}
+                  >
+                    <div className="text-center">
+                      <span style={{ fontSize: '12px' }}>
+                        {restaurant.title}
+                      </span>
+                      <br />
+                      <span style={{ fontSize: '20px' }}>
+                        {restaurant.number}
+                      </span>
+                    </div>
+                  </Card>
+                  <hr />
+                </div>
+              );
+            })}
           </Col>
         </Row>
       </Container>

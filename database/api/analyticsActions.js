@@ -78,6 +78,10 @@ const Product = require('../models/Product');
 // const OverviewStats = require('../models/User' && '../models/Restaurant' && '../models/PostCommunity');
 // const RestaurantStats = require('../models/Restaurant' && '../models/Promotions' && '../models/Products');
 
+// moment date format
+let dateFormat = moment(Date.now()).format('MMMM YYYY');
+let dateData = moment(Analysis.Date).format('MMMM YYYY');
+
 /*
     - Get ALl Analytics data
     @route GET api/analytics/
@@ -87,12 +91,19 @@ const Product = require('../models/Product');
 
 router.get('/', async (req, res) => {
   try {
+    const compare = await Analysis.exists({ Date: dateFormat });
+    console.log(compare); // true or false
+
     const data = await Analysis.find();
-    if (!data) throw Error('No data available');
+    console.log(data); // return schema
+
+    console.log('', 'kek');
+
+    if (!compare) throw Error('No such date exist within the collection');
     res.status(200).json(data);
   } catch (err) {
     res.json({
-      status: '404',
+      status: '400',
       message: 'File not found'
     });
     console.log(err);
@@ -106,17 +117,25 @@ router.get('/', async (req, res) => {
     @access private
 */
 router.post('/overview/', async (req, res) => {
+  const compare = await Analysis.exists({ Date: dateFormat });
+  console.log(compare); // true or false
+
+  const data = await Analysis.find();
+  console.log(data); // return schema
+
+  console.log('', 'kek');
+
   let { Date, UsersTotal, RestaurantsTotal, TrafficVisits, CommPostsTotal } =
     req.body;
 
   console.log('it`s all kek');
 
   // if month is not the same, then make new collection
-  if ((Date = '')) {
+  if (compare === false) {
     // check if month is already created
     res.json({
       status: '404',
-      message: 'Table has not yet created'
+      message: 'No such table exists'
     });
   } else {
     const NewAnalysis = new Analysis({
@@ -154,14 +173,22 @@ router.post('/overview/', async (req, res) => {
 */
 
 router.post('/restaurants/', async (req, res) => {
+  const compare = await Analysis.exists({ Date: dateFormat });
+  console.log(compare); // true or false
+
+  const data = await Analysis.find();
+  console.log(data); // return schema
+
+  console.log('', 'kek');
+
   let { Date, Traffic, Bookings, ProfitTakeaway, Takeaway } = req.body;
 
   console.log('its kek');
 
-  if ((Month = '')) {
+  if (compare === false) {
     res.json({
       status: 'FAILED',
-      message: 'Data is not yet created'
+      message: 'No such table exists'
     });
   } else {
     const NewAnalysis = new Analysis({
@@ -204,7 +231,7 @@ router.post('/restaurants/', async (req, res) => {
     @access private
 */
 
-router.get('/', async (req, res) => {
+router.get('/users/', async (req, res) => {
   try {
     const users = await Analysis.find();
     if (!users) throw Error('No User Data');
@@ -247,7 +274,7 @@ router.post('/users/', async (req, res) => {
 */
 
 // router.get('/users', authenticate, async (req, res) => {
-router.get('/users', async (req, res) => {
+router.get('/users/search', async (req, res) => {
   const match = {};
 
   if (req.query.User_Category) {
@@ -257,11 +284,11 @@ router.get('/users', async (req, res) => {
     await req.user
       .populate({
         path: 'users',
-        match
-        // options: {
-        // limit: parseInt(req.query.limit),
-        // skip: parseInt(req.query.skip)
-        // }
+        match,
+        options: {
+          limit: parseInt(req.query.limit),
+          skip: parseInt(req.query.skip)
+        }
       })
       .execPopulate();
     res.send(req.user.posts);
@@ -303,9 +330,50 @@ router.route('/test/count').post((req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.json('number of documents inside the collection is = ' + result);
+      res.json('number of registered users = ' + result);
     }
   });
+
+  // Restaurant.count({}, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     res.json('number of restaurant users = ' + result);
+  //   }
+  // });
+  // PostCommunity.count({}, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     res.json('number of community post = ' + result);
+  //   }
+  // });
+
+  // Promotion.count({}, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     res.json('number of promotion used = ' + result);
+  //   }
+  // });
+
+  // Product.count({}, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     res.json('number of takeaway is = ' + result);
+  //   }
+  //   // check specific restaurant id, and check if they have takeaway
+  // });
+
+  // Product.count({}, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     res.json('takeaway profit is = ' + result);
+  //   }
+  //   // check specific restaurant id, and count number of profit made from takeaway
+  // });
 });
 
 // query to test validate month and year ✅
@@ -337,9 +405,6 @@ router.post('/test/validate', async (req, res) => {
     console.log(err);
   }
 });
-
-let dateFormat = moment(Date.now()).format('MMMM YYYY');
-let dateData = moment(Analysis.Date).format('MMMM YYYY');
 
 module.exports = router;
 

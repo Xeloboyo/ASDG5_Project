@@ -1,51 +1,63 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+// import ReactDOM from 'react-dom';
+// import PropTypes from 'prop-types';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import Cards from './Cards';
 
-const OVERVIEW = [
-  { title: 'Share', number: '20' },
-  { title: 'Page Views', number: '20' },
-  { title: 'Ratings Given', number: '20' },
-  { title: 'Popularity', number: '20' },
-  { title: 'Busiest Day', number: '20' },
-  { title: 'Busiest Hours', number: '20' }
-];
+function Overview() {
+  // const title = this.props.title;
+  // const number = this.props.number;
+  const overviews = [
+    { title: 'Total Users', number: '20' },
+    { title: 'Total Restaurants', number: '20' },
+    { title: 'Total Community Posts', number: '20' },
+    { title: 'Traffic Visits', number: '20' }
+  ];
 
-class Overview extends Component {
-  render() {
-    // const title = this.props.title;
-    // const number = this.props.number;
-
-    return (
-      <div>
-        <Container>
-          <h3>Website Overview</h3>
-          <Row>
-            {/* <div
-              style={{
-                margin: '10px 15px'
-                // justifyContent: 'space-around'
-                // alignItems: 'stretch'
-              }}
-            > */}
-            <Col sm={3}>
-              <Cards />
-            </Col>
-            <Col sm={3}>
-              <Cards />
-            </Col>
-            <Col sm={3}>
-              <Cards />
-            </Col>
-            <Col sm={3}>
-              <Cards />
-            </Col>
-            {/* </div> */}
-          </Row>
-        </Container>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Container>
+        <h3>Website Overview</h3>
+        {/*
+        <Col sm={3}>
+        <Cards />
+        </Col> */}
+        <Row>
+          <Col sm={12}>
+            {overviews.map((overview) => {
+              return (
+                <div
+                  style={{
+                    margin: '10px 15px',
+                    justifyContent: 'center',
+                    alignItems: 'stretch',
+                    display: 'inline-Block'
+                    // display: 'block'
+                  }}
+                >
+                  <Card
+                    style={{
+                      width: '10rem',
+                      padding: '10px',
+                      // display: 'block'
+                      margin: '10px 15px'
+                    }}
+                  >
+                    <div className="text-center">
+                      <span style={{ fontSize: '12px' }}>{overview.title}</span>
+                      <br />
+                      <span style={{ fontSize: '20px' }}>
+                        {overview.number}
+                      </span>
+                    </div>
+                  </Card>
+                </div>
+              );
+            })}
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
 export default Overview;

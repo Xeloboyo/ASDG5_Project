@@ -36,9 +36,6 @@ import Reviews from './components/Reviews/ReviewsPage';
 import Dashboard from './components/Dashboard/Dashboard';
 import Analytics from './components/Analytics/Analytics';
 import StaffTicket from './components/StaffTicket/StaffTicket';
-import Settings from './components/Dashboard/Settings';
-import Profile from './components/Dashboard/Profile';
-import Help from './components/Dashboard/Help';
 
 import AdminHomeNav from './components/AdminHome/AdminHomeNav';
 import AdminHomePage from './components/AdminHome/AdminHomePage';
@@ -190,18 +187,6 @@ class App extends Component {
             <Route path="/dashboard/analytics">
               <Dashboard />
               <Analytics />
-            </Route>
-            <Route path="/dashboard/profile">
-              <Dashboard />
-              <Profile />
-            </Route>
-            <Route path="/dashboard/settings">
-              <Dashboard />
-              <Settings />
-            </Route>
-            <Route path="/dashboard/help">
-              <Dashboard />
-              <Help />
             </Route>
             <Route path="/dashboard">
               <Dashboard />

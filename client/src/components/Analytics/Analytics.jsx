@@ -42,7 +42,13 @@ class Analytics extends Component {
 
               {/* 1. Website Overview*/}
               <Col>
-                <div style={{ background: 'white', display: 'flex' }}>
+                <div
+                  style={{
+                    background: 'white',
+                    display: 'flex',
+                    padding: '5px'
+                  }}
+                >
                   <Overview />
                 </div>
               </Col>
@@ -52,7 +58,9 @@ class Analytics extends Component {
 
         {/* 2. Restaurant Analytics  */}
         <Container>
-          <div style={{ background: 'white', marginTop: '30px' }}>
+          <div
+            style={{ background: 'white', marginTop: '30px', padding: '5px' }}
+          >
             <Row>
               <Col sm={10}>
                 <RestaurantPerformance />
@@ -66,7 +74,8 @@ class Analytics extends Component {
           <div
             style={{
               background: 'white',
-              marginTop: '30px'
+              marginTop: '30px',
+              padding: '5px'
             }}
           >
             <Row>
