@@ -9,6 +9,7 @@ export default class ReviewsPast extends Component {
         super(props);
 
         this.refreshReviews = this.refreshReviews.bind(this);
+        this.reviewEditOn = this.reviewEditOn.bind(this);
 
         this.state = {
             User_ID: "6158811e44c3c679ec5c295f",
@@ -24,7 +25,7 @@ export default class ReviewsPast extends Component {
         const data = await response.json();
         const reviews = [];
         data.data.forEach((element, index) => {
-            reviews.push(<Review key={index} postID={element._id} reviewChange={this.refreshReviews}/>);
+            reviews.push(<Review key={index} indexKey={index} postID={element._id} reviewChange={this.refreshReviews} editReview={this.reviewEditOn}/>);
         });
         
         this.setState({
@@ -37,7 +38,20 @@ export default class ReviewsPast extends Component {
         const data = await response.json();
         const reviews = [];
         data.data.forEach((element, index) => {
-            reviews.push(<Review key={index} postID={element._id} reviewChange={this.refreshReviews}/>);
+            reviews.push(<Review key={index} indexKey={index} postID={element._id} reviewChange={this.refreshReviews} editReview={this.reviewEditOn}/>);
+        });
+        
+        this.setState({
+            ReviewPosts: reviews
+        })
+    }
+
+    async reviewEditOn(keyIndex) {
+        const response = await fetch("http://localhost:5002/review/user/" + this.state.User_ID);
+        const data = await response.json();
+        const reviews = [];
+        data.data.forEach((element, index) => {
+            reviews.push(keyIndex != index ? <Review key={index} indexKey={index} postID={element._id} reviewChange={this.refreshReviews} editReview={this.reviewEditOn}/> : <ReviewEdit key={index} postID={element._id} reviewChange={this.refreshReviews}/>);
         });
         
         this.setState({

@@ -1,5 +1,6 @@
 import React, { Component, useCallback } from 'react';
 import Container from 'react-bootstrap/esm/Container';
+import Nav from "react-bootstrap/Nav";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './ReviewPost.css';
@@ -9,9 +10,10 @@ export default class ReviewForm extends Component {
     super(props);
 
     this.onChangeSubjectLine = this.onChangeSubjectLine.bind(this);
+    this.onClickRate = this.onClickRate.bind(this);
     this.onChangeComment = this.onChangeComment.bind(this);
     this.onSubmitReview = this.onSubmitReview.bind(this);
-    this.onClickRate = this.onClickRate.bind(this);
+    this.onClickCancel = this.onClickCancel.bind(this);
 
     this.state = {
       subjectline: "",
@@ -82,20 +84,28 @@ export default class ReviewForm extends Component {
       User_ID: this.state.User_ID,
       Venue_ID: this.props.restaurantID,
     }
-
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify(newReview)
+    };
     if (this.props.postID) {
-      
-    } else {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify(newReview)
-      };
-      fetch("http://localhost:5002/review/add", requestOptions)
+      fetch("http://localhost:5002/review/update/" + this.props.postID, requestOptions)
       .then(async response => {
         const isJson = response.headers.get("content-type")?.includes("application/json");
         const data = isJson && await response.json();
 
+        if (!response.ok) {
+          console.log(data);
+        }
+      })
+
+    } else {
+      fetch("http://localhost:5002/review/add", requestOptions)
+      .then(async response => {
+        const isJson = response.headers.get("content-type")?.includes("application/json");
+        const data = isJson && await response.json();
+        
         if (!response.ok) {
           console.log(data);
         } else {
@@ -106,21 +116,25 @@ export default class ReviewForm extends Component {
             User_ID: "615c481a44106b1ed863d7c5"
           })
           var rateButtons = [];
-      for (var i = 0; i < 5; ++i) {
-        rateButtons.push(i == this.state.rate - 1 ? <Button key={i} value={i + 1} onClick={this.onClickRate} disabled>{i+1}</Button> : <Button key={i} value={i + 1} onClick={this.onClickRate}>{i+1}</Button>);
-      }
-      this.setState({
-        RateButtons: rateButtons,
-      })
+          for (var i = 0; i < 5; ++i) {
+            rateButtons.push(i == this.state.rate - 1 ? <Button key={i} value={i + 1} onClick={this.onClickRate} disabled>{i+1}</Button> : <Button key={i} value={i + 1} onClick={this.onClickRate}>{i+1}</Button>);
+          }
+          this.setState({
+            RateButtons: rateButtons,
+          })
         }
-        this.props.reviewChange();
       })
       .catch(error => {
         console.error("Error ocurr when adding review");
       })
     }
+    this.props.reviewChange();
   }
 
+  onClickCancel(e) {
+    this.props.reviewChange();
+  }
+  
   render() {
     return (
       <Container className="review">
@@ -143,10 +157,10 @@ export default class ReviewForm extends Component {
             <textarea className="form-control" rows="4" value={this.state.comment} onChange={this.onChangeComment}/>
           </Form.Group>
           <Form.Group>
-            <div>
-              <Button onClick={this.onSubmitReview}>Submit</Button>
-              {this.props.postID ? <Button>Cancel</Button> : ""}
-            </div>
+            <Nav>
+              <Nav.Link onClick={this.onSubmitReview}>Submit</Nav.Link>
+              {this.props.postID ? <Nav.Link onClick={this.onClickCancel}>Cancel</Nav.Link> : ""}
+            </Nav>
           </Form.Group>
         </Form>
       </Container>

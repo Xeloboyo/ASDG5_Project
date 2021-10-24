@@ -12,6 +12,7 @@ export default class ReplyForm extends Component {
 
         this.onChangeReplyComment = this.onChangeReplyComment.bind(this);
         this.onSumbitReply = this.onSumbitReply.bind(this);
+        this.onClickCancel = this.onClickCancel.bind(this);
 
         this.state = {
             User_Name: "",
@@ -27,7 +28,6 @@ export default class ReplyForm extends Component {
             fetch("http://localhost:5002/reply/" + this.props.postID)        
             .then(response => response.json())
             .then(data => {
-                console.log(data.data); 
                 this.setState({
                     Post_Reply_Comment: data.data.Post_Reply_Comment,
                     Post_Edited: data.data.Post_Edited,
@@ -54,15 +54,13 @@ export default class ReplyForm extends Component {
             Replying_to: this.state.Replying_to
 
         }
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(newReply)
+        };
         if (this.props.postID) {
-
-        } else {
-            const requestOptions = {
-                method: "POST",
-                headers: { "Content-Type": "application/json"},
-                body: JSON.stringify(newReply)
-            };
-            fetch("http://localhost:5002/reply/add", requestOptions)
+            fetch("http://localhost:5002/reply/update/" + this.props.postID, requestOptions)
             .then(async response => {
                 const isJson = response.headers.get("content-type")?.includes("application/json");
                 const data = isJson && await response.json();
@@ -70,12 +68,30 @@ export default class ReplyForm extends Component {
                 if (!response.ok) {
                     console.log(data);
                 }
-                this.props.replyChange();
+            })
+        } else {
+            fetch("http://localhost:5002/reply/add", requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get("content-type")?.includes("application/json");
+                const data = isJson && await response.json();
+
+                if (!response.ok) {
+                    console.log(data);
+                } else {
+                    this.setState({
+                        Post_Reply_Comment: ""
+                    })
+                }
             })
             .catch(error => {
                 console.error("Error ocurr when adding reply");
             })
         }
+        this.props.replyChange();
+    }
+
+    onClickCancel(e) {
+        this.props.replyChange();
     }
 
     render (){
@@ -84,8 +100,10 @@ export default class ReplyForm extends Component {
                 <h5>name</h5>
                 <Form>
                     <Form.Control type="text" value={this.state.Post_Reply_Comment} onChange={this.onChangeReplyComment}/>
-                    <Button onClick={this.onSumbitReply}>Submit</Button>
-                    {this.props.postID ? <Button>Cancel</Button> : ""}
+                    <Nav className="editBar">
+                        <Nav.Link onClick={this.onSumbitReply}>Submit</Nav.Link>
+                        {this.props.postID ? <Nav.Link onClick={this.onClickCancel}>Cancel</Nav.Link> : ""}
+                    </Nav>
                 </Form>
             </Container>
         )

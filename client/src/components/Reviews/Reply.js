@@ -9,6 +9,7 @@ export default class Reply extends Component {
     constructor(props) {
         super(props);
 
+        this.onClickEdit = this.onClickEdit.bind(this);
         this.onClickDelete = this.onClickDelete.bind(this);
 
         this.state = {
@@ -32,6 +33,10 @@ export default class Reply extends Component {
         })
     }
 
+    onClickEdit(e) {
+        this.props.editReply(this.props.indexKey);
+    }
+
     async onClickDelete(e) {
         await fetch("http://localhost:5002/reply/" + this.props.postID, {method: "DELETE"})
         this.props.replyChange();
@@ -46,7 +51,7 @@ export default class Reply extends Component {
                     <p className="editedText">{this.state.Post_Edited ? "edited" : ""}</p>
                 </p>
                 <Nav className="editBar">
-                        <Nav.Link>Edit</Nav.Link>
+                        <Nav.Link onClick={this.onClickEdit}>Edit</Nav.Link>
                         <Nav.Link onClick={this.onClickDelete}> Delete</Nav.Link>
                         <Button className="likeButton">Like</Button>
                     </Nav>

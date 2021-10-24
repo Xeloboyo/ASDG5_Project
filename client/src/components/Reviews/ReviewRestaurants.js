@@ -10,6 +10,7 @@ export default class ReviewsRestaurant extends Component {
 
         this.onChangeRestaurantName = this.onChangeRestaurantName.bind(this);
         this.refreshReviews = this.refreshReviews.bind(this);
+        this.reviewEditOn = this.reviewEditOn.bind(this);
 
         this.state = {
             SelectedRestaurant: 0,
@@ -33,7 +34,7 @@ export default class ReviewsRestaurant extends Component {
         const dataReviews = await responseReviews.json();
         var reviewPosts = [];
         dataReviews.data.forEach((element, index) => {
-            reviewPosts.push(<Review key={index} postID={element._id} reviewChange={this.refreshReviews}/>);
+            reviewPosts.push(<Review key={index} indexKey={index} postID={element._id} reviewChange={this.refreshReviews} editReview={this.reviewEditOn}/>);
         });
         this.setState({
             RestaurantIDs: restaurantIDs,
@@ -47,7 +48,19 @@ export default class ReviewsRestaurant extends Component {
         const dataReviews = await responseReviews.json();
         var reviewPosts = [];
         dataReviews.data.forEach((element, index) => {
-            reviewPosts.push(<Review key={index} postID={element._id} reviewChange={this.refreshReviews}/>);
+            reviewPosts.push(<Review key={index} indexKey={index} postID={element._id} reviewChange={this.refreshReviews} editReview={this.reviewEditOn}/>);
+        });
+        this.setState({
+            ReviewPosts: reviewPosts,
+        })
+    }
+
+    async reviewEditOn(keyIndex) {
+        const responseReviews = await fetch("http://localhost:5002/Review/restaurant/" + this.state.RestaurantIDs[this.state.SelectedRestaurant]);
+        const dataReviews = await responseReviews.json();
+        var reviewPosts = [];
+        dataReviews.data.forEach((element, index) => {
+            reviewPosts.push(index != keyIndex ? <Review key={index} indexKey={index} postID={element._id} reviewChange={this.refreshReviews} editReview={this.reviewEditOn}/> : <ReviewEdit key={index} postID={element._id} reviewChange={this.refreshReviews}/> );
         });
         this.setState({
             ReviewPosts: reviewPosts,
@@ -64,7 +77,7 @@ export default class ReviewsRestaurant extends Component {
             .then(data => {
                 var reviewPosts = [];
                 data.data.forEach((element, index) => {
-                    reviewPosts.push(<Review key={index} postID={element._id} reviewChange={this.refreshReviews}/>);
+                    reviewPosts.push(<Review key={index} indexKey={index} postID={element._id} reviewChange={this.refreshReviews} editReview={this.reviewEditOn}/>);
                 })
                 this.setState({
                     SelectedRestaurant: selectedRestaurant,
