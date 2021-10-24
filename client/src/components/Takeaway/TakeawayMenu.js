@@ -13,7 +13,7 @@ const TakeawayMenu = () => {
               setMenu(response.data)
           })
       },[])
-
+    //add items to cart
       const addToCart = (item) => {
         let localCartItems = JSON.parse(localStorage.getItem("cart"));
   if (localCartItems) {

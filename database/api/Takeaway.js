@@ -36,8 +36,6 @@ router.get("/:id", (req, res) => {
 router.post('/checkout', (req, res) =>{
     // get input from body request
     // let {Product_Quantity, Product_TotalPrice, Product_UserName, Product_UserEmail, Product_menuItems} = req.body;
-
-    // check if fields are empty
     
     // const Checkout = new ProductSchema({
 
@@ -52,7 +50,7 @@ router.post('/checkout', (req, res) =>{
         .catch(err => console.log(err))
 })
 
-// find a menu by id
+// find menu using id
 router.route('/:id').get((req, res) => {
     Menu.findById(req.params.id)
         .then(menu => res.json(menu))

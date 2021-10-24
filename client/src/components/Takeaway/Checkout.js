@@ -3,6 +3,12 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios'
 import toast from "react-hot-toast";
 
+    //show menu items and their quantity- done
+    //Total price- done
+    //form to enter useremail and username, also payment details- done
+    //creditcard details- Credit Card Name, Credit Card Number, Credit Card CVC- done
+    //checkout button to submit order- done
+    
 const Checkout = () => {
     let history = useHistory();
     const checkoutItems = JSON.parse(localStorage.getItem("cart"));
@@ -49,11 +55,7 @@ const Checkout = () => {
     toast.success("Your order has been submitted!");
     setValues(initialState)
   }
-    //show menu items and their quantity
-    //Total price
-    //form to enter useremail and username, also payment details 
-    //creditcard details- Credit Card Name, Credit Card Number, Credit Card CVC
-    //checkout button to submit order
+    
     return (
         <div>
             <ul>
