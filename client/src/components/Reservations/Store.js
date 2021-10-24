@@ -1,23 +1,21 @@
-
-import React, {createContext, useReducer} from "react";
-import Reducer from './Reducer'
-import {setSessionCookie,getSessionCookie} from '../Cookies'
+import React, { createContext, useReducer } from "react";
+import Reducer from "./Reducer";
+import { setSessionCookie, getSessionCookie } from "../Cookies";
 
 const initialState = {
-    posts: [],
-    gloablid: 0,
-    session: getSessionCookie(),
-    error: null
+  posts: [],
+  gloablid: 0,
+  session: getSessionCookie(),
+  error: null,
 };
 
-const Store = ({children}) => {
-    const [state, dispatch] = useReducer(Reducer, initialState);
-    return (
-        <Context.Provider value={[state, dispatch]}>
-            {children}
-        </Context.Provider>
-    )
+const Store = ({ children }) => {
+  const [state, dispatch] = useReducer(Reducer, initialState);
+  return (
+    <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
+  );
 };
+export const Context = createContext([[], (initialState) => {}]);
 
-export const Context = createContext(initialState);
+// export const Context = createContext([[], initialState]);
 export default Store;
