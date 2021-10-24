@@ -15,25 +15,26 @@ export default class Reply extends Component {
             User_Name: "",
             Post_Reply_Comment: "",
             Post_Edited: false,
-            User_ID: ""
+            User_ID: "",
+            Replying_To: ""
         }
     }
 
     async componentDidMount() {
         const response = await fetch("http://localhost:5002/reply/" + this.props.postID);
         const data = await response.json();
-
         this.setState({
             User_Name:"",
             Post_Reply_Comment: data.data.Post_Reply_Comment,
             Post_Edited: data.data.Post_Edited,
-            User_ID: data.data.User_ID
+            User_ID: data.data.User_ID,
+            Replying_To: data.data.Replying_To
         })
     }
 
-    onClickDelete() {
-        fetch("http://localhost:5002/reply/" + this.props.postID, {method: "DELETE"})
-        window.location.reload(true);
+    async onClickDelete(e) {
+        await fetch("http://localhost:5002/reply/" + this.props.postID, {method: "DELETE"})
+        this.props.replyChange();
     }
 
     render() {
@@ -45,8 +46,8 @@ export default class Reply extends Component {
                     <p className="editedText">{this.state.Post_Edited ? "edited" : ""}</p>
                 </p>
                 <Nav className="editBar">
-                        <Button>Edit</Button>
-                        <Button onClick={this.onClickDelete}> Delete</Button>
+                        <Nav.Link>Edit</Nav.Link>
+                        <Nav.Link onClick={this.onClickDelete}> Delete</Nav.Link>
                         <Button className="likeButton">Like</Button>
                     </Nav>
             </Container>

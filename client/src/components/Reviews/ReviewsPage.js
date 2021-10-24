@@ -1,48 +1,47 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/esm/Container";
+import Nav from "react-bootstrap/Nav";
 import Review from "./ReviewPost";
 import ReviewEdit from "./ReviewForm";
 import "./ReviewsPage.css";
+import ReviewsPast from "./ReviewPast";
+import ReviewsRestaurant from "./ReviewRestaurants";
 
 export default class Reviews extends Component {
     constructor(props) {
         super(props);
 
+        this.onClickSwapPage = this.onClickSwapPage.bind(this);
+
         this.state = {
-            User_ID: "6158811e44c3c679ec5c295f",
-            ReviewPosts: []
+            isRestaurants: true
         }
     }
 
     async componentDidMount() {
-        //get user ID from session
-        //check if user loged-in
-        //true set user id at state
-        const response = await fetch("http://localhost:5002/review/user/" + this.state.User_ID);
-        const data = await response.json();
         
+    }
+
+    onClickSwapPage() {
         this.setState({
-            ReviewPosts: data.data
-        })
+            isRestaurants: !this.state.isRestaurants
+        });
     }
 
     render() {
-        var reviews = [];
-        for (var i = 0; i < this.state.ReviewPosts.length; i++) {
-            reviews.push(<Review key={this.state.ReviewPosts[i]._id} postID={this.state.ReviewPosts[i]._id} />);
-        }
-        //console.log(reviews);
-
         return (
             <Container>
-                <h1>
-                    Past Reviews
-                </h1>
-                <Container className="reviewsBox">
-                    <div>
-                        {reviews}
-                    </div>
-                </Container>
+                <table>
+                    <tr>
+                        <h1>
+                            {this.state.isRestaurants ? "Restaurant Reviews" : "Past Reviews"}
+                        </h1>
+                        <th>
+                            <Nav.Link className="rightLink" onClick={this.onClickSwapPage} >{this.state.isRestaurants ? "Past Reviews" : "Restaurant Reviews"}</Nav.Link>
+                        </th>
+                    </tr>
+                </table>
+                {this.state.isRestaurants ? <ReviewsRestaurant/> : <ReviewsPast/>}
             </Container>
         );
     }

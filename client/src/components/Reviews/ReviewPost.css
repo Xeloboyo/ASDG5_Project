@@ -33,3 +33,7 @@
     position: absolute;
     right: 0;
 }
+
+.formLabel {
+    color: black;
+}

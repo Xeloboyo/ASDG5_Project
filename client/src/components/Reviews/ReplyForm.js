@@ -23,10 +23,22 @@ export default class ReplyForm extends Component {
     }
 
     componentDidMount() {
-        this.setState ({
-            Replying_to: this.props.replyTo
-        })
-        console.log(this.state.Replying_to);
+        if (this.props.postID) {
+            fetch("http://localhost:5002/reply/" + this.props.postID)        
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.data); 
+                this.setState({
+                    Post_Reply_Comment: data.data.Post_Reply_Comment,
+                    Post_Edited: data.data.Post_Edited,
+                    User_ID: data.data.User_ID,
+                })
+            })
+        } else {
+            this.setState ({
+                Replying_to: this.props.replyTo
+            })
+        }
     }
 
     onChangeReplyComment(e) {
@@ -42,34 +54,38 @@ export default class ReplyForm extends Component {
             Replying_to: this.state.Replying_to
 
         }
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify(newReply)
-        };
-        fetch("http://localhost:5002/reply/add", requestOptions)
-        .then(async response => {
-            const isJson = response.headers.get("content-type")?.includes("application/json");
-            const data = isJson && await response.json();
+        if (this.props.postID) {
 
-            if (!response.ok) {
-                console.log(data);
-            }
-        })
-        .catch(error => {
-            console.error("Error ocurr when adding reply");
-        })
-        
+        } else {
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json"},
+                body: JSON.stringify(newReply)
+            };
+            fetch("http://localhost:5002/reply/add", requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get("content-type")?.includes("application/json");
+                const data = isJson && await response.json();
+
+                if (!response.ok) {
+                    console.log(data);
+                }
+                this.props.replyChange();
+            })
+            .catch(error => {
+                console.error("Error ocurr when adding reply");
+            })
+        }
     }
 
     render (){
         return (
             <Container className="replyBox">
                 <h5>name</h5>
-                <Form onSubmit={this.onSumbitReply}>
+                <Form>
                     <Form.Control type="text" value={this.state.Post_Reply_Comment} onChange={this.onChangeReplyComment}/>
-                    <Button type="submit">Submit</Button>
-                    <Button>Cancel</Button>
+                    <Button onClick={this.onSumbitReply}>Submit</Button>
+                    {this.props.postID ? <Button>Cancel</Button> : ""}
                 </Form>
             </Container>
         )
