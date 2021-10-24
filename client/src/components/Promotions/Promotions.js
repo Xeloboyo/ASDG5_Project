@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 import React, { Component } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
@@ -6,6 +7,7 @@ import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import "./css/Promotions.css";
+import { Redirect } from "react-router";
 
 export default class Promotions extends Component {
   constructor(props) {
@@ -29,7 +31,8 @@ export default class Promotions extends Component {
       Promotions_Title: "",
       Promotions_Categories: "",
       Promotions_Description: "",
-      Promotions_Object_List: ["Harrys Cafe", "KFC", "La Piazza", "Holy basil"], // replcae with real list
+      Promotions_Object_List: [],
+      // Promotions_Object_List: ["Harrys Cafe", "KFC", "La Piazza", "Holy basil"], // replcae with real list
       Promotions_Object: [],
       ErrorCommunityPost: "",
       SuccessCommunityPost: "",
@@ -145,7 +148,36 @@ export default class Promotions extends Component {
       Promotions_Description: "",
     });
   };
+
+  async componentDidMount() {
+    try {
+      const response = await fetch("http://localhost:5002/restaurant/", {
+        method: "get",
+        headers: {},
+      });
+      const jsonData = await response.json();
+      console.log(jsonData);
+      for (var key of Object.keys(jsonData)) {
+        console.log(key + " -> " + jsonData[key].Restaurant_Name);
+        this.setState((previousState) => ({
+          Promotions_Object_List: [
+            ...previousState.Promotions_Object_List,
+            jsonData[key].Restaurant_Name,
+          ],
+        }));
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
   render() {
+    // console.log(localStorage.position.slice(1, -1));
+    if (
+      !localStorage.profile ||
+      localStorage.position.slice(1, -1) !== "admin"
+    ) {
+      return <Redirect to={"/"} />;
+    }
     const ErrorCommunityPost = this.state.ErrorCommunityPost;
     const SuccessCommunityPost = this.state.SuccessCommunityPost;
     return (
@@ -176,7 +208,7 @@ export default class Promotions extends Component {
           <Container className="mx-0 px-0" fluid>
             <Form onSubmit={this.onSubmit}>
               <Form.Group className="mb-3" controlId="formTitle">
-                <Form.Label>Title</Form.Label>
+                <Form.Label className="promotions_colour">Title</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter Title"
@@ -185,7 +217,9 @@ export default class Promotions extends Component {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Categories</Form.Label>
+                <Form.Label className="promotions_colour">
+                  Categories
+                </Form.Label>
                 <FloatingLabel
                   controlId="floatingSelectGrid"
                   label="Choose Category"
@@ -206,7 +240,9 @@ export default class Promotions extends Component {
                 className="mb-3"
                 controlId="exampleForm.ControlTextarea1"
               >
-                <Form.Label>Description</Form.Label>
+                <Form.Label className="promotions_colour">
+                  Description
+                </Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={4}
@@ -214,7 +250,7 @@ export default class Promotions extends Component {
                   onChange={this.onChangePromotions_Description}
                 />
               </Form.Group>
-              <Form.Label>Resturants</Form.Label>
+              <Form.Label className="promotions_colour">Resturants</Form.Label>
               {this.state.Promotions_Object_List.map((e, index) => {
                 return ["checkbox"].map((type) => (
                   <div key={index} className="mb-3">

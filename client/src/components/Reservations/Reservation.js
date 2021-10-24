@@ -39,7 +39,7 @@ function Reservation( {date, time, people, accepted} ) {
                     <Container className="p-0">
                         <Row>
                             <h5 className="p-0">
-                                Accepted: {accepted}
+                                Acceptance: {accepted}
                             </h5>
                         </Row>
                     </Container>

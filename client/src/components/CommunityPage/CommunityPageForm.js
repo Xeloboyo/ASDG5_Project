@@ -6,6 +6,7 @@ import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import "./css/CommunityPageForm.css";
+import { Redirect } from "react-router";
 
 export default class CommunityPageForm extends Component {
   constructor(props) {
@@ -81,7 +82,7 @@ export default class CommunityPageForm extends Component {
       Post_Community_Category: this.state.Post_Community_Category,
       Post_Paragraph: this.state.Post_Paragraph,
       Post_Edited: this.state.Post_Edited,
-      User_ID: "1234", // replace with user name
+      User_ID: localStorage.id.slice(1, -1), // replace with user name
     };
 
     const response = await fetch(
@@ -124,6 +125,9 @@ export default class CommunityPageForm extends Component {
   };
 
   render() {
+    if (!localStorage.profile) {
+      return <Redirect to={"/login"} />;
+    }
     const ErrorCommunityPost = this.state.ErrorCommunityPost;
     const SuccessCommunityPost = this.state.SuccessCommunityPost;
     return (
@@ -154,7 +158,7 @@ export default class CommunityPageForm extends Component {
           <Container className="mx-0 px-0" fluid>
             <form onSubmit={this.onSubmit}>
               <Form.Group className="mb-3" controlId="formTitle">
-                <Form.Label>Title</Form.Label>
+                <Form.Label className="post_colour">Title</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter Title"
@@ -164,7 +168,7 @@ export default class CommunityPageForm extends Component {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Categories</Form.Label>
+                <Form.Label className="post_colour">Categories</Form.Label>
                 <FloatingLabel
                   controlId="floatingSelectGrid"
                   label="Choose Category"
@@ -185,7 +189,7 @@ export default class CommunityPageForm extends Component {
                 className="mb-3"
                 controlId="exampleForm.ControlTextarea1"
               >
-                <Form.Label>Description</Form.Label>
+                <Form.Label className="post_colour">Description</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={4}

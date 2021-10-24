@@ -6,7 +6,7 @@ import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import "./css/Promotions.css";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 
 class PromotionsEdit extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class PromotionsEdit extends Component {
       Promotions_Title: "",
       Promotions_Categories: "",
       Promotions_Description: "",
-      Promotions_Object_List: ["Harrys Cafe", "KFC", "La Piazza", "Holy basil"], // replcae with real list
+      Promotions_Object_List: [], // replcae with real list
       Promotions_Object: [],
       Temp_Promotions_Object: [],
       ErrorCommunityPost: "",
@@ -175,9 +175,34 @@ class PromotionsEdit extends Component {
     } catch (err) {
       console.error(err.message);
     }
+    try {
+      const response = await fetch("http://localhost:5002/restaurant/", {
+        method: "get",
+        headers: {},
+      });
+      const jsonData = await response.json();
+      console.log(jsonData);
+      for (var key of Object.keys(jsonData)) {
+        console.log(key + " -> " + jsonData[key].Restaurant_Name);
+        this.setState((previousState) => ({
+          Promotions_Object_List: [
+            ...previousState.Promotions_Object_List,
+            jsonData[key].Restaurant_Name,
+          ],
+        }));
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
   }
 
   render() {
+    if (
+      !localStorage.profile ||
+      localStorage.position.slice(1, -1) !== "admin"
+    ) {
+      return <Redirect to={"/"} />;
+    }
     const ErrorCommunityPost = this.state.ErrorCommunityPost;
     const SuccessCommunityPost = this.state.SuccessCommunityPost;
     const Promotions_Object = this.state.Promotions_Object;
