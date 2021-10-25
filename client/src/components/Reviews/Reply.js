@@ -13,10 +13,12 @@ export default class Reply extends Component {
         this.onClickDelete = this.onClickDelete.bind(this);
 
         this.state = {
-            User_Name: "",
+            AuthorName: "",
+            AuthorID: "",
             Post_Reply_Comment: "",
             Post_Edited: false,
             User_ID: "",
+            User_Type: "",
             Replying_To: ""
         }
     }
@@ -24,11 +26,27 @@ export default class Reply extends Component {
     async componentDidMount() {
         const response = await fetch("http://localhost:5002/reply/" + this.props.postID);
         const data = await response.json();
+        const responseUser = await fetch("http://localhost:5002/login/");
+        const dataUser = await responseUser.json();
+        const authorID = data.data.User_ID.slice(1, -1);
+        const userID = localStorage ? localStorage.id.slice(1, -1) : "";
+        var authorName = "";
+        var user_Type = "";
+        dataUser.forEach(element => {
+            if (element._id == authorID) {
+                authorName = element.User_Name;
+            }
+            if (element._id == userID) {
+                user_Type = element.User_Category;
+            }
+        });
         this.setState({
-            User_Name:"",
+            AuthorName: authorName,
+            AuthorID: authorID,
             Post_Reply_Comment: data.data.Post_Reply_Comment,
             Post_Edited: data.data.Post_Edited,
-            User_ID: data.data.User_ID,
+            User_ID: userID ? userID : "",
+            User_Type: user_Type,
             Replying_To: data.data.Replying_To
         })
     }
@@ -45,14 +63,14 @@ export default class Reply extends Component {
     render() {
         return (
             <Container className="replyBox">
-                <h5>{this.state.User_Name}</h5>
+                <h5>{this.state.AuthorName}</h5>
                 <p className="comment">
                     {this.state.Post_Reply_Comment}
                     <p className="editedText">{this.state.Post_Edited ? "edited" : ""}</p>
                 </p>
                 <Nav className="editBar">
-                        <Nav.Link onClick={this.onClickEdit}>Edit</Nav.Link>
-                        <Nav.Link onClick={this.onClickDelete}> Delete</Nav.Link>
+                       {this.state.User_ID == this.state.AuthorID || this.state.User_Type == "admin" ? <Nav.Link onClick={this.onClickEdit}>Edit</Nav.Link> : ""}
+                        {this.state.User_ID == this.state.AuthorID || this.state.User_Type == "admin" ? <Nav.Link onClick={this.onClickDelete}> Delete</Nav.Link> : ""}
                         <Button className="likeButton">Like</Button>
                     </Nav>
             </Container>

@@ -14,18 +14,27 @@ export default class Reviews extends Component {
         this.onClickSwapPage = this.onClickSwapPage.bind(this);
 
         this.state = {
-            isRestaurants: true
+            isRestaurants: true,
+            User_ID: ""
         }
     }
 
     async componentDidMount() {
-        
+        if (localStorage.id) {
+            this.setState({
+                User_ID: localStorage.id,
+            })
+        }
     }
 
     onClickSwapPage() {
-        this.setState({
-            isRestaurants: !this.state.isRestaurants
-        });
+        if (this.state.User_ID) {
+            this.setState({
+                isRestaurants: !this.state.isRestaurants
+            });
+        } else {
+            window.location.href = "/login";
+        }
     }
 
     render() {

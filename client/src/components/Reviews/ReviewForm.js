@@ -20,7 +20,7 @@ export default class ReviewForm extends Component {
       rate: 1,
       comment: "",
       RateButtons: [],
-      User_ID: "615c481a44106b1ed863d7c5"
+      User_ID: ""
       
     };
   }
@@ -39,6 +39,7 @@ export default class ReviewForm extends Component {
             rate: data.data.Post_Review_Rate,
             comment: data.data.Post_Review_Comment,
             RateButtons: rateButtons,
+            User_ID: localStorage.id ? localStorage.id : ""
           })
         })
     } else {
@@ -48,6 +49,7 @@ export default class ReviewForm extends Component {
       }
       this.setState({
         RateButtons: rateButtons,
+        User_ID: localStorage.id ? localStorage.id : ""
       })
     }
   }
@@ -98,6 +100,7 @@ export default class ReviewForm extends Component {
         if (!response.ok) {
           console.log(data);
         }
+        this.props.reviewChange();
       })
 
     } else {
@@ -123,12 +126,12 @@ export default class ReviewForm extends Component {
             RateButtons: rateButtons,
           })
         }
+        this.props.reviewChange();
       })
       .catch(error => {
         console.error("Error ocurr when adding review");
       })
     }
-    this.props.reviewChange();
   }
 
   onClickCancel(e) {

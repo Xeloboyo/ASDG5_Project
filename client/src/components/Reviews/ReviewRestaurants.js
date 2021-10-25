@@ -16,7 +16,8 @@ export default class ReviewsRestaurant extends Component {
             SelectedRestaurant: 0,
             RestaurantIDs: [],
             RestaurantNames: [],
-            ReviewPosts: []
+            ReviewPosts: [],
+            User_ID: ""
         }
     }
 
@@ -40,6 +41,7 @@ export default class ReviewsRestaurant extends Component {
             RestaurantIDs: restaurantIDs,
             RestaurantNames: restaurantNames,
             ReviewPosts: reviewPosts,
+            User_ID: localStorage.id ? localStorage.id : ""
         })
     }
 
@@ -107,9 +109,9 @@ export default class ReviewsRestaurant extends Component {
                     </h3>
                 <Container className="reviewsBox">
                     <div>
-                        {this.state.ReviewPosts}
+                        {this.state.ReviewPosts.length > 0 || this.state.User_ID ? this.state.ReviewPosts : <h5>No Review For this Restaurant Yet!</h5>}
                     </div>
-                    <ReviewEdit restaurantID={this.state.RestaurantIDs[this.state.SelectedRestaurant]} reviewChange={this.refreshReviews}/>
+                    {this.state.User_ID ? <ReviewEdit restaurantID={this.state.RestaurantIDs[this.state.SelectedRestaurant]} reviewChange={this.refreshReviews}/> : ""}
                 </Container>
             </Container>
         );

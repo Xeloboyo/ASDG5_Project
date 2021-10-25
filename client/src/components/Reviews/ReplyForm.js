@@ -15,14 +15,14 @@ export default class ReplyForm extends Component {
         this.onClickCancel = this.onClickCancel.bind(this);
 
         this.state = {
-            User_Name: "",
+            AuthorName: "",
+            AuthorID: "",
             Post_Reply_Comment: "",
             Post_Edited: false,
             Replying_to: "",
-            User_ID: "615c481a44106b1ed863d7c5"
+            User_ID: ""
         }
     }
-
     componentDidMount() {
         if (this.props.postID) {
             fetch("http://localhost:5002/reply/" + this.props.postID)        
@@ -31,12 +31,14 @@ export default class ReplyForm extends Component {
                 this.setState({
                     Post_Reply_Comment: data.data.Post_Reply_Comment,
                     Post_Edited: data.data.Post_Edited,
-                    User_ID: data.data.User_ID,
+                    AuthorID: data.data.User_ID,
+                    User_ID: localStorage.id ? localStorage.id : "",
                 })
             })
         } else {
             this.setState ({
-                Replying_to: this.props.replyTo
+                Replying_to: this.props.replyTo,
+                User_ID: localStorage.id ? localStorage.id : "",
             })
         }
     }
@@ -68,6 +70,7 @@ export default class ReplyForm extends Component {
                 if (!response.ok) {
                     console.log(data);
                 }
+                this.props.replyChange();
             })
         } else {
             fetch("http://localhost:5002/reply/add", requestOptions)
@@ -82,12 +85,12 @@ export default class ReplyForm extends Component {
                         Post_Reply_Comment: ""
                     })
                 }
+                this.props.replyChange();
             })
             .catch(error => {
                 console.error("Error ocurr when adding reply");
             })
         }
-        this.props.replyChange();
     }
 
     onClickCancel(e) {
@@ -97,7 +100,6 @@ export default class ReplyForm extends Component {
     render (){
         return (
             <Container className="replyBox">
-                <h5>name</h5>
                 <Form>
                     <Form.Control type="text" value={this.state.Post_Reply_Comment} onChange={this.onChangeReplyComment}/>
                     <Nav className="editBar">

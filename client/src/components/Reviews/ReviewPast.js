@@ -12,25 +12,25 @@ export default class ReviewsPast extends Component {
         this.reviewEditOn = this.reviewEditOn.bind(this);
 
         this.state = {
-            User_ID: "6158811e44c3c679ec5c295f",
+            User_ID: "",
             ReviewPosts: []
         }
     }
 
     async componentDidMount() {
-        //get user ID from session
-        //check if user loged-in
-        //true set user id at state
-        const response = await fetch("http://localhost:5002/review/user/" + this.state.User_ID);
-        const data = await response.json();
-        const reviews = [];
-        data.data.forEach((element, index) => {
-            reviews.push(<Review key={index} indexKey={index} postID={element._id} reviewChange={this.refreshReviews} editReview={this.reviewEditOn}/>);
-        });
-        
-        this.setState({
-            ReviewPosts: reviews
-        })
+        if (localStorage.id) {
+            const response = await fetch("http://localhost:5002/review/user/" + localStorage.id);
+            const data = await response.json();
+            const reviews = [];
+            data.data.forEach((element, index) => {
+                reviews.push(<Review key={index} indexKey={index} postID={element._id} reviewChange={this.refreshReviews} editReview={this.reviewEditOn}/>);
+            });
+            
+            this.setState({
+                User_ID: localStorage.id ? localStorage.id : "",
+                ReviewPosts: reviews
+            })
+        }
     }
 
      async refreshReviews() {
@@ -63,7 +63,7 @@ export default class ReviewsPast extends Component {
         return (
                 <Container className="reviewsBox">
                     <div>
-                        {this.state.ReviewPosts}
+                        {this.state.ReviewPosts.length > 0 ? this.state.ReviewPosts : <h5>You Haven't Post Any Review Yet!!</h5>}
                     </div>
                 </Container>
         );
