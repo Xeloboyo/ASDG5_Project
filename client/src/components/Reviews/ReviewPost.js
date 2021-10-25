@@ -17,6 +17,8 @@ export default class ReviewPost extends Component {
         this.onclickEdit = this.onclickEdit.bind(this);
         this.onClickExpand = this.onClickExpand.bind(this);
         this.onClickCollapse = this.onClickCollapse.bind(this);
+        this.onClickLike = this.onClickLike.bind(this);
+        this.OnClickUnlike = this.OnClickUnlike.bind(this);
 
         this.state = {
             AuthorID: "",
@@ -30,7 +32,9 @@ export default class ReviewPost extends Component {
             User_Type: "",
             ReplyPosts: [],
             Replies: [],
-            Expanded: false
+            Expanded: false,
+            Liked: false,
+            Likes: []
         }
     }
 
@@ -43,10 +47,20 @@ export default class ReviewPost extends Component {
         const dataRestaurant = await responseRestaurant.json();
         const responseUser = await fetch("http://localhost:5002/login/");
         const dataUser = await responseUser.json();
+        const responseLikes = await fetch("http://localhost:5002/like/post/" + this.props.postID);
+        const dataLikes = await responseLikes.json();
+
         const userID = localStorage.id ? localStorage.id.slice(1, -1) : "";
         const authorID = dataReview.data.User_ID.slice(1, -1);
         var authorName = "";
         var user_Type = "";
+        var liked = false;
+
+        dataLikes.data.forEach(element => {
+            if (element.User_ID.slice(1, -1) == userID) {
+                liked = true;
+            }            
+        })
         dataUser.forEach(element =>{
             if (element._id == authorID) {
                 authorName = element.User_Name;
@@ -70,7 +84,9 @@ export default class ReviewPost extends Component {
             Post_Venue: dataRestaurant.Restaurant_Name,
             User_ID: localStorage.id ? localStorage.id : "",
             User_Type: user_Type,
-            ReplyPosts: replyPost
+            ReplyPosts: replyPost,
+            Liked: liked,
+            Likes: dataLikes.data
         })
     }
 
@@ -121,6 +137,47 @@ export default class ReviewPost extends Component {
         })
     }
 
+    async onClickLike(e) {
+        if (this.state.User_ID) {
+            const newLike = {
+                User_ID: this.state.User_ID,
+                Post_ID: this.props.postID
+            }
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json"},
+                body: JSON.stringify(newLike)
+            }
+            fetch("http://localhost:5002/like/add", requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get("content-type")?.includes("application/json");
+                const data = isJson && await response.json();
+
+                if (!response.ok) {
+                    console.log(data);
+                }
+                const responseLikes = await fetch("http://localhost:5002/like/post/" + this.props.postID);
+                const dataLikes = await responseLikes.json();
+                this.setState({
+                    Liked: true,
+                    Likes: dataLikes.data
+                })
+            })
+        } else {
+            window.location.href = "/login";
+        }
+    }
+
+    async OnClickUnlike(e) {
+        await fetch("http://localhost:5002/like/" + this.state.Likes[0]._id, {method: "DELETE"})
+        const responseLikes = await fetch("http://localhost:5002/like/post/" + this.props.postID);
+        const dataLikes = await responseLikes.json();
+        this.setState({
+            Liked: false,
+            Likes: dataLikes.data
+        })
+    }
+
     render() {
         return (
             <Container>
@@ -138,7 +195,7 @@ export default class ReviewPost extends Component {
                         <Nav className="editBar">
                             <NavItem>{this.state.AuthorID == this.state.User_ID || this.state.User_Type == "admin" ? <Nav.Link onClick={this.onclickEdit}>Edit</Nav.Link> : ""}</NavItem>
                             <NavItem>{this.state.AuthorID == this.state.User_ID || this.state.User_Type == "admin" ? <Nav.Link onClick={this.onClickDelete}> Delete</Nav.Link> : ""}</NavItem>
-                            <NavItem><Button className="likeButton">Like</Button></NavItem>
+                            <NavItem>{this.state.Liked ? <Button class="btn btn-secondary" onClick={this.OnClickUnlike}>{this.state.Likes.length + " "}Likes</Button> : <Button class="btn btn-primary" onClick={this.onClickLike}>{this.state.Likes.length + " "}Likes</Button>}</NavItem>
                         </Nav>
                         {!this.state.Expanded && this.state.ReplyPosts.length > 0 ? <Container className="review"><Nav.Link onClick={this.onClickExpand} >Expand {this.state.ReplyPosts.length} Replies</Nav.Link></Container> : ""}
                     </Container>

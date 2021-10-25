@@ -72,6 +72,7 @@ const LoginRoute = require('./api/Login'); //
 
 const ReviewRouter = require('./api/Review');
 const ReplyRouter = require('./api/Reply');
+const LikeRouter = require('./api/LikeEntry');
 
 const Route = require('./api/Login'); //
 
@@ -109,6 +110,7 @@ app.use('/register', Routes); //
 // Review and Reply
 app.use('/review', ReviewRouter);
 app.use('/reply', ReplyRouter);
+app.use('/like', LikeRouter);
 
 app.use('/login', LoginRoute); //
 
