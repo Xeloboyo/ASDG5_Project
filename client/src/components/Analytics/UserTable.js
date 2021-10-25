@@ -11,7 +11,7 @@ const UserTable = () => {
               <th>User ID</th>
               <th>Username</th>
               <th>Password</th>
-              <th>User Category</th>
+              {/* <th>User Category</th> */}
               <th>Date Created</th>
               <th>Delete</th>
             </tr>
@@ -23,7 +23,7 @@ const UserTable = () => {
               <td>id</td>
               <td>email</td>
               <td>*****</td>
-              <td>Admin / Staff / Customer</td>
+              {/* <td>Admin / Staff / Customer</td> */}
               <td>Date.now()</td>
               <td>
                 <Button

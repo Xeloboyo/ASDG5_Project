@@ -8,7 +8,7 @@ const UserLists = () => {
   return (
     <div>
       <Container>
-        <h3>Tangle User Lists</h3>
+        <h3 style={{ marginTop: '10px' }}>Tangle User Lists</h3>
         <div>
           {/* Toggle */}
           <UserDropdown />
