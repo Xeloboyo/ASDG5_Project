@@ -17,6 +17,7 @@ export default class CreateRestaurant extends Component {
     this.onChangeRestaurantPhoneNumber = this.onChangeRestaurantPhoneNumber.bind(this);
     this.onChangeRestaurantRating = this.onChangeRestaurantRating.bind(this);
     this.onChangeRestaurantCapacity = this.onChangeRestaurantCapacity.bind(this);
+    //this.onChangeRestaurantImage = this.onChangeRestaurantImage.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     // creating variables
@@ -27,9 +28,17 @@ export default class CreateRestaurant extends Component {
       Restaurant_Phone_Number: 0,
       Restaurant_Rating: 0,
       Restaurant_Capacity: 0,
+      //Restaurant_Image: '',
       //Restaurant: []
-    }
+    }    
+    //const [Restaurant_Name, setRestaurant_Name] = useState("");
   }
+  /*
+  onChangeRestaurantImage(e) {
+    this.setState({
+      Restaurant_Image: e.target.file[0]
+    });
+  }*/
 
   onChangeRestaurantName(e) {
     this.setState({
@@ -76,6 +85,16 @@ export default class CreateRestaurant extends Component {
   onSubmit(e) {
     e.preventDefault();
 
+    /*const formData = new FormData();
+
+    formData.append("Restaurant_Name", Restaurant_Name);
+    formData.append("Restaurant_Email", Restaurant_Email);
+    formData.append("Restaurant_Address", Restaurant_Address);
+    formData.append("Restaurant_Phone_Number", Restaurant_Phone_Number);
+    formData.append("Restaurant_Rating", Restaurant_Rating);
+    formData.append("Restaurant_Capacity", Restaurant_Capacity);
+    formData.append("Restaurant_Image", Restaurant_Image);
+    */
     const restaurant = {
       Restaurant_Name: this.state.Restaurant_Name,
       Restaurant_Email: this.state.Restaurant_Email,
@@ -101,7 +120,7 @@ export default class CreateRestaurant extends Component {
           <Nav.Link>Back</Nav.Link>
         </LinkContainer>   
       <h3>Restaurants</h3>
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} /*encType="multipart/form-data"*/>
         <div className="form-group"> 
           <div className="form-group">
           <label>Restaurant Name: </label>

@@ -11,9 +11,12 @@ const MenuList = props =>(
       <td>{props.menu.Menu_Product_Name}</td>
       <td>{props.menu.Menu_Product_Description}</td>
       <td>{props.menu.Menu_Product_Price}</td>
-      <td>
-        <Link to={"/menuedit/"+props.menu._id}>edit</Link> | <a href="#" onClick={() => { props.deleteProduct(props.menu._id) }}>delete</a>
-      </td>
+      {
+          (localStorage.profile.slice(1, -1) == "admin" || localStorage.profile.slice(1, -1) == "restaurant") ? (
+            <td>
+                <Link to={"/menuedit/"+props.menu._id}>edit</Link> | <a href="#" onClick={() => { props.deleteProduct(props.menu._id) }}>delete</a>
+            </td>
+          ) : (<p> herrro</p>) }
     </tr>
   )
 

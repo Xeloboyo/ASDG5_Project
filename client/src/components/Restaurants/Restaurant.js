@@ -16,9 +16,12 @@ const RestarurantList = props =>(
     <td>{props.restaurant.Restaurant_Phone_Number}</td>
     <td>{props.restaurant.Restaurant_Rating}</td>
     <td>{props.restaurant.Restaurant_Capacity}</td>
-    <td>
+    {
+       (localStorage.profile.slice(1, -1) == "admin" || localStorage.profile.slice(1, -1) == "restaurant_owner") ? (
+    <td> 
       <Link to={"/restaurantedit/"+props.restaurant._id}>edit</Link> | <a href="#" onClick={() => { props.deleteRestaurant(props.restaurant._id) }}>delete</a>
     </td>
+       ) : ( <p> hello?</p> )}
     <td>
       <th><Link to={{pathname:`/addReservation/0`, state: { name: props.restaurant.Restaurant_Name,  id: '0' } }}>Book Here</Link></th>
     </td>
@@ -42,6 +45,14 @@ export default class Restaurant extends Component {
 
   // get the list of restaurants
   componentDidMount(){
+
+    const id = localStorage.id.slice(1, -1);
+    console.log("user id: " + id);
+
+    console.log("profile log: " + localStorage.profile.slice(1, -1));
+
+    localStorage.removeItem("profile");
+    localStorage.removeItem("position");
     axios.get('http://localhost:5002/restaurant/')
       .then(response => {
         this.setState({
@@ -49,6 +60,8 @@ export default class Restaurant extends Component {
           //Restaurant_Email: response.data
         })
       })
+    console.log("user role profile: " + localStorage.profile);
+    console.log("position: " + localStorage.position);
   }
 
   // delete restuarant
@@ -68,15 +81,26 @@ export default class Restaurant extends Component {
   }
 
   render() {
+    // if user is not admin they cannot add, edit or delete a restaurant
     return (
-      <div>
-            <LinkContainer to="/restaurantadd">
-              <Button> Add Restaurant</Button>
-            </LinkContainer> 
-          
-            <LinkContainer to="/menu">
+      <Container>
+        
+        <table class="button">
+          <tr>
+            <th> { (localStorage.profile.slice(1, -1) == "admin" || localStorage.profile.slice(1, -1) == "restaurant_owner") ? (
+              <LinkContainer to="/restaurantadd">
+                <Button> Add Restaurant</Button>
+              </LinkContainer> 
+            ) : ( <p> heeor</p> ) }
+            </th>
+          </tr>
+          <tr>
+             <th><LinkContainer to="/menu">
               <Button>View all menus </Button>
-            </LinkContainer> 
+            </LinkContainer></th>
+          </tr>
+        </table>
+            
            
       <h1>Restaurant List</h1>
         <table className="table" id="restaurantlist">
@@ -94,7 +118,9 @@ export default class Restaurant extends Component {
             { this.restarurantList() }
           </tbody>
         </table>
-    </div>
+    
+      </Container>
+      
     )
   }
 }
