@@ -69,14 +69,12 @@ require('./models/User');
 // const UserSchemaCopy = require('./models/User');
 const Routes = require('./api/Register'); //
 
-// const Route = require("./api/Login"); //
+const Route = require('./api/Login'); //
 
 app.use('/register', Routes);
 const LoginRoute = require('./api/Login'); //
 
-const Route = require('./api/Login'); //
-
-// const RouteDelete = require("./api/Delete");
+// const RouteDelete = require('./api/Delete');
 
 const UserSchemaCopy = require('./models/User');
 
@@ -98,6 +96,12 @@ const UserSchemaCopy = require('./models/User');
 
 app.use(cors());
 app.use(bodyParser());
+
+// product
+
+const ProductRouter = require('./api/Takeaway');
+
+app.use('/product', ProductRouter);
 
 // router to promotions database
 app.use('/promotions', PromotionsRouter);
@@ -129,4 +133,8 @@ app.delete('/delete', (req, res) => {
       }
     }
   });
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });

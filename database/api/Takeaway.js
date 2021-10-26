@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 // import schema
-const ProductSchema = require('../models/ProductSchema');
+const ProductSchema = require('../models/Product');
 
 const Menu = require('../models/Menu');
 const Restaurant = require('../models/Restaurant');
