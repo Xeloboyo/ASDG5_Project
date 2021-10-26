@@ -6,58 +6,34 @@ const moment = require('moment');
 
 // create AnalyticsSchema
 const AnalyticsSchema = new Schema({
-  analytics: {
-    Date: [
-      {
-        type: Date,
-        // default: Date.now // default returns MM DD YYYY
-        default: () => moment(Date.now).format('MMMM YYYY')
-        // today's date formatted to: October 2021
-      },
-      {
-        OverviewData: [
-          {
-            UsersTotal: {
-              type: Number
-            },
+  Date: {
+    type: Date,
+    default() {
+      return moment(Date.now).format('MMMM YYYY');
+      // return moment(Date.now).format('MMMM YYYY');
+    }
+  },
 
-            RestaurantsTotal: {
-              type: Number
-            },
+  OverviewData: {
+    type: [String],
+    default: []
+    /*
+        0: Total Users
+        1: Total Restaurants
+        2: Total Traffic Visits
+        3: Total Community Posts
+      */
+  },
 
-            TrafficVisits: {
-              type: Number
-            },
-
-            CommPostsTotal: {
-              type: Number
-            }
-          }
-        ]
-      },
-
-      {
-        RestaurantData: [
-          {
-            Traffic: {
-              type: Number
-            },
-
-            Bookings: {
-              type: Number
-            },
-
-            ProfitTakeaway: {
-              type: Number
-            },
-
-            Takeaway: {
-              type: Number
-            }
-          }
-        ]
-      }
-    ]
+  RestaurantData: {
+    type: [String],
+    default: []
+    /*
+        0: Number of Traffic Visits
+        1: Number of Advertisement Used
+        2: Net Bookings
+        3: Number of Takeaway Ordered ( & Revenue )
+      */
   }
 });
 

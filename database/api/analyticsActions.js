@@ -89,13 +89,14 @@ let dateData = moment(Analysis.Date).format('MMMM YYYY');
     @access private
 */
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
   try {
-    const compare = await Analysis.exists({ Date: dateFormat });
-    console.log(compare); // true or false
-
-    const data = await Analysis.find();
+    const data = Analysis.find();
     console.log(data); // return schema
+
+    // const compare = await Analysis.exists({ Date: dateFormat });
+    const compare = Analysis.exists({ Date: dateFormat });
+    console.log(compare); // true or false
 
     console.log('', 'kek');
 
@@ -116,19 +117,46 @@ router.get('/', async (req, res) => {
     @desc create analytics overview data
     @access private
 */
-router.post('/overview/', async (req, res) => {
-  const compare = await Analysis.exists({ Date: dateFormat });
+router.post('/overview', async (req, res) => {
+  let usersCount = User.count();
+  let restaurantsCount = Restaurant.count();
+  let postCommCount = PostCommunity.count();
+
+  const pushOverview = { usersCount, restaurantsCount, postCommCount };
+  Analysis.findOneAndUpdate(
+    { _id: req.body.id },
+    // { $push: {Date: }}
+    { $push: { OverviewData: pushOverview } }
+  )
+    .then((result) => {
+      res.json({
+        status: 'SUCCESS',
+        message: 'A new month, a new table',
+        data: result
+      });
+    })
+    .catch((err) => {
+      res.json({
+        status: 'FAILED',
+        message: 'An error occurred'
+      });
+      console.log(err);
+    });
+});
+
+/*
+    - Show restaurant's analytics
+    @route GET api/analytics/restaurants
+    @desc get analytics data based on restaurant
+    @access private
+*/
+
+router.post('/restaurants', async (req, res) => {
+  // const compare = await Analysis.exists({ Date: dateFormat });
+  const compare = Analysis.exists({ Date: dateFormat });
   console.log(compare); // true or false
 
-  const data = await Analysis.find();
-  console.log(data); // return schema
-
   console.log('', 'kek');
-
-  let { Date, UsersTotal, RestaurantsTotal, TrafficVisits, CommPostsTotal } =
-    req.body;
-
-  console.log('it`s all kek');
 
   // if month is not the same, then make new collection
   if (compare === false) {
@@ -138,15 +166,22 @@ router.post('/overview/', async (req, res) => {
       message: 'No such table exists'
     });
   } else {
-    const NewAnalysis = new Analysis({
-      Date,
-      UsersTotal,
-      RestaurantsTotal,
-      TrafficVisits,
-      CommPostsTotal
-    });
+    let userMonthCount = User.count();
+    let adsMonthCount = Promotion.count();
+    let takeawayMonthCount = Product.count();
+    let restaurantMonthCount = Restaurant.count();
 
-    NewAnalysis.save() // instead of save, make a new document
+    const pushOverview = {
+      userMonthCount,
+      adsMonthCount,
+      restaurantMonthCount,
+      takeawayMonthCount
+    };
+    Analysis.findOneAndUpdate(
+      { _id: req.body.id },
+      // { $push: {Date: }}
+      { $push: { OverviewData: pushOverview } }
+    )
       .then((result) => {
         res.json({
           status: 'SUCCESS',
@@ -158,59 +193,6 @@ router.post('/overview/', async (req, res) => {
         res.json({
           status: 'FAILED',
           message: 'An error occurred'
-        });
-        console.log(err);
-      });
-  }
-  // else the show the current collection data
-});
-
-/*
-    - Show restaurant's analytics
-    @route GET api/analytics/restaurants
-    @desc get analytics data based on restaurant
-    @access private
-*/
-
-router.post('/restaurants/', async (req, res) => {
-  const compare = await Analysis.exists({ Date: dateFormat });
-  console.log(compare); // true or false
-
-  const data = await Analysis.find();
-  console.log(data); // return schema
-
-  console.log('', 'kek');
-
-  let { Date, Traffic, Bookings, ProfitTakeaway, Takeaway } = req.body;
-
-  console.log('its kek');
-
-  if (compare === false) {
-    res.json({
-      status: 'FAILED',
-      message: 'No such table exists'
-    });
-  } else {
-    const NewAnalysis = new Analysis({
-      Date,
-      Traffic,
-      Bookings,
-      ProfitTakeaway,
-      Takeaway
-    });
-
-    NewAnalysis.save()
-      .then((result) => {
-        res.json({
-          status: '200',
-          message: 'New Restaurant is Created',
-          data: result
-        });
-      })
-      .catch((err) => {
-        res.json({
-          status: 'FAILED',
-          message: 'An error occured'
         });
         console.log(err);
       });
@@ -231,7 +213,7 @@ router.post('/restaurants/', async (req, res) => {
     @access private
 */
 
-router.get('/users/', async (req, res) => {
+router.get('/users', async (req, res) => {
   try {
     const users = await Analysis.find();
     if (!users) throw Error('No User Data');
@@ -252,7 +234,7 @@ router.get('/users/', async (req, res) => {
     @access private
 */
 
-router.post('/users/', async (req, res) => {
+router.post('/users', async (req, res) => {
   try {
     const whichUser = await Analysis.find();
     if (!whichUser) throw Error('No such user exist');
@@ -326,54 +308,14 @@ router.post('/delete/:id', async (req, res) => {
 
 // query to test count ✅
 router.route('/test/count').post((req, res) => {
-  User.count({}, (err, result) => {
+  User.countDocuments({}, (err, result) => {
     if (err) {
       console.log(err);
     } else {
       res.json('number of registered users = ' + result);
+      // without saving the result and push
     }
   });
-
-  // Restaurant.count({}, (err, result) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     res.json('number of restaurant users = ' + result);
-  //   }
-  // });
-  // PostCommunity.count({}, (err, result) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     res.json('number of community post = ' + result);
-  //   }
-  // });
-
-  // Promotion.count({}, (err, result) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     res.json('number of promotion used = ' + result);
-  //   }
-  // });
-
-  // Product.count({}, (err, result) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     res.json('number of takeaway is = ' + result);
-  //   }
-  //   // check specific restaurant id, and check if they have takeaway
-  // });
-
-  // Product.count({}, (err, result) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     res.json('takeaway profit is = ' + result);
-  //   }
-  //   // check specific restaurant id, and count number of profit made from takeaway
-  // });
 });
 
 // query to test validate month and year ✅

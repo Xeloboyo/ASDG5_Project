@@ -47,6 +47,7 @@ export default function Overview(props) {
               <div className="text-center">
                 <span style={{ fontSize: '12px' }} className="overview__title">
                   {overview.title}
+                  <p>test</p>
                 </span>
                 <br />
                 <span style={{ fontSize: '20px' }} className="overview__number">
