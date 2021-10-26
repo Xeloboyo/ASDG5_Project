@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import './Restaurant.css';
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
+import validate from "./RestaurantValidate";
 
 
 const RestarurantList = props =>(
@@ -16,7 +17,7 @@ const RestarurantList = props =>(
     <td>{props.restaurant.Restaurant_Phone_Number}</td>
     <td>{props.restaurant.Restaurant_Rating}</td>
     <td>{props.restaurant.Restaurant_Capacity}</td>
-    { (!localStorage.position === undefined) ? (
+    { (localStorage.position !== undefined) ? (
     (localStorage.position.slice(1, -1) == "admin" || localStorage.position.slice(1, -1) == "restaurant_owner") ? (
     <td> 
       <Link to={"/restaurantedit/"+props.restaurant._id}>edit</Link> | <a href="#" onClick={() => { props.deleteRestaurant(props.restaurant._id) }}>delete</a>
@@ -48,7 +49,7 @@ export default class Restaurant extends Component {
   // get the list of restaurants
   componentDidMount(){
     // check if localstorage is undefined
-    if (!localStorage.position === undefined) {
+    if (localStorage.position !== undefined) {
       const id = localStorage.id.slice(1, -1);
       console.log("user id: " + id);
     }
@@ -92,7 +93,7 @@ export default class Restaurant extends Component {
         
         <table class="button">
           <tr>
-            <th> { (!localStorage.position === undefined) ? (
+            <th> { (localStorage.position !== undefined) ? (
               (localStorage.position.slice(1, -1) == "admin" || localStorage.position.slice(1, -1) == "restaurant_owner") ? (
               <LinkContainer to="/restaurantadd">
                 <Button> Add Restaurant</Button>

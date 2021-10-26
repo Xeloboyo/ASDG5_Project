@@ -13,7 +13,7 @@ const MenuList = props =>(
       <td>{props.menu.Menu_Product_Name}</td>
       <td>{props.menu.Menu_Product_Description}</td>
       <td>{props.menu.Menu_Product_Price}</td>
-      { (!localStorage.position === undefined) ? (
+      { (localStorage.position !== undefined) ? (
             (localStorage.position.slice(1, -1) == "admin" || localStorage.position.slice(1, -1) == "restaurant_owner") ? (
             <td>
                 <Link to={"/menuedit/"+props.menu._id}>edit</Link> | <a href="#" onClick={() => { props.deleteProduct(props.menu._id) }}>delete</a>
@@ -75,7 +75,7 @@ export default class Menu extends Component {
                     <th>
                         <h1>View Restaurant Menu and Products</h1> 
                     </th>
-                    <th> { (!localStorage.position === undefined) ? (
+                    <th> { (localStorage.position !== undefined) ? (
                         (localStorage.position.slice(1, -1) == "admin" || localStorage.position.slice(1, -1) == "restaurant_owner") ? (
                             <LinkContainer to="/menuadd">
                             <Button>Add Product</Button>

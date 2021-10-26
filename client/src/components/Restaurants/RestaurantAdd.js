@@ -85,6 +85,8 @@ export default class CreateRestaurant extends Component {
   onSubmit(e) {
     e.preventDefault();
 
+    
+
     /*const formData = new FormData();
 
     formData.append("Restaurant_Name", Restaurant_Name);
@@ -131,7 +133,7 @@ export default class CreateRestaurant extends Component {
               value={this.state.Restaurant_Name}
               onChange={this.onChangeRestaurantName}
               />
-            </div>
+          </div>
         </div>
         <div className="form-group"> 
           <div className="form-group">
