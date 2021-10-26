@@ -12,21 +12,35 @@ export default class ReplyForm extends Component {
 
         this.onChangeReplyComment = this.onChangeReplyComment.bind(this);
         this.onSumbitReply = this.onSumbitReply.bind(this);
+        this.onClickCancel = this.onClickCancel.bind(this);
 
         this.state = {
-            User_Name: "",
+            AuthorName: "",
+            AuthorID: "",
             Post_Reply_Comment: "",
             Post_Edited: false,
             Replying_to: "",
-            User_ID: "615c481a44106b1ed863d7c5"
+            User_ID: ""
         }
     }
-
     componentDidMount() {
-        this.setState ({
-            Replying_to: this.props.replyTo
-        })
-        console.log(this.state.Replying_to);
+        if (this.props.postID) {
+            fetch("http://localhost:5002/reply/" + this.props.postID)        
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    Post_Reply_Comment: data.data.Post_Reply_Comment,
+                    Post_Edited: data.data.Post_Edited,
+                    AuthorID: data.data.User_ID,
+                    User_ID: localStorage.id ? localStorage.id : "",
+                })
+            })
+        } else {
+            this.setState ({
+                Replying_to: this.props.replyTo,
+                User_ID: localStorage.id ? localStorage.id : "",
+            })
+        }
     }
 
     onChangeReplyComment(e) {
@@ -47,29 +61,51 @@ export default class ReplyForm extends Component {
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify(newReply)
         };
-        fetch("http://localhost:5002/reply/add", requestOptions)
-        .then(async response => {
-            const isJson = response.headers.get("content-type")?.includes("application/json");
-            const data = isJson && await response.json();
+        if (this.props.postID) {
+            fetch("http://localhost:5002/reply/update/" + this.props.postID, requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get("content-type")?.includes("application/json");
+                const data = isJson && await response.json();
 
-            if (!response.ok) {
-                console.log(data);
-            }
-        })
-        .catch(error => {
-            console.error("Error ocurr when adding reply");
-        })
-        
+                if (!response.ok) {
+                    console.log(data);
+                }
+                this.props.replyChange();
+            })
+        } else {
+            fetch("http://localhost:5002/reply/add", requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get("content-type")?.includes("application/json");
+                const data = isJson && await response.json();
+
+                if (!response.ok) {
+                    console.log(data);
+                } else {
+                    this.setState({
+                        Post_Reply_Comment: ""
+                    })
+                }
+                this.props.replyChange();
+            })
+            .catch(error => {
+                console.error("Error ocurr when adding reply");
+            })
+        }
+    }
+
+    onClickCancel(e) {
+        this.props.replyChange();
     }
 
     render (){
         return (
             <Container className="replyBox">
-                <h5>name</h5>
-                <Form onSubmit={this.onSumbitReply}>
+                <Form>
                     <Form.Control type="text" value={this.state.Post_Reply_Comment} onChange={this.onChangeReplyComment}/>
-                    <Button type="submit">Submit</Button>
-                    <Button>Cancel</Button>
+                    <Nav className="editBar">
+                        <Nav.Link onClick={this.onSumbitReply}>Submit</Nav.Link>
+                        {this.props.postID ? <Nav.Link onClick={this.onClickCancel}>Cancel</Nav.Link> : ""}
+                    </Nav>
                 </Form>
             </Container>
         )

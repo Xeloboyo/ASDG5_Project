@@ -8,9 +8,6 @@ const PostReply = require("../models/Reply");
 router.get("/review/:id", (req, res) => {
     PostReply.find({
         Replying_to: req.params.id
-    },
-    {
-        _id: 1
     })
     .then( result => {
         res.json({

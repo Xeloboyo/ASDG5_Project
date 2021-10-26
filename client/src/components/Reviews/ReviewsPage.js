@@ -1,46 +1,56 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/esm/Container";
+import Nav from "react-bootstrap/Nav";
 import Review from "./ReviewPost";
 import ReviewEdit from "./ReviewForm";
 import "./ReviewsPage.css";
+import ReviewsPast from "./ReviewPast";
+import ReviewsRestaurant from "./ReviewRestaurants";
 
 export default class Reviews extends Component {
     constructor(props) {
         super(props);
 
+        this.onClickSwapPage = this.onClickSwapPage.bind(this);
+
         this.state = {
-            User_ID: "6158811e44c3c679ec5c295f",
-            ReviewPosts: []
-            //ReviewPosts: [<Review postID = {"615c728f9bd32c571c55f6e0"}/>, <Review postID = {"615c7324f9928160d09a2f17"}/>, <Review postID = {"615c7347f9928160d09a2f19"}/>]
+            isRestaurants: true,
+            User_ID: ""
         }
     }
 
     async componentDidMount() {
-        const response = await fetch("http://localhost:5002/review/user/" + this.state.User_ID);
-        const data = await response.json();
-        
-        this.setState({
-            ReviewPosts: data.data
-        })
+        if (localStorage.id) {
+            this.setState({
+                User_ID: localStorage.id,
+            })
+        }
+    }
+
+    onClickSwapPage() {
+        if (this.state.User_ID) {
+            this.setState({
+                isRestaurants: !this.state.isRestaurants
+            });
+        } else {
+            window.location.href = "/login";
+        }
     }
 
     render() {
-        var reviews = [];
-        for (var i = 0; i < this.state.ReviewPosts.length; i++) {
-            reviews.push(<Review key={this.state.ReviewPosts[i]._id} postID={this.state.ReviewPosts[i]._id} />);
-        }
-        //console.log(reviews);
-
         return (
             <Container>
-                <h1>
-                    Past Reviews
-                </h1>
-                <Container className="reviewsBox">
-                    <div>
-                        {reviews}
-                    </div>
-                </Container>
+                <table>
+                    <tr>
+                        <h1>
+                            {this.state.isRestaurants ? "Restaurant Reviews" : "Past Reviews"}
+                        </h1>
+                        <th>
+                            <Nav.Link className="rightLink" onClick={this.onClickSwapPage} >{this.state.isRestaurants ? "Past Reviews" : "Restaurant Reviews"}</Nav.Link>
+                        </th>
+                    </tr>
+                </table>
+                {this.state.isRestaurants ? <ReviewsRestaurant/> : <ReviewsPast/>}
             </Container>
         );
     }

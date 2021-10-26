@@ -3,6 +3,7 @@
     border-width: 1px;
     border-color: silver;
     background-color: rgba(0, 128, 0, 0.1);
+    padding: 5px;
 }
 
 .comment {

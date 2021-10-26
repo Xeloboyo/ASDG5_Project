@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
-const { ObjectId } = Schema.Types.ObjectId;
 
 const LikeEntrySchema = new Schema({
-  User_ID: ObjectId,
-  Post_ID: ObjectId,
+  User_ID: String,
+  Post_ID: String,
 });
 
 const LikeEntry = mongoose.model("LikeEntry", LikeEntrySchema);
