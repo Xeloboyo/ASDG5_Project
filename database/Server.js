@@ -64,12 +64,14 @@ const TakeawayRoute = require('./api/Takeaway'); //
 const ReviewRouter = require('./api/Review');
 const ReplyRouter = require('./api/Reply');
 
+// ismail features
+require('./models/User');
+// const UserSchemaCopy = require('./models/User');
 const Routes = require('./api/Register'); //
 
 // const Route = require("./api/Login"); //
 
 app.use('/register', Routes);
-
 const LoginRoute = require('./api/Login'); //
 
 const Route = require('./api/Login'); //
@@ -127,8 +129,4 @@ app.delete('/delete', (req, res) => {
       }
     }
   });
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
 });
