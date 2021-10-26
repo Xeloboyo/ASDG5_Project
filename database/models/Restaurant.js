@@ -10,12 +10,7 @@ const RestaurantSchema = new Schema({
     Restaurant_Phone_Number: Number,
     Restaurant_Rating: Number,
     Restaurant_Capacity: Number,
-    
-    /*Restaurant_Image: {
-        type: String
-        //data: Buffer, // buffer allows to store image as data in array form
-        //contentType: String
-    }*/
+    //Restaurant_Image: { type: String, required:true },
 });
 
 const Restaurant = mongoose.model("Restaurant", RestaurantSchema);
