@@ -13,7 +13,9 @@ const ProductSchema = new Schema( // Product + Ticketing
       type: Number
     },
 
-    // ricky add this
+    Product_menuItems: { type: [String], default: [] },
+
+    // checkout form
     Product_UserName: {
       type: String
     },
@@ -22,12 +24,24 @@ const ProductSchema = new Schema( // Product + Ticketing
       type: String
     },
 
+    Product_CreditCardName: {
+      type: String
+    },
+
+    Product_CreditCardNumber: {
+      type: Number
+    },
+
+    Product_CreditCardCVC: {
+      type: Number
+    },
+
     // ricky features
     Ticket: [
       {
         TicketStatus: {
           type: String,
-          required: true,
+          required: false, // change to true later
           default: 'Pending'
         },
 
