@@ -9,11 +9,11 @@ let Menu = require('../models/Menu')
 let Restaurant = require('../models/Restaurant')
 
 /*
-    Lists of API for takeaway:
-    - Show resaurant list
-    - Show menu item for each respective resaurant
-    - Add menu item to checkout(menu item quantity)
-    - Confirm order  ( input name, email and credit card details)&(display quantity of items and total price)
+    API for takeaway:
+    - Show resaurant list- done
+    - Show menu item for each respective resaurant- done
+    - Add menu item to checkout(menu item quantity)- done
+    - Confirm order  ( input name, email and credit card details)&(display quantity of items and total price)- done
 */
 
 // gets all restaurant
@@ -34,7 +34,6 @@ router.get("/:id", (req, res) => {
 
 // create an order
 router.post('/checkout', (req, res) =>{
-    // get input from body request
     // let {Product_Quantity, Product_TotalPrice, Product_UserName, Product_UserEmail, Product_menuItems} = req.body;
     
     // const Checkout = new ProductSchema({

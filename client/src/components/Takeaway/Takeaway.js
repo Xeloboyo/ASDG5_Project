@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+import './takeaway.css';
+
 const Takeaway = () => {
     const [takeaway, setTakeaway] = useState([])
     useEffect(() => {
@@ -14,10 +16,11 @@ const Takeaway = () => {
       if(takeaway.length > 0){
     return (
         <div>
-            <ul> 
+            <h1 id="restaurants">Restaurants</h1>
+            <ul class="restlist"> 
                 {
                     takeaway.map(item => (
-                        <li><Link to={`/takeaways/${item.Restaurant_Name}`}>{item.Restaurant_Name}</Link></li>
+                        <li><Link class="restlink"  to={`/takeaways/${item.Restaurant_Name}`}>{item.Restaurant_Name}</Link></li>
                     ))
                 }
                 

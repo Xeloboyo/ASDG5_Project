@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios'
 import toast from "react-hot-toast";
 
+import './takeaway.css';
+
     //show menu items and their quantity- done
     //Total price- done
     //form to enter useremail and username, also payment details- done
@@ -58,37 +60,40 @@ const Checkout = () => {
     
     return (
         <div>
+            <h1 class="cart">Checkout Cart</h1>
+            <h3>Added items</h3>
             <ul>
             {checkoutItems && checkoutItems.map(item => (
-                <li>{`Product Name: ${item.Menu_Product_Name} - Product Quantity: ${item.qty}`}</li>
+                <><li class="items">{`Product Name: ${item.Menu_Product_Name}`}</li>
+                <li class="items2">{`Product Quantity: ${item.qty}`}</li></>
             ))}
             </ul>
-            <p>Total Price: ${total}</p>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="Product_UserName">Name </label>
+            <p class="price" >Total Price: ${total}</p>
+
+            <h3 class="instruct" >Fill in to complete order</h3>
+            <form onSubmit={handleSubmit}>           
+                <div class="details" >
+                    <label class="labels" htmlFor="Product_UserName">Name </label>
                     <input type="text" id="Product_UserName" onChange={handleInputChange} value={values.Product_UserName} placeholder="Enter Name" />
                 </div>
-                <div>
-                    <label htmlFor="Product_UserEmail">Email </label>
+                <div class="details" >
+                    <label class="labels" htmlFor="Product_UserEmail">Email </label>
                     <input type="email" id="Product_UserEmail" onChange={handleInputChange} value={values.Product_UserEmail} placeholder="Enter Email" />
                 </div>
-                <div>
-                    <label htmlFor="Product_CreditCardName">Credit Card Name </label>
+                <div class="details" >
+                    <label class="labels" htmlFor="Product_CreditCardName">Credit Card Name </label>
                     <input type="text" id="Product_CreditCardName" onChange={handleInputChange} value={values.Product_CreditCardName} placeholder="Enter Credit Card Name" />
                 </div>
-                <div>
-                    <label htmlFor="Product_CreditCardNumber">Credit Card Number </label>
+                <div class="details" >
+                    <label class="labels" htmlFor="Product_CreditCardNumber">Credit Card Number </label>
                     <input type="number" id="Product_CreditCardNumber" onChange={handleInputChange} value={values.Product_CreditCardNumber} placeholder="Enter Credit Card Number" />
                 </div>
-                <div>
-                    <label htmlFor="Product_CreditCardCVC">Credit Card CVC </label>
+                <div class="details" >
+                    <label class="labels" htmlFor="Product_CreditCardCVC">Credit Card CVC </label>
                     <input type="text" id="Product_CreditCardCVC" onChange={handleInputChange} value={values.Product_CreditCardCVC} placeholder="Enter Credit Card CVC" />
-                </div>
-                <div>
-                <button>Submit</button>
+                </div> 
 
-                </div>
+                <button class="checkoutbutton" >Order</button>              
             </form>
         </div>
     )
