@@ -19,7 +19,7 @@ const MenuList = props =>(
                 <Link to={"/menuedit/"+props.menu._id}>edit</Link> | <a href="#" onClick={() => { props.deleteProduct(props.menu._id) }}>delete</a>
             </td>
           ) : (<p> herrro</p>)
-      ) : (<p>s</p>)
+      ) : (<p></p>)
            }
     </tr>
   )
@@ -30,15 +30,40 @@ export default class Menu extends Component {
         super(props);
 
         this.deleteProduct = this.deleteProduct.bind(this);
+        this.onChangeRestaurantName = this.onChangeRestaurantName.bind(this);
 
         this.state = {
             menu: [],
             Restaurant_Name: '',
             Menu_Product_Name: '',
             Menu_Product_Description: '',
-            Menu_Product_Price: 0
+            Menu_Product_Price: 0,
+            RestaurantDowndrop: '',
+            search: "",
         }
     }
+
+    onChangeRestaurantName = async (e, eventKey) => {
+        const select = {RestaurantDowndrop: e};
+        console.log(select);
+    }
+
+    searchFunction = async (search1) => {
+        const restaurantName = { search: search1};
+        console.log(search1);
+
+        /*try{
+            const response = await fetch("http://localhost:5002/restaurant/getrestaurant", {
+                method: "POST",
+                headers: { "content-type": "application/json"},
+                body: JSON.stringify(restaurantName),
+            });
+            const jsonData = await response.json();
+            console.log(`${jsonData.message}`);
+        } catch (err) {
+            console.error(err.message);
+        }*/
+    };
 
     // get the list of products
     componentDidMount() {
@@ -81,7 +106,7 @@ export default class Menu extends Component {
                             <Button>Add Product</Button>
                         </LinkContainer>
                           ) : ( <p> heeor</p> )
-                    ) : ( <p>a</p>)
+                    ) : ( <p></p>)
                         }    
                     </th>
                     <th>
@@ -93,7 +118,7 @@ export default class Menu extends Component {
             </table>
             
             
-            <table className="table">
+        <table className="table">
           <thead className="thead-light">
             <tr>
               <th>Restaurant Name</th>

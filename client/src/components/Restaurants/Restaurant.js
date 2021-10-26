@@ -23,7 +23,7 @@ const RestarurantList = props =>(
       <Link to={"/restaurantedit/"+props.restaurant._id}>edit</Link> | <a href="#" onClick={() => { props.deleteRestaurant(props.restaurant._id) }}>delete</a>
     </td>
        ) : ( <p> hello?</p> )
-    ) : (<p>o</p>)
+    ) : (<p></p>)
        }
     <td>
       <th><Link to={{pathname:`/addReservation/0`, state: { name: props.restaurant.Restaurant_Name,  id: '0' } }}>Book Here</Link></th>
@@ -54,7 +54,7 @@ export default class Restaurant extends Component {
       console.log("user id: " + id);
     }
     
-
+    
     //console.log("profile log: " + localStorage.profile);
 
     //localStorage.removeItem("profile");
@@ -99,7 +99,7 @@ export default class Restaurant extends Component {
                 <Button> Add Restaurant</Button>
               </LinkContainer> 
             ) : ( <p> heeor</p> )
-            ) : ( <p> h </p>)
+            ) : ( <p>  </p>)
              }
             </th>
           </tr>

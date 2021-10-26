@@ -87,6 +87,25 @@ router.post('/createrestaurant'/*, upload.single("restaurantImage")*/, (req, res
     }
 })
 
+/*
+// get menu by restaurant through post request
+router.post("/getrestaurant", async (req, res) => {
+    try {
+        let {search} = req.body;
+        console.log("search: "+ search);
+        const post = await Restaurant.find({
+            Restaurant_Name: { $regex: ".*" + search + ".*" },
+        });
+        if(!post) throw Error("No Restaurants");
+        res.json({
+            message:"Got Restaurant",
+            data: post,
+        });
+    } catch (err) {
+        res.status(400).json({message(err)});
+    }
+});*/
+
 // find restaurant by id
 router.route('/:id').get((req, res) => {
     Restaurant.findById(req.params.id)
