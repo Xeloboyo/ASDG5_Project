@@ -58,7 +58,7 @@
     "babel-build": "babel src -d lib"
   },
   "engines": {
-    "node": "12.13.0"
+    "node": "14.10.1"
   },
   "eslintConfig": {
     "extends": [
