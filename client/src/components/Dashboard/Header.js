@@ -3,11 +3,11 @@ import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const Header = () => {
+function Header() {
   return (
     <div
       style={{
-        marginLeft: '230px', // start after sidebar
+        marginLeft: '260px', // start after sidebar
         width: '100%',
         position: 'fixed',
         // marginBottom: '270px',
@@ -31,6 +31,6 @@ const Header = () => {
       </Container>
     </div>
   );
-};
+}
 
 export default Header;

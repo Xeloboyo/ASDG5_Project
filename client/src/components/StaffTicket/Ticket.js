@@ -3,15 +3,14 @@ import { Card, Button, Form } from 'react-bootstrap';
 import { IconContext } from 'react-icons';
 import { FaCheckCircle, FaTimesCircle, FaMotorcycle } from 'react-icons/fa';
 import { GiTabletopPlayers } from 'react-icons/gi';
-import { BsChevronDoubleDown, BsChevronDoubleUp } from 'react-icons/bs';
 import { Container, Row, Col } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 
 /* create 2 Ticket Designs,  using if statement to determine whether
  it's for takeaway and reservations
  if takeaway, use logo { FaMotorcycle }
  if reservations, use logo { GiTabletopPlayers }
  both tickets have accept and cancel button
- both tickets have more and less information
  page allows cancel all, will show warning
 */
 
@@ -22,23 +21,25 @@ export const Ticket = () => {
         <div>
           <Card
             style={{
-              width: '51rem',
-              marginBottom: '30px',
-              marginLeft: '380px'
+              width: '17rem',
+              marginBottom: '25px',
+              marginLeft: '220px'
               // marginRight: 'auto'
             }}
           >
-            {/* Takeaay */}
+            {/* Takeaway */}
 
             <Card.Header>
               <Row>
-                <Col sm={10}>
-                  <span style={{ color: 'green', marginRight: '10px' }}>
-                    <FaMotorcycle />
-                  </span>
-                  Order: #1001 {/* Generate Number using UUID */}
+                <Col sm={7}>
+                  <div>
+                    <span style={{ color: 'green' }}>
+                      <FaMotorcycle /> Takeaway <br />
+                    </span>
+                    in 3 minutes
+                  </div>
                 </Col>
-                <Col sm={2}>
+                <Col sm={5}>
                   <Button variant="success" size="sm">
                     {/* to accept or cancel order */}
                     <FaCheckCircle />
@@ -56,16 +57,15 @@ export const Ticket = () => {
             <Card.Body>
               <Card.Title>John Doe</Card.Title>
               <Card.Subtitle>
-                Total: $<i>100</i> {/* Price */}
+                #1001 {/* Generate Number using UUID */}
               </Card.Subtitle>
               {/* <Card.Text style={{ background: 'yellow' }}>Description</Card.Text> */}
             </Card.Body>
-            {/* For more ticket information */}
             <Button style={{ background: 'lightgrey' }}>
-              <BsChevronDoubleDown />
-              <Card.Text></Card.Text>
-              {/* <BsChevronDoubleUp /> 
-              <Card.Text></Card.Text>*/}
+              <Card.Text>
+                1x Fish and Chips
+                <br />- no mayo
+              </Card.Text>
             </Button>
           </Card>
         </div>
@@ -75,21 +75,21 @@ export const Ticket = () => {
         <div>
           <Card
             style={{
-              width: '51rem',
+              width: '17rem',
               marginBottom: '15px',
-              marginLeft: '380px'
+              marginLeft: '220px'
               // marginRight: 'auto'
             }}
           >
             <Card.Header>
               <Row>
-                <Col sm={10}>
-                  <span style={{ color: 'darkblue', marginRight: '10px' }}>
-                    <GiTabletopPlayers />
+                <Col sm={7}>
+                  <span style={{ color: 'darkblue' }}>
+                    <GiTabletopPlayers /> Reservation <br />
                   </span>
-                  Reservation: #11{/* Generate Number using UUID */}
+                  in 7 minutes
                 </Col>
-                <Col sm={2}>
+                <Col sm={5}>
                   <Button variant="success" size="sm">
                     {/* to accept or cancel order */}
                     <FaCheckCircle />
@@ -105,22 +105,15 @@ export const Ticket = () => {
               </Row>
             </Card.Header>
             <Card.Body>
-              <Card.Title>Jane Doe, 5 people</Card.Title>
-              <Card.Subtitle>
-                Details: <b>20 September, 2PM Thrusday</b> {/* Price */}
-              </Card.Subtitle>
+              <Card.Title>Amy</Card.Title>
+              <Card.Subtitle>#203 </Card.Subtitle>
               {/* <Card.Text>Description</Card.Text> */}
             </Card.Body>
             {/* For more ticket information */}
             <Button style={{ background: 'lightgrey' }}>
-              {/* <BsChevronDoubleDown />
-              <Card.Text style={{ background: 'yellow' }}></Card.Text> */}
               <div>
-                <Card.Text style={{ background: 'yellow' }}>
-                  For Birthday Party
-                </Card.Text>
+                <Card.Text>Booking for 3 people</Card.Text>
               </div>
-              <BsChevronDoubleUp />
             </Button>
           </Card>
         </div>

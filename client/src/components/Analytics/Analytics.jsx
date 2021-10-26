@@ -1,81 +1,106 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 // import Dashboard from '../dashboard/Dashboard';
-import CardAnalytics from './CardAnalytics';
+// import CardAnalytics from './CardAnalytics';
+// import CalendarDate from './CalendarDate';
+import Overview from './Overview';
 import RestaurantPerformance from './RestaurantPerformance';
-import RestaurantRevenue from './RestaurantRevenue';
+import UserLists from './UserLists';
 import '../../scss/style.scss';
+import axios from 'axios';
 
-class Analytics extends Component {
-  render() {
-    return (
+export default function Analytics() {
+  const [overviews, getOverviews] = useState('');
+  const [restaurants, getRestaurants] = useState('');
+
+  const url = 'http://localhost:5002/';
+
+  useEffect(() => {
+    getAllOverviews();
+  }, []);
+
+  useEffect(() => {
+    getAllRestaurants();
+  }, []);
+
+  const getAllOverviews = () => {
+    axios.get(`${url}overview`).then((response) => {
+      const allOverviewData = response.data.overviews.allOverviewData;
+
+      // add data to state
+      getOverviews(allOverviewData);
+    });
+  };
+
+  const getAllRestaurants = () => {
+    axios.get(`${url}restaurants`).then((response) => {
+      const allRestaurantData = response.data.restaurants.allRestaurantData;
+
+      // add data to state
+      getRestaurants(allRestaurantData);
+    });
+  };
+
+  return (
+    <div
+      style={{
+        // marginBottom: '150px',
+        // marginLeft: '310px',
+        background: 'lightgrey',
+        paddingTop: '35px'
+        // position: 'absolute'
+        // margin: 'auto',
+        // marginLeft: '220px' // start after sidebar
+      }}
+    >
       <div>
-        &nbsp; <br />
+        <Container>
+          <Row>
+            {/* 1. Website Overview*/}
+            <Col>
+              <div
+                style={{
+                  background: 'white',
+                  display: 'flex'
+                }}
+              >
+                <Overview overviews={overviews} />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+      {/* 2. Restaurant Analytics  */}
+      <Container>
+        <div style={{ background: 'white', marginTop: '30px' }}>
+          <Row>
+            <Col sm={10}>
+              <RestaurantPerformance restaurants={restaurants} />
+            </Col>
+          </Row>
+        </div>
+      </Container>
+
+      {/* 3. User Lists */}
+      <Container>
         <div
           style={{
-            marginBottom: '150px',
-            marginLeft: '310px'
+            background: 'white',
+            marginTop: '30px'
           }}
         >
-          <Container className="text-center">
-            <div style={{ background: 'lightgrey' }}>
-              <h3 style={{ marginTop: '100px' }}>Restaurant Overview</h3>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  marginTop: '70px',
-                  marginBottom: '50px'
-                }}
-              >
-                <CardAnalytics />
-                <CardAnalytics />
-                <CardAnalytics />
-                <CardAnalytics />
+          <Row>
+            <Col>
+              <div>
+                <UserLists />
               </div>
-            </div>
-            <Container>
-              <h3>Restaurant Income Revenue</h3>
-              <h5>Filter: This Week</h5>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  margin: '15px'
-                }}
-              >
-                <RestaurantRevenue />
-              </div>
-            </Container>
-            <Container style={{ marginTop: '50px' }}>
-              <h3>Restaurant Performance Analytics</h3>
-              <h5>Filter: This Week</h5>
-              <Row>
-                <Col sm={10}>
-                  <RestaurantPerformance />
-                </Col>
-                <Col sm={1}>
-                  <div
-                    style={{
-                      justifyContent: 'space-between',
-                      display: 'flex',
-                      flexDirection: 'column'
-                    }}
-                  >
-                    <CardAnalytics />
-                    <CardAnalytics />
-                    <CardAnalytics />
-                    <CardAnalytics />
-                    <CardAnalytics />
-                  </div>
-                </Col>
-              </Row>
-            </Container>
-          </Container>
+            </Col>
+          </Row>
         </div>
-      </div>
-    );
-  }
+      </Container>
+    </div>
+  );
 }
 
-export default Analytics;
+// export default Analytics;

@@ -5,9 +5,9 @@
   "proxy": "http://localhost:5002",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client-install": "npm install --prefix client",
     "start": "node server.js",
-    "server": "nodemon Server.js",
+    "server": "nodemon server.js",
+    "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -17,6 +17,8 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-visitor-counter": "^1.2.1",
+    "moment": "^2.29.1",
     "mongodb": "^4.1.0",
     "mongoose": "^5.13.9",
     "node": "^16.6.1"
