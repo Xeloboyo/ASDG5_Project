@@ -37,7 +37,6 @@ import MenuAdd from './components/Menu/MenuAdd';
 import Reviews from './components/Reviews/ReviewsPage';
 
 // staff
-import Dashboard from './components/Dashboard/Dashboard';
 import Analytics from './components/Analytics/Analytics';
 import StaffTicket from './components/StaffTicket/StaffTicket';
 
@@ -230,16 +229,14 @@ class App extends Component {
                 <Reviews />
                 <Footer />
               </Route>
-              <Route path="/dashboard/ticket">
-                <Dashboard />
+              <Route path="/ticket">
+                <NavigationBar />
                 <StaffTicket />
+                <Footer />
               </Route>
-              <Route path="/dashboard/analytics">
-                <Dashboard />
+              <Route path="/analytics">
+                <AdminHomeNav />
                 <Analytics />
-              </Route>
-              <Route path="/dashboard">
-                <Dashboard />
               </Route>
               <Route path="/adminhomenav">
                 <AdminHomeNav />

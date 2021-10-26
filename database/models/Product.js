@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-
 const ProductSchema = new Schema( // Product + Ticketing
   // dont mind the changes like type and etc, it makes to differnt to how it run
   {
@@ -38,17 +37,17 @@ const ProductSchema = new Schema( // Product + Ticketing
     },
 
     // ricky features
-    Ticket: {
-      TicketStatus: {
-        type: String,
-        required: false, // change to true later
-        default: 'Pending'
-      },
+    TicketStatus: {
+      type: Boolean,
+      required: true, // change to true later
+      default: true
+    },
 
-      TicketUpdateDescription: {
-        type: String
-        //   'We apologize but we have to cancel your order due to unfortunate circumstances.'
-      }
+    TicketUpdateDescription: {
+      type: String,
+      required: true,
+      default: 'Pending'
+      //   'We apologize but we have to cancel your order due to unfortunate circumstances.'
     }
   },
 
