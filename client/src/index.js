@@ -8,20 +8,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss';
 
-import Overview from './components/Analytics/Overview';
-import RestaurantPerformance from './components/Analytics/RestaurantPerformance';
-import Analytics from './components/Analytics/Analytics';
-import Ticket from './components/StaffTicket/Ticket';
-import UserLists from './components/Analytics/UserLists';
-
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    {/* <Overview /> */}
-    {/* <RestaurantPerformance /> */}
-    <Analytics />
-    {/* <Ticket /> */}
-    {/* <UserLists /> */}
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

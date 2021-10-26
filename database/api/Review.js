@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const PostReview = require("../models/Review");
+const User = require("../models/User");
 
 //Find all reviews by user id
 router.get("/user/:id", (req, res) => {

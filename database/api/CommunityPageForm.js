@@ -125,8 +125,12 @@ router.post("/getsearch", async (req, res) => {
 
 // Get community post by category
 router.post("/getcategory", async (req, res) => {
+  console.log("apple");
   try {
+    console.log(req.body);
+    console.log("apple");
     let { search } = req.body;
+    console.log(search);
     const post = await PostCommunity.find({
       Post_Community_Category: { $regex: ".*" + search + ".*" },
     });

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/esm/Container";
 import "./css/PromotionsHome.css";
+import { Redirect } from "react-router";
 
 export default class PromotionsHome extends Component {
   constructor(props) {

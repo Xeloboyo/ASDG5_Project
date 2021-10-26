@@ -3,7 +3,7 @@ require('./config/db');
 const cors = require('cors');
 
 const app = require('express')();
-// const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 
 const port = process.env.PORT || 5002;
 
@@ -26,7 +26,7 @@ app.use('/post', CommunityPostRouter);
 
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
-require('./config/db');
+//require('./config/db');
 
 // configures to access dotenv environment
 require('dotenv').config();
@@ -39,7 +39,7 @@ require('./models/User');
 app.use(cors());
 // app.use(express.json());
 
-require('./config/db');
+//require('./config/db');
 require('./models/PostCommunity');
 
 // restaurant
@@ -74,7 +74,10 @@ const Route = require('./api/Login'); //
 app.use('/register', Routes);
 const LoginRoute = require('./api/Login'); //
 
-// const RouteDelete = require('./api/Delete');
+const LikeRouter = require('./api/LikeEntry');
+
+
+// const RouteDelete = require("./api/Delete");
 
 const UserSchemaCopy = require('./models/User');
 
@@ -117,6 +120,7 @@ app.use('/register', Routes); //
 // Review and Reply
 app.use('/review', ReviewRouter);
 app.use('/reply', ReplyRouter);
+app.use('/like', LikeRouter);
 
 app.use('/login', LoginRoute); //
 

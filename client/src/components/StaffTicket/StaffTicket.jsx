@@ -5,17 +5,17 @@ import TicketMain from './TicketMain';
 import axios from 'axios';
 // import StaffFooter from './StaffFooter';
 
-class StaffTicket extends Component {
+function StaffTicket() {
   /*
   - get all ID
   -- map ticketmain
    */
 
-  const [tickets, setTickets] = useState(initialState);
-  
+  // const [tickets, setTickets] = useState(initialState);
+
   // Delete All
-  handleClickAll = (event) => {
-    event.preventDefault();
+  const handleClickAll = (e) => {
+    e.preventDefault();
     axios
       .post(`http://localthost:5002/ticketing/ticketdeleteall/`)
       .then((res) => {
@@ -25,38 +25,37 @@ class StaffTicket extends Component {
     console.log('deleted all tickets');
   };
 
-  render() {
-    return (
-      <div
-        style={{
-          background: 'lightgrey',
-          paddingTop: '85px',
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          margin: 'auto'
-        }}
-      >
-        <Container>
-          <div
-            style={{
-              float: 'right'
-              // marginTop: '80px',
-            }}
-          >
-            <Button variant="danger" {...handleClickAll}>
-              Cancel All
-            </Button>
-          </div>
+  return (
+    <div
+      style={{
+        background: 'lightgrey',
+        paddingTop: '85px',
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        margin: 'auto'
+      }}
+    >
+      <Container>
+        <div
+          style={{
+            float: 'right'
+            // marginTop: '80px',
+          }}
+        >
+          <Button variant="danger" {...handleClickAll}>
+            Cancel All
+          </Button>
+        </div>
+        <div>
           <div>
-            <div>)
-              <TicketMain />
-            </div>
+            )
+            <TicketMain />
           </div>
-        </Container>
-      </div>
-    );
-  }
+        </div>
+      </Container>
+    </div>
+  );
 }
 
 export default StaffTicket;

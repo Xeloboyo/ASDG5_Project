@@ -12,6 +12,18 @@ import ReactLogo from '../logo.svg';
 import './AdminHomeNav.css';
 
 function AdminHome() {
+  const LogoutUser = async (e) => {
+    console.log("appp");
+    localStorage.removeItem("profile");
+    localStorage.removeItem("position");
+    localStorage.removeItem("id");
+  };
+
+  if (localStorage.profile) {
+    var name = localStorage.profile.slice(1, -1);
+    var user = localStorage.position.slice(1, -1);
+  }
+
   return (
     <Navbar sticky="top" className="bg-dark py-2 flex-grow-1">
       <LinkContainer to="/adminhomenav">
@@ -67,7 +79,9 @@ function AdminHome() {
       <Nav style={{ marginRight: '30px' }}>
         <Navbar.Brand className="text">Login as Admin</Navbar.Brand>
         <LinkContainer to="/" className="float-right">
-          <Button variant="light">Logout</Button>
+          <Button variant="light" onClick={(e) => LogoutUser(e)}>
+            Logout
+          </Button>
         </LinkContainer>
       </Nav>
     </Navbar>

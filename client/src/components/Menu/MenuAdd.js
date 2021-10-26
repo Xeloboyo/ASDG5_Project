@@ -5,6 +5,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import axios from 'axios';
+//import Button from "@restart/ui/esm/Button";
+import Button from "react-bootstrap/Button";
 //import { response } from "express";
 
 export default class CreateMenu extends Component {
@@ -98,7 +100,7 @@ export default class CreateMenu extends Component {
       return(
         <div>
         <LinkContainer to="/menu">
-          <Nav.Link>Back</Nav.Link>
+          <Button>Back</Button>
         </LinkContainer>   
       <h3>Menu</h3>
       <form onSubmit={this.onSubmit}>
@@ -126,6 +128,7 @@ export default class CreateMenu extends Component {
               className="form-control"
               value={this.state.Menu_Product_Name}
               onChange={this.onChangeMenuProductName}
+              required="required"
               />
             </div>
         </div>
@@ -136,6 +139,7 @@ export default class CreateMenu extends Component {
               name="productdescription"
               type="text" 
               className="form-control"
+              required="required"
               value={this.state.Menu_Product_Description}
               onChange={this.onChangeMenuProductDescription}
               />
@@ -146,8 +150,9 @@ export default class CreateMenu extends Component {
           <label>Product Price: </label>
           <input 
               name="productprice"
-              type="text" 
+              type="number" 
               className="form-control"
+              required="required"
               value={this.state.Menu_Product_Price}
               onChange={this.onChangeProductPrice}
               />

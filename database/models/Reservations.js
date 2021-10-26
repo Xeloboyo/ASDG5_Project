@@ -11,6 +11,6 @@ const ReservationSchema = new Schema({
   RejectionID: Number,
 });
 
-const Post = mongoose.model("Post", UserSchema);
+const Reservation = mongoose.model("Reservation", ReservationSchema);
 
-module.exports = Post;
+module.exports = Reservation;

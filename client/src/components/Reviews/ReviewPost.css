@@ -29,7 +29,10 @@
     position: relative;
 }
 
-.likeButton {
-    position: absolute;
-    right: 0;
+.liked {
+    color: rgb(0, 0, 0);
+}
+
+.formLabel {
+    color: black;
 }
