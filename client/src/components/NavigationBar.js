@@ -89,30 +89,29 @@ function NavigationBar() {
             Community Page
           </Nav.Link>
         </LinkContainer>
-      </Nav>
-      {/* {state.session.name ? ( */}
-      <Nav style={{ marginRight: '30px' }}>
-        <Container className="float-left mx-3 text-white">
-          Welcome {/* {state.session.name} - {state.session.type} */}
-        </Container>
-        <LinkContainer to="/logout" className="float-right">
-          <Button variant="light" onClick={(e) => logout()}>
-            Logout
-          </Button>
+        <LinkContainer to="/takeaway">
+          <Nav.Link
+            href="./Takeaway/Takeaway.js"
+            className="text-white line-left"
+          >
+            Takeaway
+          </Nav.Link>
         </LinkContainer>
       </Nav>
-      ) : (
       <Nav style={{ marginRight: '30px' }}>
         <LinkContainer to="/restregister" className="float-left mx-3">
-          <Button variant="outline-success">
-            Register for restaurant management
-          </Button>
+          <Button variant="outline-success">Restaurant Registration</Button>
         </LinkContainer>
         <LinkContainer to="/register" className="float-left mx-3">
           <Button variant="outline-success">Register</Button>
         </LinkContainer>
         <LinkContainer to="/login" className="float-right">
           <Button variant="light">Login</Button>
+        </LinkContainer>
+        <LinkContainer to="/checkout" className="float-right mx-3">
+          <Button variant="light">
+            <i className="fas fa-shopping-cart"></i>
+          </Button>
         </LinkContainer>
       </Nav>
       )}

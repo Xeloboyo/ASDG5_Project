@@ -55,8 +55,10 @@ const Footer = () => {
                 <i className="fab fa-youtube">
                   <SiYoutube />
                   <span style={{ marginLeft: '10px' }}>Youtube</span>
+                  <SiYoutube />
+                  <span style={{ marginLeft: '10px' }}>Youtube</span>
                 </i>
-              </Card.Text>{' '}
+              </Card.Text>
             </Col>
             <Col sm={2}>
               <Card.Title>Legal</Card.Title>

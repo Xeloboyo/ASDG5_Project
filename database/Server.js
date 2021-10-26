@@ -59,18 +59,18 @@ app.use('/ticket', TicketRouter);
 app.use('/analytics', AnalyticsRouter);
 // app.use(cors());
 
-// ismail features
-require('./models/User');
-// const UserSchemaCopy = require('./models/User');
+const TakeawayRoute = require('./api/Takeaway'); //
+
+const ReviewRouter = require('./api/Review');
+const ReplyRouter = require('./api/Reply');
+
 const Routes = require('./api/Register'); //
 
 // const Route = require("./api/Login"); //
 
 app.use('/register', Routes);
-const LoginRoute = require('./api/Login'); //
 
-const ReviewRouter = require('./api/Review');
-const ReplyRouter = require('./api/Reply');
+const LoginRoute = require('./api/Login'); //
 
 const Route = require('./api/Login'); //
 
@@ -103,6 +103,9 @@ app.use('/promotions', PromotionsRouter);
 app.use('/post', CommunityPostRouter);
 app.use(cors());
 
+// takeaway route
+app.use('/takeaway', TakeawayRoute); //
+
 app.use('/register', Routes); //
 
 // Review and Reply
@@ -111,20 +114,20 @@ app.use('/reply', ReplyRouter);
 
 app.use('/login', LoginRoute); //
 
-// delete user
-// app.delete('/delete', (req, res) => {
-//   console.log(req.body);
-//   const { id } = req.body;
-//   UserSchemaCopy.findByIdAndDelete({ id }, (err, user) => {
-//     if (user) {
-//       if (id === user.id) {
-//         res.json({ message: 'deleted', user });
-//       } else {
-//         res.json({ message: 'deleted' });
-//       }
-//     }
-//   });
-// });
+// delete user s
+app.delete('/delete', (req, res) => {
+  console.log(req.body);
+  const { _id } = req.body;
+  UserSchemaCopy.findByIdAndDelete({ _id }, (err, user) => {
+    if (user) {
+      if (_id === user._id) {
+        res.json({ message: 'deleted', user });
+      } else {
+        res.json({ message: 'deleted' });
+      }
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
