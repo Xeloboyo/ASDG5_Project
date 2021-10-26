@@ -16,12 +16,14 @@ const RestarurantList = props =>(
     <td>{props.restaurant.Restaurant_Phone_Number}</td>
     <td>{props.restaurant.Restaurant_Rating}</td>
     <td>{props.restaurant.Restaurant_Capacity}</td>
-    {
-       (localStorage.profile.slice(1, -1) == "admin" || localStorage.profile.slice(1, -1) == "restaurant_owner") ? (
+    { (!localStorage.position === undefined) ? (
+    (localStorage.position.slice(1, -1) == "admin" || localStorage.position.slice(1, -1) == "restaurant_owner") ? (
     <td> 
       <Link to={"/restaurantedit/"+props.restaurant._id}>edit</Link> | <a href="#" onClick={() => { props.deleteRestaurant(props.restaurant._id) }}>delete</a>
     </td>
-       ) : ( <p> hello?</p> )}
+       ) : ( <p> hello?</p> )
+    ) : (<p>o</p>)
+       }
     <td>
       <th><Link to={{pathname:`/addReservation/0`, state: { name: props.restaurant.Restaurant_Name,  id: '0' } }}>Book Here</Link></th>
     </td>
@@ -45,14 +47,17 @@ export default class Restaurant extends Component {
 
   // get the list of restaurants
   componentDidMount(){
+    // check if localstorage is undefined
+    if (!localStorage.position === undefined) {
+      const id = localStorage.id.slice(1, -1);
+      console.log("user id: " + id);
+    }
+    
 
-    const id = localStorage.id.slice(1, -1);
-    console.log("user id: " + id);
+    //console.log("profile log: " + localStorage.profile);
 
-    console.log("profile log: " + localStorage.profile.slice(1, -1));
-
-    localStorage.removeItem("profile");
-    localStorage.removeItem("position");
+    //localStorage.removeItem("profile");
+    //localStorage.removeItem("position");
     axios.get('http://localhost:5002/restaurant/')
       .then(response => {
         this.setState({
@@ -87,11 +92,14 @@ export default class Restaurant extends Component {
         
         <table class="button">
           <tr>
-            <th> { (localStorage.profile.slice(1, -1) == "admin" || localStorage.profile.slice(1, -1) == "restaurant_owner") ? (
+            <th> { (!localStorage.position === undefined) ? (
+              (localStorage.position.slice(1, -1) == "admin" || localStorage.position.slice(1, -1) == "restaurant_owner") ? (
               <LinkContainer to="/restaurantadd">
                 <Button> Add Restaurant</Button>
               </LinkContainer> 
-            ) : ( <p> heeor</p> ) }
+            ) : ( <p> heeor</p> )
+            ) : ( <p> h </p>)
+             }
             </th>
           </tr>
           <tr>
