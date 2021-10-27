@@ -23,14 +23,16 @@ export default class PromotionsHome extends Component {
 
   // Get latest promotions post before page loads
   async componentDidMount() {
+    const API =
+      process.env.NODE_ENV === "production"
+        ? "https://asd-g5project.herokuapp.com/promotions/promotionshome"
+        : "http://localhost:5002/promotions/promotionshome";
+
     try {
-      const response = await fetch(
-        "http://localhost:5002/promotions/promotionshome",
-        {
-          method: "GET",
-          headers: {},
-        }
-      );
+      const response = await fetch(API, {
+        method: "GET",
+        headers: {},
+      });
       const jsonData = await response.json();
 
       this.setState({ All_post: jsonData });
