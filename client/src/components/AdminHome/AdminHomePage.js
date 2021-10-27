@@ -5,6 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Redirect } from "react-router";
 
 import BannerImage from "../AdminHome/banner.png";
 import ReactLogo from "../logo.svg";
@@ -15,6 +16,12 @@ var sectionStyle = {
 
 class AdminHomePage extends Component {
   render() {
+    if (
+      !localStorage.profile ||
+      localStorage.position.slice(1, -1) !== "admin"
+    ) {
+      return <Redirect to={"/"} />;
+    }
     return (
       <Container className="mx-0 px-0" fluid>
         <Row>
