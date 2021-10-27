@@ -13,10 +13,10 @@ import './AdminHomeNav.css';
 
 function AdminHome() {
   const LogoutUser = async (e) => {
-    console.log("appp");
-    localStorage.removeItem("profile");
-    localStorage.removeItem("position");
-    localStorage.removeItem("id");
+    console.log('appp');
+    localStorage.removeItem('profile');
+    localStorage.removeItem('position');
+    localStorage.removeItem('id');
   };
 
   if (localStorage.profile) {
@@ -72,7 +72,7 @@ function AdminHome() {
             href="./Analytics/Analytics.jsx"
             className="text-white line-left"
           >
-            Promotions
+            Analytics
           </Nav.Link>
         </LinkContainer>
       </Nav>
