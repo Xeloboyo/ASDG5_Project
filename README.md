@@ -23,7 +23,7 @@ Payment system / reservation management for staff confirmation | William
 Promotions | Lily
 Take away for user | Ismail
 Restaurant Ticketing System | Ricky
-Restaurant Pro Business Analytics System | Ricky
+Restaurant Admin Business Analytics System | Ricky
 Community Page | Lily
 
 

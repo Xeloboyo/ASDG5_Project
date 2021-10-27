@@ -29,8 +29,8 @@ function TicketMain() {
   // Get All Ticket (for mapping)
   useEffect(() => {
     axios.get(`http://localthost:5002/ticketing/`).then((res) => {
-      const ticketing = res.data;
-      this.setState({ ticketing });
+      const ticket = res.data;
+      this.setState({ ticket });
     });
   }, []);
 
@@ -62,103 +62,112 @@ function TicketMain() {
     console.log('finish one ticket');
   };
 
-  return (
-    <div>
-      <Container>
-        <Card
-          style={{
-            width: '17rem',
-            marginBottom: '25px',
-            marginLeft: '100px' // start after sidebar
-            // marginRight: 'auto'
-          }}
-        >
-          {/* Row 1 -> Time 
-          <Row>
-            {/* how many minutes 
-            {/* automatically starts from 30 minutes 
-            <p>in 30 minutes</p>
-          </Row>
-            */}
-
-          {/* Row 2 -> Order Header */}
-          <Card.Header>
+  if (tickets.length > 0) {
+    return tickets.map((ticket, index) => {
+      console.log(ticket);
+      return (
+        <div>
+          <Container>
+            <Card
+              style={{
+                width: '17rem',
+                marginBottom: '25px',
+                marginLeft: '100px' // start after sidebar
+                // marginRight: 'auto'
+              }}
+            >
+              {/* Row 1 -> Time 
             <Row>
-              <Col>
-                <IconContext.Provider value={{ color: 'purple', size: '50px' }}>
-                  <FaMotorcycle />
-                </IconContext.Provider>
-              </Col>
-              <Col>
-                {/* username */}
-                {/* <span style={{ fontSize: '18px' }}> {RandomName} </span> */}
-                <span style={{ fontSize: '18px' }}>
-                  {tickets.Product_UserName}
-                </span>
-                <br />
-                {/* order ID */}
-                {/* <span style={{ color: 'grey' }}>#{RandomNumber}</span> */}
-                <span style={{ color: 'grey' }}>#{tickets._id}</span>
-              </Col>
+              {/* how many minutes 
+              {/* automatically starts from 30 minutes 
+              <p>in 30 minutes</p>
             </Row>
-          </Card.Header>
+              */}
 
-          {/* Row 3 -> Order Description */}
-          <Card.Body>
-            <Row>
-              <Col sm={3}>
-                {/* order quantity */}
-                {/* <span>{RandomQuantity} x</span> */}
-                <span>{tickets.Product_Quantity} x</span>
-              </Col>
+              {/* Row 2 -> Order Header */}
+              <Card.Header>
+                <Row>
+                  <Col>
+                    <IconContext.Provider
+                      value={{ color: 'purple', size: '50px' }}
+                    >
+                      <FaMotorcycle />
+                    </IconContext.Provider>
+                  </Col>
+                  <Col>
+                    {/* username */}
+                    {/* <span style={{ fontSize: '18px' }}> {RandomName} </span> */}
+                    <span style={{ fontSize: '18px' }}>
+                      {ticket.Product_UserName}
+                    </span>
+                    <br />
+                    {/* order ID */}
+                    {/* <span style={{ color: 'grey' }}>#{RandomNumber}</span> */}
+                    <span style={{ color: 'grey' }}>#{ticket._id}</span>
+                  </Col>
+                </Row>
+              </Card.Header>
 
-              <Col sm={9}>
-                {/* items description */}
-                {/* <span>${RandomFood}</span> */}
-                <span>{tickets.Product_menuItems}</span>
-              </Col>
-            </Row>
-          </Card.Body>
+              {/* Row 3 -> Order Description */}
+              <Card.Body>
+                <Row>
+                  <Col sm={3}>
+                    {/* order quantity */}
+                    {/* <span>{RandomQuantity} x</span> */}
+                    <span>{ticket.Product_Quantity} x</span>
+                  </Col>
 
-          {/* Row 4 -> Button */}
-          <div>
-            <Row>
-              <Col>
-                <Button
-                  style={{
-                    background: 'red',
-                    width: '80%',
-                    margin: '10px 15px',
-                    padding: '5px',
-                    display: 'block'
-                  }}
-                  handleClickDelete={() => this.handleChange(tickets._id)}
-                >
-                  {/* cancel */}
-                  <FaTimesCircle />
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  style={{
-                    background: 'green',
-                    width: '80%',
-                    margin: '10px 15px',
-                    padding: '5px',
-                    display: 'block'
-                  }}
-                  handleClickAccept={() => this.handleChange(tickets._id)}
-                >
-                  {/* accept */}
-                  <FaCheckCircle />
-                </Button>
-              </Col>
-            </Row>
-          </div>
-        </Card>
-      </Container>
-    </div>
-  );
+                  <Col sm={9}>
+                    {/* items description */}
+                    {/* <span>${RandomFood}</span> */}
+                    <span>{ticket.Product_menuItems}</span>
+                  </Col>
+                </Row>
+              </Card.Body>
+
+              {/* Row 4 -> Button */}
+              <div>
+                <Row>
+                  <Col>
+                    <Button
+                      style={{
+                        background: 'red',
+                        width: '80%',
+                        margin: '10px 15px',
+                        padding: '5px',
+                        display: 'block'
+                      }}
+                      handleClickDelete={() => this.handleChange(ticket._id)}
+                    >
+                      {/* cancel */}
+                      <FaTimesCircle />
+                    </Button>
+                  </Col>
+                  <Col>
+                    <Button
+                      style={{
+                        background: 'green',
+                        width: '80%',
+                        margin: '10px 15px',
+                        padding: '5px',
+                        display: 'block'
+                      }}
+                      handleClickAccept={() => this.handleChange(ticket._id)}
+                    >
+                      {/* accept */}
+                      <FaCheckCircle />
+                    </Button>
+                  </Col>
+                </Row>
+              </div>
+            </Card>
+          </Container>
+        </div>
+      );
+    });
+  } else {
+    return <h3>No one orders takeaway on our restaurant yet </h3>;
+  }
 }
 
 export default TicketMain;

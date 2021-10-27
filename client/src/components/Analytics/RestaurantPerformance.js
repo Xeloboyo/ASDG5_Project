@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import axios from 'axios';
 
-export default function RestaurantPerformance(props) {
+function RestaurantPerformance() {
   // const restaurants = [
   //   { title: 'Number of New Users', number: '20' },
   //   { title: 'Advertisement Used', number: '20' },
   //   { title: 'Net Bookings', number: '20' },
   //   { title: 'Takeaway Ordered', number: '20' }
   // ];
+
+  const [performances, setPerformances] = useState('');
 
   const data = {
     labels: [
@@ -25,7 +28,7 @@ export default function RestaurantPerformance(props) {
 
     datasets: [
       {
-        // map reservation based on the restaurant 
+        // map reservation based on the restaurant
         label: 'Reservation',
         data: [8, 9, 15, 13, 18, 20, 15],
         backgroundColor: ['rgba(75, 192, 192, 0.2)'],
@@ -128,4 +131,4 @@ export default function RestaurantPerformance(props) {
   );
 }
 
-// export default RestaurantPerformance;
+export default RestaurantPerformance;
