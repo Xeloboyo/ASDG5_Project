@@ -3,6 +3,7 @@ import React, { Component, useEffect, useState, withRouter } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Toaster } from 'react-hot-toast';
 
 ///Lily ur last merge erased my stuff on app.js >:( pls pull & merge properly
 
@@ -19,6 +20,9 @@ import CommunityPageEdits from './components/CommunityPage/CommunityPageEdits';
 import Form from './components/Login/Form';
 import Form2 from './components/Login/Form2';
 import Login from './components/Login/Login';
+import Takeaway from './components/Takeaway/Takeaway';
+import TakeawayMenu from './components/Takeaway/TakeawayMenu';
+import Checkout from './components/Takeaway/Checkout';
 
 import Promotions from './components/Promotions/Promotions';
 import PromotionsPast from './components/Promotions/PromotionsPast';
@@ -51,6 +55,34 @@ require('dotenv').config();
 
 const App = () => {
   return (
+    <>
+    <Toaster
+      position="top-center"
+      gutter={8}
+      containerClassName=""
+      containerStyle={{}}
+      toastOptions={{
+        className: '',
+        duration: 5000,
+        style: {
+          background: '#ffffff',
+          color: '#3A4374'
+        },
+        success: {
+          duration: 3000,
+          iconTheme: {
+            primary: '#4661E6',
+            secondary: '#ffffff'
+          }
+        },
+        error: {
+          iconTheme: {
+            primary: '#D73737',
+            secondary: '#ffffff'
+          }
+        }
+      }}
+    />
     <Store>
       <Router>
         <Container className="mx-0 px-0" fluid>
@@ -97,6 +129,21 @@ const App = () => {
               <AdminHomeNav />
               <Promotions />
             </Route>
+            <Route path="/checkout">
+                <NavigationBar />
+                <Checkout />
+                <Footer />
+              </Route>
+              <Route path="/takeaway">
+                <NavigationBar />
+                <Takeaway />
+                <Footer />
+              </Route>
+              <Route path="/takeaways/:id">
+                <NavigationBar />
+                <TakeawayMenu />
+                <Footer />
+              </Route>
             <Route path="/login">
               <Login />
             </Route>
@@ -192,6 +239,7 @@ const App = () => {
         </Container>
       </Router>
     </Store>
+    </>
   );
 };
 
