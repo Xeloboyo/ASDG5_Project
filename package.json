@@ -16,7 +16,7 @@
     "startDatabase": "cd database && npm i",
     "startClient": "cd client && npm i",
     "e2e": "cypress run",
-    "start-server": "concurrently \"cd client && npm start wait-on http://localhost:3000\" \"nodemon database/Server.js\"",
+    "start-server": "concurrently \"cd client && npm run build\" \"nodemon database/Server.js\"",
     "test": "./node_modules/.bin/cypress run",
     "ci": "start-server-and-test starts http://localhost:3000 test"
   },
