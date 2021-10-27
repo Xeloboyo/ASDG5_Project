@@ -11,7 +11,7 @@ function RestaurantPerformance() {
   //   { title: 'Takeaway Ordered', number: '20' }
   // ];
 
-  const [performances, setPerformances] = useState('');
+  const [restaurants, setRestaurants] = useState('');
 
   const data = {
     labels: [
@@ -62,7 +62,7 @@ function RestaurantPerformance() {
   };
 
   const displayRestaurant = (props) => {
-    const { restaurants } = props;
+    // const { restaurants } = props;
 
     if (restaurants.length > 0) {
       return restaurants.map((restaurant, index) => {
@@ -124,7 +124,7 @@ function RestaurantPerformance() {
               <Bar data={data} options={options} />
             </div>
           </Col>
-          <Col sm={1}>{displayRestaurant(props)}</Col>
+          <Col sm={1}>{displayRestaurant()}</Col>
         </Row>
       </Container>
     </div>

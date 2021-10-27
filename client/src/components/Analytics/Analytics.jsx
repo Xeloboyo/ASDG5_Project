@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 // import CalendarDate from './CalendarDate';
 import Overview from './Overview';
 import RestaurantPerformance from './RestaurantPerformance';
-import UserLists from './UserLists';
+// import UserLists from './UserLists';
 import '../../scss/style.scss';
 import axios from 'axios';
 
@@ -77,24 +77,6 @@ export default function Analytics() {
           <Row>
             <Col sm={10}>
               <RestaurantPerformance restaurants={restaurants} />
-            </Col>
-          </Row>
-        </div>
-      </Container>
-
-      {/* 3. User Lists */}
-      <Container>
-        <div
-          style={{
-            background: 'white',
-            marginTop: '30px'
-          }}
-        >
-          <Row>
-            <Col>
-              <div>
-                <UserLists />
-              </div>
             </Col>
           </Row>
         </div>

@@ -5,6 +5,17 @@ import TicketMain from './TicketMain';
 import axios from 'axios';
 // import StaffFooter from './StaffFooter';
 
+const handleClickAll = (e) => {
+  e.preventDefault();
+  axios
+    .post(`http://localthost:5002/ticketing/ticketdeleteall/`)
+    .then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+  console.log('deleted all tickets');
+};
+
 function StaffTicket() {
   /*
   - get all ID
@@ -14,16 +25,6 @@ function StaffTicket() {
   // const [tickets, setTickets] = useState(initialState);
 
   // Delete All
-  const handleClickAll = (e) => {
-    e.preventDefault();
-    axios
-      .post(`http://localthost:5002/ticketing/ticketdeleteall/`)
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
-    console.log('deleted all tickets');
-  };
 
   return (
     <div
