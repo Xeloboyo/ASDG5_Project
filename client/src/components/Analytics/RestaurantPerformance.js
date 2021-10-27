@@ -12,6 +12,8 @@ export default function RestaurantPerformance(props) {
 
   const data = {
     labels: [
+      // map.restaurant_name
+      // show it here
       'Restaurant a',
       'Restaurant b',
       'Restaurant c',
@@ -23,6 +25,7 @@ export default function RestaurantPerformance(props) {
 
     datasets: [
       {
+        // map reservation based on the restaurant 
         label: 'Reservation',
         data: [8, 9, 15, 13, 18, 20, 15],
         backgroundColor: ['rgba(75, 192, 192, 0.2)'],
@@ -31,6 +34,8 @@ export default function RestaurantPerformance(props) {
         responsive: true
       },
       {
+        // map takeaway based on the restaurant
+        // show output
         label: 'Takeaway',
         data: [10, 4, 6, 12, 21, 3, 18],
         backgroundColor: ['red'],

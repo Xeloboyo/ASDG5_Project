@@ -14,17 +14,17 @@ import toast from 'react-hot-toast';
 function TicketMain() {
   const [tickets, setTickets] = useState('');
 
-  let history = useHistory();
-  const checkoutItems = JSON.parse(localStorage.getItem('cart'));
-  let total = 0;
-  let qty = 0;
+  // let history = useHistory();
+  // const checkoutItems = JSON.parse(localStorage.getItem('cart'));
+  // let total = 0;
+  // let qty = 0;
 
-  let menuItems = [];
-  checkoutItems.forEach((item) => {
-    menuItems = [...menuItems, item.Menu_Product_Name];
-    qty += item.qty;
-    total += item.qty * item.Menu_Product_Price;
-  });
+  // let menuItems = [];
+  // checkoutItems.forEach((item) => {
+  //   menuItems = [...menuItems, item.Menu_Product_Name];
+  //   qty += item.qty;
+  //   total += item.qty * item.Menu_Product_Price;
+  // });
 
   // Get All Ticket (for mapping)
   useEffect(() => {
@@ -115,7 +115,7 @@ function TicketMain() {
               <Col sm={9}>
                 {/* items description */}
                 {/* <span>${RandomFood}</span> */}
-                <span>${tickets.Product_menuItems}</span>
+                <span>{tickets.Product_menuItems}</span>
               </Col>
             </Row>
           </Card.Body>

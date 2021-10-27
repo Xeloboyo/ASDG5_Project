@@ -8,10 +8,8 @@ const moment = require('moment');
 const AnalyticsSchema = new Schema({
   Date: {
     type: Date,
-    default() {
-      return moment(Date.now).format('MMMM YYYY');
-      // return moment(Date.now).format('MMMM YYYY');
-    }
+    default: Date.now
+    // return moment(Date.now).format('MMMM YYYY');
   },
 
   OverviewData: {

@@ -49,7 +49,6 @@ function StaffTicket() {
         </div>
         <div>
           <div>
-            )
             <TicketMain />
           </div>
         </div>

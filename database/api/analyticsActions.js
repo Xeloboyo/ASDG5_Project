@@ -118,30 +118,34 @@ router.get('/', (req, res) => {
     @access private
 */
 router.post('/overview', async (req, res) => {
-  let usersCount = User.count();
-  let restaurantsCount = Restaurant.count();
-  let postCommCount = PostCommunity.count();
+  try {
+    await Analysis.create({});
 
-  const pushOverview = { usersCount, restaurantsCount, postCommCount };
-  Analysis.findOneAndUpdate(
-    { _id: req.body.id },
-    // { $push: {Date: }}
-    { $push: { OverviewData: pushOverview } }
-  )
-    .then((result) => {
-      res.json({
-        status: 'SUCCESS',
-        message: 'A new month, a new table',
-        data: result
-      });
-    })
-    .catch((err) => {
-      res.json({
-        status: 'FAILED',
-        message: 'An error occurred'
-      });
-      console.log(err);
+    let countsOverview = {
+      OverviewData: [
+        await User.countDocuments({}),
+        await Restaurant.countDocuments({}),
+        await PostCommunity.countDocuments({})
+      ]
+    };
+
+    console.log(countsOverview);
+
+    const { id } = req.params;
+
+    await Analysis.updateMany(id, {
+      Date: Date.now(),
+      OverviewData: JSON.parse(countsOverview)
     });
+
+    console.log('yes');
+  } catch (err) {
+    res.json({
+      status: ' failed',
+      message: 'error'
+    });
+    console.log(err);
+  }
 });
 
 /*

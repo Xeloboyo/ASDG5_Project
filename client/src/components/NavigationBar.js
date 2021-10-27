@@ -168,7 +168,7 @@ function NavigationBar() {
           <Button variant="light">Login</Button>
         </LinkContainer> */}
         <LinkContainer to="/checkout" className="float-right mx-3">
-          <Button variant="light">
+          <Button variant="primary">
             <i className="fas fa-shopping-cart"></i>
             &nbsp; Checkout
           </Button>
