@@ -10,6 +10,7 @@
     "dev-database": "concurrently \"cd ./database && npm run server\" \"cd ./database npm run client\"",
     "dev-client": "concurrently \"cd ./client && npm start\"",
     "dev": "concurrently \"npm start dev-client\" \"npm start dev-database\"",
+    "heroku-postbuild": "nodemon database/Server.js",
     "server": "nodemon database/Server.js",
     "start": "cd client && npm run build",
     "starts": "cd client && npm start",
