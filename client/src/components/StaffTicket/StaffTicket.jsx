@@ -1,62 +1,60 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import '../../scss/style.scss';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import TicketMain from './TicketMain';
-import StaffFooter from './StaffFooter';
+import axios from 'axios';
+// import StaffFooter from './StaffFooter';
 
-class StaffTicket extends Component {
+function StaffTicket() {
   /*
-  // this.handleClick = this.handleClick.bind(this);
-  // this.onChangeDeleteAllTicket = this.onChangeDeleteAllTicket.bind(this);
+  - get all ID
+  -- map ticketmain
+   */
 
-  // Delete All Tickets
-  onChangeDeleteAllTicket(e) {
+  // const [tickets, setTickets] = useState(initialState);
+
+  // Delete All
+  const handleClickAll = (e) => {
     e.preventDefault();
+    axios
+      .post(`http://localthost:5002/ticketing/ticketdeleteall/`)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+    console.log('deleted all tickets');
+  };
 
-  const response = await fetch("http://localhost:5002/ticketdeleteall", {
-    method: 'POST',
-    headers: {
-      "content-type": 'application/json',
-    },
-    body: JSON.stringify(newList),
-  }),
-  const jsonData = await response.json();
-  console.log(`${jsonData.message}`);
-}
-*/
-  render() {
-    return (
-      <div
-        style={{
-          background: 'lightgrey',
-          paddingTop: '85px',
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          margin: 'auto'
-        }}
-      >
-        <Container>
-          <div
-            style={{
-              float: 'right'
-              // marginTop: '80px',
-            }}
-          >
-            <Button variant="danger">Cancel All</Button>
-          </div>
+  return (
+    <div
+      style={{
+        background: 'lightgrey',
+        paddingTop: '85px',
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        margin: 'auto'
+      }}
+    >
+      <Container>
+        <div
+          style={{
+            float: 'right'
+            // marginTop: '80px',
+          }}
+        >
+          <Button variant="danger" {...handleClickAll}>
+            Cancel All
+          </Button>
+        </div>
+        <div>
           <div>
-            <div>
-              <TicketMain />
-            </div>
+            <TicketMain />
           </div>
-          <div>
-            <StaffFooter />
-          </div>
-        </Container>
-      </div>
-    );
-  }
+        </div>
+      </Container>
+    </div>
+  );
 }
 
 export default StaffTicket;

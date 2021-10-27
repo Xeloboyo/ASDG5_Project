@@ -2,86 +2,130 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
-const data = {
-  labels: [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
-  ],
-  datasets: [
-    {
-      label: 'Popularity',
-      data: [8, 9, 15, 13, 18, 20, 15],
-      backgroundColor: ['rgba(75, 192, 192, 0.2)'],
-      borderColor: ['rgba(75, 192, 192, 1)'],
-      borderWidth: 1,
-      responsive: true
-    }
-  ]
-};
+export default function RestaurantPerformance(props) {
+  // const restaurants = [
+  //   { title: 'Number of New Users', number: '20' },
+  //   { title: 'Advertisement Used', number: '20' },
+  //   { title: 'Net Bookings', number: '20' },
+  //   { title: 'Takeaway Ordered', number: '20' }
+  // ];
 
-const options = {
-  scales: {
-    yAxes: [
+  const data = {
+    labels: [
+      // map.restaurant_name
+      // show it here
+      'Restaurant a',
+      'Restaurant b',
+      'Restaurant c',
+      'Restaurant d',
+      'Restaurant  e',
+      'Restaurant f',
+      'Restaurant g'
+    ],
+
+    datasets: [
       {
-        ticks: {
-          beginAtZero: true
-        }
+        // map reservation based on the restaurant 
+        label: 'Reservation',
+        data: [8, 9, 15, 13, 18, 20, 15],
+        backgroundColor: ['rgba(75, 192, 192, 0.2)'],
+        borderColor: ['rgba(75, 192, 192, 1)'],
+        borderWidth: 1,
+        responsive: true
+      },
+      {
+        // map takeaway based on the restaurant
+        // show output
+        label: 'Takeaway',
+        data: [10, 4, 6, 12, 21, 3, 18],
+        backgroundColor: ['red'],
+        borderColor: ['white'],
+        borderWidth: 1,
+        responsive: true
       }
     ]
-  }
-};
+  };
 
-function RestaurantPerformance() {
+  const options = {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true
+          }
+        }
+      ]
+    }
+  };
+
+  const displayRestaurant = (props) => {
+    const { restaurants } = props;
+
+    if (restaurants.length > 0) {
+      return restaurants.map((restaurant, index) => {
+        console.log(restaurant);
+        return (
+          <div
+            style={{
+              marginLeft: '95px',
+              justifyContent: 'center',
+              display: 'block'
+            }}
+          >
+            <Card
+              style={{
+                width: '10rem',
+                padding: '10px',
+                // display: 'block',
+                margin: '10px 15px'
+              }}
+            >
+              <div className="text-center">
+                <span
+                  style={{ fontSize: '12px' }}
+                  className="restaurant__title"
+                >
+                  {restaurant.title}
+                </span>
+                <br />
+                <span
+                  style={{ fontSize: '20px' }}
+                  className="restaurant__number"
+                >
+                  {restaurant.number}
+                </span>
+              </div>
+            </Card>
+            <hr />
+          </div>
+        );
+      });
+    }
+  };
+
   return (
     <div>
       <Container>
-        <h3>Restaurant Performance Analytics</h3>
+        <h3 style={{ marginTop: '10px' }}>Tangle Restaurant Analytics</h3>
 
         <Row>
           <Col sm={9}>
             <div
               style={{
-                width: '42rem',
-                marginLeft: '60px'
+                width: '38rem',
+                marginTop: '50px',
+                marginLeft: '10px'
                 // marginRight: '120px'
               }}
             >
               <Bar data={data} options={options} />
             </div>
           </Col>
-
-          <Col sm={3}>
-            <div>
-              <div>
-                <Card
-                  style={{
-                    width: '10rem',
-                    // width: '40%',
-                    marginBottom: '30px',
-                    marginLeft: '150px',
-                    // margin: '30px 80px',
-                    padding: '15px',
-                    display: 'block'
-                  }}
-                >
-                  <div className="text-center">
-                    <span style={{ fontSize: '12px' }}>name</span>
-                    <br />
-                    <span style={{ fontSize: '20px' }}>number</span>
-                  </div>
-                </Card>
-              </div>
-            </div>
-          </Col>
+          <Col sm={1}>{displayRestaurant(props)}</Col>
         </Row>
       </Container>
     </div>
   );
 }
 
-export default RestaurantPerformance;
+// export default RestaurantPerformance;

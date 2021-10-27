@@ -52,29 +52,30 @@ const menuRouter = require('./api/MenuForm');
 
 app.use('/menu', menuRouter);
 
-const TicketRouter = require('./api/TicketActions');
-const AnalyticsRouter = require('./api/AnalyticsActions');
+const TicketRouter = require('./api/ticketActions');
+const AnalyticsRouter = require('./api/analyticsActions');
 
 app.use('/ticket', TicketRouter);
 app.use('/analytics', AnalyticsRouter);
 // app.use(cors());
+
+const TakeawayRoute = require('./api/Takeaway'); //
+
+const ReviewRouter = require('./api/Review');
+const ReplyRouter = require('./api/Reply');
 
 // ismail features
 require('./models/User');
 // const UserSchemaCopy = require('./models/User');
 const Routes = require('./api/Register'); //
 
-
-// const Route = require("./api/Login"); //
+const Route = require('./api/Login'); //
 
 app.use('/register', Routes);
 const LoginRoute = require('./api/Login'); //
 
-const ReviewRouter = require('./api/Review');
-const ReplyRouter = require('./api/Reply');
 const LikeRouter = require('./api/LikeEntry');
 
-const Route = require('./api/Login'); //
 
 // const RouteDelete = require("./api/Delete");
 
@@ -99,11 +100,20 @@ const UserSchemaCopy = require('./models/User');
 app.use(cors());
 app.use(bodyParser());
 
+// product
+
+const ProductRouter = require('./api/Takeaway');
+
+app.use('/product', ProductRouter);
+
 // router to promotions database
 app.use('/promotions', PromotionsRouter);
 // router to post database
 app.use('/post', CommunityPostRouter);
 app.use(cors());
+
+// takeaway route
+app.use('/takeaway', TakeawayRoute); //
 
 app.use('/register', Routes); //
 
@@ -114,8 +124,7 @@ app.use('/like', LikeRouter);
 
 app.use('/login', LoginRoute); //
 
-
-// delete user
+// delete user s
 app.delete('/delete', (req, res) => {
   console.log(req.body);
   const { _id } = req.body;

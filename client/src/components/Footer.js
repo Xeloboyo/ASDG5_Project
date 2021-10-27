@@ -6,24 +6,24 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { SiFacebook, SiInstagram, SiLinkedin, SiYoutube } from 'react-icons/si';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 const Footer = () => {
   return (
     <div>
-      <Container className="mx-auto px-0" fluid>
-        <Card className="bg-dark text-white p-2">
-          <Card.Title className="text-center">2021 Tangle </Card.Title>
+      <Card className="bg-dark text-white p-2">
+        <Container className="mx-auto px-auto" fluid>
+          <Card.Title className="text-center">2021 Tangle</Card.Title>
           <Row>
             <Col sm={3}>
               <Card.Title>Explore</Card.Title>
-              <Card.Text href="./Home/Homepage.jsx">Home</Card.Text>
-              <Card.Text href="./Restaurants/Restaurant.js">
-                Restaurants
-              </Card.Text>
-              <Card.Text href="./Reviews/ReviewsPage.css">Reviews</Card.Text>
-              <Card.Text href="./CommunityPage/CommunityPage.js">
-                Community Page
-              </Card.Text>
+              <Card.Text href="/homepage">Home</Card.Text>
+              <Card.Text href="/restaurants">Restaurants</Card.Text>
+              <Card.Text href="/reviews">Reviews</Card.Text>
+              <Card.Text href="/community">Community Page</Card.Text>
             </Col>
             <Col sm={3}>
               <Card.Title>Services</Card.Title>
@@ -34,39 +34,31 @@ const Footer = () => {
             <Col sm={3}>
               <Card.Title>Social Media(s)</Card.Title>
               <Card.Text href="#">
-                <i className="fab fa-facebook-f">
-                  <SiFacebook />
-                  <span style={{ marginLeft: '10px' }}>Facebook </span>
-                </i>
+                <SiFacebook />
+                <span style={{ marginLeft: '10px' }}>Facebook</span>
               </Card.Text>
               <Card.Text href="#">
-                <i className="fab fa-instagram">
-                  <SiInstagram />
-                  <span style={{ marginLeft: '10px' }}>Instagram</span>
-                </i>
+                <SiInstagram />
+                <span style={{ marginLeft: '10px' }}>Instagram</span>
               </Card.Text>
               <Card.Text href="#">
-                <i className="fab fa-linkedIn">
-                  <SiLinkedin />
-                  <span style={{ marginLeft: '10px' }}>LinkedIn</span>
-                </i>
+                <SiLinkedin />
+                <span style={{ marginLeft: '10px' }}>LinkedIn</span>
               </Card.Text>
               <Card.Text href="#">
-                <i className="fab fa-youtube">
-                  <SiYoutube />
-                  <span style={{ marginLeft: '10px' }}>Youtube</span>
-                </i>
-              </Card.Text>{' '}
+                <SiYoutube />
+                <span style={{ marginLeft: '10px' }}>Youtube</span>
+              </Card.Text>
             </Col>
-            <Col sm={2}>
+            <Col sm={3}>
               <Card.Title>Legal</Card.Title>
               <Card.Text href="#terms-co">Terms & Conditions</Card.Text>
               <Card.Text href="#privacy">Privacy Policy</Card.Text>
               <Card.Text href="#tos">Terms of Use</Card.Text>
             </Col>
           </Row>
-        </Card>
-      </Container>
+        </Container>
+      </Card>
     </div>
   );
 };

@@ -8,17 +8,17 @@
 /*
     Lists of API for ticketing:
     - Show All ticket ✅
-    - Add ticket ✅
-    - Cancel ticket ✅ ( add description )
-    - Cancel All ticket ✅ ( add description )
-    - Confirm ticket ✅ ( add description )
+    // - Add ticket -> get from takeaway 
+    - Cancel ticket ✅ 
+    - Cancel All ticket ✅ 
+    - Confirm ticket ✅ 
 */
 
 const express = require('express');
 
 const router = express.Router();
 
-const Ticketing = require('../models/Ticket');
+const Ticketing = require('../models/Product');
 
 /*
     - Get All ticketing (from Payment)
@@ -46,22 +46,16 @@ router.get('/', async (req, res) => {
     @desc add ticket
     @access Private
 */
+
+/*
 router.post('/', (req, res) => {
   let {
     UserID,
-    // ReservationID,
     OrderID,
-    // PaymentID,
-    // TicketDateReceived,
-    // TicketTimeReceived,
-    // TicketOrderDescription,
     TicketOwner,
-    // TicketOrder,
     TicketOrderQuantity,
     TicketOrderDescription,
     TicketStatus,
-    TicketUpdateDescription
-  } = req.body;
 
   console.log('kek');
 
@@ -72,9 +66,6 @@ router.post('/', (req, res) => {
     });
   } else {
     const NewTicket = new Ticketing({
-      // TicketDateReceived,
-      // TicketTimeReceived,
-      // TicketOrderDescription,
       TicketOwner,
       TicketOrderQuantity,
       TicketOrderDescription,
@@ -100,6 +91,8 @@ router.post('/', (req, res) => {
   }
 });
 
+*/
+
 /*
     - cancel ticketing
     @route POST  api/ticketing/ticketdelete/{id}
@@ -114,30 +107,6 @@ router.post('/ticketdelete/:id', async (req, res) => {
     const ticket = await Ticketing.findByIdAndDelete(id);
 
     console.log('kek');
-
-    // change ticket description
-    // const TicketDelete = new Ticketing({
-    //   TicketStatus,
-    //   TicketUpdateDescription
-    // });
-
-    // const update = await Ticketing.findByIDAndUpdate(
-    //   _id,
-    //   {
-    //     $set: req.body
-    //   },
-    //   { new: true, useFindandModify: false }
-    // );
-    // res.json({
-    //   message: 'Ticket Queue is deleted',
-    //   data: req.body,
-    //   TicketStatus: 'Cancelled',
-    //   TicketUpdateDescription:
-    //     'We apologize but we have to cancel your order due to unfortunate circumstances.'
-    // });
-    // if (!update) throw Error('Error when updating ticket description');
-
-    // change ticket description
 
     if (!ticket) throw Error('No ticketing found based on the id');
     res.json({
@@ -161,44 +130,12 @@ router.post('/ticketdeleteall', async (req, res) => {
     const { id } = req.params;
     const deleteall = await Ticketing.deleteMany(id);
 
-    // TicketStatus = TicketStatus.trim();
-    // TicketUpdateDescription = TicketUpdateDescription.trim();
     console.log('kek');
-
-    // change ticket description
-    // const TicketDeleteAll = new Ticketing({
-    //   TicketStatus,
-    //   TicketUpdateDescription
-    // });
-
-    /*
-    const update = await Ticketing.findByIDAndUpdate(
-      _id,
-      {
-        $set: req.body
-      },
-      { new: true, useFindandModify: false }
-    );
-    res.json({
-      message: 'Every Ticket Queue is deleted',
-      data: req.body,
-      TicketStatus: 'Cancelled',
-      TicketUpdateDescription:
-        'We apologize but we have to cancel your order due to unfortunate circumstances.'
-    });
-    if (!update) throw Error('Error when updating ticket description');
-    */
-
-    // delete all tickets
 
     if (!deleteall) throw Error('Ticket Queue is empty');
     res.json({
       message: 'Every Ticket has been deleted',
       status: 'SUCCESS'
-      // TicketStatus: 'Cancelled',
-      // TicketUpdateDescription:
-      // 'We apologize but we have to cancel your order due to unfortunate circumstances.',
-      // data: POST
     });
   } catch (err) {
     res.status(400).json({ msg: err });
@@ -221,15 +158,15 @@ router.post('/ticketcomplete/:id', async (req, res) => {
     console.log('kek');
 
     const complete = new Ticketing({
-      TicketStatus: 'SUCCESS',
+      TicketStatus: false,
       TicketUpdateDescription: 'Order Finish'
     });
 
     res.json({
       message: 'Order Finish and Ticket Sent',
       // data: req.body,
-      Status: 'Completed',
-      TicketStatus: 'Success',
+      // Status: 'Completed',
+      TicketStatus: false,
       TicketUpdateDescription: 'Order Complete'
     });
 
@@ -238,24 +175,5 @@ router.post('/ticketcomplete/:id', async (req, res) => {
     res.status(400).json({ msg: err });
   }
 });
-
-/*
-  - update ticketing 
-  @route PATH api/ticketing/ticketupdate/{id}
- @desc description and status change
-*/
-// router.post('/ticketupdate/:id', async (req, res) => {
-// try {
-//   let {
-//     _id,
-//     TicketOwner,
-//     TicketStatus,
-//     TicketUpdateDescription,
-//   } = req.body;
-//         TicketOwner = TicketOwner.trim();
-//         TicketStatus = TicketStatus.trim();
-//      TicketUpdateDescription= TicketUpdateDescription.trim();
-// }
-// /
 
 module.exports = router;

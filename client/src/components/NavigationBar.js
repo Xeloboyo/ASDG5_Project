@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import FormControl from "react-bootstrap/FormControl";
-import { LinkContainer } from "react-router-bootstrap";
-import ReactLogo from "./logo.svg";
-import { Context } from "./Reservations/Store";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
+import { LinkContainer } from 'react-router-bootstrap';
+import ReactLogo from './logo.svg';
+import { Context } from './Reservations/Store';
 
 /*
   import Home from './Home/Homepage';
@@ -28,13 +28,13 @@ function NavigationBar() {
     if (!state.session.name) {
       return;
     }
-    dispatch({ type: "USER_SESSION_LOGOUT", payload: {} });
+    dispatch({ type: 'USER_SESSION_LOGOUT', payload: {} });
   };
   const LogoutUser = async (e) => {
-    console.log("appp");
-    localStorage.removeItem("profile");
-    localStorage.removeItem("position");
-    localStorage.removeItem("id");
+    console.log('appp');
+    localStorage.removeItem('profile');
+    localStorage.removeItem('position');
+    localStorage.removeItem('id');
   };
 
   if (localStorage.profile) {
@@ -42,9 +42,9 @@ function NavigationBar() {
     var user = localStorage.position.slice(1, -1);
   }
   var accountspan;
-  if(localStorage.profile){
-    accountspan = 
-      (<Nav style={{ marginRight: "30px" }}>
+  if (localStorage.profile) {
+    accountspan = (
+      <Nav style={{ marginRight: '30px' }}>
         <Container className="float-left mx-3 text-white">
           Welcomes {name} - {user}
         </Container>
@@ -53,35 +53,40 @@ function NavigationBar() {
             Logout
           </Button>
         </LinkContainer>
-      </Nav>);
-  }else{
-    if(state.session.name){
-      accountspan = 
-       (<Nav style={{ marginRight: "30px" }}>
+      </Nav>
+    );
+  } else {
+    if (state.session.name) {
+      accountspan = (
+        <Nav style={{ marginRight: '30px' }}>
           <Container className="float-left mx-3 text-white">
             Welcome {state.session.name} - {state.session.type}
           </Container>
           <LinkContainer to="/logout" className="float-right">
-            <Button variant="light"  onClick={(e)=>logout()}>Logout</Button>
+            <Button variant="light" onClick={(e) => logout()}>
+              Logout
+            </Button>
           </LinkContainer>
-        </Nav>);
-    }else{
-      accountspan = (<Nav style={{ marginRight: "30px" }}>
-        <LinkContainer to="/restregister" className="float-left mx-3">
-          <Button variant="outline-success">
-            Register for restaurant management
-          </Button>
-        </LinkContainer>
-        <LinkContainer to="/register" className="float-left mx-3">
-          <Button variant="outline-success">Register</Button>
-        </LinkContainer>
-        <LinkContainer to="/login" className="float-right">
-          <Button variant="light">Login</Button>
-        </LinkContainer>
-      </Nav>);
+        </Nav>
+      );
+    } else {
+      accountspan = (
+        <Nav style={{ marginRight: '30px' }}>
+          <LinkContainer to="/restregister" className="float-left mx-3">
+            <Button variant="outline-warning">
+              Register for restaurant management
+            </Button>
+          </LinkContainer>
+          <LinkContainer to="/register" className="float-left mx-3">
+            <Button variant="outline-success">Register</Button>
+          </LinkContainer>
+          <LinkContainer to="/login" className="float-right">
+            <Button variant="light">Login</Button>
+          </LinkContainer>
+        </Nav>
+      );
     }
   }
-
 
   return (
     <Navbar sticky="top" className="bg-dark py-2 flex-grow-1">
@@ -94,7 +99,7 @@ function NavigationBar() {
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
             style={{
-              marginLeft: "15px",
+              marginLeft: '15px'
             }}
           />
         </Navbar.Brand>
@@ -142,11 +147,35 @@ function NavigationBar() {
             Community Page
           </Nav.Link>
         </LinkContainer>
+        <LinkContainer to="/takeaway">
+          <Nav.Link
+            href="./Takeaway/Takeaway.js"
+            className="text-white line-left"
+          >
+            Takeaway
+          </Nav.Link>
+        </LinkContainer>
       </Nav>
       {accountspan}
+      <Nav style={{ marginRight: '50px' }}>
+        {/* <LinkContainer to="/restregister" className="float-left mx-3">
+          <Button variant="outline-success">Restaurant Registration</Button>
+        </LinkContainer>
+        <LinkContainer to="/register" className="float-left mx-3">
+          <Button variant="outline-success">Register</Button>
+        </LinkContainer>
+        <LinkContainer to="/login" className="float-right">
+          <Button variant="light">Login</Button>
+        </LinkContainer> */}
+        <LinkContainer to="/checkout" className="float-right mx-3">
+          <Button variant="primary">
+            <i className="fas fa-shopping-cart"></i>
+            &nbsp; Checkout
+          </Button>
+        </LinkContainer>
+      </Nav>
     </Navbar>
   );
 }
-
 export default NavigationBar;
 // Home, restaurants, reviews, community page, Login, Register

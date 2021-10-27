@@ -1,0 +1,151 @@
+/* checkout cart */
+.checkoutbutton{
+    background: none;
+    color: #32c763;
+     border: 2px solid; 
+     padding: 0px 40px 1px;
+     font-size: 1em;
+     transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+     text-align: right;
+     border-radius: 3px;
+     margin-left: 110px;
+     margin-top: 30px;
+}
+
+.checkoutbutton:hover{
+    color: #676159;
+    transform: translateY(-0.25em);
+}
+
+.cart{
+    text-align: center;
+}
+
+h3{
+    text-align: left;
+    padding: 0px 30px 1px;
+}
+
+form{
+    padding: 0px 30px 1px;
+}
+
+.instruct{
+    padding: 0px 30px 1px;
+}
+
+.price{
+    padding: 0px 30px 1px;
+    font-weight: bold;
+    margin-bottom: 70px;
+}
+
+.items{
+    text-decoration: none;
+    list-style: none;
+    font-weight: bold;
+    color:#676159;
+}
+
+.items2{
+    text-decoration: none;
+    list-style:none;
+    padding-bottom: 10px;
+}
+
+label {
+    color: #676159;
+    padding-left: 2px;
+    padding-right: 20px;
+    font-weight: bold;
+  }
+
+  .details{
+      margin-bottom: 5px;
+      justify-content: right;
+  }
+ 
+  input {
+    justify-content: right;
+    border-style: solid;
+    border-color: #32c763;
+    border-width: 1px;
+    border-radius: 3px;
+    align-content: right;
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 0px 30px 1px;
+    
+  }
+
+  .link{
+      color: transparent;;
+      list-style: none;
+  }
+
+
+/* takeaway page */
+    #restaurants{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .restlist{
+    margin: 20px;
+    border: 4px solid #32c763;
+    border-radius: 10px;
+    border-width: 2px;
+    text-decoration: none;
+    list-style: none;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  .restlink{
+      color: #676159;
+      list-style-type: none;
+      text-decoration: none;
+      margin-bottom: 3px;
+  }
+
+  .restlink:hover{
+      cursor: pointer;
+      color: #32c763;
+     
+  transition: all 0.4s ease-out;
+  }
+
+  /* menu page */
+  .add{
+    background: none;
+    color: #32c763;
+     border: 2px solid; 
+     border-radius: 3px;
+     font-size: 1em;
+     transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+
+  .add:hover{
+      color:#676159;
+      transform: translateY(-0.25em); /*Y is to change the height and X is to change the width*/
+    cursor: pointer;
+
+  }
+
+
+  .product{
+      padding-bottom: 25px;
+  }
+
+  .menu{
+      text-decoration: none;
+      list-style: none;
+  }
+
+  .title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  

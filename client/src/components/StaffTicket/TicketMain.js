@@ -1,20 +1,169 @@
-/* 
-  create 2 Ticket Designs, using if statement to determine whether
-    it's for takeaway and reservations
-      if takeaway, use logo { FaMotorcycle }
-      if reservations, use logo { GiTabletopPlayers }
-      both tickets have accept and cancel button
-    page allows cancel all, will show warning
-*/
-
-import React, { Component } from 'react';
+import React from 'react';
+import { Component, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
+import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { IconContext } from 'react-icons';
 import { FaCheckCircle, FaTimesCircle, FaMotorcycle } from 'react-icons/fa';
-import { GiTabletopPlayers } from 'react-icons/gi';
 
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
+function TicketMain() {
+  const [tickets, setTickets] = useState('');
+
+  // let history = useHistory();
+  // const checkoutItems = JSON.parse(localStorage.getItem('cart'));
+  // let total = 0;
+  // let qty = 0;
+
+  // let menuItems = [];
+  // checkoutItems.forEach((item) => {
+  //   menuItems = [...menuItems, item.Menu_Product_Name];
+  //   qty += item.qty;
+  //   total += item.qty * item.Menu_Product_Price;
+  // });
+
+  // Get All Ticket (for mapping)
+  useEffect(() => {
+    axios.get(`http://localthost:5002/ticketing/`).then((res) => {
+      const ticketing = res.data;
+      this.setState({ ticketing });
+    });
+  }, []);
+
+  const handleChange = (e) => {
+    this.setState({ id: e.target.value });
+  };
+
+  // Delete One
+  const handleClickDelete = (e) => {
+    e.preventDefault();
+    axios
+      .post(`http://localthost:5002/ticketing/ticketdelete/${this.state.id}`)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+    console.log('deleted one ticket');
+  };
+
+  // Accept One
+  const handleClickAccept = (e) => {
+    e.preventDefault();
+    axios
+      .post(`http://localthost:5002/ticketing/ticketcomplete/${this.state.id}`)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+    console.log('finish one ticket');
+  };
+
+  return (
+    <div>
+      <Container>
+        <Card
+          style={{
+            width: '17rem',
+            marginBottom: '25px',
+            marginLeft: '100px' // start after sidebar
+            // marginRight: 'auto'
+          }}
+        >
+          {/* Row 1 -> Time 
+          <Row>
+            {/* how many minutes 
+            {/* automatically starts from 30 minutes 
+            <p>in 30 minutes</p>
+          </Row>
+            */}
+
+          {/* Row 2 -> Order Header */}
+          <Card.Header>
+            <Row>
+              <Col>
+                <IconContext.Provider value={{ color: 'purple', size: '50px' }}>
+                  <FaMotorcycle />
+                </IconContext.Provider>
+              </Col>
+              <Col>
+                {/* username */}
+                {/* <span style={{ fontSize: '18px' }}> {RandomName} </span> */}
+                <span style={{ fontSize: '18px' }}>
+                  {tickets.Product_UserName}
+                </span>
+                <br />
+                {/* order ID */}
+                {/* <span style={{ color: 'grey' }}>#{RandomNumber}</span> */}
+                <span style={{ color: 'grey' }}>#{tickets._id}</span>
+              </Col>
+            </Row>
+          </Card.Header>
+
+          {/* Row 3 -> Order Description */}
+          <Card.Body>
+            <Row>
+              <Col sm={3}>
+                {/* order quantity */}
+                {/* <span>{RandomQuantity} x</span> */}
+                <span>{tickets.Product_Quantity} x</span>
+              </Col>
+
+              <Col sm={9}>
+                {/* items description */}
+                {/* <span>${RandomFood}</span> */}
+                <span>{tickets.Product_menuItems}</span>
+              </Col>
+            </Row>
+          </Card.Body>
+
+          {/* Row 4 -> Button */}
+          <div>
+            <Row>
+              <Col>
+                <Button
+                  style={{
+                    background: 'red',
+                    width: '80%',
+                    margin: '10px 15px',
+                    padding: '5px',
+                    display: 'block'
+                  }}
+                  handleClickDelete={() => this.handleChange(tickets._id)}
+                >
+                  {/* cancel */}
+                  <FaTimesCircle />
+                </Button>
+              </Col>
+              <Col>
+                <Button
+                  style={{
+                    background: 'green',
+                    width: '80%',
+                    margin: '10px 15px',
+                    padding: '5px',
+                    display: 'block'
+                  }}
+                  handleClickAccept={() => this.handleChange(tickets._id)}
+                >
+                  {/* accept */}
+                  <FaCheckCircle />
+                </Button>
+              </Col>
+            </Row>
+          </div>
+        </Card>
+      </Container>
+    </div>
+  );
+}
+
+export default TicketMain;
+
+/* static data
 // generate package data
 import { v4 as uuidv4 } from 'uuid';
 import {
@@ -65,213 +214,11 @@ const RandomFood = uniqueNamesGenerator({
   separator: ' '
   // output Adjectives Animals
 });
+*/
 
-class TicketMain extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onChangeAllTicket = this.onChangeAllTicket.bind(this);
-
-    this.handleClick = this.handleClick.bind(this);
-    this.onChangeAcceptTicket = this.onChangeAcceptTicket.bind(this);
-    this.onChangeDeleteTicket = this.onChangeDeleteTicket.bind(this);
-    this.onChangeDeleteAllTicket = this.onChangeDeleteAllTicket.bind(this);
-
-    // this.onChangeTicketOwner = this.onChangeTicketOwner.bind(this);
-    // this.onChangeTicketOrderQuantity =
-    // this.onChangeTicketOrderQuantity.bind(this);
-    // this.onChangeTicketOrderDescription =
-    // this.onChangeTicketOrderDescription.bind(this);
-
-    const { id } = this.props.match.params.id;
-    console.log(id);
-
-    this.state = {
-      // UserID: '',
-      // OrderID: '',
-      // id: '',
-      TicketOwner: '',
-      TicketOrderQuantity: '',
-      TicketOrderDescription: '',
-      TicketStatus: '',
-      TicketUpdateDescription: '',
-      AllTicket: [{}]
-    };
-  }
-
-  // Show All Tickets
-  onChangeAllTicket(e) {
-    this.setState({
-      AllTicket: e.target.value
-    });
-  }
-
-  // Ticket Buttons
-  async handleClick(e) {
-    console.log(e);
-  }
-
-  // Accept Ticket
-  onChangeAcceptTicket(e) {
-    e.preventDefault();
-
-    const response = fetch('http://localhost:5002/ticketcomplete/:id', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      }
-      // body: JSON.stringify(newList)
-    });
-    const jsonData = response.json();
-    console.log(`${jsonData.message}`);
-  }
-
-  // Delete Ticket
-  onChangeDeleteTicket(e) {
-    e.preventDefault();
-
-    const response = fetch('http://localhost:5002/ticketdelete/:id', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      }
-      // body: JSON.stringify(newList)
-    });
-    const jsonData = response.json();
-    console.log(`${jsonData.message}`);
-  }
-
-  // Get all tickets
-  async componentDidMount() {
-    // const { id } = req.params;
-    const { id } = this.props.match.params.id;
-
-    try {
-      const response = fetch('http://localhost:5002/ticket/', {
-        method: 'GET',
-        headers: {
-          // 'content-type': 'application/json'
-        },
-        body: JSON.stringify(id)
-      });
-      const jsonData = response.json(id);
-      console.log(`${jsonData.message}`);
-
-      this.setState({ All_postEdit: jsonData });
-    } catch (err) {
-      console.error(err.message);
-      console.log(err);
-    }
-  }
-
-  render() {
-    const AllTicket = this.state.AllTicket;
-    const { id } = this.props.match.params.id;
-
-    return (
-      <div>
-        <Container>
-          {Object.values(AllTicket.data).map((e) => {
-            return (
-              <Card
-                style={{
-                  width: '17rem',
-                  marginBottom: '25px',
-                  marginLeft: '220px' // start after sidebar
-                  // marginRight: 'auto'
-                }}
-              >
-                {/* Row 1 -> Time 
-          <Row>
-            {/* how many minutes 
-            {/* automatically starts from 30 minutes 
-            <p>in 30 minutes</p>
-          </Row>
-            */}
-
-                {/* Row 2 -> Order Header */}
-                <Card.Header>
-                  <Row>
-                    <Col>
-                      <IconContext.Provider
-                        value={{ color: 'purple', size: '50px' }}
-                      >
-                        <FaMotorcycle />
-                      </IconContext.Provider>
-                    </Col>
-                    <Col>
-                      {/* username */}
-                      {/* <span style={{ fontSize: '18px' }}> {RandomName} </span> */}
-                      <span style={{ fontSize: '18px' }}>
-                        {' '}
-                        ${e.TicketOwner}{' '}
-                      </span>{' '}
-                      <br />
-                      {/* order ID */}
-                      {/* <span style={{ color: 'grey' }}>#{RandomNumber}</span> */}
-                      <span style={{ color: 'grey' }}>#{id}</span>
-                    </Col>
-                  </Row>
-                </Card.Header>
-
-                {/* Row 3 -> Order Description */}
-                <Card.Body>
-                  <Row>
-                    <Col sm={3}>
-                      {/* order quantity */}
-                      {/* <span>{RandomQuantity} x</span> */}
-                      <span>{e.TicketOrderQuantity} x</span>
-                    </Col>
-
-                    <Col sm={9}>
-                      {/* items description */}
-                      {/* <span>${RandomFood}</span> */}
-                      <span>${e.TicketOrderDescription}</span>
-                    </Col>
-                  </Row>
-                </Card.Body>
-
-                {/* Row 4 -> Button */}
-                <div>
-                  <Row>
-                    <Col>
-                      <Button
-                        onClick={() => this.handleClick(e._id)}
-                        style={{
-                          background: 'red',
-                          width: '80%',
-                          margin: '10px 15px',
-                          padding: '5px',
-                          display: 'block'
-                        }}
-                      >
-                        {/* cancel */}
-                        <FaTimesCircle />
-                      </Button>
-                    </Col>
-                    <Col>
-                      <Button
-                        onClick={() => this.handleClick(e._id)}
-                        style={{
-                          background: 'green',
-                          width: '80%',
-                          margin: '10px 15px',
-                          padding: '5px',
-                          display: 'block'
-                        }}
-                      >
-                        {/* accept */}
-                        <FaCheckCircle />
-                      </Button>
-                    </Col>
-                  </Row>
-                </div>
-              </Card>
-            );
-          })}
-        </Container>
-      </div>
-    );
-  }
-}
-export default TicketMain;
+// create 2 Ticket Designs, using if statement to determine whether
+//   it's for takeaway and reservations
+//     if takeaway, use logo { FaMotorcycle }
+//     if reservations, use logo { GiTabletopPlayers }
+//     both tickets have accept and cancel button
+//   page allows cancel all, will show warning

@@ -1,15 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import FormControl from "react-bootstrap/FormControl";
-import { LinkContainer } from "react-router-bootstrap";
-import ReactLogo from "../logo.svg";
-import "./AdminHomeNav.css";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
+import { LinkContainer } from 'react-router-bootstrap';
+import ReactLogo from '../logo.svg';
+import './AdminHomeNav.css';
 
 function AdminHome() {
   const LogoutUser = async (e) => {
@@ -34,7 +34,7 @@ function AdminHome() {
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
             style={{
-              marginLeft: "15px",
+              marginLeft: '15px'
             }}
           />
         </Navbar.Brand>
@@ -66,8 +66,17 @@ function AdminHome() {
             Promotions
           </Nav.Link>
         </LinkContainer>
+
+        <LinkContainer to="/analytics">
+          <Nav.Link
+            href="./Analytics/Analytics.jsx"
+            className="text-white line-left"
+          >
+            Promotions
+          </Nav.Link>
+        </LinkContainer>
       </Nav>
-      <Nav style={{ marginRight: "30px" }}>
+      <Nav style={{ marginRight: '30px' }}>
         <Navbar.Brand className="text">Login as Admin</Navbar.Brand>
         <LinkContainer to="/" className="float-right">
           <Button variant="light" onClick={(e) => LogoutUser(e)}>
